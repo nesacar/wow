@@ -63465,8 +63465,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 
@@ -63510,21 +63508,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             __WEBPACK_IMPORTED_MODULE_2_sweetalert2___default()({
-                title: 'Da li ste sigurni?',
-                text: "Nećete moći da povratite radnju!",
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#51d2b7',
                 cancelButtonColor: '#fb9678',
-                confirmButtonText: 'Da, obriši ga!',
-                cancelButtonText: 'Odustani'
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'Cancel'
             }).then(function (result) {
                 if (result.value) {
                     axios.delete('api/posts/' + row.id).then(function (res) {
                         _this2.posts = _this2.posts.filter(function (item) {
                             return row.id != item.id;
                         });
-                        __WEBPACK_IMPORTED_MODULE_2_sweetalert2___default()('Obrisano!', 'Čkanak je uspešno obrisan.', 'success');
+                        __WEBPACK_IMPORTED_MODULE_2_sweetalert2___default()('Deleted!', 'Post is deleted.', 'success');
                     }).catch(function (e) {
                         console.log(e);
                     });
@@ -63585,13 +63583,13 @@ var render = function() {
                   "li",
                   [
                     _c("router-link", { attrs: { tag: "a", to: "/home" } }, [
-                      _vm._v("Početna")
+                      _vm._v("Home")
                     ])
                   ],
                   1
                 ),
                 _vm._v(" "),
-                _c("li", [_vm._v("Članci")])
+                _c("li", [_vm._v("Posts")])
               ])
             ])
           ])
@@ -63623,8 +63621,6 @@ var render = function() {
                       _c("td", [_vm._v(_vm._s(row.category))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(row.publish))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(row.translations.length))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(row.created_at))]),
                       _vm._v(" "),
@@ -63699,17 +63695,15 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("id")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("naslov")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("title")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("kategorija")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("category")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("publikovano")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("publish")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("jezik")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("created_at")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("kreirano")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("akcija")])
+        _c("th", [_vm._v("action")])
       ])
     ])
   }
@@ -63868,21 +63862,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -63951,10 +63930,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             console.log(image[0]);
             this.post.image = image[0];
         },
-        uploadPdf: function uploadPdf(pdf) {
-            console.log(pdf[0]);
-            this.post.pdf = pdf[0];
-        },
         getList: function getList() {
             var _this2 = this;
 
@@ -63986,7 +63961,7 @@ var render = function() {
                 "li",
                 [
                   _c("router-link", { attrs: { tag: "a", to: "/home" } }, [
-                    _vm._v("Početna")
+                    _vm._v("Home")
                   ])
                 ],
                 1
@@ -63996,13 +63971,13 @@ var render = function() {
                 "li",
                 [
                   _c("router-link", { attrs: { tag: "a", to: "/posts" } }, [
-                    _vm._v("Članci")
+                    _vm._v("Posts")
                   ])
                 ],
                 1
               ),
               _vm._v(" "),
-              _c("li", [_vm._v("Kreiranje članka")])
+              _c("li", [_vm._v("Post create")])
             ])
           ])
         ])
@@ -64026,7 +64001,7 @@ var render = function() {
               [
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", { attrs: { for: "category" } }, [
-                    _vm._v("Kategorija")
+                    _vm._v("Category")
                   ]),
                   _vm._v(" "),
                   _c(
@@ -64077,7 +64052,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "title" } }, [_vm._v("Naslov")]),
+                  _c("label", { attrs: { for: "title" } }, [_vm._v("Title")]),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -64093,7 +64068,7 @@ var render = function() {
                       type: "text",
                       name: "title",
                       id: "title",
-                      placeholder: "Naslov"
+                      placeholder: "Title"
                     },
                     domProps: { value: _vm.post.title },
                     on: {
@@ -64151,9 +64126,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "short" } }, [
-                    _vm._v("Kratak opis")
-                  ]),
+                  _c("label", { attrs: { for: "short" } }, [_vm._v("Short")]),
                   _vm._v(" "),
                   _c("textarea", {
                     directives: [
@@ -64170,7 +64143,7 @@ var render = function() {
                       id: "short",
                       cols: "3",
                       rows: "4",
-                      placeholder: "Kratak opis"
+                      placeholder: "Short"
                     },
                     domProps: { value: _vm.post.short },
                     on: {
@@ -64190,52 +64163,11 @@ var render = function() {
                     : _vm._e()
                 ]),
                 _vm._v(" "),
-                _vm.post.category_id == 3
-                  ? _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "author" } }, [
-                        _vm._v("Autor")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.post.author,
-                            expression: "post.author"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          name: "author",
-                          id: "author",
-                          placeholder: "Autor"
-                        },
-                        domProps: { value: _vm.post.author },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.post, "author", $event.target.value)
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.error != null && _vm.error.author
-                        ? _c("small", { staticClass: "form-text text-muted" }, [
-                            _vm._v(_vm._s(_vm.error.author[0]))
-                          ])
-                        : _vm._e()
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
                 _c(
                   "div",
                   { staticClass: "form-group" },
                   [
-                    _c("label", [_vm._v("Opis")]),
+                    _c("label", [_vm._v("Body")]),
                     _vm._v(" "),
                     _c("ckeditor", {
                       attrs: { config: _vm.config },
@@ -64261,7 +64193,7 @@ var render = function() {
                   "div",
                   { staticClass: "form-group" },
                   [
-                    _c("label", [_vm._v("Publikovano")]),
+                    _c("label", [_vm._v("Publish")]),
                     _c("br"),
                     _vm._v(" "),
                     _c("switches", {
@@ -64292,30 +64224,12 @@ var render = function() {
               attrs: {
                 image: _vm.post.image,
                 defaultImage: null,
-                titleImage: "članka",
+                titleImage: "Post",
                 error: _vm.error
               },
               on: {
                 uploadImage: function($event) {
                   _vm.upload($event)
-                },
-                removeRow: function($event) {
-                  _vm.remove($event)
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("upload-pdf-helper", {
-              attrs: {
-                pdf: _vm.post.pdf,
-                domain: _vm.domain,
-                defaultPdf: "/themes/ft/img/pdf-icon.jpg",
-                titlePdf: "članka",
-                error: _vm.error
-              },
-              on: {
-                uploadPdf: function($event) {
-                  _vm.uploadPdf($event)
                 },
                 removeRow: function($event) {
                   _vm.remove($event)
@@ -64335,9 +64249,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-md-12" }, [
-      _c("div", { staticClass: "card" }, [
-        _c("h5", [_vm._v("Kreiranje članka")])
-      ])
+      _c("div", { staticClass: "card" }, [_c("h5", [_vm._v("Post create")])])
     ])
   },
   function() {
@@ -64348,7 +64260,7 @@ var staticRenderFns = [
       _c(
         "button",
         { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Kreiraj")]
+        [_vm._v("Create")]
       )
     ])
   }
@@ -64555,121 +64467,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -64685,9 +64482,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             post: {},
-            postEng: {},
-            postHrv: {},
-            postRus: {},
             error: null,
             lists: {},
             photos: {},
@@ -64723,10 +64517,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         'vue-dropzone': __WEBPACK_IMPORTED_MODULE_7_vue2_dropzone___default.a
     },
     created: function created() {
-        this.getPost('sr');
-        this.getPost('en');
-        this.getPost('hr');
-        this.getPost('ru');
+        this.getPost();
         this.getList();
         //this.getPhotos();
     },
@@ -64737,52 +64528,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.get('api/posts/' + this.$route.params.id + '?locale=' + locale).then(function (res) {
                 if (res.data.post != null) {
-                    if (locale == 'sr') {
-                        _this.post = res.data.post;
-                    } else if (locale == 'hr') {
-                        _this.postHrv = res.data.post;
-                    } else if (locale == 'ru') {
-                        _this.postRus = res.data.post;
-                    } else {
-                        _this.postEng = res.data.post;
-                    }
+                    _this.post = res.data.post;
                 }
             }).catch(function (e) {
                 console.log(e);
                 _this.error = e.response.data.errors;
             });
         },
-        submit: function submit(locale) {
+        submit: function submit() {
             var _this2 = this;
 
             var data = {};
-            if (locale == 'sr') {
-                data = this.post;
-                this.post.user_id = this.user.id;
-            } else if (locale == 'hr') {
-                data = this.postHrv;
-                this.postHrv.user_id = this.user.id;
-            } else if (locale == 'ru') {
-                data = this.postRus;
-                this.postRus.user_id = this.user.id;
-            } else {
-                data = this.postEng;
-                this.postEng.user_id = this.user.id;
-            }
-            axios.post('api/posts/' + this.post.id + '/lang?locale=' + locale, data).then(function (res) {
-                if (locale == 'sr') {
-                    _this2.post = res.data.post;
-                } else if (locale == 'hr') {
-                    _this2.postHrv = res.data.post;
-                } else if (locale == 'ru') {
-                    _this2.postRus = res.data.post;
-                } else {
-                    _this2.postEng = res.data.post;
-                }
+            data = this.post;
+            this.post.user_id = this.user.id;
+            axios.post('api/posts/' + this.post.id + '/lang', data).then(function (res) {
+                _this2.post = res.data.post;
                 __WEBPACK_IMPORTED_MODULE_4_sweetalert2___default()({
                     position: 'center',
                     type: 'success',
-                    title: 'Uspeh',
+                    title: 'success',
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -64800,7 +64564,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 __WEBPACK_IMPORTED_MODULE_4_sweetalert2___default()({
                     position: 'center',
                     type: 'success',
-                    title: 'Uspeh',
+                    title: 'success',
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -64829,57 +64593,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this4.error = e.response.data.errors;
             });
         },
-        uploadPdf: function uploadPdf(pdf) {
+        getList: function getList() {
             var _this5 = this;
 
-            axios.post('api/posts/' + this.post.id + '/pdf', { file: pdf[0] }).then(function (res) {
-                console.log(res);
-                _this5.post.pdf = res.data.pdf;
-                _this5.error = null;
-                __WEBPACK_IMPORTED_MODULE_4_sweetalert2___default()({
-                    position: 'center',
-                    type: 'success',
-                    title: 'Uploudovano',
-                    showConfirmButton: false,
-                    timer: 1500
-                });
+            axios.get('api/categories/lists').then(function (res) {
+                _this5.lists = res.data.categories;
             }).catch(function (e) {
-                console.log(e);
+                console.log(e.response);
                 _this5.error = e.response.data.errors;
             });
         },
-        getList: function getList() {
+        getPhotos: function getPhotos() {
             var _this6 = this;
 
-            axios.get('api/categories/lists').then(function (res) {
-                _this6.lists = res.data.categories;
+            axios.get('api/posts/' + this.$route.params.id + '/gallery').then(function (res) {
+                console.log(res);
+                _this6.photos = res.data.photos;
             }).catch(function (e) {
                 console.log(e.response);
                 _this6.error = e.response.data.errors;
             });
         },
-        getPhotos: function getPhotos() {
-            var _this7 = this;
-
-            axios.get('api/posts/' + this.$route.params.id + '/gallery').then(function (res) {
-                console.log(res);
-                _this7.photos = res.data.photos;
-            }).catch(function (e) {
-                console.log(e.response);
-                _this7.error = e.response.data.errors;
-            });
-        },
         deletePhoto: function deletePhoto(photo) {
-            var _this8 = this;
+            var _this7 = this;
 
             axios.post('api/photos/' + photo.id + '/destroy').then(function (res) {
                 console.log(res);
-                _this8.photos = _this8.photos.filter(function (item) {
+                _this7.photos = _this7.photos.filter(function (item) {
                     return photo.id != item.id;
                 });
             }).catch(function (e) {
                 console.log(e.response);
-                _this8.error = e.response.data.errors;
+                _this7.error = e.response.data.errors;
             });
         },
         showSuccess: function showSuccess() {
@@ -68908,7 +68653,7 @@ var render = function() {
                 "li",
                 [
                   _c("router-link", { attrs: { tag: "a", to: "/home" } }, [
-                    _vm._v("Početna")
+                    _vm._v("Home")
                   ])
                 ],
                 1
@@ -68918,13 +68663,13 @@ var render = function() {
                 "li",
                 [
                   _c("router-link", { attrs: { tag: "a", to: "/posts" } }, [
-                    _vm._v("Članci")
+                    _vm._v("Posts")
                   ])
                 ],
                 1
               ),
               _vm._v(" "),
-              _c("li", [_vm._v("Izmena članka")])
+              _c("li", [_vm._v("Post edit")])
             ])
           ])
         ])
@@ -68935,7 +68680,7 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "col-md-4" }, [
           _c("div", { staticClass: "card" }, [
-            _c("h5", [_vm._v("Generalne informacije")]),
+            _c("h5", [_vm._v("General info")]),
             _vm._v(" "),
             _c("hr"),
             _vm._v(" "),
@@ -68952,7 +68697,7 @@ var render = function() {
               [
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", { attrs: { for: "category" } }, [
-                    _vm._v("Kategorija")
+                    _vm._v("Category")
                   ]),
                   _vm._v(" "),
                   _c(
@@ -69006,7 +68751,7 @@ var render = function() {
                   "div",
                   { staticClass: "form-group" },
                   [
-                    _c("label", [_vm._v("Publikovano")]),
+                    _c("label", [_vm._v("Publish")]),
                     _c("br"),
                     _vm._v(" "),
                     _c("switches", {
@@ -69022,47 +68767,6 @@ var render = function() {
                   ],
                   1
                 ),
-                _vm._v(" "),
-                _vm.post.category_id == 3
-                  ? _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "author" } }, [
-                        _vm._v("Autor")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.post.author,
-                            expression: "post.author"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          name: "author",
-                          id: "author",
-                          placeholder: "Autor"
-                        },
-                        domProps: { value: _vm.post.author },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.post, "author", $event.target.value)
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.error != null && _vm.error.author
-                        ? _c("small", { staticClass: "form-text text-muted" }, [
-                            _vm._v(_vm._s(_vm.error.author[0]))
-                          ])
-                        : _vm._e()
-                    ])
-                  : _vm._e(),
                 _vm._v(" "),
                 _c("upload-image-helper", {
                   attrs: {
@@ -69081,24 +68785,6 @@ var render = function() {
                   }
                 }),
                 _vm._v(" "),
-                _c("upload-pdf-helper", {
-                  attrs: {
-                    pdf: _vm.post.pdf,
-                    domain: _vm.domain,
-                    defaultPdf: "/themes/ft/img/pdf-icon.jpg",
-                    titlePdf: "članka",
-                    error: _vm.error
-                  },
-                  on: {
-                    uploadPdf: function($event) {
-                      _vm.uploadPdf($event)
-                    },
-                    removeRow: function($event) {
-                      _vm.remove($event)
-                    }
-                  }
-                }),
-                _vm._v(" "),
                 _vm._m(1)
               ],
               1
@@ -69108,7 +68794,7 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "col-md-8" }, [
           _c("div", { staticClass: "card" }, [
-            _c("h5", [_vm._v("Jezičke informacije")]),
+            _c("h5", [_vm._v("Language info")]),
             _vm._v(" "),
             _c("hr"),
             _vm._v(" "),
@@ -69121,11 +68807,11 @@ var render = function() {
                 _c(
                   "div",
                   {
-                    staticClass: "tab-pane fade show active",
+                    staticClass: "tab-pane active",
                     attrs: {
-                      id: "srb",
+                      id: "eng",
                       role: "tabpanel",
-                      "aria-labelledby": "srb-tab"
+                      "aria-labelledby": "eng-tab"
                     }
                   },
                   [
@@ -69135,14 +68821,14 @@ var render = function() {
                         on: {
                           submit: function($event) {
                             $event.preventDefault()
-                            _vm.submit("sr")
+                            _vm.submit()
                           }
                         }
                       },
                       [
                         _c("div", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "title" } }, [
-                            _vm._v("Naslov")
+                          _c("label", { attrs: { for: "title2" } }, [
+                            _vm._v("Title")
                           ]),
                           _vm._v(" "),
                           _c("input", {
@@ -69158,8 +68844,8 @@ var render = function() {
                             attrs: {
                               type: "text",
                               name: "title",
-                              id: "title",
-                              placeholder: "Naslov"
+                              id: "title2",
+                              placeholder: "Title"
                             },
                             domProps: { value: _vm.post.title },
                             on: {
@@ -69182,7 +68868,7 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "slug" } }, [
+                          _c("label", { attrs: { for: "slug2" } }, [
                             _vm._v("Slug")
                           ]),
                           _vm._v(" "),
@@ -69199,7 +68885,7 @@ var render = function() {
                             attrs: {
                               type: "text",
                               name: "slug",
-                              id: "slug",
+                              id: "slug2",
                               placeholder: "Slug"
                             },
                             domProps: { value: _vm.post.slug },
@@ -69223,8 +68909,8 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "short" } }, [
-                            _vm._v("Kratak opis")
+                          _c("label", { attrs: { for: "shortIta" } }, [
+                            _vm._v("Short")
                           ]),
                           _vm._v(" "),
                           _c("textarea", {
@@ -69239,10 +68925,10 @@ var render = function() {
                             staticClass: "form-control",
                             attrs: {
                               name: "short",
-                              id: "short",
+                              id: "shortIta",
                               cols: "3",
                               rows: "4",
-                              placeholder: "Kratak opis"
+                              placeholder: "Short"
                             },
                             domProps: { value: _vm.post.short },
                             on: {
@@ -69268,7 +68954,7 @@ var render = function() {
                           "div",
                           { staticClass: "form-group" },
                           [
-                            _c("label", [_vm._v("Opis")]),
+                            _c("label", [_vm._v("Body")]),
                             _vm._v(" "),
                             _c("ckeditor", {
                               attrs: { config: _vm.config },
@@ -69296,582 +68982,6 @@ var render = function() {
                       ]
                     )
                   ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "tab-pane fade",
-                    attrs: {
-                      id: "eng",
-                      role: "tabpanel",
-                      "aria-labelledby": "eng-tab"
-                    }
-                  },
-                  [
-                    _c(
-                      "form",
-                      {
-                        on: {
-                          submit: function($event) {
-                            $event.preventDefault()
-                            _vm.submit("en")
-                          }
-                        }
-                      },
-                      [
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "title2" } }, [
-                            _vm._v("Naslov")
-                          ]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.postEng.title,
-                                expression: "postEng.title"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              name: "title",
-                              id: "title2",
-                              placeholder: "Naslov"
-                            },
-                            domProps: { value: _vm.postEng.title },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.postEng,
-                                  "title",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.error != null && _vm.error.title
-                            ? _c(
-                                "small",
-                                { staticClass: "form-text text-muted" },
-                                [_vm._v(_vm._s(_vm.error.title[0]))]
-                              )
-                            : _vm._e()
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "slug2" } }, [
-                            _vm._v("Slug")
-                          ]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.postEng.slug,
-                                expression: "postEng.slug"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              name: "slug",
-                              id: "slug2",
-                              placeholder: "Slug"
-                            },
-                            domProps: { value: _vm.postEng.slug },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.postEng,
-                                  "slug",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.error != null && _vm.error.slug
-                            ? _c(
-                                "small",
-                                { staticClass: "form-text text-muted" },
-                                [_vm._v(_vm._s(_vm.error.slug[0]))]
-                              )
-                            : _vm._e()
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "shortIta" } }, [
-                            _vm._v("Kratak opis")
-                          ]),
-                          _vm._v(" "),
-                          _c("textarea", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.postEng.short,
-                                expression: "postEng.short"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              name: "short",
-                              id: "shortIta",
-                              cols: "3",
-                              rows: "4",
-                              placeholder: "Kratak opis"
-                            },
-                            domProps: { value: _vm.postEng.short },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.postEng,
-                                  "short",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.error != null && _vm.error.short
-                            ? _c(
-                                "small",
-                                { staticClass: "form-text text-muted" },
-                                [_vm._v(_vm._s(_vm.error.short[0]))]
-                              )
-                            : _vm._e()
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "form-group" },
-                          [
-                            _c("label", [_vm._v("Opis")]),
-                            _vm._v(" "),
-                            _c("ckeditor", {
-                              attrs: { config: _vm.config },
-                              model: {
-                                value: _vm.postEng.body,
-                                callback: function($$v) {
-                                  _vm.$set(_vm.postEng, "body", $$v)
-                                },
-                                expression: "postEng.body"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _vm.error != null && _vm.error.desc
-                              ? _c(
-                                  "small",
-                                  { staticClass: "form-text text-muted" },
-                                  [_vm._v(_vm._s(_vm.error.body[0]))]
-                                )
-                              : _vm._e()
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _vm._m(4)
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "tab-pane fade",
-                    attrs: {
-                      id: "hrv",
-                      role: "tabpanel",
-                      "aria-labelledby": "hrv-tab"
-                    }
-                  },
-                  [
-                    _c(
-                      "form",
-                      {
-                        on: {
-                          submit: function($event) {
-                            $event.preventDefault()
-                            _vm.submit("hr")
-                          }
-                        }
-                      },
-                      [
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "title3" } }, [
-                            _vm._v("Naslov")
-                          ]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.postHrv.title,
-                                expression: "postHrv.title"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              name: "title",
-                              id: "title3",
-                              placeholder: "Naslov"
-                            },
-                            domProps: { value: _vm.postHrv.title },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.postHrv,
-                                  "title",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.error != null && _vm.error.title
-                            ? _c(
-                                "small",
-                                { staticClass: "form-text text-muted" },
-                                [_vm._v(_vm._s(_vm.error.title[0]))]
-                              )
-                            : _vm._e()
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "slug3" } }, [
-                            _vm._v("Slug")
-                          ]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.postHrv.slug,
-                                expression: "postHrv.slug"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              name: "slug",
-                              id: "slug3",
-                              placeholder: "Slug"
-                            },
-                            domProps: { value: _vm.postHrv.slug },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.postHrv,
-                                  "slug",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.error != null && _vm.error.slug
-                            ? _c(
-                                "small",
-                                { staticClass: "form-text text-muted" },
-                                [_vm._v(_vm._s(_vm.error.slug[0]))]
-                              )
-                            : _vm._e()
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "short3" } }, [
-                            _vm._v("Kratak opis")
-                          ]),
-                          _vm._v(" "),
-                          _c("textarea", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.postHrv.short,
-                                expression: "postHrv.short"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              name: "short",
-                              id: "short3",
-                              cols: "3",
-                              rows: "4",
-                              placeholder: "Kratak opis"
-                            },
-                            domProps: { value: _vm.postHrv.short },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.postHrv,
-                                  "short",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.error != null && _vm.error.short
-                            ? _c(
-                                "small",
-                                { staticClass: "form-text text-muted" },
-                                [_vm._v(_vm._s(_vm.error.short[0]))]
-                              )
-                            : _vm._e()
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "form-group" },
-                          [
-                            _c("label", [_vm._v("Opis")]),
-                            _vm._v(" "),
-                            _c("ckeditor", {
-                              attrs: { config: _vm.config },
-                              model: {
-                                value: _vm.postHrv.body,
-                                callback: function($$v) {
-                                  _vm.$set(_vm.postHrv, "body", $$v)
-                                },
-                                expression: "postHrv.body"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _vm.error != null && _vm.error.desc
-                              ? _c(
-                                  "small",
-                                  { staticClass: "form-text text-muted" },
-                                  [_vm._v(_vm._s(_vm.error.body[0]))]
-                                )
-                              : _vm._e()
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _vm._m(5)
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "tab-pane fade",
-                    attrs: {
-                      id: "rus",
-                      role: "tabpanel",
-                      "aria-labelledby": "rus-tab"
-                    }
-                  },
-                  [
-                    _c(
-                      "form",
-                      {
-                        on: {
-                          submit: function($event) {
-                            $event.preventDefault()
-                            _vm.submit("ru")
-                          }
-                        }
-                      },
-                      [
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "title4" } }, [
-                            _vm._v("Naslov")
-                          ]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.postRus.title,
-                                expression: "postRus.title"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              name: "title",
-                              id: "title4",
-                              placeholder: "Naslov"
-                            },
-                            domProps: { value: _vm.postRus.title },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.postRus,
-                                  "title",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.error != null && _vm.error.title
-                            ? _c(
-                                "small",
-                                { staticClass: "form-text text-muted" },
-                                [_vm._v(_vm._s(_vm.error.title[0]))]
-                              )
-                            : _vm._e()
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "slug4" } }, [
-                            _vm._v("Slug")
-                          ]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.postRus.slug,
-                                expression: "postRus.slug"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              name: "slug",
-                              id: "slug4",
-                              placeholder: "Slug"
-                            },
-                            domProps: { value: _vm.postRus.slug },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.postRus,
-                                  "slug",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.error != null && _vm.error.slug
-                            ? _c(
-                                "small",
-                                { staticClass: "form-text text-muted" },
-                                [_vm._v(_vm._s(_vm.error.slug[0]))]
-                              )
-                            : _vm._e()
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "short4" } }, [
-                            _vm._v("Kratak opis")
-                          ]),
-                          _vm._v(" "),
-                          _c("textarea", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.postRus.short,
-                                expression: "postRus.short"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              name: "short",
-                              id: "short4",
-                              cols: "3",
-                              rows: "4",
-                              placeholder: "Kratak opis"
-                            },
-                            domProps: { value: _vm.postRus.short },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.postRus,
-                                  "short",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.error != null && _vm.error.short
-                            ? _c(
-                                "small",
-                                { staticClass: "form-text text-muted" },
-                                [_vm._v(_vm._s(_vm.error.short[0]))]
-                              )
-                            : _vm._e()
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "form-group" },
-                          [
-                            _c("label", [_vm._v("Opis")]),
-                            _vm._v(" "),
-                            _c("ckeditor", {
-                              attrs: { config: _vm.config },
-                              model: {
-                                value: _vm.postRus.body,
-                                callback: function($$v) {
-                                  _vm.$set(_vm.postRus, "body", $$v)
-                                },
-                                expression: "postRus.body"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _vm.error != null && _vm.error.desc
-                              ? _c(
-                                  "small",
-                                  { staticClass: "form-text text-muted" },
-                                  [_vm._v(_vm._s(_vm.error.body[0]))]
-                                )
-                              : _vm._e()
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _vm._m(6)
-                      ]
-                    )
-                  ]
                 )
               ]
             )
@@ -69887,7 +68997,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-md-12" }, [
-      _c("div", { staticClass: "card" }, [_c("h5", [_vm._v("Izmena članka")])])
+      _c("div", { staticClass: "card" }, [_c("h5", [_vm._v("Post edit")])])
     ])
   },
   function() {
@@ -69898,7 +69008,7 @@ var staticRenderFns = [
       _c(
         "button",
         { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Izmeni generalno")]
+        [_vm._v("Edit general")]
       )
     ])
   },
@@ -69916,24 +69026,6 @@ var staticRenderFns = [
             {
               staticClass: "nav-link active",
               attrs: {
-                id: "srb-tab",
-                "data-toggle": "tab",
-                href: "#srb",
-                role: "tab",
-                "aria-controls": "home",
-                "aria-selected": "true"
-              }
-            },
-            [_vm._v("Srpski")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: {
                 id: "eng-tab",
                 "data-toggle": "tab",
                 href: "#eng",
@@ -69942,43 +69034,7 @@ var staticRenderFns = [
                 "aria-selected": "false"
               }
             },
-            [_vm._v("Engleski")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: {
-                id: "hrv-tab",
-                "data-toggle": "tab",
-                href: "#hrv",
-                role: "tab",
-                "aria-controls": "contact",
-                "aria-selected": "false"
-              }
-            },
-            [_vm._v("Hrvatski")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: {
-                id: "rus-tab",
-                "data-toggle": "tab",
-                href: "#rus",
-                role: "tab",
-                "aria-controls": "contact",
-                "aria-selected": "false"
-              }
-            },
-            [_vm._v("Ruski")]
+            [_vm._v("English")]
           )
         ])
       ]
@@ -69992,43 +69048,7 @@ var staticRenderFns = [
       _c(
         "button",
         { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Izmeni srpski")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Izmeni engleski")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Izmeni hrvatski")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Izmeni ruski")]
+        [_vm._v("Edit lang")]
       )
     ])
   }

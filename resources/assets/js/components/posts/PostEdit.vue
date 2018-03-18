@@ -5,9 +5,9 @@
                 <div class="col-md-12">
                     <div id="breadcrumbs">
                         <ul class="list-group list-group-flush">
-                            <li><router-link tag="a" :to="'/home'">Početna</router-link></li>
-                            <li><router-link tag="a" :to="'/posts'">Članci</router-link></li>
-                            <li>Izmena članka</li>
+                            <li><router-link tag="a" :to="'/home'">Home</router-link></li>
+                            <li><router-link tag="a" :to="'/posts'">Posts</router-link></li>
+                            <li>Post edit</li>
                         </ul>
                     </div>
                 </div>
@@ -16,7 +16,7 @@
             <div class="row bela">
                 <div class="col-md-12">
                     <div class="card">
-                        <h5>Izmena članka</h5>
+                        <h5>Post edit</h5>
                     </div>
                 </div>
 
@@ -37,24 +37,19 @@
 
                 <div class="col-md-4">
                     <div class="card">
-                        <h5>Generalne informacije</h5>
+                        <h5>General info</h5>
                         <hr>
                         <form @submit.prevent="general()">
                             <div class="form-group">
-                                <label for="category">Kategorija</label>
+                                <label for="category">Category</label>
                                 <select name="category" id="category" class="form-control" v-model="post.category_id">
                                     <option :value="index" v-for="(category, index) in lists">{{ category }}</option>
                                 </select>
                                 <small class="form-text text-muted" v-if="error != null && error.category_id">{{ error.category_id[0] }}</small>
                             </div>
                             <div class="form-group">
-                                <label>Publikovano</label><br>
+                                <label>Publish</label><br>
                                 <switches v-model="post.publish" theme="bootstrap" color="primary"></switches>
-                            </div>
-                            <div class="form-group" v-if="post.category_id == 3">
-                                <label for="author">Autor</label>
-                                <input type="text" name="author" class="form-control" id="author" placeholder="Autor" v-model="post.author">
-                                <small class="form-text text-muted" v-if="error != null && error.author">{{ error.author[0] }}</small>
                             </div>
 
                             <upload-image-helper
@@ -66,18 +61,8 @@
                                     @removeRow="remove($event)"
                             ></upload-image-helper>
 
-                            <upload-pdf-helper
-                                    :pdf="post.pdf"
-                                    :domain="domain"
-                                    :defaultPdf="'/themes/ft/img/pdf-icon.jpg'"
-                                    :titlePdf="'članka'"
-                                    :error="error"
-                                    @uploadPdf="uploadPdf($event)"
-                                    @removeRow="remove($event)"
-                            ></upload-pdf-helper>
-
                             <div class="form-group">
-                                <button class="btn btn-primary" type="submit">Izmeni generalno</button>
+                                <button class="btn btn-primary" type="submit">Edit general</button>
                             </div>
                         </form>
                     </div><!-- .card -->
@@ -89,42 +74,34 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card">
-                        <h5>Jezičke informacije</h5>
+                        <h5>Language info</h5>
                         <hr>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="srb-tab" data-toggle="tab" href="#srb" role="tab" aria-controls="home" aria-selected="true">Srpski</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="eng-tab" data-toggle="tab" href="#eng" role="tab" aria-controls="contact" aria-selected="false">Engleski</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="hrv-tab" data-toggle="tab" href="#hrv" role="tab" aria-controls="contact" aria-selected="false">Hrvatski</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="rus-tab" data-toggle="tab" href="#rus" role="tab" aria-controls="contact" aria-selected="false">Ruski</a>
+                                <a class="nav-link active" id="eng-tab" data-toggle="tab" href="#eng" role="tab" aria-controls="contact" aria-selected="false">English</a>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="srb" role="tabpanel" aria-labelledby="srb-tab">
-                                <form @submit.prevent="submit('sr')">
+
+                            <div class="tab-pane active" id="eng" role="tabpanel" aria-labelledby="eng-tab">
+                                <form @submit.prevent="submit()">
                                     <div class="form-group">
-                                        <label for="title">Naslov</label>
-                                        <input type="text" name="title" class="form-control" id="title" placeholder="Naslov" v-model="post.title">
+                                        <label for="title2">Title</label>
+                                        <input type="text" name="title" class="form-control" id="title2" placeholder="Title" v-model="post.title">
                                         <small class="form-text text-muted" v-if="error != null && error.title">{{ error.title[0] }}</small>
                                     </div>
                                     <div class="form-group">
-                                        <label for="slug">Slug</label>
-                                        <input type="text" name="slug" class="form-control" id="slug" placeholder="Slug" v-model="post.slug">
+                                        <label for="slug2">Slug</label>
+                                        <input type="text" name="slug" class="form-control" id="slug2" placeholder="Slug" v-model="post.slug">
                                         <small class="form-text text-muted" v-if="error != null && error.slug">{{ error.slug[0] }}</small>
                                     </div>
                                     <div class="form-group">
-                                        <label for="short">Kratak opis</label>
-                                        <textarea name="short" id="short" cols="3" rows="4" class="form-control" placeholder="Kratak opis" v-model="post.short"></textarea>
+                                        <label for="shortIta">Short</label>
+                                        <textarea name="short" id="shortIta" cols="3" rows="4" class="form-control" placeholder="Short" v-model="post.short"></textarea>
                                         <small class="form-text text-muted" v-if="error != null && error.short">{{ error.short[0] }}</small>
                                     </div>
                                     <div class="form-group">
-                                        <label>Opis</label>
+                                        <label>Body</label>
                                         <ckeditor
                                                 v-model="post.body"
                                                 :config="config">
@@ -132,103 +109,11 @@
                                         <small class="form-text text-muted" v-if="error != null && error.desc">{{ error.body[0] }}</small>
                                     </div>
                                     <div class="form-group">
-                                        <button class="btn btn-primary" type="submit">Izmeni srpski</button>
-                                    </div>
-                                </form>
-                            </div><!-- #srb -->
-
-                            <div class="tab-pane fade" id="eng" role="tabpanel" aria-labelledby="eng-tab">
-                                <form @submit.prevent="submit('en')">
-                                    <div class="form-group">
-                                        <label for="title2">Naslov</label>
-                                        <input type="text" name="title" class="form-control" id="title2" placeholder="Naslov" v-model="postEng.title">
-                                        <small class="form-text text-muted" v-if="error != null && error.title">{{ error.title[0] }}</small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="slug2">Slug</label>
-                                        <input type="text" name="slug" class="form-control" id="slug2" placeholder="Slug" v-model="postEng.slug">
-                                        <small class="form-text text-muted" v-if="error != null && error.slug">{{ error.slug[0] }}</small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="shortIta">Kratak opis</label>
-                                        <textarea name="short" id="shortIta" cols="3" rows="4" class="form-control" placeholder="Kratak opis" v-model="postEng.short"></textarea>
-                                        <small class="form-text text-muted" v-if="error != null && error.short">{{ error.short[0] }}</small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Opis</label>
-                                        <ckeditor
-                                                v-model="postEng.body"
-                                                :config="config">
-                                        </ckeditor>
-                                        <small class="form-text text-muted" v-if="error != null && error.desc">{{ error.body[0] }}</small>
-                                    </div>
-                                    <div class="form-group">
-                                        <button class="btn btn-primary" type="submit">Izmeni engleski</button>
+                                        <button class="btn btn-primary" type="submit">Edit lang</button>
                                     </div>
                                 </form>
                             </div><!-- #eng -->
 
-                            <div class="tab-pane fade" id="hrv" role="tabpanel" aria-labelledby="hrv-tab">
-                                <form @submit.prevent="submit('hr')">
-                                    <div class="form-group">
-                                        <label for="title3">Naslov</label>
-                                        <input type="text" name="title" class="form-control" id="title3" placeholder="Naslov" v-model="postHrv.title">
-                                        <small class="form-text text-muted" v-if="error != null && error.title">{{ error.title[0] }}</small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="slug3">Slug</label>
-                                        <input type="text" name="slug" class="form-control" id="slug3" placeholder="Slug" v-model="postHrv.slug">
-                                        <small class="form-text text-muted" v-if="error != null && error.slug">{{ error.slug[0] }}</small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="short3">Kratak opis</label>
-                                        <textarea name="short" id="short3" cols="3" rows="4" class="form-control" placeholder="Kratak opis" v-model="postHrv.short"></textarea>
-                                        <small class="form-text text-muted" v-if="error != null && error.short">{{ error.short[0] }}</small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Opis</label>
-                                        <ckeditor
-                                                v-model="postHrv.body"
-                                                :config="config">
-                                        </ckeditor>
-                                        <small class="form-text text-muted" v-if="error != null && error.desc">{{ error.body[0] }}</small>
-                                    </div>
-                                    <div class="form-group">
-                                        <button class="btn btn-primary" type="submit">Izmeni hrvatski</button>
-                                    </div>
-                                </form>
-                            </div><!-- #hrv -->
-
-                            <div class="tab-pane fade" id="rus" role="tabpanel" aria-labelledby="rus-tab">
-                                <form @submit.prevent="submit('ru')">
-                                    <div class="form-group">
-                                        <label for="title4">Naslov</label>
-                                        <input type="text" name="title" class="form-control" id="title4" placeholder="Naslov" v-model="postRus.title">
-                                        <small class="form-text text-muted" v-if="error != null && error.title">{{ error.title[0] }}</small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="slug4">Slug</label>
-                                        <input type="text" name="slug" class="form-control" id="slug4" placeholder="Slug" v-model="postRus.slug">
-                                        <small class="form-text text-muted" v-if="error != null && error.slug">{{ error.slug[0] }}</small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="short4">Kratak opis</label>
-                                        <textarea name="short" id="short4" cols="3" rows="4" class="form-control" placeholder="Kratak opis" v-model="postRus.short"></textarea>
-                                        <small class="form-text text-muted" v-if="error != null && error.short">{{ error.short[0] }}</small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Opis</label>
-                                        <ckeditor
-                                                v-model="postRus.body"
-                                                :config="config">
-                                        </ckeditor>
-                                        <small class="form-text text-muted" v-if="error != null && error.desc">{{ error.body[0] }}</small>
-                                    </div>
-                                    <div class="form-group">
-                                        <button class="btn btn-primary" type="submit">Izmeni ruski</button>
-                                    </div>
-                                </form>
-                            </div><!-- #rus -->
                         </div>
                     </div>
                 </div>
@@ -252,9 +137,6 @@
         data(){
           return {
               post: {},
-              postEng: {},
-              postHrv: {},
-              postRus: {},
               error: null,
               lists: {},
               photos: {},
@@ -294,10 +176,7 @@
             'vue-dropzone': vue2Dropzone
         },
         created(){
-            this.getPost('sr');
-            this.getPost('en');
-            this.getPost('hr');
-            this.getPost('ru');
+            this.getPost();
             this.getList();
             //this.getPhotos();
         },
@@ -306,15 +185,7 @@
                 axios.get('api/posts/' + this.$route.params.id + '?locale=' + locale)
                     .then(res => {
                         if(res.data.post != null){
-                            if(locale == 'sr') {
-                                this.post = res.data.post;
-                            }else if(locale == 'hr'){
-                                this.postHrv = res.data.post;
-                            }else if(locale == 'ru'){
-                                this.postRus = res.data.post;
-                            }else{
-                                this.postEng = res.data.post;
-                            }
+                            this.post = res.data.post;
                         }
                     })
                     .catch(e => {
@@ -322,36 +193,17 @@
                         this.error = e.response.data.errors;
                     });
             },
-            submit(locale){
+            submit(){
                 let data = {};
-                if(locale == 'sr'){
-                    data = this.post;
-                    this.post.user_id = this.user.id;
-                }else if(locale == 'hr'){
-                    data = this.postHrv;
-                    this.postHrv.user_id = this.user.id;
-                }else if(locale == 'ru'){
-                    data = this.postRus;
-                    this.postRus.user_id = this.user.id;
-                }else{
-                    data = this.postEng;
-                    this.postEng.user_id = this.user.id;
-                }
-                axios.post('api/posts/' + this.post.id + '/lang?locale=' + locale, data)
+                data = this.post;
+                this.post.user_id = this.user.id;
+                axios.post('api/posts/' + this.post.id + '/lang', data)
                     .then(res => {
-                        if(locale == 'sr') {
-                            this.post = res.data.post;
-                        }else if(locale == 'hr'){
-                            this.postHrv = res.data.post;
-                        }else if(locale == 'ru'){
-                            this.postRus = res.data.post;
-                        }else{
-                            this.postEng = res.data.post;
-                        }
+                        this.post = res.data.post;
                         swal({
                             position: 'center',
                             type: 'success',
-                            title: 'Uspeh',
+                            title: 'success',
                             showConfirmButton: false,
                             timer: 1500
                         });
@@ -368,7 +220,7 @@
                         swal({
                             position: 'center',
                             type: 'success',
-                            title: 'Uspeh',
+                            title: 'success',
                             showConfirmButton: false,
                             timer: 1500
                         });
@@ -395,24 +247,6 @@
                     console.log(e);
                     this.error = e.response.data.errors;
                 });
-            },
-            uploadPdf(pdf){
-                axios.post('api/posts/' + this.post.id + '/pdf', { file: pdf[0] })
-                    .then(res => {
-                        console.log(res);
-                        this.post.pdf = res.data.pdf;
-                        this.error = null;
-                        swal({
-                            position: 'center',
-                            type: 'success',
-                            title: 'Uploudovano',
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                    }).catch(e => {
-                        console.log(e);
-                        this.error = e.response.data.errors;
-                    });
             },
             getList(){
                 axios.get('api/categories/lists')

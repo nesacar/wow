@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreatePostRequest;
+use App\Http\Requests\UpdatePostLangRequest;
+use App\Http\Requests\UpdatePostRequest;
 use App\Post;
 use Illuminate\Http\Request;
 use File;
@@ -10,7 +12,7 @@ use File;
 class PostsController extends Controller
 {
     public function index(){
-        $posts = Post::select('id', 'title', 'publish', 'created_at', 'categories.title as category')
+        $posts = Post::select('posts.id', 'posts.title', 'posts.publish', 'posts.created_at', 'categories.title as category')
             ->join('categories', 'posts.category_id', '=', 'categories.id')
             ->orderBy('posts.created_at', 'DESC')->groupBy('posts.id')->paginate(50);
         return response()->json([
@@ -25,7 +27,7 @@ class PostsController extends Controller
         $post->title = request('title');
         request('slug')? $post->slug = str_slug(request('slug')) : $post->slug = str_slug(request('title'));
         $post->short = request('short');
-        $post->body = Post::h3Toh4(request('body'));
+        $post->body = request('body');
         request('publish')? $post->publish = true : $post->publish = false;
         $post->save();
         if(request('image')){ Post::base64UploadImage($post->id, request('image')); }
@@ -83,13 +85,6 @@ class PostsController extends Controller
         ]);
     }
 
-    public function uploadPdf(UploadPdfRequest $request, $id){
-        $pdf = Post::base64UploadPdf($id, request('file'));
-        return response()->json([
-            'pdf' => $pdf
-        ]);
-    }
-
     public function galleryUpdate($id){
         Photo::saveImage($id, request('file'));
         return 'done';
@@ -105,10 +100,8 @@ class PostsController extends Controller
     public function search(){
         $category = request('list');
         $text = request('text');
-        $posts = Post::select('posts.id as id', 'post_translations.title as title', 'posts.publish as publish', 'posts.created_at as created_at', 'category_translations.title as category')
-            ->join('post_translations', 'posts.id', '=', 'post_translations.post_id')
+        $posts = Post::select('posts.id', 'posts.title', 'posts.publish', 'posts.created_at', 'categories.title as category')
             ->join('categories', 'posts.category_id', '=', 'categories.id')
-            ->join('category_translations', 'categories.id', '=', 'category_translations.category_id')
             ->where(function ($query) use ($category){
                 if($category > 0){
                     $query->where('posts.category_id', $category);
@@ -116,7 +109,7 @@ class PostsController extends Controller
             })
             ->where(function ($query) use ($text){
                 if($text != ''){
-                    $query->where('post_translations.title', 'like', '%'.$text.'%')->orWhere('post_translations.title', 'like', '%'.$text.'%');
+                    $query->where('posts.title', 'like', '%'.$text.'%')->orWhere('posts.title', 'like', '%'.$text.'%');
                 }
             })
             ->orderBy('posts.created_at', 'DESC')->groupBy('posts.id')->paginate(50);

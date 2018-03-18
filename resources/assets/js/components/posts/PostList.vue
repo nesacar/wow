@@ -5,8 +5,8 @@
                 <div class="col-md-12">
                     <div id="breadcrumbs">
                         <ul class="list-group list-group-flush">
-                            <li><router-link tag="a" :to="'/home'">Početna</router-link></li>
-                            <li>Članci</li>
+                            <li><router-link tag="a" :to="'/home'">Home</router-link></li>
+                            <li>Posts</li>
                         </ul>
                     </div>
                 </div>
@@ -21,12 +21,11 @@
                             <thead>
                             <tr>
                                 <th scope="col">id</th>
-                                <th scope="col">naslov</th>
-                                <th scope="col">kategorija</th>
-                                <th scope="col">publikovano</th>
-                                <th scope="col">jezik</th>
-                                <th scope="col">kreirano</th>
-                                <th>akcija</th>
+                                <th scope="col">title</th>
+                                <th scope="col">category</th>
+                                <th scope="col">publish</th>
+                                <th scope="col">created_at</th>
+                                <th>action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -35,7 +34,6 @@
                                 <td>{{ row.title }}</td>
                                 <td>{{ row.category }}</td>
                                 <td>{{ row.publish }}</td>
-                                <td>{{ row.translations.length }}</td>
                                 <td>{{ row.created_at }}</td>
                                 <td>
                                     <router-link tag="a" :to="'posts/' + row['id'] + '/edit'" class="edit-link" target="_blank"><font-awesome-icon icon="pencil-alt"/></router-link>
@@ -95,14 +93,14 @@
             },
             deleteRow(row){
                 swal({
-                    title: 'Da li ste sigurni?',
-                    text: "Nećete moći da povratite radnju!",
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
                     type: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#51d2b7',
                     cancelButtonColor: '#fb9678',
-                    confirmButtonText: 'Da, obriši ga!',
-                    cancelButtonText: 'Odustani'
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'Cancel'
                 }).then((result) => {
                     if (result.value) {
                         axios.delete('api/posts/' + row.id)
@@ -111,8 +109,8 @@
                                     return row.id != item.id;
                                 });
                                 swal(
-                                    'Obrisano!',
-                                    'Čkanak je uspešno obrisan.',
+                                    'Deleted!',
+                                    'Post is deleted.',
                                     'success'
                                 );
                             })
