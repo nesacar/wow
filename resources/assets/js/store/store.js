@@ -24,17 +24,9 @@ export const store = new Vuex.Store({
         showPostsItem: true,
         postsItemActive: false,
 
-        /** nav products **/
-        showProductsItem: true,
-        productsItemActive: false,
-
         /** nav newsletters **/
         showNewslettersItem: true,
         newslettersItemActive: false,
-
-        /** nav galleries **/
-        showGalleriesItem: true,
-        galleriesItemActive: false,
     },
     getters: {
         /** auth **/
@@ -74,28 +66,12 @@ export const store = new Vuex.Store({
             return state.postsItemActive;
         },
 
-        /** nav products **/
-        getShowProductsItem: state => {
-            return state.showProductsItem;
-        },
-        getProductsItemActive: state => {
-            return state.productsItemActive;
-        },
-
         /** nav newsletters **/
         getShowNewslettersItem: state => {
             return state.showNewslettersItem;
         },
         getNewslettersItemActive: state => {
             return state.newslettersItemActive;
-        },
-
-        /** nav galleries **/
-        getShowGalleriesItem: state => {
-            return state.showGalleriesItem;
-        },
-        getGalleriesItemActive: state => {
-            return state.galleriesItemActive;
         },
     },
     mutations: {
@@ -127,19 +103,9 @@ export const store = new Vuex.Store({
             state.postsItemActive = !state.postsItemActive;
         },
 
-        /** nav products **/
-        changeProductsItemActive: state => {
-            state.productsItemActive = !state.productsItemActive;
-        },
-
         /** nav newsletters **/
         changeNewslettersItemActive: state => {
             state.newslettersItemActive = !state.newslettersItemActive;
-        },
-
-        /** nav galleries **/
-        changeGalleriesItemActive: state => {
-            state.galleriesItemActive = !state.galleriesItemActive;
         },
     },
     actions: {
@@ -171,19 +137,9 @@ export const store = new Vuex.Store({
             context.commit('changePostsItemActive');
         },
 
-        /** nav products **/
-        changeProductsItemActive: context => {
-            context.commit('changeProductsItemActive');
-        },
-
         /** nav newsletters **/
         changeNewslettersItemActive: context => {
             context.commit('changeNewslettersItemActive');
-        },
-
-        /** nav galleries **/
-        changeGalleriesItemActive: context => {
-            context.commit('changeGalleriesItemActive');
         },
     }
 });

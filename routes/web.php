@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/admin', function () {
+    return view('layouts.admin-app');
+});
+
+
