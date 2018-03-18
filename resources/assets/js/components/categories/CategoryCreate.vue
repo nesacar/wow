@@ -5,9 +5,9 @@
                 <div class="col-md-12">
                     <div id="breadcrumbs">
                         <ul class="list-group list-group-flush">
-                            <li><router-link tag="a" :to="'/home'">Početna</router-link></li>
-                            <li><router-link tag="a" :to="'/categories'">Kategorije</router-link></li>
-                            <li>Kreiraj kategoriju</li>
+                            <li><router-link tag="a" :to="'/home'">Home</router-link></li>
+                            <li><router-link tag="a" :to="'/categories'">Categories</router-link></li>
+                            <li>Create category</li>
                         </ul>
                     </div>
                 </div>
@@ -16,7 +16,7 @@
             <div class="row bela">
                 <div class="col-md-12">
                     <div class="card">
-                        <h5>Kreiraj kategoriju</h5>
+                        <h5>Create category</h5>
                     </div>
                 </div>
 
@@ -24,8 +24,8 @@
                     <div class="card">
                         <form @submit.prevent="submit()">
                             <div class="form-group">
-                                <label for="title">Naslov</label>
-                                <input type="text" name="title" class="form-control" id="title" placeholder="Naslov" v-model="category.title">
+                                <label for="title">Title</label>
+                                <input type="text" name="title" class="form-control" id="title" placeholder="Title" v-model="category.title">
                                 <small class="form-text text-muted" v-if="error != null && error.title">{{ error.title[0] }}</small>
                             </div>
                             <div class="form-group">
@@ -34,19 +34,19 @@
                                 <small class="form-text text-muted" v-if="error != null && error.slug">{{ error.slug[0] }}</small>
                             </div>
                             <div class="form-group">
-                                <label>Opis</label>
+                                <label>Description</label>
                                 <ckeditor
-                                        v-model="category.desc"
+                                        v-model="category.short"
                                         :config="config">
                                 </ckeditor>
-                                <small class="form-text text-muted" v-if="error != null && error.desc">{{ error.desc[0] }}</small>
+                                <small class="form-text text-muted" v-if="error != null && error.short">{{ error.short[0] }}</small>
                             </div>
                             <div class="form-group">
-                                <label>Publikovano</label><br>
+                                <label>Publish</label><br>
                                 <switches v-model="category.publish" theme="bootstrap" color="primary"></switches>
                             </div>
                             <div class="form-group">
-                                <button class="btn btn-primary" type="submit">Kreiraj</button>
+                                <button class="btn btn-primary" type="submit">Create</button>
                             </div>
                         </form>
                     </div>
@@ -55,7 +55,7 @@
                     <upload-image-helper
                             :image="category.image"
                             :defaultImage="null"
-                            :titleImage="'kategorije'"
+                            :titleImage="'Category'"
                             :error="error"
                             @uploadImage="upload($event)"
                             @removeRow="remove($event)"
