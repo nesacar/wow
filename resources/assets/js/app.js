@@ -18,7 +18,6 @@ window.Vue = require('vue');
 /** NAVIGATION **/
 Vue.component('side-bar', require('./components/nav/sideBar.vue'));
 Vue.component('top-bar', require('./components/nav/topBar.vue'));
-Vue.component('right-bar', require('./components/nav/rightBar.vue'));
 Vue.component('left-bar', require('./components/nav/leftBar.vue'));
 
 /** HELPER **/

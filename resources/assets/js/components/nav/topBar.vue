@@ -20,62 +20,22 @@
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
-                                <a class="dropdown-item" href="#" @click.prevent="newProduct()">Proizvod</a>
-                                <a class="dropdown-item" href="#" @click.prevent="newCollection()">Kolekcija</a>
-                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" @click.prevent="newPost()">Članak</a>
                                 <a class="dropdown-item" href="#" @click.prevent="newCategory()">Kategorija</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" @click.prevent="newUser()">Korisnik</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#"  @click.prevent="newTheme()">Tema</a>
-                                <a class="dropdown-item" href="#"  @click.prevent="newMenu()">Meni</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"  @click.prevent="newGallery()">Galerija</a>
                             </div>
                         </div>
-                    </li>
-                    <li>
-                        <div class="dropdown show">
-                            <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <font-awesome-icon icon="envelope" />
-                            </a>
-
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink2">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="dropdown show">
-                            <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <font-awesome-icon icon="bell" />
-                            </a>
-
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink3">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <a class="btn btn-primary" @click="changeShowRightBar()">
-                            <font-awesome-icon icon="comment-alt" />
-                        </a>
                     </li>
                     <li class="user">
                         <a class="btn btn-primary transparent dropdown-toggle" href="#" role="button" id="dropdownMenuLink4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img :src="domain + 'img/user-image.png'" class="avatar-image" alt="User image" v-if="!user">
-                            <img :src="user.image" alt="User image" class="avatar-image" v-if="user">
+                            <img :src="domain + 'img/user-image.png'" class="avatar-image" alt="User image">
                             <font-awesome-icon icon="chevron-circle-down" />
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink4">
                             <router-link class="dropdown-item" tag="a" :to="'/users/change-password'" v-if="user">{{ user.name }}</router-link>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
                             <div class="dropdown-divider"></div>
                             <router-link tag="a" :to="'/logout'" class="dropdown-item" href="#">Odjava</router-link>
                         </div>
@@ -101,9 +61,6 @@
             'font-awesome-icon': FontAwesomeIcon
         },
         computed: {
-            showRightBar(){
-                return this.$store.getters.getShowRightBar;
-            },
             user(){
                 return this.$store.getters.getUser;
             }
@@ -128,9 +85,6 @@
                 }
             },
 
-            changeShowRightBar(){
-                this.$store.dispatch('changeShowRightBar');
-            },
             changeHideLeftBar(){
                 this.$store.dispatch('changeHideLeftBar');
             },
@@ -145,18 +99,6 @@
             },
             newTheme(){
                 this.$router.push('/themes/create');
-            },
-            newMenu(){
-                this.$router.push('/menus/create');
-            },
-            newCollection(){
-                this.$router.push('/collections/create');
-            },
-            newProduct(){
-                this.$router.push('/products/create');
-            },
-            newGallery(){
-                this.$router.push('/galleries/create');
             },
         }
     }
