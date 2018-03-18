@@ -21,4 +21,5 @@ Route::get('/admin', function () {
     return view('layouts.admin-app');
 });
 
-
+// filemanager
+Route::middleware('auth')->get('filemanager/show', 'FilemanagerController@index');

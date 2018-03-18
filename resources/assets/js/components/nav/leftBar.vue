@@ -10,23 +10,23 @@
         <ul>
             <li>
                 <font-awesome-icon icon="home" />
-                <router-link tag="a" :to="'/home'">Početna</router-link>
+                <router-link tag="a" :to="'/home'">Home</router-link>
             </li>
             <li :class="{ 'active': showSettingsItemActive }" :style="{ 'display': showSettingsItem ? 'block' : 'none' }">
                 <font-awesome-icon icon="angle-right" />
-                <a href="#" @click="changeShowSettingsItemActive()">Podešavanja</a>
+                <a href="#" @click="changeShowSettingsItemActive()">Settings</a>
                 <font-awesome-icon icon="cogs"/>
                 <ul>
                     <li><router-link tag="a" :to="'/settings/1/edit'">SEO</router-link></li>
-                    <li><router-link tag="a" :to="'/themes'">Teme</router-link></li>
+                    <li><router-link tag="a" :to="'/themes'">Theme</router-link></li>
                 </ul>
             </li>
             <li :class="{ 'active': showUsersItemActive }" :style="{ 'display': showUsersItem ? 'block' : 'none' }">
                 <font-awesome-icon icon="angle-right" />
-                <a href="#" @click="changeShowUsersItemActive()">Korisnici</a>
+                <a href="#" @click="changeShowUsersItemActive()">Users</a>
                 <font-awesome-icon icon="users" />
                 <ul>
-                    <li><router-link tag="a" :to="'/users'">Pregled korisnika</router-link></li>
+                    <li><router-link tag="a" :to="'/users'">Users review</router-link></li>
                     <!--
                     <li><a href="#">Roles</a></li>
                     -->
@@ -38,11 +38,11 @@
             </li>
             <li :class="{ 'active': showPostsItemActive }" :style="{ 'display': showPostsItem ? 'block' : 'none' }">
                 <font-awesome-icon icon="angle-right" />
-                <a href="#" @click="changeShowPostsItemActive()">Članci</a>
+                <a href="#" @click="changeShowPostsItemActive()">Posts</a>
                 <font-awesome-icon icon="paste" />
                 <ul>
-                    <li><router-link tag="a" :to="'/posts'">Pregled članaka</router-link></li>
-                    <li><router-link tag="a" :to="'/categories'">Pregled kategorija</router-link></li>
+                    <li><router-link tag="a" :to="'/posts'">Posts review</router-link></li>
+                    <li><router-link tag="a" :to="'/categories'">Category review</router-link></li>
                 </ul>
             </li>
             <!--
