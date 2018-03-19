@@ -24,7 +24,7 @@
                     <div class="card">
                         <h5>General info</h5>
                         <hr>
-                        <form @submit.prevent="general()">
+                        <form @submit.prevent="submit()">
                             <div class="form-group">
                                 <label>Publish</label><br>
                                 <switches v-model="category.publish" theme="bootstrap" color="primary"></switches>
@@ -40,7 +40,7 @@
                             ></upload-image-helper>
 
                                 <div class="form-group">
-                                    <button class="btn btn-primary" type="submit">Edit general</button>
+                                    <button class="btn btn-primary" type="submit">Edit</button>
                                 </div>
                         </form>
                     </div>
@@ -77,7 +77,7 @@
                                         <small class="form-text text-muted" v-if="error != null && error.desc">{{ error.short[0] }}</small>
                                     </div>
                                     <div class="form-group">
-                                        <button class="btn btn-primary" type="submit">Edit lang</button>
+                                        <button class="btn btn-primary" type="submit">Edit</button>
                                     </div>
                                 </form>
                             </div><!-- #eng -->
@@ -123,8 +123,8 @@
             this.getCategory();
         },
         methods: {
-            getCategory(locale){
-                axios.get('api/categories/' + this.$route.params.id + '?locale=' + locale)
+            getCategory(){
+                axios.get('api/categories/' + this.$route.params.id)
                     .then(res => {
                         if(res.data.category != null){
                             this.category = res.data.category;
@@ -135,10 +135,8 @@
                         this.error = e.response.data.errors;
                     });
             },
-            submit(locale){
-                let data = {};
-                data = this.category;
-                axios.post('api/categories/' + this.category.id + '/lang', data)
+            submit(){
+                axios.put('api/categories/' + this.category.id, this.category)
                     .then(res => {
                         this.category = res.data.category;
                         swal({
@@ -154,22 +152,6 @@
                         this.error = e.response.data.errors;
                     });
             },
-            general(){
-                axios.patch('api/categories/' + this.category.id, this.category)
-                    .then(res => {
-                        swal({
-                            position: 'center',
-                            type: 'success',
-                            title: 'Success',
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                        this.error = null;
-                    }).catch(e => {
-                    console.log(e.response);
-                    this.error = e.response.data.errors;
-                });
-            },
             upload(image){
                 axios.post('api/categories/' + this.category.id + '/image', { image: image[0] })
                     .then(res => {
@@ -184,9 +166,9 @@
                             timer: 1500
                         });
                     }).catch(e => {
-                    console.log(e);
-                    this.error = e.response.data.errors;
-                });
+                        console.log(e);
+                        this.error = e.response.data.errors;
+                    });
             }
         }
     }

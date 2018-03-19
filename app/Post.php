@@ -66,6 +66,10 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function town(){
+        return $this->belongsTo(Town::class);
+    }
+
     public function photo(){
         return $this->hasMany(Photo::class);
     }

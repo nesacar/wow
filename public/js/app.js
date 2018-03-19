@@ -54255,8 +54255,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 
@@ -54541,13 +54539,59 @@ var render = function() {
                 ])
               ],
               1
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              {
+                class: { active: _vm.showNewslettersItemActive },
+                style: { display: _vm.showNewslettersItem ? "block" : "none" }
+              },
+              [
+                _c("font-awesome-icon", { attrs: { icon: "angle-right" } }),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        _vm.changeShowNewslettersItemActive()
+                      }
+                    }
+                  },
+                  [_vm._v("Newsletter")]
+                ),
+                _vm._v(" "),
+                _c("font-awesome-icon", { attrs: { icon: "envelope" } }),
+                _vm._v(" "),
+                _vm._m(0)
+              ],
+              1
             )
           ])
         ]
       )
     : _vm._e()
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", [
+      _c("li", [
+        _c("a", { attrs: { href: "#" } }, [_vm._v("Newsletter review")])
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _c("a", { attrs: { href: "#" } }, [_vm._v("Subscriber review")])
+      ]),
+      _vm._v(" "),
+      _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Banner review")])])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -62934,10 +62978,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        getCategory: function getCategory(locale) {
+        getCategory: function getCategory() {
             var _this = this;
 
-            axios.get('api/categories/' + this.$route.params.id + '?locale=' + locale).then(function (res) {
+            axios.get('api/categories/' + this.$route.params.id).then(function (res) {
                 if (res.data.category != null) {
                     _this.category = res.data.category;
                 }
@@ -62946,12 +62990,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.error = e.response.data.errors;
             });
         },
-        submit: function submit(locale) {
+        submit: function submit() {
             var _this2 = this;
 
-            var data = {};
-            data = this.category;
-            axios.post('api/categories/' + this.category.id + '/lang', data).then(function (res) {
+            axios.put('api/categories/' + this.category.id, this.category).then(function (res) {
                 _this2.category = res.data.category;
                 __WEBPACK_IMPORTED_MODULE_2_sweetalert2___default()({
                     position: 'center',
@@ -62966,30 +63008,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.error = e.response.data.errors;
             });
         },
-        general: function general() {
-            var _this3 = this;
-
-            axios.patch('api/categories/' + this.category.id, this.category).then(function (res) {
-                __WEBPACK_IMPORTED_MODULE_2_sweetalert2___default()({
-                    position: 'center',
-                    type: 'success',
-                    title: 'Success',
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                _this3.error = null;
-            }).catch(function (e) {
-                console.log(e.response);
-                _this3.error = e.response.data.errors;
-            });
-        },
         upload: function upload(image) {
-            var _this4 = this;
+            var _this3 = this;
 
             axios.post('api/categories/' + this.category.id + '/image', { image: image[0] }).then(function (res) {
                 console.log(res);
-                _this4.category.image = res.data.image;
-                _this4.error = null;
+                _this3.category.image = res.data.image;
+                _this3.error = null;
                 __WEBPACK_IMPORTED_MODULE_2_sweetalert2___default()({
                     position: 'center',
                     type: 'success',
@@ -62999,7 +63024,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 });
             }).catch(function (e) {
                 console.log(e);
-                _this4.error = e.response.data.errors;
+                _this3.error = e.response.data.errors;
             });
         }
     }
@@ -63062,7 +63087,7 @@ var render = function() {
                 on: {
                   submit: function($event) {
                     $event.preventDefault()
-                    _vm.general()
+                    _vm.submit()
                   }
                 }
               },
@@ -63294,7 +63319,7 @@ var staticRenderFns = [
       _c(
         "button",
         { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Edit general")]
+        [_vm._v("Edit")]
       )
     ])
   },
@@ -63334,7 +63359,7 @@ var staticRenderFns = [
       _c(
         "button",
         { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Edit lang")]
+        [_vm._v("Edit")]
       )
     ])
   }
@@ -64465,8 +64490,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 
@@ -64519,14 +64542,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         this.getPost();
         this.getList();
-        //this.getPhotos();
+        this.getPhotos();
     },
 
     methods: {
-        getPost: function getPost(locale) {
+        getPost: function getPost() {
             var _this = this;
 
-            axios.get('api/posts/' + this.$route.params.id + '?locale=' + locale).then(function (res) {
+            axios.get('api/posts/' + this.$route.params.id).then(function (res) {
                 if (res.data.post != null) {
                     _this.post = res.data.post;
                 }
@@ -64541,7 +64564,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var data = {};
             data = this.post;
             this.post.user_id = this.user.id;
-            axios.post('api/posts/' + this.post.id + '/lang', data).then(function (res) {
+            axios.put('api/posts/' + this.post.id, data).then(function (res) {
                 _this2.post = res.data.post;
                 __WEBPACK_IMPORTED_MODULE_4_sweetalert2___default()({
                     position: 'center',
@@ -64556,31 +64579,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.error = e.response.data.errors;
             });
         },
-        general: function general() {
-            var _this3 = this;
-
-            this.post.user_id = this.user.id;
-            axios.patch('api/posts/' + this.post.id, this.post).then(function (res) {
-                __WEBPACK_IMPORTED_MODULE_4_sweetalert2___default()({
-                    position: 'center',
-                    type: 'success',
-                    title: 'success',
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                _this3.error = null;
-            }).catch(function (e) {
-                console.log(e.response);
-                _this3.error = e.response.data.errors;
-            });
-        },
         upload: function upload(image) {
-            var _this4 = this;
+            var _this3 = this;
 
             axios.post('api/posts/' + this.post.id + '/image', { file: image[0] }).then(function (res) {
                 console.log(res);
-                _this4.post.image = res.data.image;
-                _this4.error = null;
+                _this3.post.image = res.data.image;
+                _this3.error = null;
                 __WEBPACK_IMPORTED_MODULE_4_sweetalert2___default()({
                     position: 'center',
                     type: 'success',
@@ -64590,41 +64595,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 });
             }).catch(function (e) {
                 console.log(e);
-                _this4.error = e.response.data.errors;
+                _this3.error = e.response.data.errors;
             });
         },
         getList: function getList() {
-            var _this5 = this;
+            var _this4 = this;
 
             axios.get('api/categories/lists').then(function (res) {
-                _this5.lists = res.data.categories;
+                _this4.lists = res.data.categories;
+            }).catch(function (e) {
+                console.log(e.response);
+                _this4.error = e.response.data.errors;
+            });
+        },
+        getPhotos: function getPhotos() {
+            var _this5 = this;
+
+            axios.get('api/posts/' + this.$route.params.id + '/gallery').then(function (res) {
+                console.log(res);
+                _this5.photos = res.data.photos;
             }).catch(function (e) {
                 console.log(e.response);
                 _this5.error = e.response.data.errors;
             });
         },
-        getPhotos: function getPhotos() {
-            var _this6 = this;
-
-            axios.get('api/posts/' + this.$route.params.id + '/gallery').then(function (res) {
-                console.log(res);
-                _this6.photos = res.data.photos;
-            }).catch(function (e) {
-                console.log(e.response);
-                _this6.error = e.response.data.errors;
-            });
-        },
         deletePhoto: function deletePhoto(photo) {
-            var _this7 = this;
+            var _this6 = this;
 
             axios.post('api/photos/' + photo.id + '/destroy').then(function (res) {
                 console.log(res);
-                _this7.photos = _this7.photos.filter(function (item) {
+                _this6.photos = _this6.photos.filter(function (item) {
                     return photo.id != item.id;
                 });
             }).catch(function (e) {
                 console.log(e.response);
-                _this7.error = e.response.data.errors;
+                _this6.error = e.response.data.errors;
             });
         },
         showSuccess: function showSuccess() {
@@ -68678,6 +68683,46 @@ var render = function() {
       _c("div", { staticClass: "row bela" }, [
         _vm._m(0),
         _vm._v(" "),
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("h5", [_vm._v("Gallery images")]),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _vm.photos
+              ? _c(
+                  "div",
+                  { attrs: { id: "gallery" } },
+                  _vm._l(_vm.photos, function(photo) {
+                    return _c(
+                      "div",
+                      { staticClass: "photo" },
+                      [
+                        _c("font-awesome-icon", {
+                          attrs: { icon: "times" },
+                          on: {
+                            click: function($event) {
+                              _vm.deletePhoto(photo)
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("img", {
+                          staticClass: "img-thumbnail",
+                          attrs: {
+                            src: photo.file_path_small,
+                            alt: "post.title"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  })
+                )
+              : _vm._e()
+          ])
+        ]),
+        _vm._v(" "),
         _c("div", { staticClass: "col-md-4" }, [
           _c("div", { staticClass: "card" }, [
             _c("h5", [_vm._v("General info")]),
@@ -68690,7 +68735,7 @@ var render = function() {
                 on: {
                   submit: function($event) {
                     $event.preventDefault()
-                    _vm.general()
+                    _vm.submit()
                   }
                 }
               },
@@ -68789,7 +68834,24 @@ var render = function() {
               ],
               1
             )
-          ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "card" },
+            [
+              _c("vue-dropzone", {
+                ref: "myVueDropzone",
+                attrs: { id: "dropzone", options: _vm.dropzoneOptions },
+                on: {
+                  "vdropzone-success": function($event) {
+                    _vm.showSuccess()
+                  }
+                }
+              })
+            ],
+            1
+          )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-md-8" }, [
@@ -69008,7 +69070,7 @@ var staticRenderFns = [
       _c(
         "button",
         { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Edit general")]
+        [_vm._v("Edit")]
       )
     ])
   },
@@ -69048,7 +69110,7 @@ var staticRenderFns = [
       _c(
         "button",
         { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Edit lang")]
+        [_vm._v("Edit")]
       )
     ])
   }

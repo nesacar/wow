@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreatePostRequest;
 use App\Http\Requests\UpdatePostLangRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Photo;
 use App\Post;
 use Illuminate\Http\Request;
 use File;
@@ -44,25 +45,11 @@ class PostsController extends Controller
         ]);
     }
 
-    public function update(UpdatePostRequest $request, $id){
+    public function update(UpdatePostLangRequest $request, $id){
         $post = Post::find($id);
-        $post->user_id = request('user_id');
-        $post->category_id = request('category_id');
-        $post->author = request('author');
-        request('publish')? $post->publish = true : $post->publish = false;
-        $post->update();
-        return response()->json([
-            'message' => 'done'
-        ]);
-    }
-
-    public function updateLang(UpdatePostLangRequest $request, $id){
-        $post = Post::find($id);
-        $post->user_id = request('user_id');
-        $post->title = request('title');
+        $post->update(request()->all());
         request('slug')? $post->slug = str_slug(request('slug')) : $post->slug = str_slug(request('title'));
-        $post->short = request('short');
-        $post->body = request('body');
+        request('publish')? $post->publish = true : $post->publish = false;
         $post->update($request->except('image', 'slug'));
         return response()->json([
             'post' => $post

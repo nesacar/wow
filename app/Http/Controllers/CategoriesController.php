@@ -37,21 +37,13 @@ class CategoriesController extends Controller
         ]);
     }
 
-    public function update($id){
+    public function update(CreateCategoryRequest $request, $id){
         $category = Category::find($id);
-        request('publish')? $category->publish = true : $category->publish = false;
-        $category->update();
-        return response()->json([
-            'message' => 'done'
-        ]);
-    }
-
-    public function updateLang(CreateCategoryRequest $request, $id){
-        $category = Category::find($id);
-        $category->title = request('title');
+        $category->update(request()->all());
         request('slug')? $category->slug = str_slug(request('slug')) : $category->slug = str_slug(request('title'));
-        $category->short = request('short');
+        request('publish')? $category->publish = true : $category->publish = false;
         $category->update($request->except('image', 'slug'));
+
         return response()->json([
             'category' => $category
         ]);

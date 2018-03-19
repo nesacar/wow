@@ -20,7 +20,6 @@
                     </div>
                 </div>
 
-                <!--
                 <div class="col-md-12">
                     <div class="card">
                         <h5>Gallery images</h5>
@@ -33,13 +32,12 @@
                         </div>
                     </div>
                 </div>
-                -->
 
                 <div class="col-md-4">
                     <div class="card">
                         <h5>General info</h5>
                         <hr>
-                        <form @submit.prevent="general()">
+                        <form @submit.prevent="submit()">
                             <div class="form-group">
                                 <label for="category">Category</label>
                                 <select name="category" id="category" class="form-control" v-model="post.category_id">
@@ -62,15 +60,15 @@
                             ></upload-image-helper>
 
                             <div class="form-group">
-                                <button class="btn btn-primary" type="submit">Edit general</button>
+                                <button class="btn btn-primary" type="submit">Edit</button>
                             </div>
                         </form>
                     </div><!-- .card -->
-                    <!--
+
                     <div class="card">
                         <vue-dropzone ref="myVueDropzone" id="dropzone" :options="dropzoneOptions" @vdropzone-success="showSuccess()"></vue-dropzone>
                     </div>
-                    -->
+
                 </div>
                 <div class="col-md-8">
                     <div class="card">
@@ -109,7 +107,7 @@
                                         <small class="form-text text-muted" v-if="error != null && error.desc">{{ error.body[0] }}</small>
                                     </div>
                                     <div class="form-group">
-                                        <button class="btn btn-primary" type="submit">Edit lang</button>
+                                        <button class="btn btn-primary" type="submit">Edit</button>
                                     </div>
                                 </form>
                             </div><!-- #eng -->
@@ -178,11 +176,11 @@
         created(){
             this.getPost();
             this.getList();
-            //this.getPhotos();
+            this.getPhotos();
         },
         methods: {
-            getPost(locale){
-                axios.get('api/posts/' + this.$route.params.id + '?locale=' + locale)
+            getPost(){
+                axios.get('api/posts/' + this.$route.params.id)
                     .then(res => {
                         if(res.data.post != null){
                             this.post = res.data.post;
@@ -197,7 +195,7 @@
                 let data = {};
                 data = this.post;
                 this.post.user_id = this.user.id;
-                axios.post('api/posts/' + this.post.id + '/lang', data)
+                axios.put('api/posts/' + this.post.id, data)
                     .then(res => {
                         this.post = res.data.post;
                         swal({
@@ -212,23 +210,6 @@
                         console.log(e.response);
                         this.error = e.response.data.errors;
                     });
-            },
-            general(){
-                this.post.user_id = this.user.id;
-                axios.patch('api/posts/' + this.post.id, this.post)
-                    .then(res => {
-                        swal({
-                            position: 'center',
-                            type: 'success',
-                            title: 'success',
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                        this.error = null;
-                    }).catch(e => {
-                    console.log(e.response);
-                    this.error = e.response.data.errors;
-                });
             },
             upload(image){
                 axios.post('api/posts/' + this.post.id + '/image', { file: image[0] })

@@ -45,7 +45,6 @@
                     <li><router-link tag="a" :to="'/categories'">Category review</router-link></li>
                 </ul>
             </li>
-            <!--
             <li :class="{ 'active': showNewslettersItemActive }" :style="{ 'display': showNewslettersItem ? 'block' : 'none' }">
                 <font-awesome-icon icon="angle-right" />
                 <a href="#" @click="changeShowNewslettersItemActive()">Newsletter</a>
@@ -56,7 +55,6 @@
                     <li><a href="#">Banner review</a></li>
                 </ul>
             </li>
-            -->
         </ul>
     </div>
 </template>
