@@ -5,8 +5,8 @@
                 <div class="col-md-12">
                     <div id="breadcrumbs">
                         <ul class="list-group list-group-flush">
-                            <li><router-link tag="a" :to="'/home'">Home</router-link></li>
-                            <li>Users</li>
+                            <li><router-link tag="a" :to="'/home'">Početna</router-link></li>
+                            <li>Subscribers</li>
                         </ul>
                     </div>
                 </div>
@@ -18,9 +18,7 @@
                             <thead>
                             <tr>
                                 <th scope="col">id</th>
-                                <th scope="col">name</th>
                                 <th scope="col">email</th>
-                                <th scope="col">role</th>
                                 <th scope="col">created_at</th>
                                 <th>action</th>
                             </tr>
@@ -28,9 +26,7 @@
                             <tbody>
                             <tr v-for="row in users">
                                 <td>{{ row.id }}</td>
-                                <td>{{ row.name }}</td>
                                 <td>{{ row.email }}</td>
-                                <td>{{ row.role_id }}</td>
                                 <td>{{ row.created_at }}</td>
                                 <td>
                                     <font-awesome-icon icon="pencil-alt" @click="editRow(row['id'])"/>
@@ -59,7 +55,7 @@
     export default {
         data(){
             return {
-                users: {},
+                subscribers: {},
                 paginate: {}
             }
         },
@@ -67,22 +63,22 @@
             'font-awesome-icon': FontAwesomeIcon
         },
         created(){
-            this.getUsers();
+            this.getSubs();
         },
         methods: {
-            getUsers(){
-                axios.get('api/users')
+            getSubs(){
+                axios.get('api/subscribers')
                     .then(res => {
-                        this.users = res.data.users.data;
+                        this.subscribers = res.data.subscribers.data;
                         this.columns = res.data.columns;
-                        this.paginate = res.data.users;
+                        this.paginate = res.data.subscribers;
                     })
                     .catch(e => {
                         console.log(e);
                     });
             },
             editRow(id){
-                this.$router.push('users/' + id + '/edit');
+                this.$router.push('subscribers/' + id + '/edit');
             },
             deleteRow(row){
                 swal({
@@ -96,14 +92,14 @@
                     cancelButtonText: 'Cancel'
                 }).then((result) => {
                     if (result.value) {
-                        axios.delete('api/users/' + row.id)
+                        axios.delete('api/subscribers/' + row.id)
                             .then(res => {
-                                this.users = this.users.filter(function (item) {
+                                this.subscribers = this.subscribers.filter(function (item) {
                                     return row.id != item.id;
                                 });
                                 swal(
                                     'Deleted!',
-                                    'User is deleted.',
+                                    'Subscriber is deleted.',
                                     'success'
                                 );
                             })
@@ -114,10 +110,10 @@
                 });
             },
             clickToLink(index){
-                axios.get('api/users?page=' + index)
+                axios.get('api/subscribers?page=' + index)
                     .then(res => {
-                        this.users = res.data.users.data;
-                        this.paginate = res.data.users;
+                        this.subscribers = res.data.subscribers.data;
+                        this.paginate = res.data.subscribers;
                     })
                     .catch(e => {
                         console.log(e);
