@@ -6,7 +6,7 @@
                     <div id="breadcrumbs">
                         <ul class="list-group list-group-flush">
                             <li><router-link tag="a" :to="'/home'">Home</router-link></li>
-                            <li>Subscribers</li>
+                            <li>Banners</li>
                         </ul>
                     </div>
                 </div>
@@ -18,15 +18,17 @@
                             <thead>
                             <tr>
                                 <th scope="col">id</th>
-                                <th scope="col">email</th>
+                                <th scope="col">title</th>
+                                <th scope="col">link</th>
                                 <th scope="col">created_at</th>
                                 <th>action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="row in subscribers">
+                            <tr v-for="row in banners">
                                 <td>{{ row.id }}</td>
-                                <td>{{ row.email }}</td>
+                                <td>{{ row.title }}</td>
+                                <td>{{ row.link }}</td>
                                 <td>{{ row.created_at }}</td>
                                 <td>
                                     <font-awesome-icon icon="pencil-alt" @click="editRow(row['id'])"/>
@@ -55,7 +57,7 @@
     export default {
         data(){
             return {
-                subscribers: {},
+                banners: {},
                 paginate: {}
             }
         },
@@ -63,22 +65,22 @@
             'font-awesome-icon': FontAwesomeIcon
         },
         created(){
-            this.getSubs();
+            this.getUsers();
         },
         methods: {
-            getSubs(){
-                axios.get('api/subscribers')
+            getUsers(){
+                axios.get('api/banners')
                     .then(res => {
-                        this.subscribers = res.data.subscribers.data;
+                        this.banners = res.data.banners.data;
                         this.columns = res.data.columns;
-                        this.paginate = res.data.subscribers;
+                        this.paginate = res.data.banners;
                     })
                     .catch(e => {
                         console.log(e);
                     });
             },
             editRow(id){
-                this.$router.push('subscribers/' + id + '/edit');
+                this.$router.push('banners/' + id + '/edit');
             },
             deleteRow(row){
                 swal({
@@ -92,14 +94,14 @@
                     cancelButtonText: 'Cancel'
                 }).then((result) => {
                     if (result.value) {
-                        axios.delete('api/subscribers/' + row.id)
+                        axios.delete('api/banners/' + row.id)
                             .then(res => {
-                                this.subscribers = this.subscribers.filter(function (item) {
+                                this.banners = this.banners.filter(function (item) {
                                     return row.id != item.id;
                                 });
                                 swal(
                                     'Deleted!',
-                                    'Subscriber is deleted.',
+                                    'User is deleted.',
                                     'success'
                                 );
                             })
@@ -110,10 +112,10 @@
                 });
             },
             clickToLink(index){
-                axios.get('api/subscribers?page=' + index)
+                axios.get('api/banners?page=' + index)
                     .then(res => {
-                        this.subscribers = res.data.subscribers.data;
-                        this.paginate = res.data.subscribers;
+                        this.banners = res.data.banners.data;
+                        this.paginate = res.data.banners;
                     })
                     .catch(e => {
                         console.log(e);

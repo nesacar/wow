@@ -20,12 +20,16 @@
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
-                                <a class="dropdown-item" href="#" @click.prevent="newPost()">Članak</a>
-                                <a class="dropdown-item" href="#" @click.prevent="newCategory()">Kategorija</a>
+                                <a class="dropdown-item" href="#" @click.prevent="newPost()">Post</a>
+                                <a class="dropdown-item" href="#" @click.prevent="newCategory()">Category</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" @click.prevent="newUser()">Korisnik</a>
+                                <a class="dropdown-item" href="#" @click.prevent="newUser()">User</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"  @click.prevent="newTheme()">Tema</a>
+                                <a class="dropdown-item" href="#"  @click.prevent="newTheme()">Theme</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#"  @click.prevent="newNewsletter()">Newsletter</a>
+                                <a class="dropdown-item" href="#"  @click.prevent="newSubscriber()">Subscriber</a>
+                                <a class="dropdown-item" href="#"  @click.prevent="newBanner()">Banner</a>
                             </div>
                         </div>
                     </li>
@@ -99,6 +103,15 @@
             },
             newTheme(){
                 this.$router.push('/themes/create');
+            },
+            newNewsletter(){
+                this.$router.push('/newsletters/create');
+            },
+            newSubscriber(){
+                this.$router.push('/subscribers/create');
+            },
+            newBanner(){
+                this.$router.push('/banners/create');
             },
         }
     }
