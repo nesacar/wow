@@ -25,4 +25,8 @@ class Banner extends Model
         $banner->update();
         return $banner->image;
     }
+
+    public function newsletter(){
+        return $this->belongsToMany(Newsletter::class);
+    }
 }

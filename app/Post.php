@@ -73,4 +73,8 @@ class Post extends Model
     public function photo(){
         return $this->hasMany(Photo::class);
     }
+
+    public function newsletter(){
+        return $this->belongsToMany(Newsletter::class);
+    }
 }
