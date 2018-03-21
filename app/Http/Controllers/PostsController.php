@@ -103,4 +103,12 @@ class PostsController extends Controller
             'posts' => $posts,
         ]);
     }
+
+    public function lists(){
+        $posts = Post::select('id', 'title')->where('publish', 1)->orderBy('created_at', 'DESC')->get();
+
+        return response()->json([
+            'posts' => $posts,
+        ]);
+    }
 }

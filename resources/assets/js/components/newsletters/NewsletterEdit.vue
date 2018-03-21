@@ -7,7 +7,7 @@
                         <ul class="list-group list-group-flush">
                             <li><router-link tag="a" :to="'/home'">Home</router-link></li>
                             <li><router-link tag="a" :to="'/subscribers'">Subscribers</router-link></li>
-                            <li>Create Subscriber</li>
+                            <li>Edit Subscriber</li>
                         </ul>
                     </div>
                 </div>
@@ -16,7 +16,7 @@
             <div class="row bela">
                 <div class="col-md-12">
                     <div class="card">
-                        <h5>Create Subscriber</h5>
+                        <h5>Edit Subscriber</h5>
                     </div>
                 </div>
 
@@ -33,7 +33,7 @@
                                 <switches v-model="subscriber.block" theme="bootstrap" color="primary"></switches>
                             </div>
                             <div class="form-group">
-                                <button class="btn btn-primary">Create</button>
+                                <button class="btn btn-primary">Edit</button>
                             </div>
                         </form>
                     </div>
@@ -62,20 +62,33 @@
             'font-awesome-icon': FontAwesomeIcon,
             'switches': Switches,
         },
+        created(){
+            this.getUser();
+        },
         methods: {
             submit(){
-                axios.post('api/subscribers', this.subscriber)
+                axios.patch('api/subscribers/' + this.subscriber.id, this.subscriber)
                     .then(res => {
                         swal({
                             position: 'center',
                             type: 'success',
-                            title: 'Success',
+                            title: 'Edit',
                             showConfirmButton: false,
                             timer: 1500
                         });
-                        this.$router.push('/subscribers');
+                        this.error = null;
                     }).catch(e => {
                         console.log(e.response);
+                        this.error = e.response.data.errors;
+                    });
+            },
+            getUser(){
+                axios.get('api/subscribers/' + this.$route.params.id)
+                    .then(res => {
+                        this.subscriber = res.data.subscriber;
+                    })
+                    .catch(e => {
+                        console.log(e);
                         this.error = e.response.data.errors;
                     });
             },
