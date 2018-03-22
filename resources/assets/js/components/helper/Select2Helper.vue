@@ -33,3 +33,9 @@
 
 <style src="select2/dist/css/select2.min.css"></style>
 <style src="select2-bootstrap-theme/dist/select2-bootstrap.min.css"></style>
+<style>
+    select{
+        display: block;
+        width: 90% !important;
+    }
+</style>

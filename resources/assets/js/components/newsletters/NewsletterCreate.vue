@@ -20,7 +20,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm-8">
+                <div class="col-sm-4">
                     <div class="card">
                         <form @submit.prevent="submit()">
                             <div class="form-group">
@@ -33,18 +33,14 @@
                                 <switches v-model="newsletter.block" theme="bootstrap" color="primary"></switches>
                             </div>
                             <div class="form-group">
-                                <label>Select2</label><br>
-                                <select2 :options="posts">
-                                    <option disabled value="0">select one</option>
-                                </select2>
-                            </div>
-                            <div class="form-group">
                                 <button class="btn btn-primary">Create</button>
                             </div>
                         </form>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-8">
+
+                    <markup></markup>
 
                 </div>
             </div>
@@ -56,7 +52,7 @@
     import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
     import Switches from 'vue-switches';
     import swal from 'sweetalert2';
-    import Select2 from '../helper/Select2Helper.vue';
+    import markup from '../newsletters/builder/markup.vue';
 
     export default {
         data(){
@@ -69,7 +65,7 @@
         components: {
             'font-awesome-icon': FontAwesomeIcon,
             'switches': Switches,
-            'select2': Select2,
+            'markup': markup,
         },
         created(){
             this.getPosts();

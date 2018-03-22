@@ -101,4 +101,12 @@ class BannersController extends Controller
             'image' => $image
         ]);
     }
+
+    public function lists(){
+        $banners = Banner::select('id', 'title')->where('publish', 1)->orderBy('created_at', 'DESC')->get();
+
+        return response()->json([
+            'banners' => $banners,
+        ]);
+    }
 }
