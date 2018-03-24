@@ -15,6 +15,8 @@
 
                                             <td style="width:550px; position: relative;">
 
+                                                <font-awesome-icon icon="times" @click="deleteRow(index)" />
+
                                                 <a href="#" target="_blank">
 
                                                 <img
@@ -68,15 +70,31 @@
 
 <script>
     import Select2 from '../../helper/Select2Helper.vue';
+    import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 
     export default {
-        props: ['posts'],
+        props: ['posts', 'index'],
         components: {
             'select2': Select2,
+            'font-awesome-icon': FontAwesomeIcon
+        },
+        methods: {
+            deleteRow(index){
+                this.$emit('deleteRow', index);
+            }
         }
     }
 </script>
 
-<style>
-
+<style scoped>
+    svg{
+        display: block !important;
+        width: 25px !important;
+        height: 25px !important;
+        cursor: pointer;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        color: red;
+    }
 </style>

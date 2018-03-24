@@ -17,13 +17,12 @@
                                                 <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
                                                     <tbody>
                                                     <tr>
-                                                        <td style="width:250px;"> <a href="#" target="_blank">
-
-                                                            <img
-                                                                    alt="#" height="auto" src="https://www.wowmalta.com.mt/image.php/Wow%20Malta%20panorama%20bastians%20barrakka%20sea%20view%20history%20blue.JPG?width=658&image=https://www.wowmalta.com.mt/chest/gallery/sail-through-malta%E2%80%99s-historic-past-with-grand-harbour-cruises/Wow%20Malta%20panorama%20bastians%20barrakka%20sea%20view%20history%20blue.JPG" style="border:0;display:block;outline:none;text-decoration:none;width:250px;" width="250"
-                                                            />
-
-                                                        </a> </td>
+                                                        <td style="width:250px; position: relative;">
+                                                            <font-awesome-icon icon="times" @click="deleteRow(index)" />
+                                                            <a href="#" target="_blank">
+                                                                <img alt="#" height="auto" src="https://www.wowmalta.com.mt/image.php/Wow%20Malta%20panorama%20bastians%20barrakka%20sea%20view%20history%20blue.JPG?width=658&image=https://www.wowmalta.com.mt/chest/gallery/sail-through-malta%E2%80%99s-historic-past-with-grand-harbour-cruises/Wow%20Malta%20panorama%20bastians%20barrakka%20sea%20view%20history%20blue.JPG" style="border:0;display:block;outline:none;text-decoration:none;width:250px;" width="250" />
+                                                            </a>
+                                                        </td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -138,19 +137,37 @@
 
 <script>
     import Select2 from '../../helper/Select2Helper.vue';
+    import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 
     export default {
-        props: ['posts'],
+        props: ['posts', 'index'],
         components: {
             'select2': Select2,
+            'font-awesome-icon': FontAwesomeIcon
+        },
+        methods: {
+            deleteRow(index){
+                this.$emit('deleteRow', index);
+            }
         }
     }
 </script>
 
-<style>
+<style scoped>
     @media only screen and (min-width:480px) {
         .mj-column-per-50 {
             width: 50% !important;
         }
+    }
+
+    svg{
+        display: block !important;
+        width: 25px !important;
+        height: 25px !important;
+        cursor: pointer;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        color: red;
     }
 </style>

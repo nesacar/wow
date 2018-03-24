@@ -21,26 +21,26 @@
                 </div>
 
                 <div class="col-sm-4">
-                    <div class="card">
-                        <form @submit.prevent="submit()">
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" name="email" class="form-control" id="email" placeholder="Email address" v-model="newsletter.email">
-                                <small class="form-text text-muted" v-if="error != null && error.email">{{ error.email[0] }}</small>
-                            </div>
-                            <div class="form-group">
-                                <label>Block</label><br>
-                                <switches v-model="newsletter.block" theme="bootstrap" color="primary"></switches>
-                            </div>
-                            <div class="form-group">
-                                <button class="btn btn-primary">Create</button>
-                            </div>
-                        </form>
+                    <div class="card stack">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" class="form-control" id="email" placeholder="Email address" v-model="newsletter.email">
+                            <small class="form-text text-muted" v-if="error != null && error.email">{{ error.email[0] }}</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Block</label><br>
+                            <switches v-model="newsletter.block" theme="bootstrap" color="primary"></switches>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" @click="createLeading()">Leading Post</button>
+                            <button class="btn btn-primary" @click="createPosts()">Two Posts</button>
+                            <button class="btn btn-primary" @click="createBanner()">Banner</button>
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-8">
 
-                    <markup></markup>
+                    <markup :items="items" @removeMarkup="removeMarkup($event)"></markup>
 
                 </div>
             </div>
@@ -59,7 +59,8 @@
           return {
               newsletter: {},
               posts: {},
-              error: null
+              error: null,
+              items: []
           }
         },
         components: {
@@ -71,22 +72,6 @@
             this.getPosts();
         },
         methods: {
-            submit(){
-                axios.post('api/newsletters', this.newsletter)
-                    .then(res => {
-                        swal({
-                            position: 'center',
-                            type: 'success',
-                            title: 'Success',
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                        this.$router.push('/newsletters');
-                    }).catch(e => {
-                        console.log(e.response);
-                        this.error = e.response.data.errors;
-                    });
-            },
             getPosts(){
                 axios.get('api/posts/lists')
                     .then(res => {
@@ -99,7 +84,27 @@
                     .catch(e => {
                         console.log(e);
                     });
-            }
+            },
+            createLeading(){
+                this.items.push('leading-post');
+            },
+            createPosts(){
+                this.items.push('two-posts');
+            },
+            createBanner(){
+                this.items.push('banner');
+            },
+            removeMarkup(index){
+                this.items.splice(index, 1);
+                console.log('deleted: ' + index);
+            },
         }
     }
 </script>
+
+<style>
+    .stack{
+        position: fixed;
+        top: 233px;
+    }
+</style>

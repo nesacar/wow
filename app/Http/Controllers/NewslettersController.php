@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Banner;
 use App\Http\Requests\CreateNewsletterRequest;
 use App\Newsletter;
+use App\Post;
 use Illuminate\Http\Request;
 
 class NewslettersController extends Controller
@@ -122,6 +124,36 @@ class NewslettersController extends Controller
         Newsletter::destroy($id);
         return response()->json([
             'newsletter' => $newsletter
+        ]);
+    }
+
+    /**
+     * Display a specific post
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function post($id)
+    {
+        $post = Post::find($id);
+
+        return response()->json([
+            'post' => $post
+        ]);
+    }
+
+    /**
+     * Display a specific post
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function banner($id)
+    {
+        $banner = Banner::find($id);
+
+        return response()->json([
+            'banner' => $banner
         ]);
     }
 }

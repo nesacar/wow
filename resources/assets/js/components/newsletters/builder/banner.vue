@@ -14,13 +14,12 @@
                                     <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
                                         <tbody>
                                         <tr>
-                                            <td style="width:550px;"> <a href="#" target="_blank">
-
-                                                <img
-                                                        alt="#" height="auto" src="https://www.muskimagazin.rs/thm/mm/img/test/beograd-baner.jpg" style="border:0;display:block;outline:none;text-decoration:none;width:100%;" width="550"
-                                                />
-
-                                            </a> </td>
+                                            <td style="width:550px; position: relative;">
+                                                <font-awesome-icon icon="times" @click="deleteRow(index)" />
+                                                <a href="#" target="_blank">
+                                                    <img alt="#" height="auto" src="https://www.muskimagazin.rs/thm/mm/img/test/beograd-baner.jpg" style="border:0;display:block;outline:none;text-decoration:none;width:100%;" width="550" />
+                                                </a>
+                                            </td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -55,11 +54,31 @@
 
 <script>
     import Select2 from '../../helper/Select2Helper.vue';
+    import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 
     export default {
-        props: ['banners'],
+        props: ['banners', 'index'],
         components: {
             'select2': Select2,
+            'font-awesome-icon': FontAwesomeIcon,
+        },
+        methods: {
+            deleteRow(index){
+                this.$emit('deleteRow', index);
+            }
         }
     }
 </script>
+
+<style scoped>
+    svg{
+        display: block !important;
+        width: 25px !important;
+        height: 25px !important;
+        cursor: pointer;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        color: red;
+    }
+</style>

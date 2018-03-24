@@ -57,3 +57,5 @@ Route::middleware('auth:api')->resource('banners', 'BannersController');
 Route::middleware('auth:api')->post('banners/{id}/image', 'BannersController@uploadImage');
 
 Route::middleware('auth:api')->resource('newsletters', 'NewslettersController');
+Route::middleware('auth:api')->get('newsletters/{id}/post', 'NewslettersController@post');
+Route::middleware('auth:api')->get('newsletters/{id}/banner', 'NewslettersController@banner');

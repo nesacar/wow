@@ -33,15 +33,9 @@
                 </table>
             </div>
 
-            <leading-post :posts="posts"></leading-post>
-
-            <two-posts :posts="posts"></two-posts>
-
-            <banner :banners="banners"></banner>
-
-            <two-posts :posts="posts"></two-posts>
-
-            <banner :banners="banners"></banner>
+            <template v-for="(item, index) in items">
+                <component :is="item" :index="index" :posts="posts" :banners="banners" @deleteRow="deleteRow($event)"></component>
+            </template>
 
             <div style="Margin:0px auto;max-width:600px;">
                 <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
@@ -67,6 +61,9 @@
                     </tbody>
                 </table>
             </div>
+            <div>
+                <button class="btn btn-primary" @click="create()" v-if="items.length > 0">Create</button>
+            </div>
 
         </div>
     </div>
@@ -81,9 +78,10 @@
         data(){
           return {
               posts: {},
-              banners: {}
+              banners: {},
           }
         },
+        props: ['items'],
         components: {
             'leading-post': leadingPost,
             'two-posts': twoPosts,
@@ -119,6 +117,12 @@
                     .catch(e => {
                         console.log(e);
                     });
+            },
+            deleteRow(index){
+                this.$emit('removeMarkup', index);
+            },
+            create(){
+                console.log('create');
             }
         }
     }
@@ -196,5 +200,14 @@
 
     .article {
         position: relative;
+    }
+</style>
+
+<style scoped>
+    .btn-primary{
+        display: block;
+        width: 70px;
+        margin-left: auto;
+        margin-right: auto;
     }
 </style>
