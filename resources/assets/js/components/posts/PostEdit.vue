@@ -53,7 +53,7 @@
                             <upload-image-helper
                                     :image="post.image"
                                     :defaultImage="null"
-                                    :titleImage="'članka'"
+                                    :titleImage="'Post'"
                                     :error="error"
                                     @uploadImage="upload($event)"
                                     @removeRow="remove($event)"

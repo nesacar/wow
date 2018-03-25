@@ -55607,7 +55607,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\nselect{\n    display: block;\n    width: 90% !important;\n}\n", ""]);
+exports.push([module.i, "\nselect{\n    display: block;\n    /*width: 90% !important;*/\n}\n", ""]);
 
 // exports
 
@@ -55632,19 +55632,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['options', 'value', 'name'],
     mounted: function mounted() {
-        var _this = this;
-
         var vm = this;
-        $(this.$el).select2({ theme: 'bootstrap', data: this.options }).val(this.value).trigger('change').on('change', function () {
-            vm.$emit('input', _this.value);
+        $(this.$el).select2({ theme: 'bootstrap', data: this.options }).val(this.value).trigger('change').on('change', function (value) {
+            vm.$emit('input', value.currentTarget.value);
         });
     },
 
     watch: {
         value: function value(_value) {
+            console.log('value');
             $(this.$el).val(_value).trigger('change');
         },
         options: function options(_options) {
+            console.log('options');
             $(this.$el).select2({ data: _options });
         }
     },
@@ -74965,7 +74965,7 @@ var render = function() {
                   attrs: {
                     image: _vm.post.image,
                     defaultImage: null,
-                    titleImage: "članka",
+                    titleImage: "Post",
                     error: _vm.error
                   },
                   on: {
@@ -81980,13 +81980,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         createLeading: function createLeading() {
-            this.items.push('leading-post');
+            this.items.push({ component: 'leading-post', 'post': null });
         },
         createPosts: function createPosts() {
-            this.items.push('two-posts');
+            this.items.push({ component: 'two-posts', 'post1': null, 'post2': null });
         },
         createBanner: function createBanner() {
-            this.items.push('banner');
+            this.items.push({ component: 'banner', 'banner': null });
         },
         removeMarkup: function removeMarkup(index) {
             this.items.splice(index, 1);
@@ -82219,7 +82219,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             posts: {},
-            banners: {}
+            banners: {},
+            attrs: []
         };
     },
 
@@ -82264,8 +82265,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         deleteRow: function deleteRow(index) {
             this.$emit('removeMarkup', index);
         },
+        setItem: function setItem(item) {
+            this.attrs[item.index] = item;
+        },
         create: function create() {
-            console.log('create');
+            console.log(this.attrs);
         }
     }
 });
@@ -82371,6 +82375,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helper_Select2Helper_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__helper_Select2Helper_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config__ = __webpack_require__(11);
 //
 //
 //
@@ -82441,12 +82446,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['posts', 'index'],
+    data: function data() {
+        return {
+            domain: __WEBPACK_IMPORTED_MODULE_2__config__["a" /* apiHost */]
+        };
+    },
+
+    props: ['posts', 'index', 'item'],
     components: {
         'select2': __WEBPACK_IMPORTED_MODULE_0__helper_Select2Helper_vue___default.a,
         'font-awesome-icon': __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome___default.a
@@ -82454,6 +82467,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         deleteRow: function deleteRow(index) {
             this.$emit('deleteRow', index);
+        },
+        input: function input(post_id) {
+            var _this = this;
+
+            if (post_id == 0) {
+                this.item.post = null;
+                this.$emit('setItem', { type: 'post', item: this.item.post, index: this.index });
+            } else {
+                axios.get('api/newsletters/' + post_id + '/post').then(function (res) {
+                    _this.item.post = res.data.post;
+                    _this.$emit('setItem', { type: 'post', item: _this.item.post, index: _this.index });
+                }).catch(function (e) {
+                    console.log(e);
+                });
+            }
         }
     }
 });
@@ -82575,7 +82603,54 @@ var render = function() {
                                               }
                                             }),
                                             _vm._v(" "),
-                                            _vm._m(0)
+                                            _c(
+                                              "a",
+                                              {
+                                                attrs: {
+                                                  href: "#",
+                                                  target: "_blank"
+                                                }
+                                              },
+                                              [
+                                                _vm.item.post == null
+                                                  ? _c("img", {
+                                                      staticStyle: {
+                                                        border: "0",
+                                                        display: "block",
+                                                        outline: "none",
+                                                        "text-decoration":
+                                                          "none",
+                                                        width: "550px"
+                                                      },
+                                                      attrs: {
+                                                        alt: "#",
+                                                        height: "250px",
+                                                        src:
+                                                          _vm.domain +
+                                                          "img/newsletter-post.jpg",
+                                                        width: "550"
+                                                      }
+                                                    })
+                                                  : _c("img", {
+                                                      staticStyle: {
+                                                        border: "0",
+                                                        display: "block",
+                                                        outline: "none",
+                                                        "text-decoration":
+                                                          "none",
+                                                        width: "550px"
+                                                      },
+                                                      attrs: {
+                                                        alt: "#",
+                                                        height: "250px",
+                                                        src:
+                                                          _vm.domain +
+                                                          _vm.item.post.image,
+                                                        width: "550"
+                                                      }
+                                                    })
+                                              ]
+                                            )
                                           ],
                                           1
                                         )
@@ -82628,14 +82703,21 @@ var render = function() {
                                           [
                                             _c(
                                               "select2",
-                                              { attrs: { options: _vm.posts } },
+                                              {
+                                                attrs: { options: _vm.posts },
+                                                on: {
+                                                  input: function($event) {
+                                                    _vm.input($event)
+                                                  }
+                                                }
+                                              },
                                               [
                                                 _c(
                                                   "option",
                                                   {
                                                     attrs: {
-                                                      disabled: "",
-                                                      value: "0"
+                                                      value: "0",
+                                                      selected: ""
                                                     }
                                                   },
                                                   [_vm._v("select one")]
@@ -82653,7 +82735,54 @@ var render = function() {
                             )
                           ]),
                           _vm._v(" "),
-                          _vm._m(1)
+                          _c("tr", [
+                            _c(
+                              "td",
+                              {
+                                staticStyle: {
+                                  "font-size": "0px",
+                                  padding: "10px 25px",
+                                  "padding-top": "0",
+                                  "padding-bottom": "0",
+                                  "word-break": "break-word"
+                                },
+                                attrs: { align: "left" }
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticStyle: {
+                                      "font-family": "Roboto",
+                                      "font-size": "14px",
+                                      "line-height": "1.5",
+                                      "text-align": "left",
+                                      color: "#000000"
+                                    }
+                                  },
+                                  [
+                                    _c("div", { staticClass: "article" }, [
+                                      _vm.item.post == null
+                                        ? _c("h2", { staticClass: "heading" }, [
+                                            _vm._v("DEFAULT TITLE")
+                                          ])
+                                        : _c("h2", { staticClass: "heading" }, [
+                                            _vm._v(_vm._s(_vm.item.post.title))
+                                          ]),
+                                      _vm._v(" "),
+                                      _vm.item.post == null
+                                        ? _c("p", [_vm._v("Default body...")])
+                                        : _c("p", [
+                                            _vm._v(_vm._s(_vm.item.post.short))
+                                          ]),
+                                      _vm._v(" "),
+                                      _vm._m(0)
+                                    ])
+                                  ]
+                                )
+                              ]
+                            )
+                          ])
                         ]
                       )
                     ]
@@ -82672,74 +82801,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#", target: "_blank" } }, [
-      _c("img", {
-        staticStyle: {
-          border: "0",
-          display: "block",
-          outline: "none",
-          "text-decoration": "none",
-          width: "550px"
-        },
-        attrs: {
-          alt: "#",
-          height: "250px",
-          src:
-            "https://www.wowmalta.com.mt/image.php/Wow%20Malta%20panorama%20bastians%20barrakka%20sea%20view%20history%20blue.JPG?width=658&image=https://www.wowmalta.com.mt/chest/gallery/sail-through-malta%E2%80%99s-historic-past-with-grand-harbour-cruises/Wow%20Malta%20panorama%20bastians%20barrakka%20sea%20view%20history%20blue.JPG",
-          width: "550"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c(
-        "td",
-        {
-          staticStyle: {
-            "font-size": "0px",
-            padding: "10px 25px",
-            "padding-top": "0",
-            "padding-bottom": "0",
-            "word-break": "break-word"
-          },
-          attrs: { align: "left" }
-        },
-        [
-          _c(
-            "div",
-            {
-              staticStyle: {
-                "font-family": "Roboto",
-                "font-size": "14px",
-                "line-height": "1.5",
-                "text-align": "left",
-                color: "#000000"
-              }
-            },
-            [
-              _c("div", { staticClass: "article" }, [
-                _c("h2", { staticClass: "heading" }, [
-                  _vm._v("TRANQUIL VIEWS FROM HASTINGS GARDENS")
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "Hastings Gardens are a public garden on the west side of City Gate, the main entrance to Valletta. Located above St John’s Bastion..."
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticStyle: { "text-align": "right" } }, [
-                  _c("a", { attrs: { href: "" } }, [_vm._v("Read more >")])
-                ])
-              ])
-            ]
-          )
-        ]
-      )
+    return _c("div", { staticStyle: { "text-align": "right" } }, [
+      _c("a", { attrs: { href: "" } }, [_vm._v("Read more >")])
     ])
   }
 ]
@@ -82853,6 +82916,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helper_Select2Helper_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__helper_Select2Helper_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config__ = __webpack_require__(11);
 //
 //
 //
@@ -82990,12 +83054,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['posts', 'index'],
+    data: function data() {
+        return {
+            domain: __WEBPACK_IMPORTED_MODULE_2__config__["a" /* apiHost */]
+        };
+    },
+
+    props: ['posts', 'index', 'item'],
     components: {
         'select2': __WEBPACK_IMPORTED_MODULE_0__helper_Select2Helper_vue___default.a,
         'font-awesome-icon': __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome___default.a
@@ -83003,6 +83075,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         deleteRow: function deleteRow(index) {
             this.$emit('deleteRow', index);
+        },
+        input1: function input1(post_id) {
+            var _this = this;
+
+            if (post_id == 0) {
+                this.item.post1 = null;
+                this.$emit('setItem', { type: 'post', item1: this.item.post1, item2: this.item.post2, index: this.index });
+            } else {
+                axios.get('api/newsletters/' + post_id + '/post').then(function (res) {
+                    _this.item.post1 = res.data.post;
+                    _this.$emit('setItem', { type: 'posts', item1: _this.item.post1, item2: _this.item.post2, index: _this.index });
+                }).catch(function (e) {
+                    console.log(e);
+                });
+            }
+        },
+        input2: function input2(post_id) {
+            var _this2 = this;
+
+            if (post_id == 0) {
+                this.item.post2 = null;
+                this.$emit('setItem', { type: 'post', item1: this.item.post1, item2: this.item.post2, index: this.index });
+            } else {
+                axios.get('api/newsletters/' + post_id + '/post').then(function (res) {
+                    _this2.item.post2 = res.data.post;
+                    _this2.$emit('setItem', { type: 'posts', item1: _this2.item.post1, item2: _this2.item.post2, index: _this2.index });
+                }).catch(function (e) {
+                    console.log(e);
+                });
+            }
         }
     }
 });
@@ -83097,6 +83199,9 @@ var render = function() {
                                       }
                                     },
                                     [
+                                      _vm._v(
+                                        "\n                                    <"
+                                      ),
                                       _c("tr", [
                                         _c(
                                           "td",
@@ -83133,32 +83238,70 @@ var render = function() {
                                                       "td",
                                                       {
                                                         staticStyle: {
-                                                          width: "250px",
-                                                          position: "relative"
+                                                          width: "250px"
                                                         }
                                                       },
                                                       [
                                                         _c(
-                                                          "font-awesome-icon",
+                                                          "a",
                                                           {
                                                             attrs: {
-                                                              icon: "times"
-                                                            },
-                                                            on: {
-                                                              click: function(
-                                                                $event
-                                                              ) {
-                                                                _vm.deleteRow(
-                                                                  _vm.index
-                                                                )
-                                                              }
+                                                              href: "#",
+                                                              target: "_blank"
                                                             }
-                                                          }
-                                                        ),
-                                                        _vm._v(" "),
-                                                        _vm._m(0)
-                                                      ],
-                                                      1
+                                                          },
+                                                          [
+                                                            _vm.item.post1 ==
+                                                            null
+                                                              ? _c("img", {
+                                                                  staticStyle: {
+                                                                    border: "0",
+                                                                    display:
+                                                                      "block",
+                                                                    outline:
+                                                                      "none",
+                                                                    "text-decoration":
+                                                                      "none",
+                                                                    width:
+                                                                      "250px"
+                                                                  },
+                                                                  attrs: {
+                                                                    alt: "#",
+                                                                    height:
+                                                                      "auto",
+                                                                    src:
+                                                                      _vm.domain +
+                                                                      "img/newsletter-post.jpg",
+                                                                    width: "250"
+                                                                  }
+                                                                })
+                                                              : _c("img", {
+                                                                  staticStyle: {
+                                                                    border: "0",
+                                                                    display:
+                                                                      "block",
+                                                                    outline:
+                                                                      "none",
+                                                                    "text-decoration":
+                                                                      "none",
+                                                                    width:
+                                                                      "250px"
+                                                                  },
+                                                                  attrs: {
+                                                                    alt: "#",
+                                                                    height:
+                                                                      "auto",
+                                                                    src:
+                                                                      _vm.domain +
+                                                                      _vm.item
+                                                                        .post1
+                                                                        .image,
+                                                                    width: "250"
+                                                                  }
+                                                                })
+                                                          ]
+                                                        )
+                                                      ]
                                                     )
                                                   ])
                                                 ])
@@ -83214,6 +83357,15 @@ var render = function() {
                                                           {
                                                             attrs: {
                                                               options: _vm.posts
+                                                            },
+                                                            on: {
+                                                              input: function(
+                                                                $event
+                                                              ) {
+                                                                _vm.input1(
+                                                                  $event
+                                                                )
+                                                              }
                                                             }
                                                           },
                                                           [
@@ -83221,7 +83373,7 @@ var render = function() {
                                                               "option",
                                                               {
                                                                 attrs: {
-                                                                  disabled: "",
+                                                                  selected: "",
                                                                   value: "0"
                                                                 }
                                                               },
@@ -83244,7 +83396,88 @@ var render = function() {
                                         )
                                       ]),
                                       _vm._v(" "),
-                                      _vm._m(1)
+                                      _c("tr", [
+                                        _c(
+                                          "td",
+                                          {
+                                            staticStyle: {
+                                              "font-size": "0px",
+                                              padding: "10px 25px",
+                                              "padding-top": "0",
+                                              "padding-bottom": "0",
+                                              "word-break": "break-word"
+                                            },
+                                            attrs: { align: "left" }
+                                          },
+                                          [
+                                            _c(
+                                              "div",
+                                              {
+                                                staticStyle: {
+                                                  "font-family": "Roboto",
+                                                  "font-size": "14px",
+                                                  "line-height": "1.5",
+                                                  "text-align": "left",
+                                                  color: "#000000"
+                                                }
+                                              },
+                                              [
+                                                _c(
+                                                  "div",
+                                                  { staticClass: "article" },
+                                                  [
+                                                    _vm.item.post1 == null
+                                                      ? _c(
+                                                          "h2",
+                                                          {
+                                                            staticClass:
+                                                              "heading"
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              "DEFAULT TITLE"
+                                                            )
+                                                          ]
+                                                        )
+                                                      : _c(
+                                                          "h2",
+                                                          {
+                                                            staticClass:
+                                                              "heading"
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              _vm._s(
+                                                                _vm.item.post1
+                                                                  .title
+                                                              )
+                                                            )
+                                                          ]
+                                                        ),
+                                                    _vm._v(" "),
+                                                    _vm.item.post1 == null
+                                                      ? _c("p", [
+                                                          _vm._v(
+                                                            "Default body..."
+                                                          )
+                                                        ])
+                                                      : _c("p", [
+                                                          _vm._v(
+                                                            _vm._s(
+                                                              _vm.item.post1
+                                                                .title
+                                                            )
+                                                          )
+                                                        ]),
+                                                    _vm._v(" "),
+                                                    _vm._m(0)
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      ])
                                     ]
                                   )
                                 ]
@@ -83305,7 +83538,114 @@ var render = function() {
                                       }
                                     },
                                     [
-                                      _vm._m(2),
+                                      _c("tr", [
+                                        _c(
+                                          "td",
+                                          {
+                                            staticStyle: {
+                                              "font-size": "0px",
+                                              padding: "10px 25px",
+                                              "padding-top": "0",
+                                              "padding-bottom": "0",
+                                              "word-break": "break-word"
+                                            },
+                                            attrs: { align: "center" }
+                                          },
+                                          [
+                                            _c(
+                                              "table",
+                                              {
+                                                staticStyle: {
+                                                  "border-collapse": "collapse",
+                                                  "border-spacing": "0px"
+                                                },
+                                                attrs: {
+                                                  align: "center",
+                                                  border: "0",
+                                                  cellpadding: "0",
+                                                  cellspacing: "0",
+                                                  role: "presentation"
+                                                }
+                                              },
+                                              [
+                                                _c("tbody", [
+                                                  _c("tr", [
+                                                    _c(
+                                                      "td",
+                                                      {
+                                                        staticStyle: {
+                                                          width: "250px"
+                                                        }
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "a",
+                                                          {
+                                                            attrs: {
+                                                              href: "#",
+                                                              target: "_blank"
+                                                            }
+                                                          },
+                                                          [
+                                                            _vm.item.post2 ==
+                                                            null
+                                                              ? _c("img", {
+                                                                  staticStyle: {
+                                                                    border: "0",
+                                                                    display:
+                                                                      "block",
+                                                                    outline:
+                                                                      "none",
+                                                                    "text-decoration":
+                                                                      "none",
+                                                                    width:
+                                                                      "250px"
+                                                                  },
+                                                                  attrs: {
+                                                                    alt: "#",
+                                                                    height:
+                                                                      "auto",
+                                                                    src:
+                                                                      _vm.domain +
+                                                                      "img/newsletter-post.jpg",
+                                                                    width: "250"
+                                                                  }
+                                                                })
+                                                              : _c("img", {
+                                                                  staticStyle: {
+                                                                    border: "0",
+                                                                    display:
+                                                                      "block",
+                                                                    outline:
+                                                                      "none",
+                                                                    "text-decoration":
+                                                                      "none",
+                                                                    width:
+                                                                      "250px"
+                                                                  },
+                                                                  attrs: {
+                                                                    alt: "#",
+                                                                    height:
+                                                                      "auto",
+                                                                    src:
+                                                                      _vm.domain +
+                                                                      _vm.item
+                                                                        .post2
+                                                                        .image,
+                                                                    width: "250"
+                                                                  }
+                                                                })
+                                                          ]
+                                                        )
+                                                      ]
+                                                    )
+                                                  ])
+                                                ])
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      ]),
                                       _vm._v(" "),
                                       _c("tr", [
                                         _c(
@@ -83353,6 +83693,15 @@ var render = function() {
                                                           {
                                                             attrs: {
                                                               options: _vm.posts
+                                                            },
+                                                            on: {
+                                                              input: function(
+                                                                $event
+                                                              ) {
+                                                                _vm.input2(
+                                                                  $event
+                                                                )
+                                                              }
                                                             }
                                                           },
                                                           [
@@ -83360,7 +83709,7 @@ var render = function() {
                                                               "option",
                                                               {
                                                                 attrs: {
-                                                                  disabled: "",
+                                                                  selected: "",
                                                                   value: "0"
                                                                 }
                                                               },
@@ -83383,7 +83732,88 @@ var render = function() {
                                         )
                                       ]),
                                       _vm._v(" "),
-                                      _vm._m(3)
+                                      _c("tr", [
+                                        _c(
+                                          "td",
+                                          {
+                                            staticStyle: {
+                                              "font-size": "0px",
+                                              padding: "10px 25px",
+                                              "padding-top": "0",
+                                              "padding-bottom": "0",
+                                              "word-break": "break-word"
+                                            },
+                                            attrs: { align: "left" }
+                                          },
+                                          [
+                                            _c(
+                                              "div",
+                                              {
+                                                staticStyle: {
+                                                  "font-family": "Roboto",
+                                                  "font-size": "14px",
+                                                  "line-height": "1.5",
+                                                  "text-align": "left",
+                                                  color: "#000000"
+                                                }
+                                              },
+                                              [
+                                                _c(
+                                                  "div",
+                                                  { staticClass: "article" },
+                                                  [
+                                                    _vm.item.post2 == null
+                                                      ? _c(
+                                                          "h2",
+                                                          {
+                                                            staticClass:
+                                                              "heading"
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              "DEFAULT TITLE"
+                                                            )
+                                                          ]
+                                                        )
+                                                      : _c(
+                                                          "h2",
+                                                          {
+                                                            staticClass:
+                                                              "heading"
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              _vm._s(
+                                                                _vm.item.post2
+                                                                  .title
+                                                              )
+                                                            )
+                                                          ]
+                                                        ),
+                                                    _vm._v(" "),
+                                                    _vm.item.post2 == null
+                                                      ? _c("p", [
+                                                          _vm._v(
+                                                            "Default body..."
+                                                          )
+                                                        ])
+                                                      : _c("p", [
+                                                          _vm._v(
+                                                            _vm._s(
+                                                              _vm.item.post2
+                                                                .title
+                                                            )
+                                                          )
+                                                        ]),
+                                                    _vm._v(" "),
+                                                    _vm._m(1)
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      ])
                                     ]
                                   )
                                 ]
@@ -83408,189 +83838,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#", target: "_blank" } }, [
-      _c("img", {
-        staticStyle: {
-          border: "0",
-          display: "block",
-          outline: "none",
-          "text-decoration": "none",
-          width: "250px"
-        },
-        attrs: {
-          alt: "#",
-          height: "auto",
-          src:
-            "https://www.wowmalta.com.mt/image.php/Wow%20Malta%20panorama%20bastians%20barrakka%20sea%20view%20history%20blue.JPG?width=658&image=https://www.wowmalta.com.mt/chest/gallery/sail-through-malta%E2%80%99s-historic-past-with-grand-harbour-cruises/Wow%20Malta%20panorama%20bastians%20barrakka%20sea%20view%20history%20blue.JPG",
-          width: "250"
-        }
-      })
+    return _c("div", { staticStyle: { "text-align": "right" } }, [
+      _c("a", { attrs: { href: "" } }, [_vm._v("Read more >")])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c(
-        "td",
-        {
-          staticStyle: {
-            "font-size": "0px",
-            padding: "10px 25px",
-            "padding-top": "0",
-            "padding-bottom": "0",
-            "word-break": "break-word"
-          },
-          attrs: { align: "left" }
-        },
-        [
-          _c(
-            "div",
-            {
-              staticStyle: {
-                "font-family": "Roboto",
-                "font-size": "14px",
-                "line-height": "1.5",
-                "text-align": "left",
-                color: "#000000"
-              }
-            },
-            [
-              _c("div", { staticClass: "article" }, [
-                _c("h2", { staticClass: "heading" }, [
-                  _vm._v("TRANQUIL VIEWS FROM HASTINGS GARDENS")
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "Hastings Gardens are a public garden on the west side of City Gate, the main entrance to Valletta. Located above St John’s Bastion..."
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticStyle: { "text-align": "right" } }, [
-                  _c("a", { attrs: { href: "" } }, [_vm._v("Read more >")])
-                ])
-              ])
-            ]
-          )
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c(
-        "td",
-        {
-          staticStyle: {
-            "font-size": "0px",
-            padding: "10px 25px",
-            "padding-top": "0",
-            "padding-bottom": "0",
-            "word-break": "break-word"
-          },
-          attrs: { align: "center" }
-        },
-        [
-          _c(
-            "table",
-            {
-              staticStyle: {
-                "border-collapse": "collapse",
-                "border-spacing": "0px"
-              },
-              attrs: {
-                align: "center",
-                border: "0",
-                cellpadding: "0",
-                cellspacing: "0",
-                role: "presentation"
-              }
-            },
-            [
-              _c("tbody", [
-                _c("tr", [
-                  _c("td", { staticStyle: { width: "250px" } }, [
-                    _c("a", { attrs: { href: "#", target: "_blank" } }, [
-                      _c("img", {
-                        staticStyle: {
-                          border: "0",
-                          display: "block",
-                          outline: "none",
-                          "text-decoration": "none",
-                          width: "250px"
-                        },
-                        attrs: {
-                          alt: "#",
-                          height: "auto",
-                          src:
-                            "https://www.wowmalta.com.mt/image.php/Wow%20Malta%20panorama%20bastians%20barrakka%20sea%20view%20history%20blue.JPG?width=658&image=https://www.wowmalta.com.mt/chest/gallery/sail-through-malta%E2%80%99s-historic-past-with-grand-harbour-cruises/Wow%20Malta%20panorama%20bastians%20barrakka%20sea%20view%20history%20blue.JPG",
-                          width: "250"
-                        }
-                      })
-                    ])
-                  ])
-                ])
-              ])
-            ]
-          )
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c(
-        "td",
-        {
-          staticStyle: {
-            "font-size": "0px",
-            padding: "10px 25px",
-            "padding-top": "0",
-            "padding-bottom": "0",
-            "word-break": "break-word"
-          },
-          attrs: { align: "left" }
-        },
-        [
-          _c(
-            "div",
-            {
-              staticStyle: {
-                "font-family": "Roboto",
-                "font-size": "14px",
-                "line-height": "1.5",
-                "text-align": "left",
-                color: "#000000"
-              }
-            },
-            [
-              _c("div", { staticClass: "article" }, [
-                _c("h2", { staticClass: "heading" }, [
-                  _vm._v("TRANQUIL VIEWS FROM HASTINGS GARDENS")
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "Hastings Gardens are a public garden on the west side of City Gate, the main entrance to Valletta. Located above St John’s Bastion..."
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticStyle: { "text-align": "right" } }, [
-                  _c("a", { attrs: { href: "" } }, [_vm._v("Read more >")])
-                ])
-              ])
-            ]
-          )
-        ]
-      )
+    return _c("div", { staticStyle: { "text-align": "right" } }, [
+      _c("a", { attrs: { href: "" } }, [_vm._v("Read more >")])
     ])
   }
 ]
@@ -83704,6 +83961,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helper_Select2Helper_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__helper_Select2Helper_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config__ = __webpack_require__(11);
 //
 //
 //
@@ -83758,12 +84016,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['banners', 'index'],
+    data: function data() {
+        return {
+            domain: __WEBPACK_IMPORTED_MODULE_2__config__["a" /* apiHost */]
+        };
+    },
+
+    props: ['banners', 'index', 'item'],
     components: {
         'select2': __WEBPACK_IMPORTED_MODULE_0__helper_Select2Helper_vue___default.a,
         'font-awesome-icon': __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome___default.a
@@ -83771,6 +84037,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         deleteRow: function deleteRow(index) {
             this.$emit('deleteRow', index);
+        },
+        input: function input(banner_id) {
+            var _this = this;
+
+            if (banner_id == 0) {
+                this.item.banner = null;
+                this.$emit('setItem', { type: 'banner', item: this.item.banner, index: this.index });
+            } else {
+                axios.get('api/newsletters/' + banner_id + '/banner').then(function (res) {
+                    _this.item.banner = res.data.banner;
+                    _this.$emit('setItem', { type: 'banner', item: _this.item.banner, index: _this.index });
+                }).catch(function (e) {
+                    console.log(e);
+                });
+            }
         }
     }
 });
@@ -83889,7 +84170,55 @@ var render = function() {
                                               }
                                             }),
                                             _vm._v(" "),
-                                            _vm._m(0)
+                                            _c(
+                                              "a",
+                                              {
+                                                attrs: {
+                                                  href: "#",
+                                                  target: "_blank"
+                                                }
+                                              },
+                                              [
+                                                _vm.item.banner == null
+                                                  ? _c("img", {
+                                                      staticStyle: {
+                                                        border: "0",
+                                                        display: "block",
+                                                        outline: "none",
+                                                        "text-decoration":
+                                                          "none",
+                                                        width: "100%"
+                                                      },
+                                                      attrs: {
+                                                        alt: "#",
+                                                        height: "auto",
+                                                        src:
+                                                          _vm.domain +
+                                                          "img/newsletter-banner.jpg",
+                                                        width: "550"
+                                                      }
+                                                    })
+                                                  : _c("img", {
+                                                      staticStyle: {
+                                                        border: "0",
+                                                        display: "block",
+                                                        outline: "none",
+                                                        "text-decoration":
+                                                          "none",
+                                                        width: "100%"
+                                                      },
+                                                      attrs: {
+                                                        alt:
+                                                          _vm.item.banner.title,
+                                                        height: "auto",
+                                                        src:
+                                                          _vm.domain +
+                                                          _vm.item.banner.image,
+                                                        width: "550"
+                                                      }
+                                                    })
+                                              ]
+                                            )
                                           ],
                                           1
                                         )
@@ -83938,14 +84267,19 @@ var render = function() {
                                             _c(
                                               "select2",
                                               {
-                                                attrs: { options: _vm.banners }
+                                                attrs: { options: _vm.banners },
+                                                on: {
+                                                  input: function($event) {
+                                                    _vm.input($event)
+                                                  }
+                                                }
                                               },
                                               [
                                                 _c(
                                                   "option",
                                                   {
                                                     attrs: {
-                                                      disabled: "",
+                                                      selected: "",
                                                       value: "0"
                                                     }
                                                   },
@@ -83976,30 +84310,7 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#", target: "_blank" } }, [
-      _c("img", {
-        staticStyle: {
-          border: "0",
-          display: "block",
-          outline: "none",
-          "text-decoration": "none",
-          width: "100%"
-        },
-        attrs: {
-          alt: "#",
-          height: "auto",
-          src: "https://www.muskimagazin.rs/thm/mm/img/test/beograd-baner.jpg",
-          width: "550"
-        }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -84029,12 +84340,20 @@ var render = function() {
           _vm._v(" "),
           _vm._l(_vm.items, function(item, index) {
             return [
-              _c(item, {
+              _c(item.component, {
                 tag: "component",
-                attrs: { index: index, posts: _vm.posts, banners: _vm.banners },
+                attrs: {
+                  index: index,
+                  posts: _vm.posts,
+                  banners: _vm.banners,
+                  item: item
+                },
                 on: {
                   deleteRow: function($event) {
                     _vm.deleteRow($event)
+                  },
+                  setItem: function($event) {
+                    _vm.setItem($event)
                   }
                 }
               })

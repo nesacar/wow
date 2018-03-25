@@ -17,7 +17,8 @@
                                             <td style="width:550px; position: relative;">
                                                 <font-awesome-icon icon="times" @click="deleteRow(index)" />
                                                 <a href="#" target="_blank">
-                                                    <img alt="#" height="auto" src="https://www.muskimagazin.rs/thm/mm/img/test/beograd-baner.jpg" style="border:0;display:block;outline:none;text-decoration:none;width:100%;" width="550" />
+                                                    <img alt="#" height="auto" :src="domain + 'img/newsletter-banner.jpg'" style="border:0;display:block;outline:none;text-decoration:none;width:100%;" width="550" v-if="item.banner == null" />
+                                                    <img :alt="item.banner.title" height="auto" :src="domain + item.banner.image" style="border:0;display:block;outline:none;text-decoration:none;width:100%;" width="550" v-else />
                                                 </a>
                                             </td>
                                         </tr>
@@ -32,8 +33,8 @@
                                         <tr>
                                             <td style="width:550px;">
 
-                                                <select2 :options="banners">
-                                                    <option disabled value="0">select one</option>
+                                                <select2 :options="banners" @input="input($event)">
+                                                    <option selected value="0">select one</option>
                                                 </select2>
 
                                             </td>
@@ -55,9 +56,15 @@
 <script>
     import Select2 from '../../helper/Select2Helper.vue';
     import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
+    import { apiHost } from '../../../config';
 
     export default {
-        props: ['banners', 'index'],
+        data(){
+            return {
+                domain: apiHost,
+            }
+        },
+        props: ['banners', 'index', 'item'],
         components: {
             'select2': Select2,
             'font-awesome-icon': FontAwesomeIcon,
@@ -65,6 +72,21 @@
         methods: {
             deleteRow(index){
                 this.$emit('deleteRow', index);
+            },
+            input(banner_id){
+                if(banner_id == 0){
+                    this.item.banner = null;
+                    this.$emit('setItem', {type: 'banner', item: this.item.banner, index: this.index});
+                }else{
+                    axios.get('api/newsletters/' + banner_id + '/banner')
+                        .then(res => {
+                            this.item.banner = res.data.banner;
+                            this.$emit('setItem', {type: 'banner', item: this.item.banner, index: this.index});
+                        })
+                        .catch(e => {
+                            console.log(e);
+                        });
+                }
             }
         }
     }

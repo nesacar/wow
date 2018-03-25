@@ -86,13 +86,13 @@
                     });
             },
             createLeading(){
-                this.items.push('leading-post');
+                this.items.push({component: 'leading-post', 'post': null});
             },
             createPosts(){
-                this.items.push('two-posts');
+                this.items.push({component: 'two-posts', 'post1': null, 'post2': null});
             },
             createBanner(){
-                this.items.push('banner');
+                this.items.push({component: 'banner', 'banner': null});
             },
             removeMarkup(index){
                 this.items.splice(index, 1);

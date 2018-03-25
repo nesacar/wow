@@ -12,15 +12,17 @@
         mounted(){
             var vm = this;
             $(this.$el).select2({theme: 'bootstrap', data: this.options}).val(this.value).trigger('change')
-                .on('change', () => {
-                    vm.$emit('input', this.value);
+                .on('change', (value) => {
+                    vm.$emit('input', value.currentTarget.value);
                 })
         },
         watch: {
             value: function (value) {
+                console.log('value');
                 $(this.$el).val(value).trigger('change');
             },
             options: function (options) {
+                console.log('options');
                 $(this.$el).select2({data: options});
             }
         },
@@ -36,6 +38,6 @@
 <style>
     select{
         display: block;
-        width: 90% !important;
+        /*width: 90% !important;*/
     }
 </style>

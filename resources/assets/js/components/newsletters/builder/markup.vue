@@ -34,7 +34,7 @@
             </div>
 
             <template v-for="(item, index) in items">
-                <component :is="item" :index="index" :posts="posts" :banners="banners" @deleteRow="deleteRow($event)"></component>
+                <component :is="item.component" :index="index" :posts="posts" :banners="banners" :item="item" @deleteRow="deleteRow($event)" @setItem="setItem($event)"></component>
             </template>
 
             <div style="Margin:0px auto;max-width:600px;">
@@ -79,6 +79,7 @@
           return {
               posts: {},
               banners: {},
+              attrs: []
           }
         },
         props: ['items'],
@@ -121,8 +122,11 @@
             deleteRow(index){
                 this.$emit('removeMarkup', index);
             },
+            setItem(item){
+                this.attrs[item.index] = item;
+            },
             create(){
-                console.log('create');
+                console.log(this.attrs);
             }
         }
     }
