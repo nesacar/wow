@@ -36,8 +36,8 @@
 
                                             <td style="width:550px; position: relative;">
 
-                                                <select2 :options="posts" @input="input($event)">
-                                                    <option value="0" selected>select one</option>
+                                                <select2 :options="posts" :value="item.item1" :name="item.component" @input="input($event)">
+                                                    <option value="0">select one</option>
                                                 </select2>
 
                                             </td>
@@ -80,7 +80,12 @@
               domain: apiHost
           }
         },
-        props: ['posts', 'index', 'item'],
+        props: ['posts', 'index', 'item', 'edit'],
+        created(){
+            if(this.edit){
+                this.$emit('setItem', {type: 'post', item1: this.item.post, item2: null, index: this.index});
+            }
+        },
         components: {
             'select2': Select2,
             'font-awesome-icon': FontAwesomeIcon
@@ -92,18 +97,18 @@
             input(post_id){
                 if(post_id == 0){
                     this.item.post = null;
-                    this.$emit('setItem', {type: 'post', item: this.item.post, index: this.index});
+                    this.$emit('setItem', {type: 'post', item1: this.item.post, item2: null, index: this.index});
                 }else{
                     axios.get('api/newsletters/' + post_id + '/post')
                         .then(res => {
                             this.item.post = res.data.post;
-                            this.$emit('setItem', {type: 'post', item: this.item.post, index: this.index});
+                            this.$emit('setItem', {type: 'post', item1: this.item.post, item2: null, index: this.index});
                         })
                         .catch(e => {
                             console.log(e);
                         });
                 }
-            }
+            },
         }
     }
 </script>

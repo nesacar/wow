@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Banner;
 use App\Http\Requests\CreateNewsletterRequest;
 use App\Newsletter;
+use App\Newsletter_templates;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -37,21 +38,18 @@ class NewslettersController extends Controller
         $newsletter->verification = str_random(20);
         $newsletter->save();
 
-        if(count(request('posts'))>0){
-            $br=0;
-            foreach (request('posts') as $post){
-                $br++;
-                $newsletter->post()->attach($post, ['order' => $br]);
+        if(count(request('template'))>0){
+            foreach (request('template') as $template){
+                $new = new Newsletter_templates();
+                $new->newsletter_id = $newsletter->id;
+                $new->type = $template['type'];
+                $new->index = $template['index'];
+                $new->item1 = $template['item1']['id'];
+                $new->item2 = $template['item2']? $template['item2']['id'] : null;
+                $new->save();
             }
         }
 
-        if(count(request('banners'))>0){
-            $br=0;
-            foreach (request('banners') as $banner){
-                $br++;
-                $newsletter->banner()->attach($banner, ['order' => $br]);
-            }
-        }
 
         return response()->json([
             'newsletter' => $newsletter
@@ -66,10 +64,11 @@ class NewslettersController extends Controller
      */
     public function show($id)
     {
-        $newsletter = Newsletter::find($id);
+        $newsletter = Newsletter::with('Template')->where('id', $id)->get();
+        Newsletter::setNewsletter($newsletter);
 
         return response()->json([
-            'newsletter' => $newsletter
+            'newsletter' => $newsletter[0]
         ]);
     }
 
@@ -84,24 +83,24 @@ class NewslettersController extends Controller
     {
         $newsletter = Newsletter::find($id);
         $newsletter->title = request('title');
-        $newsletter->verification = str_random(20);
         $newsletter->update();
 
-        $newsletter->post()->sync([]);
-        if(count(request('posts'))>0){
-            $br=0;
-            foreach (request('posts') as $post){
-                $br++;
-                $newsletter->post()->attach($post, ['order' => $br]);
+        if(count(request('template'))>0){
+            $olds = Newsletter_templates::where('newsletter_id', $newsletter->id)->get();
+            if(count($olds)>0){
+                foreach($olds as $old) {
+                    $old->delete();
+                }
             }
-        }
 
-        $newsletter->banner()->sync([]);
-        if(count(request('banners'))>0){
-            $br=0;
-            foreach (request('banners') as $banner){
-                $br++;
-                $newsletter->banner()->attach($banner, ['order' => $br]);
+            foreach (request('template') as $template){
+                $new = new Newsletter_templates();
+                $new->newsletter_id = $newsletter->id;
+                $new->type = $template['type'];
+                $new->index = $template['index'];
+                $new->item1 = $template['item1']['id'];
+                $new->item2 = $template['item2']? $template['item2']['id'] : null;
+                $new->save();
             }
         }
 

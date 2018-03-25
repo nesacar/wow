@@ -23,13 +23,9 @@
                 <div class="col-sm-4">
                     <div class="card stack">
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" name="email" class="form-control" id="email" placeholder="Email address" v-model="newsletter.email">
-                            <small class="form-text text-muted" v-if="error != null && error.email">{{ error.email[0] }}</small>
-                        </div>
-                        <div class="form-group">
-                            <label>Block</label><br>
-                            <switches v-model="newsletter.block" theme="bootstrap" color="primary"></switches>
+                            <label for="title">Title</label>
+                            <input type="text" name="title" class="form-control" id="title" placeholder="Title" v-model="newsletter.title">
+                            <small class="form-text text-muted" v-if="error != null && error.title">{{ error.title[0] }}</small>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-primary" @click="createLeading()">Leading Post</button>
@@ -40,7 +36,7 @@
                 </div>
                 <div class="col-sm-8">
 
-                    <markup :items="items" @removeMarkup="removeMarkup($event)"></markup>
+                    <markup :items="items" :edit="false" @removeMarkup="removeMarkup($event)" @create="createNewsletter($event)"></markup>
 
                 </div>
             </div>
@@ -98,6 +94,24 @@
                 this.items.splice(index, 1);
                 console.log('deleted: ' + index);
             },
+            createNewsletter(template){
+                let data = {title: this.newsletter.title, template};
+                console.log(data);
+                axios.post('api/newsletters', data)
+                    .then(res => {
+                        swal({
+                            position: 'center',
+                            type: 'success',
+                            title: 'Success',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        this.$router.push('/newsletters');
+                    }).catch(e => {
+                        console.log(e.response);
+                        this.error = e.response.data.errors;
+                    });
+            }
         }
     }
 </script>

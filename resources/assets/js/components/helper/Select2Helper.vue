@@ -18,11 +18,9 @@
         },
         watch: {
             value: function (value) {
-                console.log('value');
                 $(this.$el).val(value).trigger('change');
             },
             options: function (options) {
-                console.log('options');
                 $(this.$el).select2({data: options});
             }
         },

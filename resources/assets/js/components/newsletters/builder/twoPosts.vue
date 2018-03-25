@@ -12,7 +12,7 @@
                                 <td style="vertical-align:bottom;padding:0 0 15px;">
                                     <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                                         <!-- article -->
-                                        <<tr>
+                                        <tr>
                                         <td align="center" style="font-size:0px;padding:10px 25px;padding-top:0;padding-bottom:0;word-break:break-word;">
                                             <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
                                                 <tbody>
@@ -35,8 +35,8 @@
                                                     <tr>
                                                         <td style="width:250px; padding-top: 20px;">
 
-                                                            <select2 :options="posts" @input="input1($event)">
-                                                                <option selected value="0">select one</option>
+                                                            <select2 :options="posts" :value="item.item1" :name="item.component" @input="input1($event)">
+                                                                <option value="0">select one</option>
                                                             </select2>
 
                                                         </td>
@@ -97,8 +97,8 @@
                                                     <tr>
                                                         <td style="width:250px; padding-top: 20px;">
 
-                                                            <select2 :options="posts" @input="input2($event)">
-                                                                <option selected value="0">select one</option>
+                                                            <select2 :options="posts" :value="item.item2" :name="item.component" @input="input2($event)">
+                                                                <option value="0">select one</option>
                                                             </select2>
 
                                                         </td>
@@ -147,10 +147,15 @@
               domain: apiHost
           }
         },
-        props: ['posts', 'index', 'item'],
+        props: ['posts', 'index', 'item', 'edit'],
         components: {
             'select2': Select2,
             'font-awesome-icon': FontAwesomeIcon
+        },
+        created(){
+            if(this.edit){
+                this.$emit('setItem', {type: 'posts', item1: this.item.post1, item2: this.item.post2, index: this.index});
+            }
         },
         methods: {
             deleteRow(index){

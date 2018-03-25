@@ -27,7 +27,7 @@
                             <tr v-for="row in newsletters">
                                 <td>{{ row.id }}</td>
                                 <td>{{ row.title }}</td>
-                                <td>{{ row.last_send }}</td>
+                                <td v-if="row.last_send">{{ row.last_send }}</td> <td v-else> Never </td>
                                 <td>
                                     <font-awesome-icon icon="pencil-alt" @click="editRow(row['id'])"/>
                                     <font-awesome-icon icon="times" @click="deleteRow(row)" />
@@ -63,10 +63,10 @@
             'font-awesome-icon': FontAwesomeIcon
         },
         created(){
-            this.getSubs();
+            this.getNewsletters();
         },
         methods: {
-            getSubs(){
+            getNewsletters(){
                 axios.get('api/newsletters')
                     .then(res => {
                         this.newsletters = res.data.newsletters.data;

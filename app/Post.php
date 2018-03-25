@@ -27,21 +27,6 @@ class Post extends Model
         return $post->image;
     }
 
-    public static function base64UploadPdf($post_id, $pdf){
-        $post = self::find($post_id);
-        if($post->pdf != null){
-            File::delete($post->pdf);
-        }
-        $exploaded = explode(',', $pdf);
-        $data = base64_decode($exploaded[1]);
-        $filename = time() . '-' . $post->id . '.pdf';
-        $path = public_path('uploads/posts/press/');
-        file_put_contents($path . $filename, $data);
-        $post->pdf = 'uploads/posts/press/' . $filename;
-        $post->update();
-        return $post->pdf;
-    }
-
     public static function getPostLink($post){
         $category = Category::find($post->category_id);
         return url($category->slug . '/' . $post->slug . '/' . $post->id);

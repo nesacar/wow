@@ -34,7 +34,7 @@
             </div>
 
             <template v-for="(item, index) in items">
-                <component :is="item.component" :index="index" :posts="posts" :banners="banners" :item="item" @deleteRow="deleteRow($event)" @setItem="setItem($event)"></component>
+                <component :is="item.component" :index="index" :posts="posts" :banners="banners" :item="item" :edit="edit" @deleteRow="deleteRow($event)" @setItem="setItem($event)"></component>
             </template>
 
             <div style="Margin:0px auto;max-width:600px;">
@@ -62,7 +62,7 @@
                 </table>
             </div>
             <div>
-                <button class="btn btn-primary" @click="create()" v-if="items.length > 0">Create</button>
+                <button class="btn btn-primary" @click="create()" v-if="items.length > 0">Confirm</button>
             </div>
 
         </div>
@@ -79,10 +79,10 @@
           return {
               posts: {},
               banners: {},
-              attrs: []
+              attrs: [],
           }
         },
-        props: ['items'],
+        props: ['items', 'edit'],
         components: {
             'leading-post': leadingPost,
             'two-posts': twoPosts,
@@ -120,14 +120,15 @@
                     });
             },
             deleteRow(index){
+                this.attrs.splice(index, 1);
                 this.$emit('removeMarkup', index);
             },
             setItem(item){
                 this.attrs[item.index] = item;
             },
             create(){
-                console.log(this.attrs);
-            }
+                this.$emit('create', this.attrs);
+            },
         }
     }
 </script>

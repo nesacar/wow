@@ -33,8 +33,8 @@
                                         <tr>
                                             <td style="width:550px;">
 
-                                                <select2 :options="banners" @input="input($event)">
-                                                    <option selected value="0">select one</option>
+                                                <select2 :options="banners" :value="item.item1" :name="item.component" @input="input($event)">
+                                                    <option value="0">select one</option>
                                                 </select2>
 
                                             </td>
@@ -64,7 +64,12 @@
                 domain: apiHost,
             }
         },
-        props: ['banners', 'index', 'item'],
+        props: ['banners', 'index', 'item', 'edit'],
+        created(){
+            if(this.edit){
+                this.$emit('setItem', {type: 'banner', item1: this.item.banner, item2: null,  index: this.index});
+            }
+        },
         components: {
             'select2': Select2,
             'font-awesome-icon': FontAwesomeIcon,
@@ -76,12 +81,12 @@
             input(banner_id){
                 if(banner_id == 0){
                     this.item.banner = null;
-                    this.$emit('setItem', {type: 'banner', item: this.item.banner, index: this.index});
+                    this.$emit('setItem', {type: 'banner', item1: this.item.banner, item2: null, index: this.index});
                 }else{
                     axios.get('api/newsletters/' + banner_id + '/banner')
                         .then(res => {
                             this.item.banner = res.data.banner;
-                            this.$emit('setItem', {type: 'banner', item: this.item.banner, index: this.index});
+                            this.$emit('setItem', {type: 'banner', item1: this.item.banner, item2: null,  index: this.index});
                         })
                         .catch(e => {
                             console.log(e);

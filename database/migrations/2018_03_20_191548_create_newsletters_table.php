@@ -24,30 +24,6 @@ class CreateNewslettersTable extends Migration
             $table->timestamp('last_send')->nullable();
             $table->timestamps();
         });
-
-        Schema::create('banner_newsletter', function(Blueprint $table)
-        {
-            $table->integer('banner_id')->unsigned()->index();
-            $table->foreign('banner_id')->references('id')->on('banners')->onDelete('cascade');
-
-            $table->integer('newsletter_id')->unsigned()->index();
-            $table->foreign('newsletter_id')->references('id')->on('newsletters')->onDelete('cascade');
-
-            $table->integer('order')->default(1);
-            $table->timestamps();
-        });
-
-        Schema::create('newsletter_post', function(Blueprint $table)
-        {
-            $table->integer('newsletter_id')->unsigned()->index();
-            $table->foreign('newsletter_id')->references('id')->on('newsletters')->onDelete('cascade');
-
-            $table->integer('post_id')->unsigned()->index();
-            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
-
-            $table->integer('order')->default(1);
-            $table->timestamps();
-        });
     }
 
     /**
@@ -58,7 +34,5 @@ class CreateNewslettersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('newsletters');
-        Schema::dropIfExists('banner_newsletter');
-        Schema::dropIfExists('newsletter_post');
     }
 }

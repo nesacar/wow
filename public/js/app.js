@@ -868,7 +868,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 2 */
@@ -4753,6 +4753,16 @@ module.exports = Component.exports
 
 /***/ }),
 /* 9 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return apiHost; });
+var baseUrl = 'http://localhost/wow/public/';
+
+var apiHost = baseUrl;
+
+/***/ }),
+/* 10 */
 /***/ (function(module, exports) {
 
 var g;
@@ -4779,22 +4789,12 @@ module.exports = g;
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 !function(){if("undefined"!=typeof document){var t=document.head||document.getElementsByTagName("head")[0],e=document.createElement("style"),n=' .ckeditor::after { content: ""; display: table; clear: both; } ';e.type="text/css",e.styleSheet?e.styleSheet.cssText=n:e.appendChild(document.createTextNode(n)),t.appendChild(e)}}();var inc=(new Date).getTime(),Ckeditor={render:function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",{staticClass:"ckeditor"},[n("textarea",{attrs:{name:t.name,id:t.id,types:t.types,config:t.config},domProps:{value:t.value}})])},staticRenderFns:[],name:"vue-ckeditor",props:{name:{type:String,default:function(){return"editor-"+ ++inc}},value:{type:String},id:{type:String,default:function(){return"editor-"+inc}},types:{type:String,default:function(){return"classic"}},config:{type:Object,default:function(){}}},data:function(){return{destroyed:!1}},computed:{instance:function(){return CKEDITOR.instances[this.id]}},watch:{value:function(t){try{this.instance&&this.update(t)}catch(t){}}},mounted:function(){this.create()},beforeDestroy:function(){this.destroy()},methods:{create:function(){var t=this;"undefined"==typeof CKEDITOR?console.log("CKEDITOR is missing (http://ckeditor.com/)"):("inline"===this.types?CKEDITOR.inline(this.id,this.config):CKEDITOR.replace(this.id,this.config),this.instance.setData(this.value),this.instance.on("instanceReady",function(){t.instance.setData(t.value)}),this.instance.on("change",this.onChange),this.instance.on("blur",this.onBlur),this.instance.on("focus",this.onFocus))},update:function(t){this.instance.getData()!==t&&this.instance.setData(t,{internal:!1})},destroy:function(){this.destroyed||(this.instance.focusManager.blur(!0),this.instance.removeAllListeners(),this.instance.destroy(),this.destroyed=!0)},onChange:function(){var t=this.instance.getData();t!==this.value&&this.$emit("input",t)},onBlur:function(){this.$emit("blur",this.instance)},onFocus:function(){this.$emit("focus",this.instance)}}};/* harmony default export */ __webpack_exports__["a"] = (Ckeditor);
 
-
-/***/ }),
-/* 11 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return apiHost; });
-var baseUrl = 'http://localhost/wow/public/';
-
-var apiHost = baseUrl;
 
 /***/ }),
 /* 12 */
@@ -26288,7 +26288,7 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(54).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(54).setImmediate))
 
 /***/ }),
 /* 16 */
@@ -28934,7 +28934,7 @@ Popper.Defaults = Defaults;
 /* harmony default export */ __webpack_exports__["default"] = (Popper);
 //# sourceMappingURL=popper.js.map
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(9)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(10)))
 
 /***/ }),
 /* 20 */
@@ -48608,7 +48608,7 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(18)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(18)(module)))
 
 /***/ }),
 /* 34 */
@@ -53463,7 +53463,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
                          (typeof global !== "undefined" && global.clearImmediate) ||
                          (this && this.clearImmediate);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 55 */
@@ -53656,7 +53656,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(21)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(21)))
 
 /***/ }),
 /* 56 */
@@ -53868,7 +53868,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome__);
 //
@@ -54305,7 +54305,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome__);
 //
@@ -55640,11 +55640,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     watch: {
         value: function value(_value) {
-            console.log('value');
             $(this.$el).val(_value).trigger('change');
         },
         options: function options(_options) {
-            console.log('options');
             $(this.$el).select2({ data: _options });
         }
     },
@@ -68390,7 +68388,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_sweetalert2__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_switches__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_switches___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_switches__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_ckeditor2__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_ckeditor2__ = __webpack_require__(11);
 //
 //
 //
@@ -69003,7 +69001,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_sweetalert2__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_switches__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_switches___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_switches__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_ckeditor2__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_ckeditor2__ = __webpack_require__(11);
 //
 //
 //
@@ -69943,7 +69941,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__helper_UploadImageHelper_vue__ = __webpack_require__(7);
@@ -69954,7 +69952,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_sweetalert2__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_switches__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_switches___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_vue_switches__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue_ckeditor2__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue_ckeditor2__ = __webpack_require__(11);
 //
 //
 //
@@ -70500,7 +70498,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__helper_UploadImageHelper_vue__ = __webpack_require__(7);
@@ -70511,7 +70509,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_sweetalert2__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_switches__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_switches___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_vue_switches__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue_ckeditor2__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue_ckeditor2__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vue2_dropzone__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vue2_dropzone___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_vue2_dropzone__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue2_dropzone_dist_vue2Dropzone_css__ = __webpack_require__(29);
@@ -75331,7 +75329,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_sweetalert2__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_switches__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_switches___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_switches__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_ckeditor2__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_ckeditor2__ = __webpack_require__(11);
 //
 //
 //
@@ -78576,7 +78574,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_sweetalert2__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_switches__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_switches___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_switches__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_ckeditor2__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_ckeditor2__ = __webpack_require__(11);
 //
 //
 //
@@ -81605,11 +81603,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         'font-awesome-icon': __WEBPACK_IMPORTED_MODULE_2__fortawesome_vue_fontawesome___default.a
     },
     created: function created() {
-        this.getSubs();
+        this.getNewsletters();
     },
 
     methods: {
-        getSubs: function getSubs() {
+        getNewsletters: function getNewsletters() {
             var _this = this;
 
             axios.get('api/newsletters').then(function (res) {
@@ -81705,7 +81703,9 @@ var render = function() {
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(row.title))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(row.last_send))]),
+                    row.last_send
+                      ? _c("td", [_vm._v(_vm._s(row.last_send))])
+                      : _c("td", [_vm._v(" Never ")]),
                     _vm._v(" "),
                     _c(
                       "td",
@@ -81936,10 +81936,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 
 
@@ -81991,6 +81987,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         removeMarkup: function removeMarkup(index) {
             this.items.splice(index, 1);
             console.log('deleted: ' + index);
+        },
+        createNewsletter: function createNewsletter(template) {
+            var _this2 = this;
+
+            var data = { title: this.newsletter.title, template: template };
+            console.log(data);
+            axios.post('api/newsletters', data).then(function (res) {
+                __WEBPACK_IMPORTED_MODULE_2_sweetalert2___default()({
+                    position: 'center',
+                    type: 'success',
+                    title: 'Success',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                _this2.$router.push('/newsletters');
+            }).catch(function (e) {
+                console.log(e.response);
+                _this2.error = e.response.data.errors;
+            });
         }
     }
 });
@@ -82224,7 +82239,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
-    props: ['items'],
+    props: ['items', 'edit'],
     components: {
         'leading-post': __WEBPACK_IMPORTED_MODULE_0__leadingPost_vue___default.a,
         'two-posts': __WEBPACK_IMPORTED_MODULE_1__twoPosts_vue___default.a,
@@ -82263,13 +82278,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         deleteRow: function deleteRow(index) {
+            this.attrs.splice(index, 1);
             this.$emit('removeMarkup', index);
         },
         setItem: function setItem(item) {
             this.attrs[item.index] = item;
         },
         create: function create() {
-            console.log(this.attrs);
+            this.$emit('create', this.attrs);
         }
     }
 });
@@ -82375,7 +82391,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helper_Select2Helper_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__helper_Select2Helper_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config__ = __webpack_require__(9);
 //
 //
 //
@@ -82459,7 +82475,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
-    props: ['posts', 'index', 'item'],
+    props: ['posts', 'index', 'item', 'edit'],
+    created: function created() {
+        if (this.edit) {
+            this.$emit('setItem', { type: 'post', item1: this.item.post, item2: null, index: this.index });
+        }
+    },
+
     components: {
         'select2': __WEBPACK_IMPORTED_MODULE_0__helper_Select2Helper_vue___default.a,
         'font-awesome-icon': __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome___default.a
@@ -82473,11 +82495,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             if (post_id == 0) {
                 this.item.post = null;
-                this.$emit('setItem', { type: 'post', item: this.item.post, index: this.index });
+                this.$emit('setItem', { type: 'post', item1: this.item.post, item2: null, index: this.index });
             } else {
                 axios.get('api/newsletters/' + post_id + '/post').then(function (res) {
                     _this.item.post = res.data.post;
-                    _this.$emit('setItem', { type: 'post', item: _this.item.post, index: _this.index });
+                    _this.$emit('setItem', { type: 'post', item1: _this.item.post, item2: null, index: _this.index });
                 }).catch(function (e) {
                     console.log(e);
                 });
@@ -82704,7 +82726,11 @@ var render = function() {
                                             _c(
                                               "select2",
                                               {
-                                                attrs: { options: _vm.posts },
+                                                attrs: {
+                                                  options: _vm.posts,
+                                                  value: _vm.item.item1,
+                                                  name: _vm.item.component
+                                                },
                                                 on: {
                                                   input: function($event) {
                                                     _vm.input($event)
@@ -82714,12 +82740,7 @@ var render = function() {
                                               [
                                                 _c(
                                                   "option",
-                                                  {
-                                                    attrs: {
-                                                      value: "0",
-                                                      selected: ""
-                                                    }
-                                                  },
+                                                  { attrs: { value: "0" } },
                                                   [_vm._v("select one")]
                                                 )
                                               ]
@@ -82916,7 +82937,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helper_Select2Helper_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__helper_Select2Helper_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config__ = __webpack_require__(9);
 //
 //
 //
@@ -83067,11 +83088,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
-    props: ['posts', 'index', 'item'],
+    props: ['posts', 'index', 'item', 'edit'],
     components: {
         'select2': __WEBPACK_IMPORTED_MODULE_0__helper_Select2Helper_vue___default.a,
         'font-awesome-icon': __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome___default.a
     },
+    created: function created() {
+        if (this.edit) {
+            this.$emit('setItem', { type: 'posts', item1: this.item.post1, item2: this.item.post2, index: this.index });
+        }
+    },
+
     methods: {
         deleteRow: function deleteRow(index) {
             this.$emit('deleteRow', index);
@@ -83199,9 +83226,6 @@ var render = function() {
                                       }
                                     },
                                     [
-                                      _vm._v(
-                                        "\n                                    <"
-                                      ),
                                       _c("tr", [
                                         _c(
                                           "td",
@@ -83356,7 +83380,13 @@ var render = function() {
                                                           "select2",
                                                           {
                                                             attrs: {
-                                                              options: _vm.posts
+                                                              options:
+                                                                _vm.posts,
+                                                              value:
+                                                                _vm.item.item1,
+                                                              name:
+                                                                _vm.item
+                                                                  .component
                                                             },
                                                             on: {
                                                               input: function(
@@ -83373,7 +83403,6 @@ var render = function() {
                                                               "option",
                                                               {
                                                                 attrs: {
-                                                                  selected: "",
                                                                   value: "0"
                                                                 }
                                                               },
@@ -83692,7 +83721,13 @@ var render = function() {
                                                           "select2",
                                                           {
                                                             attrs: {
-                                                              options: _vm.posts
+                                                              options:
+                                                                _vm.posts,
+                                                              value:
+                                                                _vm.item.item2,
+                                                              name:
+                                                                _vm.item
+                                                                  .component
                                                             },
                                                             on: {
                                                               input: function(
@@ -83709,7 +83744,6 @@ var render = function() {
                                                               "option",
                                                               {
                                                                 attrs: {
-                                                                  selected: "",
                                                                   value: "0"
                                                                 }
                                                               },
@@ -83961,7 +83995,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helper_Select2Helper_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__helper_Select2Helper_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config__ = __webpack_require__(9);
 //
 //
 //
@@ -84029,7 +84063,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
-    props: ['banners', 'index', 'item'],
+    props: ['banners', 'index', 'item', 'edit'],
+    created: function created() {
+        if (this.edit) {
+            this.$emit('setItem', { type: 'banner', item1: this.item.banner, item2: null, index: this.index });
+        }
+    },
+
     components: {
         'select2': __WEBPACK_IMPORTED_MODULE_0__helper_Select2Helper_vue___default.a,
         'font-awesome-icon': __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome___default.a
@@ -84043,11 +84083,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             if (banner_id == 0) {
                 this.item.banner = null;
-                this.$emit('setItem', { type: 'banner', item: this.item.banner, index: this.index });
+                this.$emit('setItem', { type: 'banner', item1: this.item.banner, item2: null, index: this.index });
             } else {
                 axios.get('api/newsletters/' + banner_id + '/banner').then(function (res) {
                     _this.item.banner = res.data.banner;
-                    _this.$emit('setItem', { type: 'banner', item: _this.item.banner, index: _this.index });
+                    _this.$emit('setItem', { type: 'banner', item1: _this.item.banner, item2: null, index: _this.index });
                 }).catch(function (e) {
                     console.log(e);
                 });
@@ -84267,7 +84307,11 @@ var render = function() {
                                             _c(
                                               "select2",
                                               {
-                                                attrs: { options: _vm.banners },
+                                                attrs: {
+                                                  options: _vm.banners,
+                                                  value: _vm.item.item1,
+                                                  name: _vm.item.component
+                                                },
                                                 on: {
                                                   input: function($event) {
                                                     _vm.input($event)
@@ -84277,12 +84321,7 @@ var render = function() {
                                               [
                                                 _c(
                                                   "option",
-                                                  {
-                                                    attrs: {
-                                                      selected: "",
-                                                      value: "0"
-                                                    }
-                                                  },
+                                                  { attrs: { value: "0" } },
                                                   [_vm._v("select one")]
                                                 )
                                               ]
@@ -84346,7 +84385,8 @@ var render = function() {
                   index: index,
                   posts: _vm.posts,
                   banners: _vm.banners,
-                  item: item
+                  item: item,
+                  edit: _vm.edit
                 },
                 on: {
                   deleteRow: function($event) {
@@ -84374,7 +84414,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("Create")]
+                  [_vm._v("Confirm")]
                 )
               : _vm._e()
           ])
@@ -84726,62 +84766,41 @@ var render = function() {
         _c("div", { staticClass: "col-sm-4" }, [
           _c("div", { staticClass: "card stack" }, [
             _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
+              _c("label", { attrs: { for: "title" } }, [_vm._v("Title")]),
               _vm._v(" "),
               _c("input", {
                 directives: [
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.newsletter.email,
-                    expression: "newsletter.email"
+                    value: _vm.newsletter.title,
+                    expression: "newsletter.title"
                   }
                 ],
                 staticClass: "form-control",
                 attrs: {
-                  type: "email",
-                  name: "email",
-                  id: "email",
-                  placeholder: "Email address"
+                  type: "text",
+                  name: "title",
+                  id: "title",
+                  placeholder: "Title"
                 },
-                domProps: { value: _vm.newsletter.email },
+                domProps: { value: _vm.newsletter.title },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.newsletter, "email", $event.target.value)
+                    _vm.$set(_vm.newsletter, "title", $event.target.value)
                   }
                 }
               }),
               _vm._v(" "),
-              _vm.error != null && _vm.error.email
+              _vm.error != null && _vm.error.title
                 ? _c("small", { staticClass: "form-text text-muted" }, [
-                    _vm._v(_vm._s(_vm.error.email[0]))
+                    _vm._v(_vm._s(_vm.error.title[0]))
                   ])
                 : _vm._e()
             ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "form-group" },
-              [
-                _c("label", [_vm._v("Block")]),
-                _c("br"),
-                _vm._v(" "),
-                _c("switches", {
-                  attrs: { theme: "bootstrap", color: "primary" },
-                  model: {
-                    value: _vm.newsletter.block,
-                    callback: function($$v) {
-                      _vm.$set(_vm.newsletter, "block", $$v)
-                    },
-                    expression: "newsletter.block"
-                  }
-                })
-              ],
-              1
-            ),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
               _c(
@@ -84831,10 +84850,13 @@ var render = function() {
           { staticClass: "col-sm-8" },
           [
             _c("markup", {
-              attrs: { items: _vm.items },
+              attrs: { items: _vm.items, edit: false },
               on: {
                 removeMarkup: function($event) {
                   _vm.removeMarkup($event)
+                },
+                create: function($event) {
+                  _vm.createNewsletter($event)
                 }
               }
             })
@@ -84871,6 +84893,10 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(244)
+}
 var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(220)
@@ -84879,7 +84905,7 @@ var __vue_template__ = __webpack_require__(221)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -84925,6 +84951,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_switches___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_switches__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_sweetalert2__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_sweetalert2__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__newsletters_builder_markup_vue__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__newsletters_builder_markup_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__newsletters_builder_markup_vue__);
 //
 //
 //
@@ -84971,8 +84999,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
+
 
 
 
@@ -84981,46 +85008,89 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            subscriber: {},
-            error: null
+            newsletter: {},
+            posts: {},
+            error: null,
+            items: []
         };
     },
 
     components: {
         'font-awesome-icon': __WEBPACK_IMPORTED_MODULE_0__fortawesome_vue_fontawesome___default.a,
-        'switches': __WEBPACK_IMPORTED_MODULE_1_vue_switches___default.a
+        'switches': __WEBPACK_IMPORTED_MODULE_1_vue_switches___default.a,
+        'markup': __WEBPACK_IMPORTED_MODULE_3__newsletters_builder_markup_vue___default.a
     },
     created: function created() {
-        this.getUser();
+        this.getPosts();
+        this.getNewsletter();
     },
 
     methods: {
-        submit: function submit() {
+        getPosts: function getPosts() {
             var _this = this;
 
-            axios.patch('api/subscribers/' + this.subscriber.id, this.subscriber).then(function (res) {
-                __WEBPACK_IMPORTED_MODULE_2_sweetalert2___default()({
-                    position: 'center',
-                    type: 'success',
-                    title: 'Edit',
-                    showConfirmButton: false,
-                    timer: 1500
+            axios.get('api/posts/lists').then(function (res) {
+                _this.posts = _.map(res.data.posts, function (data) {
+                    var pick = _.pick(data, 'title', 'id');
+                    var object = { id: pick.id, text: pick.title };
+                    return object;
                 });
-                _this.error = null;
             }).catch(function (e) {
-                console.log(e.response);
-                _this.error = e.response.data.errors;
+                console.log(e);
             });
         },
-        getUser: function getUser() {
+        getNewsletter: function getNewsletter() {
             var _this2 = this;
 
-            axios.get('api/subscribers/' + this.$route.params.id).then(function (res) {
-                _this2.subscriber = res.data.subscriber;
+            axios.get('api/newsletters/' + this.$route.params.id).then(function (res) {
+                if (res.data.newsletter != null) {
+                    console.log(res.data.newsletter);
+                    _this2.newsletter.id = res.data.newsletter.id;
+                    _this2.newsletter.title = res.data.newsletter.title;
+                    _this2.setItems(res.data.newsletter.template);
+                }
             }).catch(function (e) {
                 console.log(e);
                 _this2.error = e.response.data.errors;
             });
+        },
+        createLeading: function createLeading() {
+            this.items.push({ component: 'leading-post', 'post': null });
+        },
+        createPosts: function createPosts() {
+            this.items.push({ component: 'two-posts', 'post1': null, 'post2': null });
+        },
+        createBanner: function createBanner() {
+            this.items.push({ component: 'banner', 'banner': null });
+        },
+        removeMarkup: function removeMarkup(index) {
+            this.items.splice(index, 1);
+        },
+        editNewsletter: function editNewsletter(template) {
+            var _this3 = this;
+
+            var data = { title: this.newsletter.title, template: template };
+            axios.patch('api/newsletters/' + this.newsletter.id, data).then(function (res) {
+                __WEBPACK_IMPORTED_MODULE_2_sweetalert2___default()({
+                    position: 'center',
+                    type: 'success',
+                    title: 'Success',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                _this3.$router.push('/newsletters');
+            }).catch(function (e) {
+                console.log(e.response);
+                _this3.error = e.response.data.errors;
+            });
+        },
+        setItems: function setItems(template) {
+            if (template.length > 0) {
+                for (var i = 0; i < template.length; i++) {
+                    this.items.push(template[i]);
+                }
+                console.log(this.items);
+            }
         }
     }
 });
@@ -85054,14 +85124,14 @@ var render = function() {
                 [
                   _c(
                     "router-link",
-                    { attrs: { tag: "a", to: "/subscribers" } },
-                    [_vm._v("Subscribers")]
+                    { attrs: { tag: "a", to: "/newsletters" } },
+                    [_vm._v("Newsletters")]
                   )
                 ],
                 1
               ),
               _vm._v(" "),
-              _c("li", [_vm._v("Edit Subscriber")])
+              _c("li", [_vm._v("Edit Newsletter")])
             ])
           ])
         ])
@@ -85070,84 +85140,106 @@ var render = function() {
       _c("div", { staticClass: "row bela" }, [
         _vm._m(0),
         _vm._v(" "),
-        _c("div", { staticClass: "col-sm-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c(
-              "form",
-              {
+        _c("div", { staticClass: "col-sm-4" }, [
+          _c("div", { staticClass: "card stack" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "title" } }, [_vm._v("Title")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.newsletter.title,
+                    expression: "newsletter.title"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  name: "title",
+                  id: "title",
+                  placeholder: "Title"
+                },
+                domProps: { value: _vm.newsletter.title },
                 on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    _vm.submit()
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.newsletter, "title", $event.target.value)
                   }
                 }
-              },
-              [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.subscriber.email,
-                        expression: "subscriber.email"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "email",
-                      name: "email",
-                      id: "email",
-                      placeholder: "Email address"
-                    },
-                    domProps: { value: _vm.subscriber.email },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.subscriber, "email", $event.target.value)
-                      }
+              }),
+              _vm._v(" "),
+              _vm.error != null && _vm.error.title
+                ? _c("small", { staticClass: "form-text text-muted" }, [
+                    _vm._v(_vm._s(_vm.error.title[0]))
+                  ])
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  on: {
+                    click: function($event) {
+                      _vm.createLeading()
                     }
-                  }),
-                  _vm._v(" "),
-                  _vm.error != null && _vm.error.email
-                    ? _c("small", { staticClass: "form-text text-muted" }, [
-                        _vm._v(_vm._s(_vm.error.email[0]))
-                      ])
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("label", [_vm._v("Block")]),
-                    _c("br"),
-                    _vm._v(" "),
-                    _c("switches", {
-                      attrs: { theme: "bootstrap", color: "primary" },
-                      model: {
-                        value: _vm.subscriber.block,
-                        callback: function($$v) {
-                          _vm.$set(_vm.subscriber, "block", $$v)
-                        },
-                        expression: "subscriber.block"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _vm._m(1)
-              ]
-            )
+                  }
+                },
+                [_vm._v("Leading Post")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  on: {
+                    click: function($event) {
+                      _vm.createPosts()
+                    }
+                  }
+                },
+                [_vm._v("Two Posts")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  on: {
+                    click: function($event) {
+                      _vm.createBanner()
+                    }
+                  }
+                },
+                [_vm._v("Banner")]
+              )
+            ])
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-sm-4" })
+        _c(
+          "div",
+          { staticClass: "col-sm-8" },
+          [
+            _c("markup", {
+              attrs: { items: _vm.items, edit: true },
+              on: {
+                removeMarkup: function($event) {
+                  _vm.removeMarkup($event)
+                },
+                create: function($event) {
+                  _vm.editNewsletter($event)
+                }
+              }
+            })
+          ],
+          1
+        )
       ])
     ])
   ])
@@ -85159,16 +85251,8 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-md-12" }, [
       _c("div", { staticClass: "card" }, [
-        _c("h5", [_vm._v("Edit Subscriber")])
+        _c("h5", [_vm._v("Edit Newsletter")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Edit")])
     ])
   }
 ]
@@ -85348,6 +85432,47 @@ module.exports = { prefix: 'fas', iconName: 'random', icon: [512, 512, [], "f074
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 243 */,
+/* 244 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(245);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("133f80d8", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1c5b91dc\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./NewsletterEdit.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1c5b91dc\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./NewsletterEdit.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 245 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.stack{\n    position: fixed;\n    top: 233px;\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);
