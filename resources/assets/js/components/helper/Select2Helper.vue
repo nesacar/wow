@@ -1,5 +1,5 @@
 <template>
-    <select :name="name" class="input-sm form-control">
+    <select :name="name" class="input-sm form-control" id="mySelect">
         <slot></slot>
     </select>
 </template>
@@ -9,6 +9,12 @@
 
     export default{
         props: ['options', 'value', 'name'],
+//        created(){
+//          if(this.value != null){
+//              console.log('value: ' + this.value);
+//              $(this.$el).val(this.value).trigger('change');
+//          }
+//        },
         mounted(){
             var vm = this;
             $(this.$el).select2({theme: 'bootstrap', data: this.options}).val(this.value).trigger('change')
@@ -18,24 +24,19 @@
         },
         watch: {
             value: function (value) {
+                console.log(value);
                 $(this.$el).val(value).trigger('change');
             },
             options: function (options) {
                 $(this.$el).select2({data: options});
             }
         },
-        destroyed: function () {
-            $(this.$el).off().select2('destroy');
-        }
+//        destroyed: function () {
+//            $(this.$el).off().select2('destroy');
+//        }
     }
 
 </script>
 
 <style src="select2/dist/css/select2.min.css"></style>
 <style src="select2-bootstrap-theme/dist/select2-bootstrap.min.css"></style>
-<style>
-    select{
-        display: block;
-        /*width: 90% !important;*/
-    }
-</style>

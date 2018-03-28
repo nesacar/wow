@@ -20,7 +20,7 @@
                             <tr>
                                 <th scope="col">id</th>
                                 <th scope="col">title</th>
-                                <th scope="col">publish_at</th>
+                                <th scope="col">publish</th>
                                 <th scope="col">created_at</th>
                                 <th>action</th>
                             </tr>

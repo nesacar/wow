@@ -147,7 +147,7 @@
               domain: apiHost
           }
         },
-        props: ['posts', 'index', 'item', 'edit'],
+        props: ['posts', 'fullPosts', 'index', 'item', 'edit'],
         components: {
             'select2': Select2,
             'font-awesome-icon': FontAwesomeIcon
@@ -166,14 +166,8 @@
                     this.item.post1 = null;
                     this.$emit('setItem', {type: 'post', item1: this.item.post1, item2: this.item.post2, index: this.index});
                 }else{
-                    axios.get('api/newsletters/' + post_id + '/post')
-                        .then(res => {
-                            this.item.post1 = res.data.post;
-                            this.$emit('setItem', {type: 'posts', item1: this.item.post1, item2: this.item.post2, index: this.index});
-                        })
-                        .catch(e => {
-                            console.log(e);
-                        });
+                    this.item.post1 = this.fullPosts.find(p => p.id == post_id);
+                    this.$emit('setItem', {type: 'posts', item1: this.item.post1, item2: this.item.post2, index: this.index});
                 }
             },
             input2(post_id){
@@ -181,14 +175,8 @@
                     this.item.post2 = null;
                     this.$emit('setItem', {type: 'post', item1: this.item.post1, item2: this.item.post2, index: this.index});
                 }else{
-                    axios.get('api/newsletters/' + post_id + '/post')
-                        .then(res => {
-                            this.item.post2 = res.data.post;
-                            this.$emit('setItem', {type: 'posts', item1: this.item.post1, item2: this.item.post2, index: this.index});
-                        })
-                        .catch(e => {
-                            console.log(e);
-                        });
+                    this.item.post2 = this.fullPosts.find(p => p.id == post_id);
+                    this.$emit('setItem', {type: 'posts', item1: this.item.post1, item2: this.item.post2, index: this.index});
                 }
             }
         }

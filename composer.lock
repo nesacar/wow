@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "519d652a1ec72dc683682acda1ad3ff3",
+    "content-hash": "8c8d09e9ab0dab7e80dddf1ece66cb9e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -489,6 +489,68 @@
             "time": "2018-03-08T01:11:30+00:00"
         },
         {
+            "name": "eusonlito/laravel-packer",
+            "version": "v2.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eusonlito/laravel-Packer.git",
+                "reference": "e895cfe2a3f3bd92f463d94a29920719d85564e1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/eusonlito/laravel-Packer/zipball/e895cfe2a3f3bd92f463d94a29920719d85564e1",
+                "reference": "e895cfe2a3f3bd92f463d94a29920719d85564e1",
+                "shasum": ""
+            },
+            "require": {
+                "imagecow/imagecow": "2.1.*",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "*",
+                "phpunit/phpunit": "*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Eusonlito\\LaravelPacker\\PackerServiceProvider"
+                    ],
+                    "aliases": {
+                        "Packer": "Eusonlito\\LaravelPacker\\Facade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Eusonlito\\LaravelPacker\\": "src/Eusonlito/LaravelPacker/"
+                },
+                "classmap": [
+                    "src/Eusonlito/LaravelPacker/Processors/"
+                ],
+                "files": [
+                    "src/Eusonlito/LaravelPacker/Exceptions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lito",
+                    "email": "lito@eordes.com"
+                }
+            ],
+            "description": "A package for pack css and javascript files",
+            "keywords": [
+                "laravel",
+                "minify",
+                "packer"
+            ],
+            "time": "2018-01-26T17:14:36+00:00"
+        },
+        {
             "name": "fideloper/proxy",
             "version": "4.0.0",
             "source": {
@@ -768,6 +830,95 @@
                 "url"
             ],
             "time": "2017-03-20T17:10:46+00:00"
+        },
+        {
+            "name": "illuminate/html",
+            "version": "v5.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/html.git",
+                "reference": "3d1009bb8e0f25720c914af5c1f4015dd373c9ef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/html/zipball/3d1009bb8e0f25720c914af5c1f4015dd373c9ef",
+                "reference": "3d1009bb8e0f25720c914af5c1f4015dd373c9ef",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "~5.0",
+                "illuminate/session": "~5.0",
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\Html\\": ""
+                },
+                "files": [
+                    "helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "abandoned": "laravelcollective/html",
+            "time": "2015-01-01T16:31:18+00:00"
+        },
+        {
+            "name": "imagecow/imagecow",
+            "version": "v2.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/oscarotero/imagecow.git",
+                "reference": "b168cfe786cf7feb2218dec16f1660d81d7e2bd5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/oscarotero/imagecow/zipball/b168cfe786cf7feb2218dec16f1660d81d7e2bd5",
+                "reference": "b168cfe786cf7feb2218dec16f1660d81d7e2bd5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Imagecow\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oscar Otero",
+                    "email": "oom@oscarotero.com",
+                    "homepage": "http://oscarotero.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP library to manipulate and generate responsive images",
+            "homepage": "https://github.com/oscarotero/imagecow/",
+            "keywords": [
+                "image"
+            ],
+            "time": "2016-12-11T15:27:37+00:00"
         },
         {
             "name": "intervention/image",

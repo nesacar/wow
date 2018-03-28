@@ -46,6 +46,10 @@ export const router = new VueRouter({
         { path: "/newsletters", component: require('./components/newsletters/NewsletterList.vue'), meta: { forAuth: true } },
         { path: "/newsletters/create", component: require('./components/newsletters/NewsletterCreate.vue'), meta: { forAuth: true } },
         { path: "/newsletters/:id/edit", component: require('./components/newsletters/NewsletterEdit.vue'), meta: { forAuth: true } },
+
+        { path: "/towns", component: require('./components/towns/TownList.vue'), meta: { forAuth: true } },
+        { path: "/towns/create", component: require('./components/towns/TownCreate.vue'), meta: { forAuth: true } },
+        { path: "/towns/:id/edit", component: require('./components/towns/TownEdit.vue'), meta: { forAuth: true } },
     ],
 
     linkActiveClass: 'active'

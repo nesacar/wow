@@ -22,6 +22,7 @@
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
                                 <a class="dropdown-item" href="#" @click.prevent="newPost()">Post</a>
                                 <a class="dropdown-item" href="#" @click.prevent="newCategory()">Category</a>
+                                <a class="dropdown-item" href="#" @click.prevent="newTown()">Town</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" @click.prevent="newUser()">User</a>
                                 <div class="dropdown-divider"></div>
@@ -112,6 +113,9 @@
             },
             newBanner(){
                 this.$router.push('/banners/create');
+            },
+            newTown(){
+                this.$router.push('/towns/create');
             },
         }
     }

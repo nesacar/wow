@@ -16,7 +16,7 @@ class PostsController extends Controller
     public function index(){
         $posts = Post::select('posts.id', 'posts.title', 'posts.publish', 'posts.created_at', 'categories.title as category')
             ->join('categories', 'posts.category_id', '=', 'categories.id')
-            ->orderBy('posts.created_at', 'DESC')->groupBy('posts.id')->paginate(50);
+            ->orderBy('posts.id', 'DESC')->groupBy('posts.id')->paginate(50);
 
         return response()->json([
             'posts' => $posts,
@@ -26,7 +26,8 @@ class PostsController extends Controller
     public function store(CreatePostRequest $request){
         $post = Post::create(request()->all());
         request('slug')? $post->slug = str_slug(request('slug')) : $post->slug = str_slug(request('title'));
-        request('publish')? $post->publish = true : $post->publish = false;
+        $post->slider = request('slider')?  true : false;
+        $post->publish = request('publish')?  true : false;
         $post->update();
         if(request('image')){ Post::base64UploadImage($post->id, request('image')); }
 
@@ -46,7 +47,8 @@ class PostsController extends Controller
         $post = Post::find($id);
         $post->update(request()->all());
         request('slug')? $post->slug = str_slug(request('slug')) : $post->slug = str_slug(request('title'));
-        request('publish')? $post->publish = true : $post->publish = false;
+        $post->slider = request('slider')?  true : false;
+        $post->publish = request('publish')?  true : false;
         $post->update($request->except('image', 'slug'));
         return response()->json([
             'post' => $post
@@ -105,7 +107,7 @@ class PostsController extends Controller
     }
 
     public function lists(){
-        $posts = Post::select('id', 'title')->where('publish', 1)->orderBy('created_at', 'DESC')->get();
+        $posts = Post::select('id', 'title', 'short', 'image')->where('publish', 1)->orderBy('created_at', 'DESC')->get();
 
         return response()->json([
             'posts' => $posts,

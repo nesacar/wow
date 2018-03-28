@@ -27,6 +27,9 @@ Route::middleware('auth:api')->get('categories/lists', 'CategoriesController@lis
 Route::middleware('auth:api')->resource('categories', 'CategoriesController');
 Route::middleware('auth:api')->post('categories/{id}/image', 'CategoriesController@uploadImage');
 
+Route::middleware('auth:api')->get('towns/lists', 'TownsController@lists');
+Route::middleware('auth:api')->resource('towns', 'TownsController');
+
 Route::middleware('auth:api')->post('posts/search', 'PostsController@search');
 Route::middleware('auth:api')->get('posts/lists', 'PostsController@lists');
 Route::middleware('auth:api')->resource('posts', 'PostsController');
@@ -58,3 +61,6 @@ Route::middleware('auth:api')->post('banners/{id}/image', 'BannersController@upl
 Route::middleware('auth:api')->resource('newsletters', 'NewslettersController');
 Route::middleware('auth:api')->get('newsletters/{id}/post', 'NewslettersController@post');
 Route::middleware('auth:api')->get('newsletters/{id}/banner', 'NewslettersController@banner');
+
+Route::middleware('auth:api')->resource('themes', 'ThemesController');
+Route::middleware('auth:api')->post('themes/{id}/image', 'ThemesController@uploadImage');

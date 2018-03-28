@@ -34,6 +34,16 @@
                                 <small class="form-text text-muted" v-if="error != null && error.slug">{{ error.slug[0] }}</small>
                             </div>
                             <div class="form-group">
+                                <label for="order">Position in menu</label>
+                                <input type="text" name="order" class="form-control" id="order" placeholder="Order" v-model="category.order">
+                                <small class="form-text text-muted" v-if="error != null && error.order">{{ error.order[0] }}</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="featured">Featured position</label>
+                                <input type="text" name="featured" class="form-control" id="featured" placeholder="Featured" v-model="category.featured">
+                                <small class="form-text text-muted" v-if="error != null && error.featured">{{ error.featured[0] }}</small>
+                            </div>
+                            <div class="form-group">
                                 <label>Description</label>
                                 <ckeditor
                                         v-model="category.short"

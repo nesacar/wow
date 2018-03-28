@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PagesController@index');
+Route::get('widget', 'PagesController@widget');
+Route::get('proba', 'PagesController@proba');
 
 Auth::routes();
 

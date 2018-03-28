@@ -43,6 +43,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application THEME
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify the default theme for your application
+    |
+    */
+
+    'theme' => env('APP_THEME', false),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application URL
     |--------------------------------------------------------------------------
     |
@@ -152,6 +163,9 @@ return [
          */
         Barryvdh\Cors\ServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Illuminate\View\ViewServiceProvider::class,
+        Illuminate\Html\HtmlServiceProvider::class,
+        Eusonlito\LaravelPacker\PackerServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -209,7 +223,10 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Image' => Intervention\Image\Facades\Image::class
+        'Image' => Intervention\Image\Facades\Image::class,
+        'Form' => Illuminate\Html\FormFacade::class,
+        'HTML' => Illuminate\Html\HtmlFacade::class,
+        'Packer' => Eusonlito\LaravelPacker\Facade::class,
     ],
 
 ];

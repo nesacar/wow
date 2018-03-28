@@ -46,6 +46,21 @@
                                 <small class="form-text text-muted" v-if="error != null && error.category_id">{{ error.category_id[0] }}</small>
                             </div>
                             <div class="form-group">
+                                <label for="town">Town</label>
+                                <select name="town" id="town" class="form-control" v-model="post.town_id">
+                                    <option :value="index" v-for="(town, index) in towns">{{ town }}</option>
+                                </select>
+                                <small class="form-text text-muted" v-if="error != null && error.town_id">{{ error.town_id[0] }}</small>
+                            </div>
+                            <div class="form-group">
+                                <label>Slider</label><br>
+                                <switches v-model="post.slider" theme="bootstrap" color="primary"></switches>
+                            </div>
+                            <div class="form-group">
+                                <label>Widget</label><br>
+                                <switches v-model="post.widget" theme="bootstrap" color="primary"></switches>
+                            </div>
+                            <div class="form-group">
                                 <label>Publish</label><br>
                                 <switches v-model="post.publish" theme="bootstrap" color="primary"></switches>
                             </div>
@@ -137,6 +152,7 @@
               post: {},
               error: null,
               lists: {},
+              towns: {},
               photos: {},
               config: {
                   toolbar: [
@@ -176,6 +192,7 @@
         created(){
             this.getPost();
             this.getList();
+            this.getTowns();
             this.getPhotos();
         },
         methods: {
@@ -237,6 +254,15 @@
                     console.log(e.response);
                     this.error = e.response.data.errors;
                 });
+            },
+            getTowns(){
+                axios.get('api/towns/lists')
+                    .then(res => {
+                        this.towns = res.data.towns;
+                    }).catch(e => {
+                        console.log(e.response);
+                        this.error = e.response.data.errors;
+                    });
             },
             getPhotos(){
                 axios.get('api/posts/' + this.$route.params.id + '/gallery')

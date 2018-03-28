@@ -26,6 +26,16 @@
                         <hr>
                         <form @submit.prevent="submit()">
                             <div class="form-group">
+                                <label for="order">Position in menu</label>
+                                <input type="text" name="order" class="form-control" id="order" placeholder="Order" v-model="category.order">
+                                <small class="form-text text-muted" v-if="error != null && error.order">{{ error.order[0] }}</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="featured">Featured position</label>
+                                <input type="text" name="featured" class="form-control" id="featured" placeholder="Featured" v-model="category.featured">
+                                <small class="form-text text-muted" v-if="error != null && error.featured">{{ error.featured[0] }}</small>
+                            </div>
+                            <div class="form-group">
                                 <label>Publish</label><br>
                                 <switches v-model="category.publish" theme="bootstrap" color="primary"></switches>
                             </div>

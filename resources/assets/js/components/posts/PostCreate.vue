@@ -31,6 +31,13 @@
                                 <small class="form-text text-muted" v-if="error != null && error.category_id">{{ error.category_id[0] }}</small>
                             </div>
                             <div class="form-group">
+                                <label for="town">Town</label>
+                                <select name="town" id="town" class="form-control" v-model="post.town_id">
+                                    <option :value="index" v-for="(town, index) in towns">{{ town }}</option>
+                                </select>
+                                <small class="form-text text-muted" v-if="error != null && error.town_id">{{ error.town_id[0] }}</small>
+                            </div>
+                            <div class="form-group">
                                 <label for="title">Title</label>
                                 <input type="text" name="title" class="form-control" id="title" placeholder="Title" v-model="post.title">
                                 <small class="form-text text-muted" v-if="error != null && error.title">{{ error.title[0] }}</small>
@@ -52,6 +59,14 @@
                                         :config="config">
                                 </ckeditor>
                                 <small class="form-text text-muted" v-if="error != null && error.body">{{ error.body[0] }}</small>
+                            </div>
+                            <div class="form-group">
+                                <label>Slider</label><br>
+                                <switches v-model="post.slider" theme="bootstrap" color="primary"></switches>
+                            </div>
+                            <div class="form-group">
+                                <label>Widget</label><br>
+                                <switches v-model="post.widget" theme="bootstrap" color="primary"></switches>
                             </div>
                             <div class="form-group">
                                 <label>Publish</label><br>
@@ -96,6 +111,7 @@
                   category_id: 0
               },
               lists: {},
+              towns: {},
               error: null,
               config: {
                   toolbar: [
@@ -124,6 +140,7 @@
         },
         created(){
             this.getList();
+            this.getTowns();
         },
         methods: {
             submit(){
@@ -152,6 +169,15 @@
                 axios.get('api/categories/lists')
                     .then(res => {
                         this.lists = res.data.categories;
+                    }).catch(e => {
+                        console.log(e.response);
+                        this.error = e.response.data.errors;
+                    });
+            },
+            getTowns(){
+                axios.get('api/towns/lists')
+                    .then(res => {
+                        this.towns = res.data.towns;
                     }).catch(e => {
                         console.log(e.response);
                         this.error = e.response.data.errors;

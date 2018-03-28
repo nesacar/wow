@@ -20,7 +20,8 @@ class CreateCategoriesTable extends Migration
             $table->text('short')->nullable();
             $table->integer('parent')->nullable()->default(0);
             $table->integer('level')->nullable()->default(1);
-            $table->integer('order')->nullable();
+            $table->integer('order')->default(1);
+            $table->integer('featured')->default(0);
             $table->string('image')->nullable();
             $table->boolean('publish')->nullable();
             $table->timestamps();

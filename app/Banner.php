@@ -26,6 +26,22 @@ class Banner extends Model
         return $banner->image;
     }
 
+    public static function isMobile($userAgent){
+        $iPod    = stripos($userAgent,"iPod");
+        $iPhone  = stripos($userAgent,"iPhone");
+        $iPad    = stripos($userAgent,"iPad");
+        $Android = stripos($userAgent,"Android");
+        $webOS   = stripos($userAgent,"webOS");
+
+        //do something with this information
+        if( $iPod || $iPhone || $iPad || $Android || $webOS){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
     public function newsletter(){
         return $this->belongsToMany(Newsletter::class);
     }

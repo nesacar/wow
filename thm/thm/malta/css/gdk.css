@@ -1,0 +1,165 @@
+.gdkwrapper { width:100%; margin:10px 0px 15px 0px; padding:0px; display: flex;}
+.gdkwrapper2 { width:485px; margin:0; padding:0 0 0 10px; float:right;}
+.gdkwrapper h1 { margin:5px 0 10px 0;font-weight:300;font-family: 'Roboto', sans-serif; font-size:16px; color:#18A5A6;}
+.gdkwrapper h1 a { text-decoration:none; color:#cfbc8c;}
+.gdkwrapper h2 a{ color:#606060;}
+.gdkwrapper h3 a {font-size:16px; color:#cfbc8c; }
+
+.gkthumbholder {width:195px;height:182px;margin:0 20px 20px 0;position:relative;float:left; }
+.gkthumbholder:nth-child(3n+0) { margin:0;}
+
+.gkthumbholder h3, .gkthumbholderlast h3 { font-size:18px; font-weight:normal; margin:15px 0 30px 0; padding:0px;}
+.gdkthumb { width:196px; height:152px;  position:relative;}
+.gdkthumb img { width:196px; height:147px; }
+.gdkthumb img:hover {opacity:0.85;filter:alpha(opacity=85);}
+.gkthumbholder h1, .gkthumbholderlast h1  { font-size:16px; font-weight:300;font-family: 'Exo', sans-serif;  margin:10px 0 15px 10px;}
+.gkthumbholder h1 a { text-decoration:none;color:#cfbc8c;}
+.gkthumbholder h1 a:hover {color:#fff;}
+
+
+/* GDK THUMB 2 - Artikli pregled*/
+.gdkthumb2line { width:100%; height:1px; background:#303030; float:left; margin-bottom:9px;}
+.gdkthumb2 {width:155px; margin:0 10px 0px 0;float:left; position:relative; text-align: center }
+.gdkthumb2 h1 { text-align: left; font-size:12px; 	font-family: Arial, Helvetica, sans-serif;
+font-weight:normal; margin:3px 0 0 0; padding:4px 0 0 0;color:#cfbc8c; text-transform: uppercase; }
+.gdkthumb2 h2 { text-align: left; font-size:12px; font-weight:normal; margin:2px 0 0 0; padding:0px; line-height:15px;}
+.gdkthumb2 h3 { text-align: right; font-size:17px; font-weight:bold;   margin:10px 0 3px 0; padding:0px;height:16px; font-weight:300;font-family: 'Exo', sans-serif; color:#cfbc8c;}
+.gdkthumb2 img { max-width: 155px; max-height: 117px; margin: 0 auto; }
+.gdkthumb2 img:hover {opacity:0.8;filter:alpha(opacity=80);}
+.gdkthumb2 a { color:#999; text-decoration:none;}
+.gdkthumb2.index { height:155px; margin: 0 10px 10px 0;}
+.gdkthumb2.index h1 { text-align: left; font-size:16px; font-family: 'Exo', sans-serif; 
+font-weight:100; margin:3px 0 0 0; padding:4px 0 0 0;color:#cfbc8c; text-transform: uppercase; }
+.gdkthumb2:nth-of-type(3n) { margin-right:0; }
+
+/* GDK THUMB3 - Brend pregled */
+.gdkthumb-brend {width:140px; margin:0 21px 0px 0;float:left; position:relative; }
+.gdkthumb-brend h1 { font-size:14px; font-weight:normal; margin:3px 0 0 0; padding:0px;color:#cfbc8c;font-family: Arial, Helvetica, sans-serif;}
+.gdkthumb-brend h2 { font-size:12px; font-weight:normal; margin:2px 0 0 0; padding:0px; line-height:15px;}
+.gdkthumb-brend h3 { font-size:17px; font-weight:bold;   margin:10px 0 3px 0; padding:0px;color:#000; height:16px; text-align:right;font-weight:300;font-family: 'Exo', sans-serif; color:#666;}
+.gdkthumb-brend:nth-of-type(4n) { margin-right:0px; }
+.gdkthumb-brend img { width: 140px; height: 106px; }
+.gdkthumb-brend img:hover {opacity:0.8;filter:alpha(opacity=80);}
+.gdkthumb-brend a { color:#666; font-weight:300;}
+
+
+
+
+/* THUMBS HORISONTAL */
+.gkthumbholder3 { width:245px;height:90px;margin: 0 5px 15px 0;float:left;}
+#gdkwrapper3 h1 { color:#86BF34; margin:0 0 3px 0; padding:0; font-size:16px; }
+#gdkwrapper3 h2 { color:#666; margin:0 0 15px 0; padding:0; font-size:12px;  }
+.gkthumbholder3 h3, .gkthumbholderlast3 h3 { font-size:12px; font-weight:bold; margin:5px 0 0 0; padding:0px;color:#cfbc8c; }
+.gkthumbholder3 h4, .gkthumbholderlast3 h4 { font-size:11px; font-weight:normal; margin:5px 0 0 0; padding:0px;}
+.gkthumbholder3 h5 { color:#000; margin:10px 0 0 0; padding:0; font-size:15px; text-align:right;font-weight:300;font-family: 'Exo', sans-serif;  }
+.gkthumbholder3 h4 a { color:#000;}
+.gdkthumb3 {
+	width:120px;
+	height:90px;
+	position:relative;
+	float:left;
+	position:relative;
+	margin-right:10px;
+	overflow:hidden
+}
+.gdkthumb3 img.overlay { position:relative; top: -93px; }
+
+
+/* menu */
+#gdkmenuholder { width:125px; float:left; position:relative; }
+#gdedakupimmenu { width:125px; float:left; position:relative; margin:0; padding:0;}
+/*
+
+*/
+/**** Menu ****/
+#gdkmenu ul				{text-align:left;  position:relative;}
+#gdkmenu li 				{list-style:none;padding:7px 0 7px 0px; border-bottom:solid 1px #303030; }
+#gdkmenu li a 			{list-style:none;font-size:16px; font-weight:300; text-decoration: none; color:#cfbc8c;	font-family: 'Exo', sans-serif;text-transform:uppercase;
+}
+#gdkmenu li a:hover	{color:#666;text-decoration: none; } 
+
+#gdksubmenu ul				{text-align:left;  }
+#gdksubmenu li 			{list-style:none;padding:5px 0 5px 0px; border-bottom:#303030 solid 1px; }
+#gdksubmenu li:last-child {border-bottom:solid 1px #303030;}
+#gdksubmenu li a 			{list-style:none;font-size:13px; text-decoration: none; color:#999;font-family: Arial, Helvetica, sans-serif; text-transform:none; }
+#gdksubmenu li a:hover, #gdksubmenu li a.current	{color:#fff;text-decoration: none; } 
+
+
+.gdkwhitebox { clear: both; width:700px; height:150px; background-color:#fff;}
+.gdkgreybox { clear:both; width:700px; height:150px; background-color:#e1e1e1;}
+.gdkpatternbox { clear:both; width:650px; height:137px; margin:0 auto 20px auto; background-image: url(../img/gdk-box-full-pattern.jpg);  position: relative;
+  left: -25px;}
+.gdkwhitebox img, .gdkgreybox img, .gdkpatternbox img  { float:left; width:auto; height:auto; margin:0 10px 0 0; padding:1px 0 0 0;}
+.gdkboxthumb {
+	width:155px;
+	height:117px;
+	float:left;
+	margin: 10px 10px 0 0;
+	overflow: hidden;
+}
+.gdkboxthumb img { width: 155px; height: 115px;}
+.gdkboxthumb a.mf   { display: inline-block; font-family: 'Exo', sans-serif; width: 155px; height: 16px; padding-left: 15px; background: url(../img/gdk-box-mf.png); position: relative; top:-115px; color: #FFF; text-shadow: 1px 1px #000; overflow: hidden; text-decoration:none;} 
+.gdkboxthumb a.cena { display: inline-block;font-family: 'Exo', sans-serif; width: 155px; height: 16px; padding: 0px 3px 0px 3px; background: url(../img/gdk-box-cena.png); position: relative; top:-37px;  color: #FFF; text-shadow: 1px 1px #000; overflow: hidden;text-decoration:none;}
+.gdkboxthumb a.cena span { float: right; font-weight: bold; }
+
+.gdkfilter {color: #999;height:30px;width:485px; position:relative; margin-bottom:0px; text-align:left; font-size:12px; overflow:hidden;}
+.gdkfilter a {
+  display: inline-block;
+  color: #999; text-decoration:none;
+  padding: 0px 20px 0 0;  
+  border-right: 1px solid #303030;
+  margin-right: 4px;
+  background: url(../img/gdk-order.png) right 0px no-repeat;
+}
+.gdkfilter a:last-child { border: none; margin-right: 0;}
+.gdkfilter a.inactive:hover {background-position: right -14px;}
+.gdkfilter a.activeAsc,  .gdkfilter a.activeDesc:hover, .gdkfilter a.activeDesc:active {background-position: right -14px;}
+.gdkfilter a.activeDesc, .gdkfilter a.activeAsc:hover,  .gdkfilter a.activeAsc:active  {background-position: right -28px;}
+.gdkfilter h1 { color:#80C342;}
+.clear { clear:both;}
+
+. gdkfilter .label .in_line {top:-7px; left:330px;position:absolute; width:110px;font-weight:300;font-family: 'Exo', sans-serif; font-size:16px; }
+
+
+.gdkartikal { float:left; position:relative; margin-bottom:20px;}
+.gdkartikalinfo {width:485px;float:left; position:relative; margin-bottom:10px;font-family: 'Exo', sans-serif; font-weight:300; font-size:16px;}
+.prikaza {float:right; color:#999;}
+.gdkartikalinfo h2 {font-weight:300; font-size:16px; color:#999;}
+.gdkartikalinfo h2 { float:left;}
+	.gdkartikalinfo .cena { float:right; color:#cfbc8c}
+
+.gdkgalerija { margin-bottom: 12px; float: left; position: relative;}
+.gdkartikalispodslike {float:left; position:relative;width:300px; color:#999; font-size:13px; }
+.gdkartikalispodslike h1 { width:200px; float:left; font-size:13px; color:#999; margin:0; padding:0; font-family: Arial, Helvetica, sans-serif; font-weight: bold;}
+.gdkartikalispodslike h2 { font-size: 13px; color:#cfbc8c; margin: 5px 0 3px 0; font-family: Arial, Helvetica, sans-serif;}
+.gdkartikalopcje {float:right; position:relative; width:165px;}
+.gdkartikalopcje li { background-color:#000; border-left:1px solid #cfbc8c; margin-bottom:5px; padding:2px 5px; list-style:none;}
+.gdkartikalopcje li a{ text-decoration:none; font-size:12px; color:#999;}
+.gdkartikalopcje li a:hover { color:#cfbc8c;}
+.gdkartikalopcje li a.dead { color:#666; }
+
+.gkdartikalkontakt { 
+display: block;
+width: 212px;
+border-left: 2px solid #cfbc8c;
+background-color: #232323;
+font-family: "Roboto Condensed", sans-serif;
+font-size: 16px;
+font-weight: 100!important;
+text-transform: uppercase;
+color: #cfbc8c;
+padding: 3px 5px;
+margin: 10px 0;
+}
+
+.gkdartikalkontakt:hover { color:#fff;}
+
+@media (max-width: 991px) {
+
+.gdkpatternbox{
+	display:none;
+	}
+
+
+
+}

@@ -140,6 +140,7 @@
 
 <style>
     .stack{
+        flex: 1;
         position: fixed;
         top: 233px;
     }

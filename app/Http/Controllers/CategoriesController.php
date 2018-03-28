@@ -10,7 +10,7 @@ use File;
 class CategoriesController extends Controller
 {
     public function index(){
-        $categories = Category::select('id', 'title', 'publish', 'created_at')->orderBy('created_at', 'DESC')->paginate(50);
+        $categories = Category::select('id', 'title', 'publish', 'created_at')->orderBy('order', 'ASC')->paginate(50);
         return response()->json([
             'categories' => $categories,
         ]);
@@ -21,7 +21,7 @@ class CategoriesController extends Controller
         $category->title = request('title');
         request('slug')? $category->slug = str_slug(request('slug')) : $category->slug = str_slug(request('title'));
         $category->short = request('short');
-        $category->order = 1;
+        $category->order = request('order');
         request('publish')? $category->publish = true : $category->publish = false;
         $category->save();
 

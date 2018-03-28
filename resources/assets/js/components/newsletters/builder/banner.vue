@@ -64,7 +64,7 @@
                 domain: apiHost,
             }
         },
-        props: ['banners', 'index', 'item', 'edit'],
+        props: ['banners', 'fullBanners', 'index', 'item', 'edit'],
         created(){
             if(this.edit){
                 this.$emit('setItem', {type: 'banner', item1: this.item.banner, item2: null,  index: this.index});
@@ -83,14 +83,8 @@
                     this.item.banner = null;
                     this.$emit('setItem', {type: 'banner', item1: this.item.banner, item2: null, index: this.index});
                 }else{
-                    axios.get('api/newsletters/' + banner_id + '/banner')
-                        .then(res => {
-                            this.item.banner = res.data.banner;
-                            this.$emit('setItem', {type: 'banner', item1: this.item.banner, item2: null,  index: this.index});
-                        })
-                        .catch(e => {
-                            console.log(e);
-                        });
+                    this.item.banner = this.fullBanners.find(b => b.id == banner_id);
+                    this.$emit('setItem', {type: 'banner', item1: this.item.banner, item2: null,  index: this.index});
                 }
             }
         }

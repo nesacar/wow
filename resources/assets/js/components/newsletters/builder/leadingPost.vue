@@ -80,7 +80,7 @@
               domain: apiHost
           }
         },
-        props: ['posts', 'index', 'item', 'edit'],
+        props: ['posts', 'fullPosts', 'index', 'item', 'edit'],
         created(){
             if(this.edit){
                 this.$emit('setItem', {type: 'post', item1: this.item.post, item2: null, index: this.index});
@@ -99,14 +99,8 @@
                     this.item.post = null;
                     this.$emit('setItem', {type: 'post', item1: this.item.post, item2: null, index: this.index});
                 }else{
-                    axios.get('api/newsletters/' + post_id + '/post')
-                        .then(res => {
-                            this.item.post = res.data.post;
-                            this.$emit('setItem', {type: 'post', item1: this.item.post, item2: null, index: this.index});
-                        })
-                        .catch(e => {
-                            console.log(e);
-                        });
+                    this.item.post = this.fullPosts.find(p => p.id == post_id);
+                    this.$emit('setItem', {type: 'post', item1: this.item.post, item2: null, index: this.index});
                 }
             },
         }

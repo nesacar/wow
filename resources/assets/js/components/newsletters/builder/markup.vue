@@ -34,7 +34,18 @@
             </div>
 
             <template v-for="(item, index) in items">
-                <component :is="item.component" :index="index" :posts="posts" :banners="banners" :item="item" :edit="edit" @deleteRow="deleteRow($event)" @setItem="setItem($event)"></component>
+                <component
+                        :is="item.component"
+                        :index="index"
+                        :posts="posts"
+                        :fullPosts="fullPosts"
+                        :banners="banners"
+                        :fullBanners="fullBanners"
+                        :item="item"
+                        :edit="edit"
+                        @deleteRow="deleteRow($event)"
+                        @setItem="setItem($event)"
+                ></component>
             </template>
 
             <div style="Margin:0px auto;max-width:600px;">
@@ -79,6 +90,8 @@
           return {
               posts: {},
               banners: {},
+              fullPosts: {},
+              fullBanners: {},
               attrs: [],
           }
         },
@@ -96,6 +109,7 @@
             getPosts(){
                 axios.get('api/posts/lists')
                     .then(res => {
+                        this.fullPosts = res.data.posts;
                         this.posts = _.map(res.data.posts, (data) => {
                             var pick = _.pick(data, 'title', 'id');
                             var object = {id: pick.id, text: pick.title};
@@ -109,6 +123,7 @@
             getBanners(){
                 axios.get('api/banners/lists')
                     .then(res => {
+                        this.fullBanners = res.data.banners;
                         this.banners = _.map(res.data.banners, (data) => {
                             var pick = _.pick(data, 'title', 'id');
                             var object = {id: pick.id, text: pick.title};
