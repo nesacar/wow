@@ -76097,134 +76097,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -76235,9 +76107,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             setting: {},
-            settingEng: {},
-            //              settingHrv: {},
-            //              settingRus: {},
             error: null,
             config: {
                 toolbar: [['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', 'Image']],
@@ -76253,47 +76122,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         'ckeditor': __WEBPACK_IMPORTED_MODULE_3_vue_ckeditor2__["a" /* default */]
     },
     created: function created() {
-        this.getSetting('sr');
-        this.getSetting('en');
-        //            this.getSetting('hr');
-        //            this.getSetting('ru');
+        this.getSetting();
     },
 
     methods: {
-        getSetting: function getSetting(locale) {
+        getSetting: function getSetting() {
             var _this = this;
 
-            axios.get('api/settings/1/edit?locale=' + locale).then(function (res) {
+            axios.get('api/settings/1/edit').then(function (res) {
                 if (res.data.setting != null) {
-                    if (locale == 'sr') {
-                        _this.setting = res.data.setting;
-                        //                            }else if(locale == 'hr') {
-                        //                                this.settingHrv = res.data.setting;
-                        //                            }else if(locale == 'ru'){
-                        //                                this.settingRus = res.data.setting;
-                    } else {
-                        _this.settingEng = res.data.setting;
-                    }
+                    _this.setting = res.data.setting;
                 }
             }).catch(function (e) {
                 console.log(e);
                 _this.error = e.response.data.errors;
             });
         },
-        submit: function submit(locale) {
+        submit: function submit() {
             var _this2 = this;
 
-            var data = {};
-            if (locale == 'sr') {
-                data = this.setting;
-                //                }else if(locale == 'hr') {
-                //                    data = this.settingHrv;
-                //                }else if(locale == 'ru'){
-                //                    data = this.settingRus;
-            } else {
-                data = this.settingEng;
-            }
-            axios.post('api/settings/' + this.setting.id + '/updateLang?locale=' + locale, data).then(function (res) {
+            axios.patch('api/settings/1', this.setting).then(function (res) {
                 __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
                     position: 'center',
                     type: 'success',
@@ -76305,23 +76153,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).catch(function (e) {
                 console.log(e.response);
                 _this2.error = e.response.data.errors;
-            });
-        },
-        general: function general() {
-            var _this3 = this;
-
-            axios.patch('api/settings/' + this.setting.id + '/update', this.setting).then(function (res) {
-                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
-                    position: 'center',
-                    type: 'success',
-                    title: 'Success',
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                _this3.error = null;
-            }).catch(function (e) {
-                console.log(e.response);
-                _this3.error = e.response.data.errors;
             });
         }
     }
@@ -76345,13 +76176,13 @@ var render = function() {
                 "li",
                 [
                   _c("router-link", { attrs: { tag: "a", to: "/home" } }, [
-                    _vm._v("Početna")
+                    _vm._v("Home")
                   ])
                 ],
                 1
               ),
               _vm._v(" "),
-              _c("li", [_vm._v("Podešavanja izmena")])
+              _c("li", [_vm._v("Settings")])
             ])
           ])
         ])
@@ -76362,7 +76193,7 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "col-md-4" }, [
           _c("div", { staticClass: "card" }, [
-            _c("h5", [_vm._v("Osnovne informacije")]),
+            _c("h5", [_vm._v("General info")]),
             _vm._v(" "),
             _c("hr"),
             _vm._v(" "),
@@ -76372,14 +76203,14 @@ var render = function() {
                 on: {
                   submit: function($event) {
                     $event.preventDefault()
-                    _vm.general()
+                    _vm.submit()
                   }
                 }
               },
               [
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", { attrs: { for: "Phone1" } }, [
-                    _vm._v("Telefon 1")
+                    _vm._v("Phone 1")
                   ]),
                   _vm._v(" "),
                   _c("input", {
@@ -76396,7 +76227,7 @@ var render = function() {
                       type: "text",
                       name: "Phone1",
                       id: "Phone1",
-                      placeholder: "Telefon 1"
+                      placeholder: "Phone 1"
                     },
                     domProps: { value: _vm.setting.phone1 },
                     on: {
@@ -76418,7 +76249,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", { attrs: { for: "Phone1" } }, [
-                    _vm._v("Telefon 2")
+                    _vm._v("Phone 2")
                   ]),
                   _vm._v(" "),
                   _c("input", {
@@ -76435,7 +76266,7 @@ var render = function() {
                       type: "text",
                       name: "Phone2",
                       id: "Phone2",
-                      placeholder: "Telefon 2"
+                      placeholder: "Phone 2"
                     },
                     domProps: { value: _vm.setting.phone2 },
                     on: {
@@ -76690,6 +76521,84 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "google" } }, [
+                    _vm._v("Google +")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.setting.google,
+                        expression: "setting.google"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      name: "google",
+                      id: "google",
+                      placeholder: "Enter google plus"
+                    },
+                    domProps: { value: _vm.setting.google },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.setting, "google", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.error != null && _vm.error.google
+                    ? _c("small", { staticClass: "form-text text-muted" }, [
+                        _vm._v(_vm._s(_vm.error.google[0]))
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "youtube" } }, [
+                    _vm._v("Youtube")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.setting.youtube,
+                        expression: "setting.youtube"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      name: "youtube",
+                      id: "youtube",
+                      placeholder: "Enter youtube"
+                    },
+                    domProps: { value: _vm.setting.youtube },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.setting, "youtube", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.error != null && _vm.error.youtube
+                    ? _c("small", { staticClass: "form-text text-muted" }, [
+                        _vm._v(_vm._s(_vm.error.youtube[0]))
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
                   _c("label", { attrs: { for: "analytics" } }, [
                     _vm._v("Google Analytics")
                   ]),
@@ -76736,27 +76645,6 @@ var render = function() {
                     : _vm._e()
                 ]),
                 _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("label", [_vm._v("Newsletter")]),
-                    _c("br"),
-                    _vm._v(" "),
-                    _c("switches", {
-                      attrs: { theme: "bootstrap", color: "primary" },
-                      model: {
-                        value: _vm.setting.newsletter,
-                        callback: function($$v) {
-                          _vm.$set(_vm.setting, "newsletter", $$v)
-                        },
-                        expression: "setting.newsletter"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
                 _vm._m(1)
               ]
             )
@@ -76765,453 +76653,189 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "col-md-8" }, [
           _c("div", { staticClass: "card" }, [
-            _c("h5", [_vm._v("Jezičke informacije")]),
+            _c("h5", [_vm._v("Lang info")]),
             _vm._v(" "),
             _c("hr"),
             _vm._v(" "),
-            _vm._m(2),
-            _vm._v(" "),
             _c(
-              "div",
-              { staticClass: "tab-content", attrs: { id: "myTabContent" } },
+              "form",
+              {
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    _vm.submit()
+                  }
+                }
+              },
               [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "address" } }, [
+                    _vm._v("Address")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.setting.address,
+                        expression: "setting.address"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      name: "address",
+                      id: "address",
+                      placeholder: "Address"
+                    },
+                    domProps: { value: _vm.setting.address },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.setting, "address", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.error != null && _vm.error.address
+                    ? _c("small", { staticClass: "form-text text-muted" }, [
+                        _vm._v(_vm._s(_vm.error.address[0]))
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "title" } }, [_vm._v("Title")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.setting.title,
+                        expression: "setting.title"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      name: "title",
+                      id: "title",
+                      placeholder: "Title"
+                    },
+                    domProps: { value: _vm.setting.title },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.setting, "title", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.error != null && _vm.error.title
+                    ? _c("small", { staticClass: "form-text text-muted" }, [
+                        _vm._v(_vm._s(_vm.error.title[0]))
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "keywords" } }, [
+                    _vm._v("Keywords")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.setting.keywords,
+                        expression: "setting.keywords"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      name: "keywords",
+                      id: "keywords",
+                      placeholder: "Keywords"
+                    },
+                    domProps: { value: _vm.setting.keywords },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.setting, "keywords", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.error != null && _vm.error.keywords
+                    ? _c("small", { staticClass: "form-text text-muted" }, [
+                        _vm._v(_vm._s(_vm.error.keywords[0]))
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
                 _c(
                   "div",
-                  {
-                    staticClass: "tab-pane fade show active",
-                    attrs: {
-                      id: "srb",
-                      role: "tabpanel",
-                      "aria-labelledby": "srb-tab"
-                    }
-                  },
+                  { staticClass: "form-group" },
                   [
-                    _c(
-                      "form",
-                      {
-                        on: {
-                          submit: function($event) {
-                            $event.preventDefault()
-                            _vm.submit("sr")
-                          }
-                        }
-                      },
-                      [
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "address" } }, [
-                            _vm._v("Adresa")
-                          ]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.setting.address,
-                                expression: "setting.address"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              name: "address",
-                              id: "address",
-                              placeholder: "Adresa"
-                            },
-                            domProps: { value: _vm.setting.address },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.setting,
-                                  "address",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.error != null && _vm.error.address
-                            ? _c(
-                                "small",
-                                { staticClass: "form-text text-muted" },
-                                [_vm._v(_vm._s(_vm.error.address[0]))]
-                              )
-                            : _vm._e()
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "title" } }, [
-                            _vm._v("Naslov")
-                          ]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.setting.title,
-                                expression: "setting.title"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              name: "title",
-                              id: "title",
-                              placeholder: "Naslov"
-                            },
-                            domProps: { value: _vm.setting.title },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.setting,
-                                  "title",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.error != null && _vm.error.title
-                            ? _c(
-                                "small",
-                                { staticClass: "form-text text-muted" },
-                                [_vm._v(_vm._s(_vm.error.title[0]))]
-                              )
-                            : _vm._e()
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "keywords" } }, [
-                            _vm._v("Ključne reči")
-                          ]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.setting.keywords,
-                                expression: "setting.keywords"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              name: "keywords",
-                              id: "keywords",
-                              placeholder: "Ključne reči"
-                            },
-                            domProps: { value: _vm.setting.keywords },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.setting,
-                                  "keywords",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.error != null && _vm.error.keywords
-                            ? _c(
-                                "small",
-                                { staticClass: "form-text text-muted" },
-                                [_vm._v(_vm._s(_vm.error.keywords[0]))]
-                              )
-                            : _vm._e()
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "form-group" },
-                          [
-                            _c("label", [_vm._v("Opis")]),
-                            _vm._v(" "),
-                            _c("ckeditor", {
-                              attrs: { config: _vm.config },
-                              model: {
-                                value: _vm.setting.desc,
-                                callback: function($$v) {
-                                  _vm.$set(_vm.setting, "desc", $$v)
-                                },
-                                expression: "setting.desc"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _vm.error != null && _vm.error.desc
-                              ? _c(
-                                  "small",
-                                  { staticClass: "form-text text-muted" },
-                                  [_vm._v(_vm._s(_vm.error.desc[0]))]
-                                )
-                              : _vm._e()
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "form-group" },
-                          [
-                            _c("label", [_vm._v("Footer tekst")]),
-                            _vm._v(" "),
-                            _c("ckeditor", {
-                              attrs: { config: _vm.config },
-                              model: {
-                                value: _vm.setting.footer,
-                                callback: function($$v) {
-                                  _vm.$set(_vm.setting, "footer", $$v)
-                                },
-                                expression: "setting.footer"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _vm.error != null && _vm.error.desc
-                              ? _c(
-                                  "small",
-                                  { staticClass: "form-text text-muted" },
-                                  [_vm._v(_vm._s(_vm.error.footer[0]))]
-                                )
-                              : _vm._e()
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _vm._m(3)
-                      ]
-                    )
-                  ]
+                    _c("label", [_vm._v("Desc")]),
+                    _vm._v(" "),
+                    _c("ckeditor", {
+                      attrs: { config: _vm.config },
+                      model: {
+                        value: _vm.setting.desc,
+                        callback: function($$v) {
+                          _vm.$set(_vm.setting, "desc", $$v)
+                        },
+                        expression: "setting.desc"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.error != null && _vm.error.desc
+                      ? _c("small", { staticClass: "form-text text-muted" }, [
+                          _vm._v(_vm._s(_vm.error.desc[0]))
+                        ])
+                      : _vm._e()
+                  ],
+                  1
                 ),
                 _vm._v(" "),
                 _c(
                   "div",
-                  {
-                    staticClass: "tab-pane fade",
-                    attrs: {
-                      id: "eng",
-                      role: "tabpanel",
-                      "aria-labelledby": "eng-tab"
-                    }
-                  },
+                  { staticClass: "form-group" },
                   [
-                    _c(
-                      "form",
-                      {
-                        on: {
-                          submit: function($event) {
-                            $event.preventDefault()
-                            _vm.submit("en")
-                          }
-                        }
-                      },
-                      [
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "address2" } }, [
-                            _vm._v("Adresa")
-                          ]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.settingEng.address,
-                                expression: "settingEng.address"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              name: "address",
-                              id: "address2",
-                              placeholder: "Adresa"
-                            },
-                            domProps: { value: _vm.settingEng.address },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.settingEng,
-                                  "address",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.error != null && _vm.error.address
-                            ? _c(
-                                "small",
-                                { staticClass: "form-text text-muted" },
-                                [_vm._v(_vm._s(_vm.error.address[0]))]
-                              )
-                            : _vm._e()
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "title2" } }, [
-                            _vm._v("Naslov")
-                          ]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.settingEng.title,
-                                expression: "settingEng.title"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              name: "title",
-                              id: "title2",
-                              placeholder: "Naslov"
-                            },
-                            domProps: { value: _vm.settingEng.title },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.settingEng,
-                                  "title",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.error != null && _vm.error.title
-                            ? _c(
-                                "small",
-                                { staticClass: "form-text text-muted" },
-                                [_vm._v(_vm._s(_vm.error.title[0]))]
-                              )
-                            : _vm._e()
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "keywords2" } }, [
-                            _vm._v("Ključne reči")
-                          ]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.settingEng.keywords,
-                                expression: "settingEng.keywords"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              name: "keywords",
-                              id: "keywords2",
-                              placeholder: "Ključne reči"
-                            },
-                            domProps: { value: _vm.settingEng.keywords },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.settingEng,
-                                  "keywords",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.error != null && _vm.error.keywords
-                            ? _c(
-                                "small",
-                                { staticClass: "form-text text-muted" },
-                                [_vm._v(_vm._s(_vm.error.keywords[0]))]
-                              )
-                            : _vm._e()
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "form-group" },
-                          [
-                            _c("label", [_vm._v("Opis")]),
-                            _vm._v(" "),
-                            _c("ckeditor", {
-                              attrs: { config: _vm.config },
-                              model: {
-                                value: _vm.settingEng.desc,
-                                callback: function($$v) {
-                                  _vm.$set(_vm.settingEng, "desc", $$v)
-                                },
-                                expression: "settingEng.desc"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _vm.error != null && _vm.error.desc
-                              ? _c(
-                                  "small",
-                                  { staticClass: "form-text text-muted" },
-                                  [_vm._v(_vm._s(_vm.error.desc[0]))]
-                                )
-                              : _vm._e()
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "form-group" },
-                          [
-                            _c("label", [_vm._v("Footer tekst")]),
-                            _vm._v(" "),
-                            _c("ckeditor", {
-                              attrs: { config: _vm.config },
-                              model: {
-                                value: _vm.settingEng.footer,
-                                callback: function($$v) {
-                                  _vm.$set(_vm.settingEng, "footer", $$v)
-                                },
-                                expression: "settingEng.footer"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _vm.error != null && _vm.error.desc
-                              ? _c(
-                                  "small",
-                                  { staticClass: "form-text text-muted" },
-                                  [_vm._v(_vm._s(_vm.error.footer[0]))]
-                                )
-                              : _vm._e()
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _vm._m(4)
-                      ]
-                    )
-                  ]
-                )
+                    _c("label", [_vm._v("Footer text")]),
+                    _vm._v(" "),
+                    _c("ckeditor", {
+                      attrs: { config: _vm.config },
+                      model: {
+                        value: _vm.setting.footer,
+                        callback: function($$v) {
+                          _vm.$set(_vm.setting, "footer", $$v)
+                        },
+                        expression: "setting.footer"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.error != null && _vm.error.desc
+                      ? _c("small", { staticClass: "form-text text-muted" }, [
+                          _vm._v(_vm._s(_vm.error.footer[0]))
+                        ])
+                      : _vm._e()
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _vm._m(2)
               ]
             )
           ])
@@ -77226,9 +76850,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-md-12" }, [
-      _c("div", { staticClass: "card" }, [
-        _c("h5", [_vm._v("Podešavanja izmena")])
-      ])
+      _c("div", { staticClass: "card" }, [_c("h5", [_vm._v("Settings")])])
     ])
   },
   function() {
@@ -77239,65 +76861,7 @@ var staticRenderFns = [
       _c(
         "button",
         { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Izmeni generalno")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "ul",
-      { staticClass: "nav nav-tabs", attrs: { id: "myTab", role: "tablist" } },
-      [
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link active",
-              attrs: {
-                id: "srb-tab",
-                "data-toggle": "tab",
-                href: "#srb",
-                role: "tab",
-                "aria-controls": "home",
-                "aria-selected": "true"
-              }
-            },
-            [_vm._v("Srpski")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: {
-                id: "eng-tab",
-                "data-toggle": "tab",
-                href: "#eng",
-                role: "tab",
-                "aria-controls": "contact",
-                "aria-selected": "false"
-              }
-            },
-            [_vm._v("Engleski")]
-          )
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Izmeni srpski")]
+        [_vm._v("Edit")]
       )
     ])
   },
@@ -77309,7 +76873,7 @@ var staticRenderFns = [
       _c(
         "button",
         { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Izmeni engleski")]
+        [_vm._v("Edit")]
       )
     ])
   }
