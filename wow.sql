@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 28, 2018 at 08:50 PM
+-- Generation Time: Mar 29, 2018 at 01:40 PM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.9
 
@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -120,7 +120,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (13, '2018_03_20_182300_create_banners_table', 6),
 (14, '2018_03_20_191548_create_newsletters_table', 7),
 (15, '2018_03_25_110253_create_newsletter_templates_table', 8),
-(16, '2018_01_23_135138_create_themes_table', 9);
+(16, '2018_01_23_135138_create_themes_table', 9),
+(17, '2018_03_29_064609_create_tags_table', 10);
 
 -- --------------------------------------------------------
 
@@ -219,6 +220,7 @@ INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes
 ('97eb02db95852bc64dcd38961bd3145b9d646607ea8054061753a3f551ded36a554dfce7e0c4b666', 1, 2, NULL, '[]', 0, '2018-03-18 18:43:11', '2018-03-18 18:43:11', '2019-03-18 19:43:11'),
 ('a5c3901a0e968b3382fa6cb2aeaef53ea3ca1c43ddbb9287384593c4a98c1363db74daffedeb90fb', 2, 2, NULL, '[]', 0, '2018-03-20 18:06:07', '2018-03-20 18:06:07', '2019-03-20 19:06:07'),
 ('a91a10563fba98e8cf09f65c59181992f76770ab8180e567cba66987240760aaeb9d3342252271a8', 2, 2, NULL, '[]', 0, '2018-03-27 15:46:32', '2018-03-27 15:46:32', '2019-03-27 17:46:32'),
+('aee7ab419b58dd31282ee1202acf2d6076b7a2bbfdf4a5df8582f7d16f74b693ef301ccc13422d54', 2, 2, NULL, '[]', 0, '2018-03-29 05:15:19', '2018-03-29 05:15:19', '2019-03-29 07:15:19'),
 ('b5168344863b0c4dc27b6663af601858a6af9479dc6073437d2ad8ec4a254097bbc5617de14c3849', 2, 2, NULL, '[]', 0, '2018-03-21 20:18:36', '2018-03-21 20:18:36', '2019-03-21 21:18:36'),
 ('c0df5f27a6157a2f7870b67958abc50473757d209a2cca9f3a5948fab9de8f00c5d5e014dd5cc9f5', 2, 2, NULL, '[]', 0, '2018-03-22 18:16:54', '2018-03-22 18:16:54', '2019-03-22 19:16:54'),
 ('d3e52e9cc92f55b102e097a21cc8df6675cd1dd1187a0206fd591a117e2b6d6bf3db7e13ec950385', 2, 2, NULL, '[]', 0, '2018-03-28 13:03:01', '2018-03-28 13:03:01', '2019-03-28 15:03:01'),
@@ -261,7 +263,7 @@ CREATE TABLE IF NOT EXISTS `oauth_clients` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `oauth_clients_user_id_index` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `oauth_clients`
@@ -285,14 +287,15 @@ CREATE TABLE IF NOT EXISTS `oauth_personal_access_clients` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `oauth_personal_access_clients_client_id_index` (`client_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `oauth_personal_access_clients`
 --
 
 INSERT INTO `oauth_personal_access_clients` (`id`, `client_id`, `created_at`, `updated_at`) VALUES
-(1, 1, '2018-03-18 18:35:11', '2018-03-18 18:35:11');
+(1, 1, '2018-03-18 18:35:11', '2018-03-18 18:35:11'),
+(2, 3, '2018-03-29 05:14:48', '2018-03-29 05:14:48');
 
 -- --------------------------------------------------------
 
@@ -321,6 +324,7 @@ INSERT INTO `oauth_refresh_tokens` (`id`, `access_token_id`, `revoked`, `expires
 ('7be94da4efaaff6c83973b58cf8148a889888b7c60d5dcf89caf002b2a5ee3581606817637e4b325', 'd3e52e9cc92f55b102e097a21cc8df6675cd1dd1187a0206fd591a117e2b6d6bf3db7e13ec950385', 0, '2019-03-28 15:03:02'),
 ('82fd336b817f5cfafe75053e599293b0d831f1d777a7ce46a4df9b9ca1471b829beb8492a67aa90b', 'a5c3901a0e968b3382fa6cb2aeaef53ea3ca1c43ddbb9287384593c4a98c1363db74daffedeb90fb', 0, '2019-03-20 19:06:07'),
 ('88dbb0b839563559236e5283e5c1cb67b7cb3ac52b8a33a9c731d72c2061d072920e57af267491e7', '77ebf2091e962e08a52432fece8e0bbf1966cf1fc0b7eea1f6e104c17207fde185790696ecc248a5', 0, '2019-03-28 15:07:34'),
+('8c6a9513ade21604be6a098f0de95dde211d1e991b1d4768f72bf0adc4ba31efb0d1b171fe53ef5d', 'aee7ab419b58dd31282ee1202acf2d6076b7a2bbfdf4a5df8582f7d16f74b693ef301ccc13422d54', 0, '2019-03-29 07:15:19'),
 ('8e4a2e6cd8693c6d4cdb1c75515cf179aafa6d2391cfe28f1e5bb85c2aa78f69e390f754b1b25288', 'b5168344863b0c4dc27b6663af601858a6af9479dc6073437d2ad8ec4a254097bbc5617de14c3849', 0, '2019-03-21 21:18:36'),
 ('8f2417f2cc762de6190a120cb036de0155a52d987126a6b47aa5b00cfdf59db6cc07be190a02bcac', 'a91a10563fba98e8cf09f65c59181992f76770ab8180e567cba66987240760aaeb9d3342252271a8', 0, '2019-03-27 17:46:32'),
 ('8fce8b0c4713d4c7930ab424a42e4a83d902f9b50189d08799ecd1e1e7791a49349cbb2bf72a5830', '54fd6b59a73909342c1cdbffd5eb7437659bd4f5cffa88ea49109a0336c360aa0e91257f11fb9485', 0, '2019-03-20 17:15:10'),
@@ -712,6 +716,24 @@ INSERT INTO `posts` (`id`, `user_id`, `category_id`, `town_id`, `title`, `slug`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `post_tag`
+--
+
+DROP TABLE IF EXISTS `post_tag`;
+CREATE TABLE IF NOT EXISTS `post_tag` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `post_id` int(10) UNSIGNED NOT NULL,
+  `tag_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `post_tag_post_id_index` (`post_id`),
+  KEY `post_tag_tag_id_index` (`tag_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `subscribers`
 --
 
@@ -733,6 +755,30 @@ CREATE TABLE IF NOT EXISTS `subscribers` (
 INSERT INTO `subscribers` (`id`, `email`, `verification`, `block`, `created_at`, `updated_at`) VALUES
 (2, 'nebojsart1409@yahoo.com', 'tiwpcAa49dzJCXYXMcOn', 0, '2018-03-20 17:17:44', '2018-03-20 17:17:44'),
 (3, 'vladan.kotarac@ministudio.rs', '143zo4BYASPykcpBYoUG', 0, '2018-03-20 17:17:53', '2018-03-20 17:18:24');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tags`
+--
+
+DROP TABLE IF EXISTS `tags`;
+CREATE TABLE IF NOT EXISTS `tags` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `publish` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `tags`
+--
+
+INSERT INTO `tags` (`id`, `title`, `slug`, `publish`, `created_at`, `updated_at`) VALUES
+(1, 'malta', 'malta', 1, '2018-03-29 05:17:47', '2018-03-29 05:17:47');
 
 -- --------------------------------------------------------
 
@@ -839,6 +885,13 @@ INSERT INTO `users` (`id`, `role_id`, `name`, `image`, `email`, `password`, `blo
 --
 ALTER TABLE `newsletter_templates`
   ADD CONSTRAINT `newsletter_templates_newsletter_id_foreign` FOREIGN KEY (`newsletter_id`) REFERENCES `newsletters` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `post_tag`
+--
+ALTER TABLE `post_tag`
+  ADD CONSTRAINT `post_tag_post_id_foreign` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `post_tag_tag_id_foreign` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
