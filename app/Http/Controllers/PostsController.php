@@ -8,6 +8,7 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Http\Requests\UploadGalleryRequest;
 use App\Photo;
 use App\Post;
+use App\Tag;
 use Illuminate\Http\Request;
 use File;
 
@@ -31,6 +32,8 @@ class PostsController extends Controller
         $post->update();
         if(request('image')){ Post::base64UploadImage($post->id, request('image')); }
 
+        if(request('tags')){ $post->tag()->sync(request('tags')); }
+
         return response()->json([
             'post' => $post
         ]);
@@ -38,8 +41,12 @@ class PostsController extends Controller
 
     public function show($id){
         $post = Post::find($id);
+        //$tags = Tag::select('tags.id', 'tags.title')->join('post_tag', 'tags.id', '=', 'post_tag.tag_id')->where('post_tag.post_id', $post->id)->where('tags.publish', 1)->get();
+        $tags = $post->tag()->pluck('tags.id');
+
         return response()->json([
-            'post' => $post
+            'post' => $post,
+            'tags' => $tags
         ]);
     }
 
@@ -50,8 +57,12 @@ class PostsController extends Controller
         $post->slider = request('slider')?  true : false;
         $post->publish = request('publish')?  true : false;
         $post->update($request->except('image', 'slug'));
+
+        if(request('tags')){ $post->tag()->sync(request('tags')); }
+
         return response()->json([
-            'post' => $post
+            'post' => $post,
+            'tags' => $post->tag()->pluck('tags.id')
         ]);
     }
 

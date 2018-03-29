@@ -121,6 +121,13 @@
                                         </ckeditor>
                                         <small class="form-text text-muted" v-if="error != null && error.desc">{{ error.body[0] }}</small>
                                     </div>
+                                    <div class="form-group" v-if="seen">
+                                        <label>Tags</label>
+                                        <select2 :options="tags" :value="post.tags" :multiple="true" @input="input($event)">
+                                            <option value="0" disabled>select one</option>
+                                            <!--<option :value="tag.id" v-for="tag in post.tags">{{ tag.title }}</option>-->
+                                        </select2>
+                                    </div>
                                     <div class="form-group">
                                         <button class="btn btn-primary" type="submit">Edit</button>
                                     </div>
@@ -145,15 +152,20 @@
     import Ckeditor from 'vue-ckeditor2';
     import vue2Dropzone from 'vue2-dropzone';
     import 'vue2-dropzone/dist/vue2Dropzone.css';
+    import Select2 from '../helper/Select2Helper.vue';
 
     export default {
         data(){
           return {
-              post: {},
+              post: {
+                  tags: []
+              },
               error: null,
               lists: {},
               towns: {},
               photos: {},
+              tags: {},
+              seen: false,
               config: {
                   toolbar: [
                       [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', 'Image', 'Link', 'Unlink', 'Source' ],
@@ -187,13 +199,19 @@
             'upload-pdf-helper': UploadPdfHelper,
             'switches': Switches,
             'ckeditor': Ckeditor,
-            'vue-dropzone': vue2Dropzone
+            'vue-dropzone': vue2Dropzone,
+            'select2': Select2
         },
         created(){
             this.getPost();
             this.getList();
             this.getTowns();
             this.getPhotos();
+            this.getTags();
+            setTimeout(() => {
+                this.seen = true;
+                console.log('seen');
+            }, 2000);
         },
         methods: {
             getPost(){
@@ -201,6 +219,7 @@
                     .then(res => {
                         if(res.data.post != null){
                             this.post = res.data.post;
+                            this.post.tags = res.data.tags;
                         }
                     })
                     .catch(e => {
@@ -209,12 +228,11 @@
                     });
             },
             submit(){
-                let data = {};
-                data = this.post;
                 this.post.user_id = this.user.id;
-                axios.put('api/posts/' + this.post.id, data)
+                axios.put('api/posts/' + this.post.id, this.post)
                     .then(res => {
                         this.post = res.data.post;
+                        this.post.tags = res.data.tags;
                         swal({
                             position: 'center',
                             type: 'success',
@@ -231,7 +249,6 @@
             upload(image){
                 axios.post('api/posts/' + this.post.id + '/image', { file: image[0] })
                     .then(res => {
-                        console.log(res);
                         this.post.image = res.data.image;
                         this.error = null;
                         swal({
@@ -251,9 +268,9 @@
                     .then(res => {
                         this.lists = res.data.categories;
                     }).catch(e => {
-                    console.log(e.response);
-                    this.error = e.response.data.errors;
-                });
+                        console.log(e.response);
+                        this.error = e.response.data.errors;
+                    });
             },
             getTowns(){
                 axios.get('api/towns/lists')
@@ -267,7 +284,6 @@
             getPhotos(){
                 axios.get('api/posts/' + this.$route.params.id + '/gallery')
                     .then(res => {
-                        console.log(res);
                         this.photos = res.data.photos;
                     }).catch(e => {
                     console.log(e.response);
@@ -277,7 +293,6 @@
             deletePhoto(photo){
                 axios.post('api/photos/' + photo.id + '/destroy')
                     .then(res => {
-                        console.log(res);
                         this.photos = this.photos.filter(function (item) {
                             return photo.id != item.id;
                         });
@@ -288,6 +303,22 @@
             },
             showSuccess(){
                 this.getPhotos();
+            },
+            getTags(){
+                axios.get('api/tags/lists')
+                    .then(res => {
+                        this.tags = _.map(res.data.tags, (data) => {
+                            var pick = _.pick(data, 'title', 'id');
+                            var object = {id: pick.id, text: pick.title};
+                            return object;
+                        });
+                    }).catch(e => {
+                        console.log(e.response);
+                        this.error = e.response.data.errors;
+                    });
+            },
+            input(tag){
+                this.post.tags = tag;
             }
         }
     }

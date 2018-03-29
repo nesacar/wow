@@ -65,4 +65,5 @@ Route::middleware('auth:api')->get('newsletters/{id}/banner', 'NewslettersContro
 Route::middleware('auth:api')->resource('themes', 'ThemesController');
 Route::middleware('auth:api')->post('themes/{id}/image', 'ThemesController@uploadImage');
 
+Route::middleware('auth:api')->get('tags/lists', 'TagsController@lists');
 Route::middleware('auth:api')->resource('tags', 'TagsController');

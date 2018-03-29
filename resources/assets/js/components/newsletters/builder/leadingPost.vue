@@ -35,11 +35,9 @@
                                         <tr>
 
                                             <td style="width:550px; position: relative;">
-
                                                 <select2 :options="posts" :value="item.item1" :name="item.component" @input="input($event)">
                                                     <option value="0">select one</option>
                                                 </select2>
-
                                             </td>
                                         </tr>
                                         </tbody>

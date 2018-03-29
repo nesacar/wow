@@ -90,4 +90,12 @@ class TagsController extends Controller
             'message' => 'deleted'
         ]);
     }
+
+    public function lists(){
+        $tags = Tag::select('id', 'title')->where('publish', 1)->orderBy('title', 'ASC')->get();
+
+        return response()->json([
+            'tags' => $tags
+        ]);
+    }
 }

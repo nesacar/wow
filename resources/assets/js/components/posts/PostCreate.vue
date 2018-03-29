@@ -73,6 +73,12 @@
                                 <switches v-model="post.publish" theme="bootstrap" color="primary"></switches>
                             </div>
                             <div class="form-group">
+                                <label>Tags</label>
+                                <select2 :options="tags" :multiple="true" @input="input($event)">
+                                    <option value="0" disabled>select one</option>
+                                </select2>
+                            </div>
+                            <div class="form-group">
                                 <button class="btn btn-primary" type="submit">Create</button>
                             </div>
                         </form>
@@ -101,6 +107,7 @@
     import swal from 'sweetalert2';
     import Switches from 'vue-switches';
     import Ckeditor from 'vue-ckeditor2';
+    import Select2 from '../helper/Select2Helper.vue';
 
     export default {
         data(){
@@ -108,10 +115,12 @@
               post: {
                   desc: null,
                   publish: false,
-                  category_id: 0
+                  category_id: 0,
+                  tags: []
               },
               lists: {},
               towns: {},
+              tags: {},
               error: null,
               config: {
                   toolbar: [
@@ -136,16 +145,17 @@
             'upload-image-helper': UploadImageHelper,
             'upload-pdf-helper': UploadPdfHelper,
             'switches': Switches,
-            'ckeditor': Ckeditor
+            'ckeditor': Ckeditor,
+            'select2': Select2,
         },
         created(){
             this.getList();
             this.getTowns();
+            this.getTags();
         },
         methods: {
             submit(){
                 this.post.user_id = this.user.id;
-                console.log(this.post);
                 axios.post('api/posts', this.post)
                     .then(res => {
                         swal({
@@ -182,6 +192,23 @@
                         console.log(e.response);
                         this.error = e.response.data.errors;
                     });
+            },
+            getTags(){
+                axios.get('api/tags/lists')
+                    .then(res => {
+                        this.tags = _.map(res.data.tags, (data) => {
+                            var pick = _.pick(data, 'title', 'id');
+                            var object = {id: pick.id, text: pick.title};
+                            return object;
+                        });
+                    }).catch(e => {
+                        console.log(e.response);
+                        this.error = e.response.data.errors;
+                    });
+            },
+            input(tag){
+                console.log(tag);
+                this.post.tags = tag;
             }
         }
     }
