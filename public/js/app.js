@@ -57,7 +57,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 31);
@@ -875,7 +875,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
-* sweetalert2 v7.16.0
+* sweetalert2 v7.18.0
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -884,83 +884,166 @@ Object.defineProperty(exports, '__esModule', { value: true });
 	(global.Sweetalert2 = factory());
 }(this, (function () { 'use strict';
 
-var defaultParams = {
-  title: '',
-  titleText: '',
-  text: '',
-  html: '',
-  footer: '',
-  type: null,
-  toast: false,
-  customClass: '',
-  target: 'body',
-  backdrop: true,
-  animation: true,
-  allowOutsideClick: true,
-  allowEscapeKey: true,
-  allowEnterKey: true,
-  showConfirmButton: true,
-  showCancelButton: false,
-  preConfirm: null,
-  confirmButtonText: 'OK',
-  confirmButtonAriaLabel: '',
-  confirmButtonColor: null,
-  confirmButtonClass: null,
-  cancelButtonText: 'Cancel',
-  cancelButtonAriaLabel: '',
-  cancelButtonColor: null,
-  cancelButtonClass: null,
-  buttonsStyling: true,
-  reverseButtons: false,
-  focusConfirm: true,
-  focusCancel: false,
-  showCloseButton: false,
-  closeButtonAriaLabel: 'Close this dialog',
-  showLoaderOnConfirm: false,
-  imageUrl: null,
-  imageWidth: null,
-  imageHeight: null,
-  imageAlt: '',
-  imageClass: null,
-  timer: null,
-  width: null,
-  padding: null,
-  background: null,
-  input: null,
-  inputPlaceholder: '',
-  inputValue: '',
-  inputOptions: {},
-  inputAutoTrim: true,
-  inputClass: null,
-  inputAttributes: {},
-  inputValidator: null,
-  grow: false,
-  position: 'center',
-  progressSteps: [],
-  currentProgressStep: null,
-  progressStepsDistance: null,
-  onBeforeOpen: null,
-  onOpen: null,
-  onClose: null,
-  useRejections: false,
-  expectRejections: false
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  return typeof obj;
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
 };
 
-var deprecatedParams = ['useRejections', 'expectRejections'];
 
-var swalPrefix = 'swal2-';
 
-var prefix = function prefix(items) {
-  var result = {};
-  for (var i in items) {
-    result[items[i]] = swalPrefix + items[i];
+
+
+
+
+
+
+
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
   }
-  return result;
 };
 
-var swalClasses = prefix(['container', 'shown', 'iosfix', 'popup', 'modal', 'no-backdrop', 'toast', 'toast-shown', 'fade', 'show', 'hide', 'noanimation', 'close', 'title', 'header', 'content', 'actions', 'confirm', 'cancel', 'footer', 'icon', 'icon-text', 'image', 'input', 'has-input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea', 'inputerror', 'validationerror', 'progresssteps', 'activeprogressstep', 'progresscircle', 'progressline', 'loading', 'styled', 'top', 'top-start', 'top-end', 'top-left', 'top-right', 'center', 'center-start', 'center-end', 'center-left', 'center-right', 'bottom', 'bottom-start', 'bottom-end', 'bottom-left', 'bottom-right', 'grow-row', 'grow-column', 'grow-fullscreen']);
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
 
-var iconTypes = prefix(['success', 'warning', 'info', 'question', 'error']);
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
+
+
+
+
+
+
+
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
+var get = function get(object, property, receiver) {
+  if (object === null) object = Function.prototype;
+  var desc = Object.getOwnPropertyDescriptor(object, property);
+
+  if (desc === undefined) {
+    var parent = Object.getPrototypeOf(object);
+
+    if (parent === null) {
+      return undefined;
+    } else {
+      return get(parent, property, receiver);
+    }
+  } else if ("value" in desc) {
+    return desc.value;
+  } else {
+    var getter = desc.get;
+
+    if (getter === undefined) {
+      return undefined;
+    }
+
+    return getter.call(receiver);
+  }
+};
+
+var inherits = function (subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      enumerable: false,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+};
+
+
+
+
+
+
+
+
+
+
+
+var possibleConstructorReturn = function (self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return call && (typeof call === "object" || typeof call === "function") ? call : self;
+};
+
+
+
+
+
+var slicedToArray = function () {
+  function sliceIterator(arr, i) {
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _e = undefined;
+
+    try {
+      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+        _arr.push(_s.value);
+
+        if (i && _arr.length === i) break;
+      }
+    } catch (err) {
+      _d = true;
+      _e = err;
+    } finally {
+      try {
+        if (!_n && _i["return"]) _i["return"]();
+      } finally {
+        if (_d) throw _e;
+      }
+    }
+
+    return _arr;
+  }
+
+  return function (arr, i) {
+    if (Array.isArray(arr)) {
+      return arr;
+    } else if (Symbol.iterator in Object(arr)) {
+      return sliceIterator(arr, i);
+    } else {
+      throw new TypeError("Invalid attempt to destructure non-iterable instance");
+    }
+  };
+}();
 
 var consolePrefix = 'SweetAlert2:';
 
@@ -1038,6 +1121,69 @@ var warnOnce = function warnOnce(message) {
 var callIfFunction = function callIfFunction(arg) {
   return typeof arg === 'function' ? arg() : arg;
 };
+
+var isThenable = function isThenable(arg) {
+  return (typeof arg === 'undefined' ? 'undefined' : _typeof(arg)) === 'object' && typeof arg.then === 'function';
+};
+
+var DismissReason = Object.freeze({
+  cancel: 'cancel',
+  backdrop: 'overlay',
+  close: 'close',
+  esc: 'esc',
+  timer: 'timer'
+});
+
+var version = "7.18.0";
+
+var argsToParams = function argsToParams(args) {
+  var params = {};
+  switch (_typeof(args[0])) {
+    case 'string':
+      ['title', 'html', 'type'].forEach(function (name, index) {
+        if (args[index] !== undefined) {
+          params[name] = args[index];
+        }
+      });
+      break;
+
+    case 'object':
+      _extends(params, args[0]);
+      break;
+
+    default:
+      error('Unexpected type of argument! Expected "string" or "object", got ' + _typeof(args[0]));
+      return false;
+  }
+  return params;
+};
+
+/**
+ * Adapt a legacy inputValidator for use with expectRejections=false
+ */
+var adaptInputValidator = function adaptInputValidator(legacyValidator) {
+  return function adaptedInputValidator(inputValue, extraParams) {
+    return legacyValidator.call(this, inputValue, extraParams).then(function () {
+      return undefined;
+    }, function (validationError) {
+      return validationError;
+    });
+  };
+};
+
+var swalPrefix = 'swal2-';
+
+var prefix = function prefix(items) {
+  var result = {};
+  for (var i in items) {
+    result[items[i]] = swalPrefix + items[i];
+  }
+  return result;
+};
+
+var swalClasses = prefix(['container', 'shown', 'iosfix', 'popup', 'modal', 'no-backdrop', 'toast', 'toast-shown', 'fade', 'show', 'hide', 'noanimation', 'close', 'title', 'header', 'content', 'actions', 'confirm', 'cancel', 'footer', 'icon', 'icon-text', 'image', 'input', 'has-input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea', 'inputerror', 'validationerror', 'progresssteps', 'activeprogressstep', 'progresscircle', 'progressline', 'loading', 'styled', 'top', 'top-start', 'top-end', 'top-left', 'top-right', 'center', 'center-start', 'center-end', 'center-left', 'center-right', 'bottom', 'bottom-start', 'bottom-end', 'bottom-left', 'bottom-right', 'grow-row', 'grow-column', 'grow-fullscreen']);
+
+var iconTypes = prefix(['success', 'warning', 'info', 'question', 'error']);
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 var states = {
@@ -1283,7 +1429,7 @@ var init = function init(params) {
   }
 
   var resetValidationError = function resetValidationError() {
-    sweetAlert.isVisible() && sweetAlert.resetValidationError();
+    SweetAlert.isVisible() && SweetAlert.resetValidationError();
   };
 
   input.oninput = resetValidationError;
@@ -1304,8 +1450,6 @@ var init = function init(params) {
 
   return popup;
 };
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var parseHtmlToContainer = function parseHtmlToContainer(param, target) {
   if (!param) {
@@ -1365,6 +1509,542 @@ var measureScrollbar = function measureScrollbar() {
   return scrollbarWidth;
 };
 
+var fixScrollbar = function fixScrollbar() {
+  // for queues, do not do this more than once
+  if (states.previousBodyPadding !== null) {
+    return;
+  }
+  // if the body has overflow
+  if (document.body.scrollHeight > window.innerHeight) {
+    // add padding so the content doesn't shift after removal of scrollbar
+    states.previousBodyPadding = document.body.style.paddingRight;
+    document.body.style.paddingRight = measureScrollbar() + 'px';
+  }
+};
+
+var undoScrollbar = function undoScrollbar() {
+  if (states.previousBodyPadding !== null) {
+    document.body.style.paddingRight = states.previousBodyPadding;
+    states.previousBodyPadding = null;
+  }
+};
+
+// Fix iOS scrolling http://stackoverflow.com/q/39626302/1331425
+var iOSfix = function iOSfix() {
+  var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  if (iOS && !hasClass(document.body, swalClasses.iosfix)) {
+    var offset = document.body.scrollTop;
+    document.body.style.top = offset * -1 + 'px';
+    addClass(document.body, swalClasses.iosfix);
+  }
+};
+
+var undoIOSfix = function undoIOSfix() {
+  if (hasClass(document.body, swalClasses.iosfix)) {
+    var offset = parseInt(document.body.style.top, 10);
+    removeClass(document.body, swalClasses.iosfix);
+    document.body.style.top = '';
+    document.body.scrollTop = offset * -1;
+  }
+};
+
+var defaultParams = {
+  title: '',
+  titleText: '',
+  text: '',
+  html: '',
+  footer: '',
+  type: null,
+  toast: false,
+  customClass: '',
+  target: 'body',
+  backdrop: true,
+  animation: true,
+  allowOutsideClick: true,
+  allowEscapeKey: true,
+  allowEnterKey: true,
+  showConfirmButton: true,
+  showCancelButton: false,
+  preConfirm: null,
+  confirmButtonText: 'OK',
+  confirmButtonAriaLabel: '',
+  confirmButtonColor: null,
+  confirmButtonClass: null,
+  cancelButtonText: 'Cancel',
+  cancelButtonAriaLabel: '',
+  cancelButtonColor: null,
+  cancelButtonClass: null,
+  buttonsStyling: true,
+  reverseButtons: false,
+  focusConfirm: true,
+  focusCancel: false,
+  showCloseButton: false,
+  closeButtonAriaLabel: 'Close this dialog',
+  showLoaderOnConfirm: false,
+  imageUrl: null,
+  imageWidth: null,
+  imageHeight: null,
+  imageAlt: '',
+  imageClass: null,
+  timer: null,
+  width: null,
+  padding: null,
+  background: null,
+  input: null,
+  inputPlaceholder: '',
+  inputValue: '',
+  inputOptions: {},
+  inputAutoTrim: true,
+  inputClass: null,
+  inputAttributes: {},
+  inputValidator: null,
+  grow: false,
+  position: 'center',
+  progressSteps: [],
+  currentProgressStep: null,
+  progressStepsDistance: null,
+  onBeforeOpen: null,
+  onAfterClose: null,
+  onOpen: null,
+  onClose: null,
+  useRejections: false,
+  expectRejections: false
+};
+
+var deprecatedParams = ['useRejections', 'expectRejections'];
+
+/**
+ * Is valid parameter
+ * @param {String} paramName
+ */
+var isValidParameter = function isValidParameter(paramName) {
+  return defaultParams.hasOwnProperty(paramName) || paramName === 'extraParams';
+};
+
+/**
+ * Is deprecated parameter
+ * @param {String} paramName
+ */
+var isDeprecatedParameter = function isDeprecatedParameter(paramName) {
+  return deprecatedParams.indexOf(paramName) !== -1;
+};
+
+/**
+ * Show relevant warnings for given params
+ *
+ * @param params
+ */
+var showWarningsForParams = function showWarningsForParams(params) {
+  for (var param in params) {
+    if (!isValidParameter(param)) {
+      warn('Unknown parameter "' + param + '"');
+    }
+    if (isDeprecatedParameter(param)) {
+      warnOnce('The parameter "' + param + '" is deprecated and will be removed in the next major release.');
+    }
+  }
+};
+
+var globalState = {
+  popupParams: _extends({}, defaultParams)
+};
+
+/*
+ * Global function to close sweetAlert
+ */
+var close = function close(onClose, onAfterClose) {
+  var container = getContainer();
+  var popup = getPopup();
+  if (!popup) {
+    return;
+  }
+
+  if (onClose !== null && typeof onClose === 'function') {
+    onClose(popup);
+  }
+
+  removeClass(popup, swalClasses.show);
+  addClass(popup, swalClasses.hide);
+  clearTimeout(popup.timeout);
+
+  if (!isToast()) {
+    resetPrevState();
+    window.onkeydown = globalState.previousWindowKeyDown;
+    globalState.windowOnkeydownOverridden = false;
+  }
+
+  var removePopupAndResetState = function removePopupAndResetState() {
+    if (container.parentNode) {
+      container.parentNode.removeChild(container);
+    }
+    removeClass([document.documentElement, document.body], [swalClasses.shown, swalClasses['no-backdrop'], swalClasses['has-input'], swalClasses['toast-shown']]);
+
+    if (isModal()) {
+      undoScrollbar();
+      undoIOSfix();
+    }
+
+    if (onAfterClose !== null && typeof onAfterClose === 'function') {
+      setTimeout(function () {
+        onAfterClose();
+      });
+    }
+  };
+
+  // If animation is supported, animate
+  if (animationEndEvent && !hasClass(popup, swalClasses.noanimation)) {
+    popup.addEventListener(animationEndEvent, function swalCloseEventFinished() {
+      popup.removeEventListener(animationEndEvent, swalCloseEventFinished);
+      if (hasClass(popup, swalClasses.hide)) {
+        removePopupAndResetState();
+      }
+    });
+  } else {
+    // Otherwise, remove immediately
+    removePopupAndResetState();
+  }
+};
+
+/*
+ * Global function to determine if swal2 popup is shown
+ */
+var isVisible$1 = function isVisible() {
+  return !!getPopup();
+};
+
+/*
+ * Global function to click 'Confirm' button
+ */
+var clickConfirm = function clickConfirm() {
+  return getConfirmButton().click();
+};
+
+/*
+ * Global function to click 'Cancel' button
+ */
+var clickCancel = function clickCancel() {
+  return getCancelButton().click();
+};
+
+/**
+ * Returns an extended version of `Swal` containing `params` as defaults.
+ * Useful for reusing Swal configuration.
+ *
+ * For example:
+ *
+ * Before:
+ * const textPromptOptions = { input: 'text', showCancelButton: true }
+ * const {value: firstName} = await Swal({ ...textPromptOptions, title: 'What is your first name?' })
+ * const {value: lastName} = await Swal({ ...textPromptOptions, title: 'What is your last name?' })
+ *
+ * After:
+ * const TextPrompt = Swal.mixin({ input: 'text', showCancelButton: true })
+ * const {value: firstName} = await TextPrompt.fire('What is your first name?')
+ * const {value: lastName} = await TextPrompt.fire('What is your last name?')
+ *
+ * @param params
+ */
+function mixin(mixinParams) {
+  var Swal = this;
+  return function (_Swal) {
+    inherits(MixinSwal, _Swal);
+
+    function MixinSwal() {
+      classCallCheck(this, MixinSwal);
+      return possibleConstructorReturn(this, (MixinSwal.__proto__ || Object.getPrototypeOf(MixinSwal)).apply(this, arguments));
+    }
+
+    createClass(MixinSwal, [{
+      key: "_main",
+      value: function _main(params) {
+        return get(MixinSwal.prototype.__proto__ || Object.getPrototypeOf(MixinSwal.prototype), "_main", this).call(this, _extends({}, mixinParams, params));
+      }
+    }]);
+    return MixinSwal;
+  }(Swal);
+}
+
+// private global state for the queue feature
+var currentSteps = [];
+
+/*
+ * Global function for chaining sweetAlert popups
+ */
+var queue = function queue(steps) {
+  var swal = this;
+  currentSteps = steps;
+  var resetQueue = function resetQueue() {
+    currentSteps = [];
+    document.body.removeAttribute('data-swal2-queue-step');
+  };
+  var queueResult = [];
+  return new Promise(function (resolve, reject) {
+    (function step(i, callback) {
+      if (i < currentSteps.length) {
+        document.body.setAttribute('data-swal2-queue-step', i);
+
+        swal(currentSteps[i]).then(function (result) {
+          if (typeof result.value !== 'undefined') {
+            queueResult.push(result.value);
+            step(i + 1, callback);
+          } else {
+            resetQueue();
+            resolve({ dismiss: result.dismiss });
+          }
+        });
+      } else {
+        resetQueue();
+        resolve({ value: queueResult });
+      }
+    })(0);
+  });
+};
+
+/*
+ * Global function for getting the index of current popup in queue
+ */
+var getQueueStep = function getQueueStep() {
+  return document.body.getAttribute('data-swal2-queue-step');
+};
+
+/*
+ * Global function for inserting a popup to the queue
+ */
+var insertQueueStep = function insertQueueStep(step, index) {
+  if (index && index < currentSteps.length) {
+    return currentSteps.splice(index, 0, step);
+  }
+  return currentSteps.push(step);
+};
+
+/*
+ * Global function for deleting a popup from the queue
+ */
+var deleteQueueStep = function deleteQueueStep(index) {
+  if (typeof currentSteps[index] !== 'undefined') {
+    currentSteps.splice(index, 1);
+  }
+};
+
+/**
+ * Set default params for each popup
+ * @param {Object} userParams
+ */
+var setDefaults = function setDefaults(userParams) {
+  if (!userParams || (typeof userParams === 'undefined' ? 'undefined' : _typeof(userParams)) !== 'object') {
+    return error('the argument for setDefaults() is required and has to be a object');
+  }
+
+  showWarningsForParams(userParams);
+
+  // assign valid params from userParams to popupParams
+  for (var param in userParams) {
+    if (isValidParameter(param)) {
+      globalState.popupParams[param] = userParams[param];
+    }
+  }
+};
+
+/**
+ * Reset default params for each popup
+ */
+var resetDefaults = function resetDefaults() {
+  globalState.popupParams = _extends({}, defaultParams);
+};
+
+/**
+ * Show spinner instead of Confirm button and disable Cancel button
+ */
+var showLoading = function showLoading() {
+  var popup = getPopup();
+  if (!popup) {
+    SweetAlert('');
+  }
+  popup = getPopup();
+  var actions = getActions();
+  var confirmButton = getConfirmButton();
+  var cancelButton = getCancelButton();
+
+  show(actions);
+  show(confirmButton);
+  addClass([popup, actions], swalClasses.loading);
+  confirmButton.disabled = true;
+  cancelButton.disabled = true;
+
+  popup.setAttribute('data-loading', true);
+  popup.setAttribute('aria-busy', true);
+  popup.focus();
+};
+
+function fire() {
+  var Swal = this;
+
+  for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  return new (Function.prototype.bind.apply(Swal, [null].concat(args)))();
+}
+
+
+
+var staticMethods = Object.freeze({
+	isValidParameter: isValidParameter,
+	isDeprecatedParameter: isDeprecatedParameter,
+	argsToParams: argsToParams,
+	adaptInputValidator: adaptInputValidator,
+	close: close,
+	closePopup: close,
+	closeModal: close,
+	closeToast: close,
+	isVisible: isVisible$1,
+	clickConfirm: clickConfirm,
+	clickCancel: clickCancel,
+	getTitle: getTitle,
+	getContent: getContent,
+	getImage: getImage,
+	getButtonsWrapper: getButtonsWrapper,
+	getActions: getActions,
+	getConfirmButton: getConfirmButton,
+	getCancelButton: getCancelButton,
+	getFooter: getFooter,
+	isLoading: isLoading,
+	mixin: mixin,
+	queue: queue,
+	getQueueStep: getQueueStep,
+	insertQueueStep: insertQueueStep,
+	deleteQueueStep: deleteQueueStep,
+	setDefaults: setDefaults,
+	resetDefaults: resetDefaults,
+	showLoading: showLoading,
+	enableLoading: showLoading,
+	fire: fire
+});
+
+/**
+ * Show spinner instead of Confirm button and disable Cancel button
+ */
+function hideLoading() {
+  var domCache = this._domCache;
+  if (!this.params.showConfirmButton) {
+    hide(domCache.confirmButton);
+    if (!this.params.showCancelButton) {
+      hide(domCache.actions);
+    }
+  }
+  removeClass([domCache.popup, domCache.actions], swalClasses.loading);
+  domCache.popup.removeAttribute('aria-busy');
+  domCache.popup.removeAttribute('data-loading');
+  domCache.confirmButton.disabled = false;
+  domCache.cancelButton.disabled = false;
+}
+
+// Get input element by specified type or, if type isn't specified, by params.input
+function getInput(inputType) {
+  var domCache = this._domCache;
+  inputType = inputType || this.params.input;
+  if (!inputType) {
+    return null;
+  }
+  switch (inputType) {
+    case 'select':
+    case 'textarea':
+    case 'file':
+      return getChildByClass(domCache.content, swalClasses[inputType]);
+    case 'checkbox':
+      return domCache.popup.querySelector('.' + swalClasses.checkbox + ' input');
+    case 'radio':
+      return domCache.popup.querySelector('.' + swalClasses.radio + ' input:checked') || domCache.popup.querySelector('.' + swalClasses.radio + ' input:first-child');
+    case 'range':
+      return domCache.popup.querySelector('.' + swalClasses.range + ' input');
+    default:
+      return getChildByClass(domCache.content, swalClasses.input);
+  }
+}
+
+function enableButtons() {
+  this._domCache.confirmButton.disabled = false;
+  this._domCache.cancelButton.disabled = false;
+}
+
+function disableButtons() {
+  this._domCache.confirmButton.disabled = true;
+  this._domCache.cancelButton.disabled = true;
+}
+
+function enableConfirmButton() {
+  this._domCache.confirmButton.disabled = false;
+}
+
+function disableConfirmButton() {
+  this._domCache.confirmButton.disabled = true;
+}
+
+function enableInput() {
+  var input = this.getInput();
+  if (!input) {
+    return false;
+  }
+  if (input.type === 'radio') {
+    var radiosContainer = input.parentNode.parentNode;
+    var radios = radiosContainer.querySelectorAll('input');
+    for (var i = 0; i < radios.length; i++) {
+      radios[i].disabled = false;
+    }
+  } else {
+    input.disabled = false;
+  }
+}
+
+function disableInput() {
+  var input = this.getInput();
+  if (!input) {
+    return false;
+  }
+  if (input && input.type === 'radio') {
+    var radiosContainer = input.parentNode.parentNode;
+    var radios = radiosContainer.querySelectorAll('input');
+    for (var i = 0; i < radios.length; i++) {
+      radios[i].disabled = true;
+    }
+  } else {
+    input.disabled = true;
+  }
+}
+
+// Show block with validation error
+function showValidationError(error) {
+  var domCache = this._domCache;
+  domCache.validationError.innerHTML = error;
+  var popupComputedStyle = window.getComputedStyle(domCache.popup);
+  domCache.validationError.style.marginLeft = '-' + popupComputedStyle.getPropertyValue('padding-left');
+  domCache.validationError.style.marginRight = '-' + popupComputedStyle.getPropertyValue('padding-right');
+  show(domCache.validationError);
+
+  var input = this.getInput();
+  if (input) {
+    input.setAttribute('aria-invalid', true);
+    input.setAttribute('aria-describedBy', swalClasses.validationerror);
+    focusInput(input);
+    addClass(input, swalClasses.inputerror);
+  }
+}
+
+// Hide block with validation error
+function resetValidationError() {
+  var domCache = this._domCache;
+  if (domCache.validationError) {
+    hide(domCache.validationError);
+  }
+
+  var input = this.getInput();
+  if (input) {
+    input.removeAttribute('aria-invalid');
+    input.removeAttribute('aria-describedBy');
+    removeClass(input, swalClasses.inputerror);
+  }
+}
+
 var defaultInputValidators = {
   email: function email(string) {
     return (/^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9-]{2,24}$/.test(string) ? Promise.resolve() : Promise.reject('Invalid email address')
@@ -1388,7 +2068,7 @@ function setParameters(params) {
   if (!params.inputValidator) {
     Object.keys(defaultInputValidators).forEach(function (key) {
       if (params.input === key) {
-        params.inputValidator = params.expectRejections ? defaultInputValidators[key] : sweetAlert.adaptInputValidator(defaultInputValidators[key]);
+        params.inputValidator = params.expectRejections ? defaultInputValidators[key] : SweetAlert.adaptInputValidator(defaultInputValidators[key]);
       }
     });
   }
@@ -1508,7 +2188,7 @@ function setParameters(params) {
 
   // Progress steps
   var progressStepsContainer = getProgressSteps();
-  var currentProgressStep = parseInt(params.currentProgressStep === null ? sweetAlert.getQueueStep() : params.currentProgressStep, 10);
+  var currentProgressStep = parseInt(params.currentProgressStep === null ? SweetAlert.getQueueStep() : params.currentProgressStep, 10);
   if (params.progressSteps && params.progressSteps.length) {
     show(progressStepsContainer);
     empty(progressStepsContainer);
@@ -1663,84 +2343,6 @@ function setParameters(params) {
   }
 }
 
-var DismissReason = Object.freeze({
-  cancel: 'cancel',
-  backdrop: 'overlay',
-  close: 'close',
-  esc: 'esc',
-  timer: 'timer'
-});
-
-var fixScrollbar = function fixScrollbar() {
-  // for queues, do not do this more than once
-  if (states.previousBodyPadding !== null) {
-    return;
-  }
-  // if the body has overflow
-  if (document.body.scrollHeight > window.innerHeight) {
-    // add padding so the content doesn't shift after removal of scrollbar
-    states.previousBodyPadding = document.body.style.paddingRight;
-    document.body.style.paddingRight = measureScrollbar() + 'px';
-  }
-};
-
-var undoScrollbar = function undoScrollbar() {
-  if (states.previousBodyPadding !== null) {
-    document.body.style.paddingRight = states.previousBodyPadding;
-    states.previousBodyPadding = null;
-  }
-};
-
-// Fix iOS scrolling http://stackoverflow.com/q/39626302/1331425
-var iOSfix = function iOSfix() {
-  var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-  if (iOS && !hasClass(document.body, swalClasses.iosfix)) {
-    var offset = document.body.scrollTop;
-    document.body.style.top = offset * -1 + 'px';
-    addClass(document.body, swalClasses.iosfix);
-  }
-};
-
-var undoIOSfix = function undoIOSfix() {
-  if (hasClass(document.body, swalClasses.iosfix)) {
-    var offset = parseInt(document.body.style.top, 10);
-    removeClass(document.body, swalClasses.iosfix);
-    document.body.style.top = '';
-    document.body.scrollTop = offset * -1;
-  }
-};
-
-var version = "7.16.0";
-
-var _typeof$1 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var popupParams = _extends({}, defaultParams);
-var queue = [];
-var currentContext = void 0;
-
-var previousWindowKeyDown = void 0;
-var windowOnkeydownOverridden = void 0;
-
-/**
- * Show relevant warnings for given params
- *
- * @param params
- */
-var showWarningsForParams = function showWarningsForParams(params) {
-  for (var param in params) {
-    if (!sweetAlert.isValidParameter(param)) {
-      warn('Unknown parameter "' + param + '"');
-    }
-    if (sweetAlert.isDeprecatedParameter(param)) {
-      warnOnce('The parameter "' + param + '" is deprecated and will be removed in the next major release.');
-    }
-  }
-};
-
 /**
  * Animations
  *
@@ -1748,7 +2350,7 @@ var showWarningsForParams = function showWarningsForParams(params) {
  * @param onBeforeOpen
  * @param onComplete
  */
-var openPopup = function openPopup(animation, onBeforeOpen, onComplete) {
+var openPopup = function openPopup(animation, onBeforeOpen, onOpen) {
   var container = getContainer();
   var popup = getPopup();
 
@@ -1782,42 +2384,23 @@ var openPopup = function openPopup(animation, onBeforeOpen, onComplete) {
     iOSfix();
   }
   states.previousActiveElement = document.activeElement;
-  if (onComplete !== null && typeof onComplete === 'function') {
+  if (onOpen !== null && typeof onOpen === 'function') {
     setTimeout(function () {
-      onComplete(popup);
+      onOpen(popup);
     });
   }
 };
 
-// SweetAlert entry point
-var sweetAlert = function sweetAlert() {
-  for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-    args[_key] = arguments[_key];
-  }
+function _main(userParams) {
+  var _this = this;
 
-  // Prevent run in Node env
-  if (typeof window === 'undefined') {
-    return;
-  }
-
-  // Check for the existence of Promise
-  if (typeof Promise === 'undefined') {
-    error('This package requires a Promise library, please include a shim to enable it in this browser (See: https://github.com/sweetalert2/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2#1-ie-support)');
-  }
-
-  if (typeof args[0] === 'undefined') {
-    error('SweetAlert2 expects at least 1 attribute!');
-    return false;
-  }
-
-  var context = currentContext = {};
-
-  var userParams = sweetAlert.argsToParams(args);
   showWarningsForParams(userParams);
-  var params = context.params = _extends({}, popupParams, userParams);
-  setParameters(params);
 
-  var domCache = context.domCache = {
+  var params = this.params = _extends({}, globalState.popupParams, userParams);
+  setParameters(params);
+  Object.freeze(params);
+
+  var domCache = this._domCache = {
     popup: getPopup(),
     container: getContainer(),
     content: getContent(),
@@ -1829,10 +2412,12 @@ var sweetAlert = function sweetAlert() {
     progressSteps: getProgressSteps()
   };
 
+  var constructor = this.constructor;
+
   return new Promise(function (resolve, reject) {
     // functions to handle all resolving/rejecting/settling
     var succeedWith = function succeedWith(value) {
-      sweetAlert.closePopup(params.onClose);
+      constructor.closePopup(params.onClose, params.onAfterClose); // TODO: make closePopup an *instance* method
       if (params.useRejections) {
         resolve(value);
       } else {
@@ -1840,7 +2425,7 @@ var sweetAlert = function sweetAlert() {
       }
     };
     var dismissWith = function dismissWith(dismiss) {
-      sweetAlert.closePopup(params.onClose);
+      constructor.closePopup(params.onClose, params.onAfterClose);
       if (params.useRejections) {
         reject(dismiss);
       } else {
@@ -1848,7 +2433,7 @@ var sweetAlert = function sweetAlert() {
       }
     };
     var errorWith = function errorWith(error$$1) {
-      sweetAlert.closePopup(params.onClose);
+      constructor.closePopup(params.onClose, params.onAfterClose);
       reject(error$$1);
     };
 
@@ -1861,7 +2446,7 @@ var sweetAlert = function sweetAlert() {
 
     // Get the value of the popup input
     var getInputValue = function getInputValue() {
-      var input = sweetAlert.getInput();
+      var input = _this.getInput();
       if (!input) {
         return null;
       }
@@ -1880,7 +2465,7 @@ var sweetAlert = function sweetAlert() {
     // input autofocus
     if (params.input) {
       setTimeout(function () {
-        var input = sweetAlert.getInput();
+        var input = _this.getInput();
         if (input) {
           focusInput(input);
         }
@@ -1889,11 +2474,11 @@ var sweetAlert = function sweetAlert() {
 
     var confirm = function confirm(value) {
       if (params.showLoaderOnConfirm) {
-        sweetAlert.showLoading();
+        constructor.showLoading(); // TODO: make showLoading an *instance* method
       }
 
       if (params.preConfirm) {
-        sweetAlert.resetValidationError();
+        _this.resetValidationError();
         var preConfirmPromise = Promise.resolve().then(function () {
           return params.preConfirm(value, params.extraParams);
         });
@@ -1901,15 +2486,15 @@ var sweetAlert = function sweetAlert() {
           preConfirmPromise.then(function (preConfirmValue) {
             return succeedWith(preConfirmValue || value);
           }, function (validationError) {
-            sweetAlert.hideLoading();
+            _this.hideLoading();
             if (validationError) {
-              sweetAlert.showValidationError(validationError);
+              _this.showValidationError(validationError);
             }
           });
         } else {
           preConfirmPromise.then(function (preConfirmValue) {
             if (isVisible(domCache.validationError) || preConfirmValue === false) {
-              sweetAlert.hideLoading();
+              _this.hideLoading();
             } else {
               succeedWith(preConfirmValue || value);
             }
@@ -1935,34 +2520,34 @@ var sweetAlert = function sweetAlert() {
       switch (e.type) {
         case 'click':
           // Clicked 'confirm'
-          if (targetedConfirm && sweetAlert.isVisible()) {
-            sweetAlert.disableButtons();
+          if (targetedConfirm && constructor.isVisible()) {
+            _this.disableButtons();
             if (params.input) {
               var inputValue = getInputValue();
 
               if (params.inputValidator) {
-                sweetAlert.disableInput();
+                _this.disableInput();
                 var validationPromise = Promise.resolve().then(function () {
                   return params.inputValidator(inputValue, params.extraParams);
                 });
                 if (params.expectRejections) {
                   validationPromise.then(function () {
-                    sweetAlert.enableButtons();
-                    sweetAlert.enableInput();
+                    _this.enableButtons();
+                    _this.enableInput();
                     confirm(inputValue);
                   }, function (validationError) {
-                    sweetAlert.enableButtons();
-                    sweetAlert.enableInput();
+                    _this.enableButtons();
+                    _this.enableInput();
                     if (validationError) {
-                      sweetAlert.showValidationError(validationError);
+                      _this.showValidationError(validationError);
                     }
                   });
                 } else {
                   validationPromise.then(function (validationError) {
-                    sweetAlert.enableButtons();
-                    sweetAlert.enableInput();
+                    _this.enableButtons();
+                    _this.enableInput();
                     if (validationError) {
-                      sweetAlert.showValidationError(validationError);
+                      _this.showValidationError(validationError);
                     } else {
                       confirm(inputValue);
                     }
@@ -1978,9 +2563,9 @@ var sweetAlert = function sweetAlert() {
             }
 
             // Clicked 'cancel'
-          } else if (targetedCancel && sweetAlert.isVisible()) {
-            sweetAlert.disableButtons();
-            dismissWith(sweetAlert.DismissReason.cancel);
+          } else if (targetedCancel && constructor.isVisible()) {
+            _this.disableButtons();
+            dismissWith(constructor.DismissReason.cancel);
           }
           break;
         default:
@@ -1997,7 +2582,7 @@ var sweetAlert = function sweetAlert() {
 
     // Closing popup by close button
     domCache.closeButton.onclick = function () {
-      dismissWith(sweetAlert.DismissReason.close);
+      dismissWith(constructor.DismissReason.close);
     };
 
     if (params.toast) {
@@ -2006,8 +2591,8 @@ var sweetAlert = function sweetAlert() {
         if (params.showConfirmButton || params.showCancelButton || params.showCloseButton || params.input) {
           return;
         }
-        sweetAlert.closePopup(params.onClose);
-        dismissWith(sweetAlert.DismissReason.close);
+        constructor.closePopup(params.onClose, params.onAfterClose);
+        dismissWith(constructor.DismissReason.close);
       };
     } else {
       var ignoreOutsideClick = false;
@@ -2045,7 +2630,7 @@ var sweetAlert = function sweetAlert() {
           return;
         }
         if (callIfFunction(params.allowOutsideClick)) {
-          dismissWith(sweetAlert.DismissReason.backdrop);
+          dismissWith(constructor.DismissReason.backdrop);
         }
       };
     }
@@ -2088,12 +2673,12 @@ var sweetAlert = function sweetAlert() {
       ];
 
       if (e.key === 'Enter' && !e.isComposing) {
-        if (e.target === sweetAlert.getInput()) {
+        if (e.target === _this.getInput()) {
           if (['textarea', 'file'].indexOf(params.input) !== -1) {
             return; // do not submit
           }
 
-          sweetAlert.clickConfirm();
+          constructor.clickConfirm();
           e.preventDefault();
         }
 
@@ -2132,24 +2717,24 @@ var sweetAlert = function sweetAlert() {
 
         // ESC
       } else if ((e.key === 'Escape' || e.key === 'Esc') && callIfFunction(params.allowEscapeKey) === true) {
-        dismissWith(sweetAlert.DismissReason.esc);
+        dismissWith(constructor.DismissReason.esc);
       }
     };
 
-    if (params.toast && windowOnkeydownOverridden) {
-      window.onkeydown = previousWindowKeyDown;
-      windowOnkeydownOverridden = false;
+    if (params.toast && globalState.windowOnkeydownOverridden) {
+      window.onkeydown = globalState.previousWindowKeyDown;
+      globalState.windowOnkeydownOverridden = false;
     }
 
-    if (!params.toast && !windowOnkeydownOverridden) {
-      previousWindowKeyDown = window.onkeydown;
-      windowOnkeydownOverridden = true;
+    if (!params.toast && !globalState.windowOnkeydownOverridden) {
+      globalState.previousWindowKeyDown = window.onkeydown;
+      globalState.windowOnkeydownOverridden = true;
       window.onkeydown = handleKeyDown;
     }
 
-    sweetAlert.enableButtons();
-    sweetAlert.hideLoading();
-    sweetAlert.resetValidationError();
+    _this.enableButtons();
+    _this.hideLoading();
+    _this.resetValidationError();
 
     if (params.input) {
       addClass(document.body, swalClasses['has-input']);
@@ -2161,7 +2746,7 @@ var sweetAlert = function sweetAlert() {
     for (var _i3 = 0; _i3 < inputTypes.length; _i3++) {
       var inputClass = swalClasses[inputTypes[_i3]];
       var inputContainer = getChildByClass(domCache.content, inputClass);
-      input = sweetAlert.getInput(inputTypes[_i3]);
+      input = _this.getInput(inputTypes[_i3]);
 
       // set attributes
       if (input) {
@@ -2229,7 +2814,7 @@ var sweetAlert = function sweetAlert() {
         }
         populateInputOptions = function populateInputOptions(inputOptions) {
           inputOptions.forEach(function (_ref) {
-            var _ref2 = _slicedToArray(_ref, 2),
+            var _ref2 = slicedToArray(_ref, 2),
                 optionValue = _ref2[0],
                 optionLabel = _ref2[1];
 
@@ -2250,7 +2835,7 @@ var sweetAlert = function sweetAlert() {
         radio.innerHTML = '';
         populateInputOptions = function populateInputOptions(inputOptions) {
           inputOptions.forEach(function (_ref3) {
-            var _ref4 = _slicedToArray(_ref3, 2),
+            var _ref4 = slicedToArray(_ref3, 2),
                 radioValue = _ref4[0],
                 radioLabel = _ref4[1];
 
@@ -2275,7 +2860,7 @@ var sweetAlert = function sweetAlert() {
         break;
       case 'checkbox':
         var checkbox = getChildByClass(domCache.content, swalClasses.checkbox);
-        var checkboxInput = sweetAlert.getInput('checkbox');
+        var checkboxInput = _this.getInput('checkbox');
         checkboxInput.type = 'checkbox';
         checkboxInput.value = 1;
         checkboxInput.id = swalClasses.checkbox;
@@ -2306,17 +2891,30 @@ var sweetAlert = function sweetAlert() {
       var processInputOptions = function processInputOptions(inputOptions) {
         return populateInputOptions(formatInputOptions(inputOptions));
       };
-      if (params.inputOptions instanceof Promise) {
-        sweetAlert.showLoading();
+      if (isThenable(params.inputOptions)) {
+        constructor.showLoading();
         params.inputOptions.then(function (inputOptions) {
-          sweetAlert.hideLoading();
+          _this.hideLoading();
           processInputOptions(inputOptions);
         });
-      } else if (_typeof$1(params.inputOptions) === 'object') {
+      } else if (_typeof(params.inputOptions) === 'object') {
         processInputOptions(params.inputOptions);
       } else {
-        error('Unexpected type of inputOptions! Expected object, Map or Promise, got ' + _typeof$1(params.inputOptions));
+        error('Unexpected type of inputOptions! Expected object, Map or Promise, got ' + _typeof(params.inputOptions));
       }
+    } else if (['text', 'email', 'number', 'tel', 'textarea'].indexOf(params.input) !== -1 && isThenable(params.inputValue)) {
+      constructor.showLoading();
+      hide(input);
+      params.inputValue.then(function (inputValue) {
+        input.value = params.input === 'number' ? parseFloat(inputValue) || 0 : inputValue + '';
+        show(input);
+        _this.hideLoading();
+      }).catch(function (err) {
+        error('Error in inputValue promise: ' + err);
+        input.value = '';
+        show(input);
+        _this.hideLoading();
+      });
     }
 
     openPopup(params.animation, params.onBeforeOpen, params.onOpen);
@@ -2338,518 +2936,105 @@ var sweetAlert = function sweetAlert() {
     // fix scroll
     domCache.container.scrollTop = 0;
   });
-};
+}
 
-/*
- * Global function to determine if swal2 popup is shown
- */
-sweetAlert.isVisible = function () {
-  return !!getPopup();
-};
 
-/*
- * Global function for chaining sweetAlert popups
- */
-sweetAlert.queue = function (steps) {
-  queue = steps;
-  var resetQueue = function resetQueue() {
-    queue = [];
-    document.body.removeAttribute('data-swal2-queue-step');
-  };
-  var queueResult = [];
-  return new Promise(function (resolve, reject) {
-    (function step(i, callback) {
-      if (i < queue.length) {
-        document.body.setAttribute('data-swal2-queue-step', i);
 
-        sweetAlert(queue[i]).then(function (result) {
-          if (typeof result.value !== 'undefined') {
-            queueResult.push(result.value);
-            step(i + 1, callback);
-          } else {
-            resetQueue();
-            resolve({ dismiss: result.dismiss });
-          }
-        });
-      } else {
-        resetQueue();
-        resolve({ value: queueResult });
-      }
-    })(0);
-  });
-};
+var instanceMethods = Object.freeze({
+	hideLoading: hideLoading,
+	disableLoading: hideLoading,
+	getInput: getInput,
+	enableButtons: enableButtons,
+	disableButtons: disableButtons,
+	enableConfirmButton: enableConfirmButton,
+	disableConfirmButton: disableConfirmButton,
+	enableInput: enableInput,
+	disableInput: disableInput,
+	showValidationError: showValidationError,
+	resetValidationError: resetValidationError,
+	_main: _main
+});
 
-/*
- * Global function for getting the index of current popup in queue
- */
-sweetAlert.getQueueStep = function () {
-  return document.body.getAttribute('data-swal2-queue-step');
-};
+var currentInstance = void 0;
 
-/*
- * Global function for inserting a popup to the queue
- */
-sweetAlert.insertQueueStep = function (step, index) {
-  if (index && index < queue.length) {
-    return queue.splice(index, 0, step);
-  }
-  return queue.push(step);
-};
-
-/*
- * Global function for deleting a popup from the queue
- */
-sweetAlert.deleteQueueStep = function (index) {
-  if (typeof queue[index] !== 'undefined') {
-    queue.splice(index, 1);
-  }
-};
-
-/*
- * Global function to close sweetAlert
- */
-sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.closeToast = function (onComplete) {
-  var container = getContainer();
-  var popup = getPopup();
-  if (!popup) {
+// SweetAlert constructor
+function SweetAlert() {
+  // Prevent run in Node env
+  if (typeof window === 'undefined') {
     return;
   }
-  removeClass(popup, swalClasses.show);
-  addClass(popup, swalClasses.hide);
-  clearTimeout(popup.timeout);
 
-  if (!isToast()) {
-    resetPrevState();
-    window.onkeydown = previousWindowKeyDown;
-    windowOnkeydownOverridden = false;
+  // Check for the existence of Promise
+  if (typeof Promise === 'undefined') {
+    error('This package requires a Promise library, please include a shim to enable it in this browser (See: https://github.com/sweetalert2/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2#1-ie-support)');
   }
 
-  var removePopupAndResetState = function removePopupAndResetState() {
-    if (container.parentNode) {
-      container.parentNode.removeChild(container);
-    }
-    removeClass([document.documentElement, document.body], [swalClasses.shown, swalClasses['no-backdrop'], swalClasses['has-input'], swalClasses['toast-shown']]);
+  for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
 
-    if (isModal()) {
-      undoScrollbar();
-      undoIOSfix();
+  if (typeof args[0] === 'undefined') {
+    error('SweetAlert2 expects at least 1 attribute!');
+    return false;
+  }
+
+  // handle things when constructor is invoked without the `new` keyword
+  if (!(this instanceof SweetAlert)) {
+    return new (Function.prototype.bind.apply(SweetAlert, [null].concat(args)))();
+  }
+
+  currentInstance = this;
+
+  this._promise = this._main(this.constructor.argsToParams(args));
+}
+
+// `catch` cannot be the name of a module export, so we define our thenable methods here instead
+SweetAlert.prototype.then = function (onFulfilled, onRejected) {
+  return this._promise.then(onFulfilled, onRejected);
+};
+SweetAlert.prototype.catch = function (onRejected) {
+  return this._promise.catch(onRejected);
+};
+SweetAlert.prototype.finally = function (onFinally) {
+  return this._promise.finally(onFinally);
+};
+
+// Assign instance methods from src/instanceMethods/*.js to prototype
+_extends(SweetAlert.prototype, instanceMethods);
+
+// Assign static methods from src/staticMethods/*.js to constructor
+_extends(SweetAlert, staticMethods);
+
+// Proxy to instance methods to constructor, for now, for backwards compatibility
+Object.keys(instanceMethods).forEach(function (key) {
+  SweetAlert[key] = function () {
+    if (currentInstance) {
+      var _currentInstance;
+
+      return (_currentInstance = currentInstance)[key].apply(_currentInstance, arguments);
     }
   };
+});
 
-  // If animation is supported, animate
-  if (animationEndEvent && !hasClass(popup, swalClasses.noanimation)) {
-    popup.addEventListener(animationEndEvent, function swalCloseEventFinished() {
-      popup.removeEventListener(animationEndEvent, swalCloseEventFinished);
-      if (hasClass(popup, swalClasses.hide)) {
-        removePopupAndResetState();
-      }
-    });
-  } else {
-    // Otherwise, remove immediately
-    removePopupAndResetState();
-  }
-  if (onComplete !== null && typeof onComplete === 'function') {
-    setTimeout(function () {
-      onComplete(popup);
-    });
-  }
-};
+SweetAlert.DismissReason = DismissReason;
 
-/*
- * Global function to click 'Confirm' button
- */
-sweetAlert.clickConfirm = function () {
-  return getConfirmButton().click();
-};
+SweetAlert.noop = function () {};
 
-/*
- * Global function to click 'Cancel' button
- */
-sweetAlert.clickCancel = function () {
-  return getCancelButton().click();
-};
+SweetAlert.version = version;
 
-/**
- * Show spinner instead of Confirm button and disable Cancel button
- */
-sweetAlert.showLoading = sweetAlert.enableLoading = function () {
-  var popup = getPopup();
-  if (!popup) {
-    sweetAlert('');
-  }
-  popup = getPopup();
-  var actions = getActions();
-  var confirmButton = getConfirmButton();
-  var cancelButton = getCancelButton();
-
-  show(actions);
-  show(confirmButton);
-  addClass([popup, actions], swalClasses.loading);
-  confirmButton.disabled = true;
-  cancelButton.disabled = true;
-
-  popup.setAttribute('data-loading', true);
-  popup.setAttribute('aria-busy', true);
-  popup.focus();
-};
-
-/**
- * Is valid parameter
- * @param {String} paramName
- */
-sweetAlert.isValidParameter = function (paramName) {
-  return defaultParams.hasOwnProperty(paramName) || paramName === 'extraParams';
-};
-
-/**
- * Is deprecated parameter
- * @param {String} paramName
- */
-sweetAlert.isDeprecatedParameter = function (paramName) {
-  return deprecatedParams.indexOf(paramName) !== -1;
-};
-
-/**
- * Set default params for each popup
- * @param {Object} userParams
- */
-sweetAlert.setDefaults = function (userParams) {
-  if (!userParams || (typeof userParams === 'undefined' ? 'undefined' : _typeof$1(userParams)) !== 'object') {
-    return error('the argument for setDefaults() is required and has to be a object');
-  }
-
-  showWarningsForParams(userParams);
-
-  // assign valid params from userParams to popupParams
-  for (var param in userParams) {
-    if (sweetAlert.isValidParameter(param)) {
-      popupParams[param] = userParams[param];
-    }
-  }
-};
-
-/**
- * Reset default params for each popup
- */
-sweetAlert.resetDefaults = function () {
-  popupParams = _extends({}, defaultParams);
-};
-
-/**
- * Adapt a legacy inputValidator for use with expectRejections=false
- */
-sweetAlert.adaptInputValidator = function (legacyValidator) {
-  return function adaptedInputValidator(inputValue, extraParams) {
-    return legacyValidator.call(this, inputValue, extraParams).then(function () {
-      return undefined;
-    }, function (validationError) {
-      return validationError;
-    });
-  };
-};
-
-sweetAlert.getTitle = function () {
-  return getTitle();
-};
-sweetAlert.getContent = function () {
-  return getContent();
-};
-sweetAlert.getImage = function () {
-  return getImage();
-};
-sweetAlert.getButtonsWrapper = function () {
-  return getButtonsWrapper();
-};
-sweetAlert.getActions = function () {
-  return getActions();
-};
-sweetAlert.getConfirmButton = function () {
-  return getConfirmButton();
-};
-sweetAlert.getCancelButton = function () {
-  return getCancelButton();
-};
-sweetAlert.getFooter = function () {
-  return getFooter();
-};
-sweetAlert.isLoading = function () {
-  return isLoading();
-};
-
-/**
- * Show spinner instead of Confirm button and disable Cancel button
- */
-sweetAlert.hideLoading = sweetAlert.disableLoading = function () {
-  if (currentContext) {
-    var _currentContext = currentContext,
-        params = _currentContext.params,
-        domCache = _currentContext.domCache;
-
-    if (!params.showConfirmButton) {
-      hide(domCache.confirmButton);
-      if (!params.showCancelButton) {
-        hide(domCache.actions);
-      }
-    }
-    removeClass([domCache.popup, domCache.actions], swalClasses.loading);
-    domCache.popup.removeAttribute('aria-busy');
-    domCache.popup.removeAttribute('data-loading');
-    domCache.confirmButton.disabled = false;
-    domCache.cancelButton.disabled = false;
-  }
-};
-
-// Get input element by specified type or, if type isn't specified, by params.input
-sweetAlert.getInput = function (inputType) {
-  if (currentContext) {
-    var _currentContext2 = currentContext,
-        params = _currentContext2.params,
-        domCache = _currentContext2.domCache;
-
-    inputType = inputType || params.input;
-    if (!inputType) {
-      return null;
-    }
-    switch (inputType) {
-      case 'select':
-      case 'textarea':
-      case 'file':
-        return getChildByClass(domCache.content, swalClasses[inputType]);
-      case 'checkbox':
-        return domCache.popup.querySelector('.' + swalClasses.checkbox + ' input');
-      case 'radio':
-        return domCache.popup.querySelector('.' + swalClasses.radio + ' input:checked') || domCache.popup.querySelector('.' + swalClasses.radio + ' input:first-child');
-      case 'range':
-        return domCache.popup.querySelector('.' + swalClasses.range + ' input');
-      default:
-        return getChildByClass(domCache.content, swalClasses.input);
-    }
-  }
-};
-
-sweetAlert.enableButtons = function () {
-  if (currentContext) {
-    var _currentContext3 = currentContext,
-        domCache = _currentContext3.domCache;
-
-    domCache.confirmButton.disabled = false;
-    domCache.cancelButton.disabled = false;
-  }
-};
-
-sweetAlert.disableButtons = function () {
-  if (currentContext) {
-    var _currentContext4 = currentContext,
-        domCache = _currentContext4.domCache;
-
-    domCache.confirmButton.disabled = true;
-    domCache.cancelButton.disabled = true;
-  }
-};
-
-sweetAlert.enableConfirmButton = function () {
-  if (currentContext) {
-    var _currentContext5 = currentContext,
-        domCache = _currentContext5.domCache;
-
-    domCache.confirmButton.disabled = false;
-  }
-};
-
-sweetAlert.disableConfirmButton = function () {
-  if (currentContext) {
-    var _currentContext6 = currentContext,
-        domCache = _currentContext6.domCache;
-
-    domCache.confirmButton.disabled = true;
-  }
-};
-
-sweetAlert.enableInput = function () {
-  if (currentContext) {
-    var input = sweetAlert.getInput();
-    if (!input) {
-      return false;
-    }
-    if (input.type === 'radio') {
-      var radiosContainer = input.parentNode.parentNode;
-      var radios = radiosContainer.querySelectorAll('input');
-      for (var i = 0; i < radios.length; i++) {
-        radios[i].disabled = false;
-      }
-    } else {
-      input.disabled = false;
-    }
-  }
-};
-
-sweetAlert.disableInput = function () {
-  if (currentContext) {
-    var input = sweetAlert.getInput();
-    if (!input) {
-      return false;
-    }
-    if (input && input.type === 'radio') {
-      var radiosContainer = input.parentNode.parentNode;
-      var radios = radiosContainer.querySelectorAll('input');
-      for (var i = 0; i < radios.length; i++) {
-        radios[i].disabled = true;
-      }
-    } else {
-      input.disabled = true;
-    }
-  }
-};
-
-// Show block with validation error
-sweetAlert.showValidationError = function (error$$1) {
-  if (currentContext) {
-    var _currentContext7 = currentContext,
-        domCache = _currentContext7.domCache;
-
-    domCache.validationError.innerHTML = error$$1;
-    var popupComputedStyle = window.getComputedStyle(domCache.popup);
-    domCache.validationError.style.marginLeft = '-' + popupComputedStyle.getPropertyValue('padding-left');
-    domCache.validationError.style.marginRight = '-' + popupComputedStyle.getPropertyValue('padding-right');
-    show(domCache.validationError);
-
-    var input = sweetAlert.getInput();
-    if (input) {
-      input.setAttribute('aria-invalid', true);
-      input.setAttribute('aria-describedBy', swalClasses.validationerror);
-      focusInput(input);
-      addClass(input, swalClasses.inputerror);
-    }
-  }
-};
-
-// Hide block with validation error
-sweetAlert.resetValidationError = function () {
-  if (currentContext) {
-    var _currentContext8 = currentContext,
-        domCache = _currentContext8.domCache;
-
-    if (domCache.validationError) {
-      hide(domCache.validationError);
-    }
-
-    var input = sweetAlert.getInput();
-    if (input) {
-      input.removeAttribute('aria-invalid');
-      input.removeAttribute('aria-describedBy');
-      removeClass(input, swalClasses.inputerror);
-    }
-  }
-};
-
-sweetAlert.getProgressSteps = function () {
-  if (currentContext) {
-    var _currentContext9 = currentContext,
-        params = _currentContext9.params;
-
-    return params.progressSteps;
-  }
-};
-
-sweetAlert.setProgressSteps = function (progressSteps) {
-  if (currentContext) {
-    var _currentContext10 = currentContext,
-        params = _currentContext10.params;
-
-    params.progressSteps = progressSteps;
-    setParameters(params);
-  }
-};
-
-sweetAlert.showProgressSteps = function () {
-  if (currentContext) {
-    var _currentContext11 = currentContext,
-        domCache = _currentContext11.domCache;
-
-    show(domCache.progressSteps);
-  }
-};
-
-sweetAlert.hideProgressSteps = function () {
-  if (currentContext) {
-    var _currentContext12 = currentContext,
-        domCache = _currentContext12.domCache;
-
-    hide(domCache.progressSteps);
-  }
-};
-
-sweetAlert.argsToParams = function (args) {
-  var params = {};
-  switch (_typeof$1(args[0])) {
-    case 'string':
-      ['title', 'html', 'type'].forEach(function (name$$1, index) {
-        if (args[index] !== undefined) {
-          params[name$$1] = args[index];
-        }
-      });
-      break;
-
-    case 'object':
-      _extends(params, args[0]);
-      break;
-
-    default:
-      error('Unexpected type of argument! Expected "string" or "object", got ' + _typeof$1(args[0]));
-      return false;
-  }
-  return params;
-};
-
-/**
- * Returns a wrapped instance of `swal` containing `params` as defaults.
- * Useful for reusing swal configuration.
- *
- * For example:
- *
- * Before:
- * const textPromptOptions = { input: 'text', showCancelButton: true }
- * const {value: firstName} = await swal({ ...textPromptOptions, title: 'What is your first name?' })
- * const {value: lastName} = await swal({ ...textPromptOptions, title: 'What is your last name?' })
- *
- * After:
- * const myTextPrompt = swal.mixin({ input: 'text', showCancelButton: true })
- * const {value: firstName} = await myTextPrompt('What is your first name?')
- * const {value: lastName} = await myTextPrompt('What is your last name?')
- *
- * @param params
- */
-sweetAlert.mixin = function (params) {
-  var parentSwal = this;
-  var childSwal = function childSwal() {
-    for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-      args[_key2] = arguments[_key2];
-    }
-
-    return parentSwal(_extends({}, params, parentSwal.argsToParams(args)));
-  };
-  return _extends(childSwal, parentSwal);
-};
-
-sweetAlert.DismissReason = DismissReason;
-
-sweetAlert.noop = function () {};
-
-sweetAlert.version = version;
-
-sweetAlert.default = sweetAlert;
+SweetAlert.default = SweetAlert;
 
 /**
  * Set default params if `window._swalDefaults` is an object
  */
-if (typeof window !== 'undefined' && _typeof$1(window._swalDefaults) === 'object') {
-  sweetAlert.setDefaults(window._swalDefaults);
+if (typeof window !== 'undefined' && _typeof(window._swalDefaults) === 'object') {
+  SweetAlert.setDefaults(window._swalDefaults);
 }
 
-return sweetAlert;
+return SweetAlert;
 
 })));
-if (typeof window !== 'undefined' && window.Sweetalert2) window.sweetAlert = window.swal = window.Sweetalert2;
+if (typeof window !== 'undefined' && window.Sweetalert2){  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}
 
 "undefined"!=typeof document&&function(e,t){var n=e.createElement("style");if(e.getElementsByTagName("head")[0].appendChild(n),n.styleSheet)n.styleSheet.disabled||(n.styleSheet.cssText=t);else try{n.innerHTML=t}catch(e){n.innerText=t}}(document,"@-webkit-keyframes swal2-show {\n" +
 "  0% {\n" +
@@ -29409,7 +29594,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parse", function() { return parse; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "findIconDefinition", function() { return findIconDefinition; });
 /*!
- * Font Awesome Free 5.0.7 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 5.0.9 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 var noop = function noop() {};
@@ -30013,7 +30198,7 @@ function makeLayersTextAbstract(params) {
 
 var noop$2 = function noop() {};
 var p = config$1.measurePerformance && PERFORMANCE && PERFORMANCE.mark && PERFORMANCE.measure ? PERFORMANCE : { mark: noop$2, measure: noop$2 };
-var preamble = 'FA "5.0.7"';
+var preamble = 'FA "5.0.9"';
 
 var begin = function begin(name) {
   p.mark(preamble + ' ' + name + ' begins');
@@ -30814,7 +30999,7 @@ function onNode(node) {
   }
 }
 
-var baseStyles = "svg:not(:root).svg-inline--fa {\n  overflow: visible; }\n\n.svg-inline--fa {\n  display: inline-block;\n  font-size: inherit;\n  height: 1em;\n  overflow: visible;\n  vertical-align: -.125em; }\n  .svg-inline--fa.fa-lg {\n    vertical-align: -.225em; }\n  .svg-inline--fa.fa-w-1 {\n    width: 0.0625em; }\n  .svg-inline--fa.fa-w-2 {\n    width: 0.125em; }\n  .svg-inline--fa.fa-w-3 {\n    width: 0.1875em; }\n  .svg-inline--fa.fa-w-4 {\n    width: 0.25em; }\n  .svg-inline--fa.fa-w-5 {\n    width: 0.3125em; }\n  .svg-inline--fa.fa-w-6 {\n    width: 0.375em; }\n  .svg-inline--fa.fa-w-7 {\n    width: 0.4375em; }\n  .svg-inline--fa.fa-w-8 {\n    width: 0.5em; }\n  .svg-inline--fa.fa-w-9 {\n    width: 0.5625em; }\n  .svg-inline--fa.fa-w-10 {\n    width: 0.625em; }\n  .svg-inline--fa.fa-w-11 {\n    width: 0.6875em; }\n  .svg-inline--fa.fa-w-12 {\n    width: 0.75em; }\n  .svg-inline--fa.fa-w-13 {\n    width: 0.8125em; }\n  .svg-inline--fa.fa-w-14 {\n    width: 0.875em; }\n  .svg-inline--fa.fa-w-15 {\n    width: 0.9375em; }\n  .svg-inline--fa.fa-w-16 {\n    width: 1em; }\n  .svg-inline--fa.fa-w-17 {\n    width: 1.0625em; }\n  .svg-inline--fa.fa-w-18 {\n    width: 1.125em; }\n  .svg-inline--fa.fa-w-19 {\n    width: 1.1875em; }\n  .svg-inline--fa.fa-w-20 {\n    width: 1.25em; }\n  .svg-inline--fa.fa-pull-left {\n    margin-right: .3em;\n    width: auto; }\n  .svg-inline--fa.fa-pull-right {\n    margin-left: .3em;\n    width: auto; }\n  .svg-inline--fa.fa-border {\n    height: 1.5em; }\n  .svg-inline--fa.fa-li {\n    width: 2em; }\n  .svg-inline--fa.fa-fw {\n    width: 1.25em; }\n\n.fa-layers svg.svg-inline--fa {\n  bottom: 0;\n  left: 0;\n  margin: auto;\n  position: absolute;\n  right: 0;\n  top: 0; }\n\n.fa-layers {\n  display: inline-block;\n  height: 1em;\n  position: relative;\n  text-align: center;\n  vertical-align: -.125em;\n  width: 1em; }\n  .fa-layers svg.svg-inline--fa {\n    -webkit-transform-origin: center center;\n            transform-origin: center center; }\n\n.fa-layers-text, .fa-layers-counter {\n  display: inline-block;\n  position: absolute;\n  text-align: center; }\n\n.fa-layers-text {\n  left: 50%;\n  top: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  -webkit-transform-origin: center center;\n          transform-origin: center center; }\n\n.fa-layers-counter {\n  background-color: #ff253a;\n  border-radius: 1em;\n  color: #fff;\n  height: 1.5em;\n  line-height: 1;\n  max-width: 5em;\n  min-width: 1.5em;\n  overflow: hidden;\n  padding: .25em;\n  right: 0;\n  text-overflow: ellipsis;\n  top: 0;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: top right;\n          transform-origin: top right; }\n\n.fa-layers-bottom-right {\n  bottom: 0;\n  right: 0;\n  top: auto;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: bottom right;\n          transform-origin: bottom right; }\n\n.fa-layers-bottom-left {\n  bottom: 0;\n  left: 0;\n  right: auto;\n  top: auto;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: bottom left;\n          transform-origin: bottom left; }\n\n.fa-layers-top-right {\n  right: 0;\n  top: 0;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: top right;\n          transform-origin: top right; }\n\n.fa-layers-top-left {\n  left: 0;\n  right: auto;\n  top: 0;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: top left;\n          transform-origin: top left; }\n\n.fa-lg {\n  font-size: 1.33333em;\n  line-height: 0.75em;\n  vertical-align: -.0667em; }\n\n.fa-xs {\n  font-size: .75em; }\n\n.fa-sm {\n  font-size: .875em; }\n\n.fa-1x {\n  font-size: 1em; }\n\n.fa-2x {\n  font-size: 2em; }\n\n.fa-3x {\n  font-size: 3em; }\n\n.fa-4x {\n  font-size: 4em; }\n\n.fa-5x {\n  font-size: 5em; }\n\n.fa-6x {\n  font-size: 6em; }\n\n.fa-7x {\n  font-size: 7em; }\n\n.fa-8x {\n  font-size: 8em; }\n\n.fa-9x {\n  font-size: 9em; }\n\n.fa-10x {\n  font-size: 10em; }\n\n.fa-fw {\n  text-align: center;\n  width: 1.25em; }\n\n.fa-ul {\n  list-style-type: none;\n  margin-left: 2.5em;\n  padding-left: 0; }\n  .fa-ul > li {\n    position: relative; }\n\n.fa-li {\n  left: -2em;\n  position: absolute;\n  text-align: center;\n  width: 2em;\n  line-height: inherit; }\n\n.fa-border {\n  border: solid 0.08em #eee;\n  border-radius: .1em;\n  padding: .2em .25em .15em; }\n\n.fa-pull-left {\n  float: left; }\n\n.fa-pull-right {\n  float: right; }\n\n.fa.fa-pull-left,\n.fas.fa-pull-left,\n.far.fa-pull-left,\n.fal.fa-pull-left,\n.fab.fa-pull-left {\n  margin-right: .3em; }\n\n.fa.fa-pull-right,\n.fas.fa-pull-right,\n.far.fa-pull-right,\n.fal.fa-pull-right,\n.fab.fa-pull-right {\n  margin-left: .3em; }\n\n.fa-spin {\n  -webkit-animation: fa-spin 2s infinite linear;\n          animation: fa-spin 2s infinite linear; }\n\n.fa-pulse {\n  -webkit-animation: fa-spin 1s infinite steps(8);\n          animation: fa-spin 1s infinite steps(8); }\n\n@-webkit-keyframes fa-spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n\n@keyframes fa-spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n\n.fa-rotate-90 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=1)\";\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg); }\n\n.fa-rotate-180 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2)\";\n  -webkit-transform: rotate(180deg);\n          transform: rotate(180deg); }\n\n.fa-rotate-270 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=3)\";\n  -webkit-transform: rotate(270deg);\n          transform: rotate(270deg); }\n\n.fa-flip-horizontal {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)\";\n  -webkit-transform: scale(-1, 1);\n          transform: scale(-1, 1); }\n\n.fa-flip-vertical {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)\";\n  -webkit-transform: scale(1, -1);\n          transform: scale(1, -1); }\n\n.fa-flip-horizontal.fa-flip-vertical {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)\";\n  -webkit-transform: scale(-1, -1);\n          transform: scale(-1, -1); }\n\n:root .fa-rotate-90,\n:root .fa-rotate-180,\n:root .fa-rotate-270,\n:root .fa-flip-horizontal,\n:root .fa-flip-vertical {\n  -webkit-filter: none;\n          filter: none; }\n\n.fa-stack {\n  display: inline-block;\n  height: 2em;\n  position: relative;\n  width: 2em; }\n\n.fa-stack-1x,\n.fa-stack-2x {\n  bottom: 0;\n  left: 0;\n  margin: auto;\n  position: absolute;\n  right: 0;\n  top: 0; }\n\n.svg-inline--fa.fa-stack-1x {\n  height: 1em;\n  width: 1em; }\n\n.svg-inline--fa.fa-stack-2x {\n  height: 2em;\n  width: 2em; }\n\n.fa-inverse {\n  color: #fff; }\n\n.sr-only {\n  border: 0;\n  clip: rect(0, 0, 0, 0);\n  height: 1px;\n  margin: -1px;\n  overflow: hidden;\n  padding: 0;\n  position: absolute;\n  width: 1px; }\n\n.sr-only-focusable:active, .sr-only-focusable:focus {\n  clip: auto;\n  height: auto;\n  margin: 0;\n  overflow: visible;\n  position: static;\n  width: auto; }\n";
+var baseStyles = "svg:not(:root).svg-inline--fa {\n  overflow: visible; }\n\n.svg-inline--fa {\n  display: inline-block;\n  font-size: inherit;\n  height: 1em;\n  overflow: visible;\n  vertical-align: -.125em; }\n  .svg-inline--fa.fa-lg {\n    vertical-align: -.225em; }\n  .svg-inline--fa.fa-w-1 {\n    width: 0.0625em; }\n  .svg-inline--fa.fa-w-2 {\n    width: 0.125em; }\n  .svg-inline--fa.fa-w-3 {\n    width: 0.1875em; }\n  .svg-inline--fa.fa-w-4 {\n    width: 0.25em; }\n  .svg-inline--fa.fa-w-5 {\n    width: 0.3125em; }\n  .svg-inline--fa.fa-w-6 {\n    width: 0.375em; }\n  .svg-inline--fa.fa-w-7 {\n    width: 0.4375em; }\n  .svg-inline--fa.fa-w-8 {\n    width: 0.5em; }\n  .svg-inline--fa.fa-w-9 {\n    width: 0.5625em; }\n  .svg-inline--fa.fa-w-10 {\n    width: 0.625em; }\n  .svg-inline--fa.fa-w-11 {\n    width: 0.6875em; }\n  .svg-inline--fa.fa-w-12 {\n    width: 0.75em; }\n  .svg-inline--fa.fa-w-13 {\n    width: 0.8125em; }\n  .svg-inline--fa.fa-w-14 {\n    width: 0.875em; }\n  .svg-inline--fa.fa-w-15 {\n    width: 0.9375em; }\n  .svg-inline--fa.fa-w-16 {\n    width: 1em; }\n  .svg-inline--fa.fa-w-17 {\n    width: 1.0625em; }\n  .svg-inline--fa.fa-w-18 {\n    width: 1.125em; }\n  .svg-inline--fa.fa-w-19 {\n    width: 1.1875em; }\n  .svg-inline--fa.fa-w-20 {\n    width: 1.25em; }\n  .svg-inline--fa.fa-pull-left {\n    margin-right: .3em;\n    width: auto; }\n  .svg-inline--fa.fa-pull-right {\n    margin-left: .3em;\n    width: auto; }\n  .svg-inline--fa.fa-border {\n    height: 1.5em; }\n  .svg-inline--fa.fa-li {\n    width: 2em; }\n  .svg-inline--fa.fa-fw {\n    width: 1.25em; }\n\n.fa-layers svg.svg-inline--fa {\n  bottom: 0;\n  left: 0;\n  margin: auto;\n  position: absolute;\n  right: 0;\n  top: 0; }\n\n.fa-layers {\n  display: inline-block;\n  height: 1em;\n  position: relative;\n  text-align: center;\n  vertical-align: -.125em;\n  width: 1em; }\n  .fa-layers svg.svg-inline--fa {\n    -webkit-transform-origin: center center;\n            transform-origin: center center; }\n\n.fa-layers-text, .fa-layers-counter {\n  display: inline-block;\n  position: absolute;\n  text-align: center; }\n\n.fa-layers-text {\n  left: 50%;\n  top: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  -webkit-transform-origin: center center;\n          transform-origin: center center; }\n\n.fa-layers-counter {\n  background-color: #ff253a;\n  border-radius: 1em;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  color: #fff;\n  height: 1.5em;\n  line-height: 1;\n  max-width: 5em;\n  min-width: 1.5em;\n  overflow: hidden;\n  padding: .25em;\n  right: 0;\n  text-overflow: ellipsis;\n  top: 0;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: top right;\n          transform-origin: top right; }\n\n.fa-layers-bottom-right {\n  bottom: 0;\n  right: 0;\n  top: auto;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: bottom right;\n          transform-origin: bottom right; }\n\n.fa-layers-bottom-left {\n  bottom: 0;\n  left: 0;\n  right: auto;\n  top: auto;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: bottom left;\n          transform-origin: bottom left; }\n\n.fa-layers-top-right {\n  right: 0;\n  top: 0;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: top right;\n          transform-origin: top right; }\n\n.fa-layers-top-left {\n  left: 0;\n  right: auto;\n  top: 0;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: top left;\n          transform-origin: top left; }\n\n.fa-lg {\n  font-size: 1.33333em;\n  line-height: 0.75em;\n  vertical-align: -.0667em; }\n\n.fa-xs {\n  font-size: .75em; }\n\n.fa-sm {\n  font-size: .875em; }\n\n.fa-1x {\n  font-size: 1em; }\n\n.fa-2x {\n  font-size: 2em; }\n\n.fa-3x {\n  font-size: 3em; }\n\n.fa-4x {\n  font-size: 4em; }\n\n.fa-5x {\n  font-size: 5em; }\n\n.fa-6x {\n  font-size: 6em; }\n\n.fa-7x {\n  font-size: 7em; }\n\n.fa-8x {\n  font-size: 8em; }\n\n.fa-9x {\n  font-size: 9em; }\n\n.fa-10x {\n  font-size: 10em; }\n\n.fa-fw {\n  text-align: center;\n  width: 1.25em; }\n\n.fa-ul {\n  list-style-type: none;\n  margin-left: 2.5em;\n  padding-left: 0; }\n  .fa-ul > li {\n    position: relative; }\n\n.fa-li {\n  left: -2em;\n  position: absolute;\n  text-align: center;\n  width: 2em;\n  line-height: inherit; }\n\n.fa-border {\n  border: solid 0.08em #eee;\n  border-radius: .1em;\n  padding: .2em .25em .15em; }\n\n.fa-pull-left {\n  float: left; }\n\n.fa-pull-right {\n  float: right; }\n\n.fa.fa-pull-left,\n.fas.fa-pull-left,\n.far.fa-pull-left,\n.fal.fa-pull-left,\n.fab.fa-pull-left {\n  margin-right: .3em; }\n\n.fa.fa-pull-right,\n.fas.fa-pull-right,\n.far.fa-pull-right,\n.fal.fa-pull-right,\n.fab.fa-pull-right {\n  margin-left: .3em; }\n\n.fa-spin {\n  -webkit-animation: fa-spin 2s infinite linear;\n          animation: fa-spin 2s infinite linear; }\n\n.fa-pulse {\n  -webkit-animation: fa-spin 1s infinite steps(8);\n          animation: fa-spin 1s infinite steps(8); }\n\n@-webkit-keyframes fa-spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n\n@keyframes fa-spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n\n.fa-rotate-90 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=1)\";\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg); }\n\n.fa-rotate-180 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2)\";\n  -webkit-transform: rotate(180deg);\n          transform: rotate(180deg); }\n\n.fa-rotate-270 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=3)\";\n  -webkit-transform: rotate(270deg);\n          transform: rotate(270deg); }\n\n.fa-flip-horizontal {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)\";\n  -webkit-transform: scale(-1, 1);\n          transform: scale(-1, 1); }\n\n.fa-flip-vertical {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)\";\n  -webkit-transform: scale(1, -1);\n          transform: scale(1, -1); }\n\n.fa-flip-horizontal.fa-flip-vertical {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)\";\n  -webkit-transform: scale(-1, -1);\n          transform: scale(-1, -1); }\n\n:root .fa-rotate-90,\n:root .fa-rotate-180,\n:root .fa-rotate-270,\n:root .fa-flip-horizontal,\n:root .fa-flip-vertical {\n  -webkit-filter: none;\n          filter: none; }\n\n.fa-stack {\n  display: inline-block;\n  height: 2em;\n  position: relative;\n  width: 2em; }\n\n.fa-stack-1x,\n.fa-stack-2x {\n  bottom: 0;\n  left: 0;\n  margin: auto;\n  position: absolute;\n  right: 0;\n  top: 0; }\n\n.svg-inline--fa.fa-stack-1x {\n  height: 1em;\n  width: 1em; }\n\n.svg-inline--fa.fa-stack-2x {\n  height: 2em;\n  width: 2em; }\n\n.fa-inverse {\n  color: #fff; }\n\n.sr-only {\n  border: 0;\n  clip: rect(0, 0, 0, 0);\n  height: 1px;\n  margin: -1px;\n  overflow: hidden;\n  padding: 0;\n  position: absolute;\n  width: 1px; }\n\n.sr-only-focusable:active, .sr-only-focusable:focus {\n  clip: auto;\n  height: auto;\n  margin: 0;\n  overflow: visible;\n  position: static;\n  width: auto; }\n";
 
 var css = function () {
   var dfp = DEFAULT_FAMILY_PREFIX;
@@ -31362,7 +31547,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(32);
-module.exports = __webpack_require__(251);
+module.exports = __webpack_require__(261);
 
 
 /***/ }),
@@ -31373,46 +31558,48 @@ module.exports = __webpack_require__(251);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__store_store__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__routes__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__packages_auth_Auth__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__packages_auth_Auth__ = __webpack_require__(240);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fortawesome_fontawesome__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__fortawesome_fontawesome_free_solid_faPlus__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__fortawesome_fontawesome_free_solid_faPlus__ = __webpack_require__(241);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__fortawesome_fontawesome_free_solid_faPlus___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__fortawesome_fontawesome_free_solid_faPlus__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__fortawesome_fontawesome_free_solid_faEnvelope__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__fortawesome_fontawesome_free_solid_faEnvelope__ = __webpack_require__(242);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__fortawesome_fontawesome_free_solid_faEnvelope___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__fortawesome_fontawesome_free_solid_faEnvelope__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__fortawesome_fontawesome_free_solid_faBell__ = __webpack_require__(234);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__fortawesome_fontawesome_free_solid_faBell__ = __webpack_require__(243);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__fortawesome_fontawesome_free_solid_faBell___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__fortawesome_fontawesome_free_solid_faBell__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fortawesome_fontawesome_free_solid_faCommentAlt__ = __webpack_require__(235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fortawesome_fontawesome_free_solid_faCommentAlt__ = __webpack_require__(244);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fortawesome_fontawesome_free_solid_faCommentAlt___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__fortawesome_fontawesome_free_solid_faCommentAlt__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__fortawesome_fontawesome_free_solid_faChevronCircleDown__ = __webpack_require__(236);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__fortawesome_fontawesome_free_solid_faChevronCircleDown__ = __webpack_require__(245);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__fortawesome_fontawesome_free_solid_faChevronCircleDown___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__fortawesome_fontawesome_free_solid_faChevronCircleDown__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__fortawesome_fontawesome_free_solid_faCogs__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__fortawesome_fontawesome_free_solid_faCogs__ = __webpack_require__(246);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__fortawesome_fontawesome_free_solid_faCogs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__fortawesome_fontawesome_free_solid_faCogs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__fortawesome_fontawesome_free_solid_faAngleRight__ = __webpack_require__(238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__fortawesome_fontawesome_free_solid_faAngleRight__ = __webpack_require__(247);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__fortawesome_fontawesome_free_solid_faAngleRight___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__fortawesome_fontawesome_free_solid_faAngleRight__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__fortawesome_fontawesome_free_solid_faHome__ = __webpack_require__(239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__fortawesome_fontawesome_free_solid_faHome__ = __webpack_require__(248);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__fortawesome_fontawesome_free_solid_faHome___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__fortawesome_fontawesome_free_solid_faHome__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__fortawesome_fontawesome_free_solid_faUsers__ = __webpack_require__(240);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__fortawesome_fontawesome_free_solid_faUsers__ = __webpack_require__(249);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__fortawesome_fontawesome_free_solid_faUsers___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__fortawesome_fontawesome_free_solid_faUsers__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__fortawesome_fontawesome_free_solid_faPaste__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__fortawesome_fontawesome_free_solid_faPaste__ = __webpack_require__(250);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__fortawesome_fontawesome_free_solid_faPaste___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__fortawesome_fontawesome_free_solid_faPaste__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__fortawesome_fontawesome_free_solid_faShoppingCart__ = __webpack_require__(242);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__fortawesome_fontawesome_free_solid_faShoppingCart__ = __webpack_require__(251);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__fortawesome_fontawesome_free_solid_faShoppingCart___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__fortawesome_fontawesome_free_solid_faShoppingCart__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__fortawesome_fontawesome_free_solid_faAlignJustify__ = __webpack_require__(243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__fortawesome_fontawesome_free_solid_faAlignJustify__ = __webpack_require__(252);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__fortawesome_fontawesome_free_solid_faAlignJustify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15__fortawesome_fontawesome_free_solid_faAlignJustify__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__fortawesome_fontawesome_free_solid_faPencilAlt__ = __webpack_require__(244);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__fortawesome_fontawesome_free_solid_faPencilAlt__ = __webpack_require__(253);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__fortawesome_fontawesome_free_solid_faPencilAlt___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16__fortawesome_fontawesome_free_solid_faPencilAlt__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__fortawesome_fontawesome_free_solid_faTimes__ = __webpack_require__(245);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__fortawesome_fontawesome_free_solid_faTimes__ = __webpack_require__(254);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__fortawesome_fontawesome_free_solid_faTimes___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17__fortawesome_fontawesome_free_solid_faTimes__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__fortawesome_fontawesome_free_solid_faLink__ = __webpack_require__(246);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__fortawesome_fontawesome_free_solid_faLink__ = __webpack_require__(255);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__fortawesome_fontawesome_free_solid_faLink___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18__fortawesome_fontawesome_free_solid_faLink__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__fortawesome_fontawesome_free_solid_faBars__ = __webpack_require__(247);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__fortawesome_fontawesome_free_solid_faBars__ = __webpack_require__(256);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__fortawesome_fontawesome_free_solid_faBars___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_19__fortawesome_fontawesome_free_solid_faBars__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__fortawesome_fontawesome_free_solid_faSortAmountUp__ = __webpack_require__(248);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__fortawesome_fontawesome_free_solid_faSortAmountUp__ = __webpack_require__(257);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__fortawesome_fontawesome_free_solid_faSortAmountUp___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_20__fortawesome_fontawesome_free_solid_faSortAmountUp__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__fortawesome_fontawesome_free_solid_faImages__ = __webpack_require__(249);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__fortawesome_fontawesome_free_solid_faImages__ = __webpack_require__(258);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__fortawesome_fontawesome_free_solid_faImages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_21__fortawesome_fontawesome_free_solid_faImages__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__fortawesome_fontawesome_free_solid_faRandom__ = __webpack_require__(250);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__fortawesome_fontawesome_free_solid_faRandom__ = __webpack_require__(259);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__fortawesome_fontawesome_free_solid_faRandom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_22__fortawesome_fontawesome_free_solid_faRandom__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__fortawesome_fontawesome_free_solid_faTags__ = __webpack_require__(260);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__fortawesome_fontawesome_free_solid_faTags___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_23__fortawesome_fontawesome_free_solid_faTags__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -31467,7 +31654,8 @@ Vue.component('select2-helper', __webpack_require__(12));
 
 
 
-__WEBPACK_IMPORTED_MODULE_3__fortawesome_fontawesome__["default"].library.add(__WEBPACK_IMPORTED_MODULE_4__fortawesome_fontawesome_free_solid_faPlus___default.a, __WEBPACK_IMPORTED_MODULE_5__fortawesome_fontawesome_free_solid_faEnvelope___default.a, __WEBPACK_IMPORTED_MODULE_6__fortawesome_fontawesome_free_solid_faBell___default.a, __WEBPACK_IMPORTED_MODULE_7__fortawesome_fontawesome_free_solid_faCommentAlt___default.a, __WEBPACK_IMPORTED_MODULE_8__fortawesome_fontawesome_free_solid_faChevronCircleDown___default.a, __WEBPACK_IMPORTED_MODULE_9__fortawesome_fontawesome_free_solid_faCogs___default.a, __WEBPACK_IMPORTED_MODULE_10__fortawesome_fontawesome_free_solid_faAngleRight___default.a, __WEBPACK_IMPORTED_MODULE_11__fortawesome_fontawesome_free_solid_faHome___default.a, __WEBPACK_IMPORTED_MODULE_12__fortawesome_fontawesome_free_solid_faUsers___default.a, __WEBPACK_IMPORTED_MODULE_13__fortawesome_fontawesome_free_solid_faPaste___default.a, __WEBPACK_IMPORTED_MODULE_14__fortawesome_fontawesome_free_solid_faShoppingCart___default.a, __WEBPACK_IMPORTED_MODULE_15__fortawesome_fontawesome_free_solid_faAlignJustify___default.a, __WEBPACK_IMPORTED_MODULE_16__fortawesome_fontawesome_free_solid_faPencilAlt___default.a, __WEBPACK_IMPORTED_MODULE_17__fortawesome_fontawesome_free_solid_faTimes___default.a, __WEBPACK_IMPORTED_MODULE_18__fortawesome_fontawesome_free_solid_faLink___default.a, __WEBPACK_IMPORTED_MODULE_19__fortawesome_fontawesome_free_solid_faBars___default.a, __WEBPACK_IMPORTED_MODULE_20__fortawesome_fontawesome_free_solid_faSortAmountUp___default.a, __WEBPACK_IMPORTED_MODULE_21__fortawesome_fontawesome_free_solid_faImages___default.a, __WEBPACK_IMPORTED_MODULE_22__fortawesome_fontawesome_free_solid_faRandom___default.a);
+
+__WEBPACK_IMPORTED_MODULE_3__fortawesome_fontawesome__["default"].library.add(__WEBPACK_IMPORTED_MODULE_4__fortawesome_fontawesome_free_solid_faPlus___default.a, __WEBPACK_IMPORTED_MODULE_5__fortawesome_fontawesome_free_solid_faEnvelope___default.a, __WEBPACK_IMPORTED_MODULE_6__fortawesome_fontawesome_free_solid_faBell___default.a, __WEBPACK_IMPORTED_MODULE_7__fortawesome_fontawesome_free_solid_faCommentAlt___default.a, __WEBPACK_IMPORTED_MODULE_8__fortawesome_fontawesome_free_solid_faChevronCircleDown___default.a, __WEBPACK_IMPORTED_MODULE_9__fortawesome_fontawesome_free_solid_faCogs___default.a, __WEBPACK_IMPORTED_MODULE_10__fortawesome_fontawesome_free_solid_faAngleRight___default.a, __WEBPACK_IMPORTED_MODULE_11__fortawesome_fontawesome_free_solid_faHome___default.a, __WEBPACK_IMPORTED_MODULE_12__fortawesome_fontawesome_free_solid_faUsers___default.a, __WEBPACK_IMPORTED_MODULE_13__fortawesome_fontawesome_free_solid_faPaste___default.a, __WEBPACK_IMPORTED_MODULE_14__fortawesome_fontawesome_free_solid_faShoppingCart___default.a, __WEBPACK_IMPORTED_MODULE_15__fortawesome_fontawesome_free_solid_faAlignJustify___default.a, __WEBPACK_IMPORTED_MODULE_16__fortawesome_fontawesome_free_solid_faPencilAlt___default.a, __WEBPACK_IMPORTED_MODULE_17__fortawesome_fontawesome_free_solid_faTimes___default.a, __WEBPACK_IMPORTED_MODULE_18__fortawesome_fontawesome_free_solid_faLink___default.a, __WEBPACK_IMPORTED_MODULE_19__fortawesome_fontawesome_free_solid_faBars___default.a, __WEBPACK_IMPORTED_MODULE_20__fortawesome_fontawesome_free_solid_faSortAmountUp___default.a, __WEBPACK_IMPORTED_MODULE_21__fortawesome_fontawesome_free_solid_faImages___default.a, __WEBPACK_IMPORTED_MODULE_22__fortawesome_fontawesome_free_solid_faRandom___default.a, __WEBPACK_IMPORTED_MODULE_23__fortawesome_fontawesome_free_solid_faTags___default.a);
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_2__packages_auth_Auth__["a" /* default */]);
 
@@ -53976,6 +54164,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -54041,6 +54230,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         newTown: function newTown() {
             this.$router.push('/towns/create');
+        },
+        newTag: function newTag() {
+            this.$router.push('/tags/create');
         }
     }
 });
@@ -54158,6 +54350,21 @@ var render = function() {
                       }
                     },
                     [_vm._v("Town")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "dropdown-item",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          _vm.newTag()
+                        }
+                      }
+                    },
+                    [_vm._v("Tag")]
                   ),
                   _vm._v(" "),
                   _c("div", { staticClass: "dropdown-divider" }),
@@ -54378,6 +54585,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome__);
+//
 //
 //
 //
@@ -54727,6 +54935,16 @@ var render = function() {
                     [
                       _c("router-link", { attrs: { tag: "a", to: "/towns" } }, [
                         _vm._v("Towns review")
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    [
+                      _c("router-link", { attrs: { tag: "a", to: "/tags" } }, [
+                        _vm._v("Tags review")
                       ])
                     ],
                     1
@@ -62698,7 +62916,7 @@ var index_esm = {
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
-        routes: [{ path: "/", component: __webpack_require__(27), meta: { forAuth: true } }, { path: "/home", component: __webpack_require__(27), meta: { forAuth: true } }, { path: "/login", component: __webpack_require__(94), meta: { forVisitors: true } }, { path: "/register", component: __webpack_require__(97), meta: { forVisitors: true } }, { path: "/logout", component: __webpack_require__(100), meta: { forAuth: true } }, { path: "/users", component: __webpack_require__(103), meta: { forAuth: true } }, { path: "/users/create", component: __webpack_require__(106), meta: { forAuth: true } }, { path: "/users/:id/edit", component: __webpack_require__(113), meta: { forAuth: true } }, { path: "/users/change-password", component: __webpack_require__(118), meta: { forAuth: true } }, { path: "/categories", component: __webpack_require__(123), meta: { forAuth: true } }, { path: "/categories/create", component: __webpack_require__(126), meta: { forAuth: true } }, { path: "/categories/:id/edit", component: __webpack_require__(133), meta: { forAuth: true } }, { path: "/posts", component: __webpack_require__(136), meta: { forAuth: true } }, { path: "/posts/create", component: __webpack_require__(139), meta: { forAuth: true } }, { path: "/posts/:id/edit", component: __webpack_require__(142), meta: { forAuth: true } }, { path: "/settings/:id/edit", component: __webpack_require__(149), meta: { forAuth: true } }, { path: "/themes", component: __webpack_require__(152), meta: { forAuth: true } }, { path: "/themes/create", component: __webpack_require__(155), meta: { forAuth: true } }, { path: "/themes/:id/edit", component: __webpack_require__(158), meta: { forAuth: true } }, { path: "/galleries", component: __webpack_require__(161), meta: { forAuth: true } }, { path: "/galleries/create", component: __webpack_require__(164), meta: { forAuth: true } }, { path: "/galleries/:id/edit", component: __webpack_require__(167), meta: { forAuth: true } }, { path: "/subscribers", component: __webpack_require__(170), meta: { forAuth: true } }, { path: "/subscribers/create", component: __webpack_require__(173), meta: { forAuth: true } }, { path: "/subscribers/:id/edit", component: __webpack_require__(176), meta: { forAuth: true } }, { path: "/banners", component: __webpack_require__(179), meta: { forAuth: true } }, { path: "/banners/create", component: __webpack_require__(182), meta: { forAuth: true } }, { path: "/banners/:id/edit", component: __webpack_require__(185), meta: { forAuth: true } }, { path: "/newsletters", component: __webpack_require__(188), meta: { forAuth: true } }, { path: "/newsletters/create", component: __webpack_require__(191), meta: { forAuth: true } }, { path: "/newsletters/:id/edit", component: __webpack_require__(217), meta: { forAuth: true } }, { path: "/towns", component: __webpack_require__(222), meta: { forAuth: true } }, { path: "/towns/create", component: __webpack_require__(225), meta: { forAuth: true } }, { path: "/towns/:id/edit", component: __webpack_require__(228), meta: { forAuth: true } }],
+        routes: [{ path: "/", component: __webpack_require__(27), meta: { forAuth: true } }, { path: "/home", component: __webpack_require__(27), meta: { forAuth: true } }, { path: "/login", component: __webpack_require__(94), meta: { forVisitors: true } }, { path: "/register", component: __webpack_require__(97), meta: { forVisitors: true } }, { path: "/logout", component: __webpack_require__(100), meta: { forAuth: true } }, { path: "/users", component: __webpack_require__(103), meta: { forAuth: true } }, { path: "/users/create", component: __webpack_require__(106), meta: { forAuth: true } }, { path: "/users/:id/edit", component: __webpack_require__(113), meta: { forAuth: true } }, { path: "/users/change-password", component: __webpack_require__(118), meta: { forAuth: true } }, { path: "/categories", component: __webpack_require__(123), meta: { forAuth: true } }, { path: "/categories/create", component: __webpack_require__(126), meta: { forAuth: true } }, { path: "/categories/:id/edit", component: __webpack_require__(133), meta: { forAuth: true } }, { path: "/posts", component: __webpack_require__(136), meta: { forAuth: true } }, { path: "/posts/create", component: __webpack_require__(139), meta: { forAuth: true } }, { path: "/posts/:id/edit", component: __webpack_require__(142), meta: { forAuth: true } }, { path: "/settings/:id/edit", component: __webpack_require__(149), meta: { forAuth: true } }, { path: "/themes", component: __webpack_require__(152), meta: { forAuth: true } }, { path: "/themes/create", component: __webpack_require__(155), meta: { forAuth: true } }, { path: "/themes/:id/edit", component: __webpack_require__(158), meta: { forAuth: true } }, { path: "/galleries", component: __webpack_require__(161), meta: { forAuth: true } }, { path: "/galleries/create", component: __webpack_require__(164), meta: { forAuth: true } }, { path: "/galleries/:id/edit", component: __webpack_require__(167), meta: { forAuth: true } }, { path: "/subscribers", component: __webpack_require__(170), meta: { forAuth: true } }, { path: "/subscribers/create", component: __webpack_require__(173), meta: { forAuth: true } }, { path: "/subscribers/:id/edit", component: __webpack_require__(176), meta: { forAuth: true } }, { path: "/banners", component: __webpack_require__(179), meta: { forAuth: true } }, { path: "/banners/create", component: __webpack_require__(182), meta: { forAuth: true } }, { path: "/banners/:id/edit", component: __webpack_require__(185), meta: { forAuth: true } }, { path: "/newsletters", component: __webpack_require__(188), meta: { forAuth: true } }, { path: "/newsletters/create", component: __webpack_require__(191), meta: { forAuth: true } }, { path: "/newsletters/:id/edit", component: __webpack_require__(217), meta: { forAuth: true } }, { path: "/towns", component: __webpack_require__(222), meta: { forAuth: true } }, { path: "/towns/create", component: __webpack_require__(225), meta: { forAuth: true } }, { path: "/towns/:id/edit", component: __webpack_require__(228), meta: { forAuth: true } }, { path: "/tags", component: __webpack_require__(231), meta: { forAuth: true } }, { path: "/tags/create", component: __webpack_require__(234), meta: { forAuth: true } }, { path: "/tags/:id/edit", component: __webpack_require__(237), meta: { forAuth: true } }],
 
         linkActiveClass: 'active'
 });
@@ -86893,7 +87111,7 @@ var render = function() {
                             ? _c(
                                 "small",
                                 { staticClass: "form-text text-muted" },
-                                [_vm._v(_vm._s(_vm.error.title[0]))]
+                                [_vm._v(_vm._s(_vm.error.name[0]))]
                               )
                             : _vm._e()
                         ]),
@@ -87053,6 +87271,1056 @@ if (false) {
 
 /***/ }),
 /* 231 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(232)
+/* template */
+var __vue_template__ = __webpack_require__(233)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\tags\\TagList.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-164a3a68", Component.options)
+  } else {
+    hotAPI.reload("data-v-164a3a68", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 232 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helper_PaginateHelper_vue__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helper_PaginateHelper_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__helper_PaginateHelper_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_sweetalert2__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fortawesome_vue_fontawesome__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fortawesome_vue_fontawesome___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__fortawesome_vue_fontawesome__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            tags: {},
+            paginate: {}
+        };
+    },
+
+    components: {
+        'paginate-helper': __WEBPACK_IMPORTED_MODULE_0__helper_PaginateHelper_vue___default.a,
+        'font-awesome-icon': __WEBPACK_IMPORTED_MODULE_2__fortawesome_vue_fontawesome___default.a
+    },
+    created: function created() {
+        this.getTags();
+    },
+
+    methods: {
+        getTags: function getTags() {
+            var _this = this;
+
+            axios.get('api/tags').then(function (res) {
+                _this.tags = res.data.tags.data;
+                _this.paginate = res.data.tags;
+            }).catch(function (e) {
+                console.log(e);
+            });
+        },
+        editRow: function editRow(id) {
+            this.$router.push('tags/' + id + '/edit');
+        },
+        deleteRow: function deleteRow(row) {
+            var _this2 = this;
+
+            __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#51d2b7',
+                cancelButtonColor: '#fb9678',
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'Cancel'
+            }).then(function (result) {
+                if (result.value) {
+                    axios.delete('api/tags/' + row.id).then(function (res) {
+                        _this2.tags = _this2.tags.filter(function (item) {
+                            return row.id != item.id;
+                        });
+                        __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()('Success!', 'Category is deleted.', 'success');
+                    }).catch(function (e) {
+                        console.log(e);
+                    });
+                }
+            });
+        },
+        clickToLink: function clickToLink(index) {
+            var _this3 = this;
+
+            axios.get('api/tags?page=' + index).then(function (res) {
+                _this3.tags = res.data.tags.data;
+                _this3.paginate = res.data.tags;
+            }).catch(function (e) {
+                console.log(e);
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 233 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "place" } }, [
+    _c("div", { staticClass: "container-fluid" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("div", { attrs: { id: "breadcrumbs" } }, [
+            _c("ul", { staticClass: "list-group list-group-flush" }, [
+              _c(
+                "li",
+                [
+                  _c("router-link", { attrs: { tag: "a", to: "/home" } }, [
+                    _vm._v("Home")
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("li", [_vm._v("Tags")])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("table", { staticClass: "table table-hover" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.tags, function(row) {
+                  return _c("tr", [
+                    _c("td", [_vm._v(_vm._s(row.id))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(row.title))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(row.publish))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(row.created_at))]),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "edit-link",
+                            attrs: {
+                              tag: "a",
+                              to: "tags/" + row["id"] + "/edit",
+                              target: "_blank"
+                            }
+                          },
+                          [
+                            _c("font-awesome-icon", {
+                              attrs: { icon: "pencil-alt" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("font-awesome-icon", {
+                          attrs: { icon: "times" },
+                          on: {
+                            click: function($event) {
+                              _vm.deleteRow(row)
+                            }
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ])
+                })
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c(
+          "div",
+          { staticClass: "col-md-12" },
+          [
+            _c("paginate-helper", {
+              attrs: { paginate: _vm.paginate },
+              on: {
+                clickLink: function($event) {
+                  _vm.clickToLink($event)
+                }
+              }
+            })
+          ],
+          1
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("id")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("name")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("publish")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("created_at")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("action")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-164a3a68", module.exports)
+  }
+}
+
+/***/ }),
+/* 234 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(235)
+/* template */
+var __vue_template__ = __webpack_require__(236)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\tags\\TagCreate.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-b705b2ac", Component.options)
+  } else {
+    hotAPI.reload("data-v-b705b2ac", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 235 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__fortawesome_vue_fontawesome__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__fortawesome_vue_fontawesome___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__fortawesome_vue_fontawesome__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_sweetalert2__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_switches__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_switches___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_switches__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            tag: {},
+            error: null
+        };
+    },
+
+    components: {
+        'font-awesome-icon': __WEBPACK_IMPORTED_MODULE_0__fortawesome_vue_fontawesome___default.a,
+        'switches': __WEBPACK_IMPORTED_MODULE_2_vue_switches___default.a
+    },
+    methods: {
+        submit: function submit() {
+            var _this = this;
+
+            axios.post('api/tags', this.tag).then(function (res) {
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    position: 'center',
+                    type: 'success',
+                    title: 'Uspeh',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                _this.$router.push('/tags');
+            }).catch(function (e) {
+                console.log(e.response);
+                _this.error = e.response.data.errors;
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 236 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "place" } }, [
+    _c("div", { staticClass: "container-fluid" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("div", { attrs: { id: "breadcrumbs" } }, [
+            _c("ul", { staticClass: "list-group list-group-flush" }, [
+              _c(
+                "li",
+                [
+                  _c("router-link", { attrs: { tag: "a", to: "/home" } }, [
+                    _vm._v("Home")
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                [
+                  _c("router-link", { attrs: { tag: "a", to: "/tags" } }, [
+                    _vm._v("Tags")
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("li", [_vm._v("Create tag")])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row bela" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-8" }, [
+          _c("div", { staticClass: "card" }, [
+            _c(
+              "form",
+              {
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    _vm.submit()
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "title" } }, [_vm._v("Name")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.tag.title,
+                        expression: "tag.title"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      name: "title",
+                      id: "title",
+                      placeholder: "Name"
+                    },
+                    domProps: { value: _vm.tag.title },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.tag, "title", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.error != null && _vm.error.title
+                    ? _c("small", { staticClass: "form-text text-muted" }, [
+                        _vm._v(_vm._s(_vm.error.title[0]))
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Publish")]),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("switches", {
+                      attrs: { theme: "bootstrap", color: "primary" },
+                      model: {
+                        value: _vm.tag.publish,
+                        callback: function($$v) {
+                          _vm.$set(_vm.tag, "publish", $$v)
+                        },
+                        expression: "tag.publish"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _vm._m(1)
+              ]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-4" })
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-12" }, [
+      _c("div", { staticClass: "card" }, [_c("h5", [_vm._v("Create tag")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Create")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-b705b2ac", module.exports)
+  }
+}
+
+/***/ }),
+/* 237 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(238)
+/* template */
+var __vue_template__ = __webpack_require__(239)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\tags\\TagEdit.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-04230a38", Component.options)
+  } else {
+    hotAPI.reload("data-v-04230a38", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 238 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__fortawesome_vue_fontawesome__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__fortawesome_vue_fontawesome___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__fortawesome_vue_fontawesome__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_sweetalert2__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_switches__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_switches___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_switches__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            tag: {},
+            error: null
+        };
+    },
+
+    components: {
+        'font-awesome-icon': __WEBPACK_IMPORTED_MODULE_0__fortawesome_vue_fontawesome___default.a,
+        'switches': __WEBPACK_IMPORTED_MODULE_2_vue_switches___default.a
+    },
+    created: function created() {
+        this.getTown();
+    },
+
+    methods: {
+        getTown: function getTown() {
+            var _this = this;
+
+            axios.get('api/tags/' + this.$route.params.id).then(function (res) {
+                if (res.data.tag != null) {
+                    _this.tag = res.data.tag;
+                }
+            }).catch(function (e) {
+                console.log(e);
+                _this.error = e.response.data.errors;
+            });
+        },
+        submit: function submit() {
+            var _this2 = this;
+
+            axios.put('api/tags/' + this.tag.id, this.tag).then(function (res) {
+                _this2.tag = res.data.tag;
+                __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()({
+                    position: 'center',
+                    type: 'success',
+                    title: 'Success',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                _this2.error = null;
+            }).catch(function (e) {
+                console.log(e.response);
+                _this2.error = e.response.data.errors;
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 239 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "place" } }, [
+    _c("div", { staticClass: "container-fluid" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("div", { attrs: { id: "breadcrumbs" } }, [
+            _c("ul", { staticClass: "list-group list-group-flush" }, [
+              _c(
+                "li",
+                [
+                  _c("router-link", { attrs: { tag: "a", to: "/home" } }, [
+                    _vm._v("Home")
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                [
+                  _c("router-link", { attrs: { tag: "a", to: "/tags" } }, [
+                    _vm._v("Tags")
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("li", [_vm._v("Edit tag")])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row bela" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-4" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("h5", [_vm._v("General info")]),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _c(
+              "form",
+              {
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    _vm.submit()
+                  }
+                }
+              },
+              [
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("Publish")]),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("switches", {
+                      attrs: { theme: "bootstrap", color: "primary" },
+                      model: {
+                        value: _vm.tag.publish,
+                        callback: function($$v) {
+                          _vm.$set(_vm.tag, "publish", $$v)
+                        },
+                        expression: "tag.publish"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _vm._m(1)
+              ]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-8" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("h5", [_vm._v("Language info")]),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _vm._m(2),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "tab-content", attrs: { id: "myTabContent" } },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "tab-pane active",
+                    attrs: {
+                      id: "eng",
+                      role: "tabpanel",
+                      "aria-labelledby": "contact-tab"
+                    }
+                  },
+                  [
+                    _c(
+                      "form",
+                      {
+                        on: {
+                          submit: function($event) {
+                            $event.preventDefault()
+                            _vm.submit()
+                          }
+                        }
+                      },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { attrs: { for: "title" } }, [
+                            _vm._v("Name")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.tag.title,
+                                expression: "tag.title"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              name: "title",
+                              id: "title",
+                              placeholder: "Title"
+                            },
+                            domProps: { value: _vm.tag.title },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(_vm.tag, "title", $event.target.value)
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm.error != null && _vm.error.title
+                            ? _c(
+                                "small",
+                                { staticClass: "form-text text-muted" },
+                                [_vm._v(_vm._s(_vm.error.title[0]))]
+                              )
+                            : _vm._e()
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(3)
+                      ]
+                    )
+                  ]
+                )
+              ]
+            )
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-12" }, [
+      _c("div", { staticClass: "card" }, [_c("h5", [_vm._v("Edit tag")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Edit")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "ul",
+      { staticClass: "nav nav-tabs", attrs: { id: "myTab", role: "tablist" } },
+      [
+        _c("li", { staticClass: "nav-item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "nav-link active",
+              attrs: {
+                id: "eng-tab",
+                "data-toggle": "tab",
+                href: "#eng",
+                role: "tab",
+                "aria-controls": "home",
+                "aria-selected": "true"
+              }
+            },
+            [_vm._v("English")]
+          )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Edit")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-04230a38", module.exports)
+  }
+}
+
+/***/ }),
+/* 240 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -87100,121 +88368,127 @@ if (false) {
 });
 
 /***/ }),
-/* 232 */
+/* 241 */
 /***/ (function(module, exports) {
 
 module.exports = { prefix: 'fas', iconName: 'plus', icon: [448, 512, [], "f067", "M448 294.2v-76.4c0-13.3-10.7-24-24-24H286.2V56c0-13.3-10.7-24-24-24h-76.4c-13.3 0-24 10.7-24 24v137.8H24c-13.3 0-24 10.7-24 24v76.4c0 13.3 10.7 24 24 24h137.8V456c0 13.3 10.7 24 24 24h76.4c13.3 0 24-10.7 24-24V318.2H424c13.3 0 24-10.7 24-24z"] };
 
 /***/ }),
-/* 233 */
+/* 242 */
 /***/ (function(module, exports) {
 
 module.exports = { prefix: 'fas', iconName: 'envelope', icon: [512, 512, [], "f0e0", "M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"] };
 
 /***/ }),
-/* 234 */
+/* 243 */
 /***/ (function(module, exports) {
 
 module.exports = { prefix: 'fas', iconName: 'bell', icon: [448, 512, [], "f0f3", "M433.884 366.059C411.634 343.809 384 316.118 384 208c0-79.394-57.831-145.269-133.663-157.83A31.845 31.845 0 0 0 256 32c0-17.673-14.327-32-32-32s-32 14.327-32 32c0 6.75 2.095 13.008 5.663 18.17C121.831 62.731 64 128.606 64 208c0 108.118-27.643 135.809-49.893 158.059C-16.042 396.208 5.325 448 48.048 448H160c0 35.346 28.654 64 64 64s64-28.654 64-64h111.943c42.638 0 64.151-51.731 33.941-81.941zM224 472a8 8 0 0 1 0 16c-22.056 0-40-17.944-40-40h16c0 13.234 10.766 24 24 24z"] };
 
 /***/ }),
-/* 235 */
-/***/ (function(module, exports) {
-
-module.exports = { prefix: 'fas', iconName: 'comment-alt', icon: [576, 512, [], "f27a", "M576 240c0 115-129 208-288 208-48.3 0-93.9-8.6-133.9-23.8-40.3 31.2-89.8 50.3-142.4 55.7-5.2.6-10.2-2.8-11.5-7.7-1.3-5 2.7-8.1 6.6-11.8 19.3-18.4 42.7-32.8 51.9-94.6C21.9 330.9 0 287.3 0 240 0 125.1 129 32 288 32s288 93.1 288 208zm-416-48c-26.5 0-48 21.5-48 48s21.5 48 48 48 48-21.5 48-48-21.5-48-48-48zm128 0c-26.5 0-48 21.5-48 48s21.5 48 48 48 48-21.5 48-48-21.5-48-48-48zm128 0c-26.5 0-48 21.5-48 48s21.5 48 48 48 48-21.5 48-48-21.5-48-48-48z"] };
-
-/***/ }),
-/* 236 */
-/***/ (function(module, exports) {
-
-module.exports = { prefix: 'fas', iconName: 'chevron-circle-down', icon: [512, 512, [], "f13a", "M504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zM273 369.9l135.5-135.5c9.4-9.4 9.4-24.6 0-33.9l-17-17c-9.4-9.4-24.6-9.4-33.9 0L256 285.1 154.4 183.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L239 369.9c9.4 9.4 24.6 9.4 34 0z"] };
-
-/***/ }),
-/* 237 */
-/***/ (function(module, exports) {
-
-module.exports = { prefix: 'fas', iconName: 'cogs', icon: [640, 512, [], "f085", "M512.1 191l-8.2 14.3c-3 5.3-9.4 7.5-15.1 5.4-11.8-4.4-22.6-10.7-32.1-18.6-4.6-3.8-5.8-10.5-2.8-15.7l8.2-14.3c-6.9-8-12.3-17.3-15.9-27.4h-16.5c-6 0-11.2-4.3-12.2-10.3-2-12-2.1-24.6 0-37.1 1-6 6.2-10.4 12.2-10.4h16.5c3.6-10.1 9-19.4 15.9-27.4l-8.2-14.3c-3-5.2-1.9-11.9 2.8-15.7 9.5-7.9 20.4-14.2 32.1-18.6 5.7-2.1 12.1.1 15.1 5.4l8.2 14.3c10.5-1.9 21.2-1.9 31.7 0L552 6.3c3-5.3 9.4-7.5 15.1-5.4 11.8 4.4 22.6 10.7 32.1 18.6 4.6 3.8 5.8 10.5 2.8 15.7l-8.2 14.3c6.9 8 12.3 17.3 15.9 27.4h16.5c6 0 11.2 4.3 12.2 10.3 2 12 2.1 24.6 0 37.1-1 6-6.2 10.4-12.2 10.4h-16.5c-3.6 10.1-9 19.4-15.9 27.4l8.2 14.3c3 5.2 1.9 11.9-2.8 15.7-9.5 7.9-20.4 14.2-32.1 18.6-5.7 2.1-12.1-.1-15.1-5.4l-8.2-14.3c-10.4 1.9-21.2 1.9-31.7 0zm-10.5-58.8c38.5 29.6 82.4-14.3 52.8-52.8-38.5-29.7-82.4 14.3-52.8 52.8zM386.3 286.1l33.7 16.8c10.1 5.8 14.5 18.1 10.5 29.1-8.9 24.2-26.4 46.4-42.6 65.8-7.4 8.9-20.2 11.1-30.3 5.3l-29.1-16.8c-16 13.7-34.6 24.6-54.9 31.7v33.6c0 11.6-8.3 21.6-19.7 23.6-24.6 4.2-50.4 4.4-75.9 0-11.5-2-20-11.9-20-23.6V418c-20.3-7.2-38.9-18-54.9-31.7L74 403c-10 5.8-22.9 3.6-30.3-5.3-16.2-19.4-33.3-41.6-42.2-65.7-4-10.9.4-23.2 10.5-29.1l33.3-16.8c-3.9-20.9-3.9-42.4 0-63.4L12 205.8c-10.1-5.8-14.6-18.1-10.5-29 8.9-24.2 26-46.4 42.2-65.8 7.4-8.9 20.2-11.1 30.3-5.3l29.1 16.8c16-13.7 34.6-24.6 54.9-31.7V57.1c0-11.5 8.2-21.5 19.6-23.5 24.6-4.2 50.5-4.4 76-.1 11.5 2 20 11.9 20 23.6v33.6c20.3 7.2 38.9 18 54.9 31.7l29.1-16.8c10-5.8 22.9-3.6 30.3 5.3 16.2 19.4 33.2 41.6 42.1 65.8 4 10.9.1 23.2-10 29.1l-33.7 16.8c3.9 21 3.9 42.5 0 63.5zm-117.6 21.1c59.2-77-28.7-164.9-105.7-105.7-59.2 77 28.7 164.9 105.7 105.7zm243.4 182.7l-8.2 14.3c-3 5.3-9.4 7.5-15.1 5.4-11.8-4.4-22.6-10.7-32.1-18.6-4.6-3.8-5.8-10.5-2.8-15.7l8.2-14.3c-6.9-8-12.3-17.3-15.9-27.4h-16.5c-6 0-11.2-4.3-12.2-10.3-2-12-2.1-24.6 0-37.1 1-6 6.2-10.4 12.2-10.4h16.5c3.6-10.1 9-19.4 15.9-27.4l-8.2-14.3c-3-5.2-1.9-11.9 2.8-15.7 9.5-7.9 20.4-14.2 32.1-18.6 5.7-2.1 12.1.1 15.1 5.4l8.2 14.3c10.5-1.9 21.2-1.9 31.7 0l8.2-14.3c3-5.3 9.4-7.5 15.1-5.4 11.8 4.4 22.6 10.7 32.1 18.6 4.6 3.8 5.8 10.5 2.8 15.7l-8.2 14.3c6.9 8 12.3 17.3 15.9 27.4h16.5c6 0 11.2 4.3 12.2 10.3 2 12 2.1 24.6 0 37.1-1 6-6.2 10.4-12.2 10.4h-16.5c-3.6 10.1-9 19.4-15.9 27.4l8.2 14.3c3 5.2 1.9 11.9-2.8 15.7-9.5 7.9-20.4 14.2-32.1 18.6-5.7 2.1-12.1-.1-15.1-5.4l-8.2-14.3c-10.4 1.9-21.2 1.9-31.7 0zM501.6 431c38.5 29.6 82.4-14.3 52.8-52.8-38.5-29.6-82.4 14.3-52.8 52.8z"] };
-
-/***/ }),
-/* 238 */
-/***/ (function(module, exports) {
-
-module.exports = { prefix: 'fas', iconName: 'angle-right', icon: [256, 512, [], "f105", "M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"] };
-
-/***/ }),
-/* 239 */
-/***/ (function(module, exports) {
-
-module.exports = { prefix: 'fas', iconName: 'home', icon: [576, 512, [], "f015", "M488 312.7V456c0 13.3-10.7 24-24 24H348c-6.6 0-12-5.4-12-12V356c0-6.6-5.4-12-12-12h-72c-6.6 0-12 5.4-12 12v112c0 6.6-5.4 12-12 12H112c-13.3 0-24-10.7-24-24V312.7c0-3.6 1.6-7 4.4-9.3l188-154.8c4.4-3.6 10.8-3.6 15.3 0l188 154.8c2.7 2.3 4.3 5.7 4.3 9.3zm83.6-60.9L488 182.9V44.4c0-6.6-5.4-12-12-12h-56c-6.6 0-12 5.4-12 12V117l-89.5-73.7c-17.7-14.6-43.3-14.6-61 0L4.4 251.8c-5.1 4.2-5.8 11.8-1.6 16.9l25.5 31c4.2 5.1 11.8 5.8 16.9 1.6l235.2-193.7c4.4-3.6 10.8-3.6 15.3 0l235.2 193.7c5.1 4.2 12.7 3.5 16.9-1.6l25.5-31c4.2-5.2 3.4-12.7-1.7-16.9z"] };
-
-/***/ }),
-/* 240 */
-/***/ (function(module, exports) {
-
-module.exports = { prefix: 'fas', iconName: 'users', icon: [640, 512, [], "f0c0", "M320 64c57.99 0 105 47.01 105 105s-47.01 105-105 105-105-47.01-105-105S262.01 64 320 64zm113.463 217.366l-39.982-9.996c-49.168 35.365-108.766 27.473-146.961 0l-39.982 9.996C174.485 289.379 152 318.177 152 351.216V412c0 19.882 16.118 36 36 36h264c19.882 0 36-16.118 36-36v-60.784c0-33.039-22.485-61.837-54.537-69.85zM528 300c38.66 0 70-31.34 70-70s-31.34-70-70-70-70 31.34-70 70 31.34 70 70 70zm-416 0c38.66 0 70-31.34 70-70s-31.34-70-70-70-70 31.34-70 70 31.34 70 70 70zm24 112v-60.784c0-16.551 4.593-32.204 12.703-45.599-29.988 14.72-63.336 8.708-85.69-7.37l-26.655 6.664C14.99 310.252 0 329.452 0 351.477V392c0 13.255 10.745 24 24 24h112.169a52.417 52.417 0 0 1-.169-4zm467.642-107.09l-26.655-6.664c-27.925 20.086-60.89 19.233-85.786 7.218C499.369 318.893 504 334.601 504 351.216V412c0 1.347-.068 2.678-.169 4H616c13.255 0 24-10.745 24-24v-40.523c0-22.025-14.99-41.225-36.358-46.567z"] };
-
-/***/ }),
-/* 241 */
-/***/ (function(module, exports) {
-
-module.exports = { prefix: 'fas', iconName: 'paste', icon: [448, 512, [], "f0ea", "M128 184c0-30.879 25.122-56 56-56h136V56c0-13.255-10.745-24-24-24h-80.61C204.306 12.89 183.637 0 160 0s-44.306 12.89-55.39 32H24C10.745 32 0 42.745 0 56v336c0 13.255 10.745 24 24 24h104V184zm32-144c13.255 0 24 10.745 24 24s-10.745 24-24 24-24-10.745-24-24 10.745-24 24-24zm184 248h104v200c0 13.255-10.745 24-24 24H184c-13.255 0-24-10.745-24-24V184c0-13.255 10.745-24 24-24h136v104c0 13.2 10.8 24 24 24zm104-38.059V256h-96v-96h6.059a24 24 0 0 1 16.97 7.029l65.941 65.941a24.002 24.002 0 0 1 7.03 16.971z"] };
-
-/***/ }),
-/* 242 */
-/***/ (function(module, exports) {
-
-module.exports = { prefix: 'fas', iconName: 'shopping-cart', icon: [576, 512, [], "f07a", "M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z"] };
-
-/***/ }),
-/* 243 */
-/***/ (function(module, exports) {
-
-module.exports = { prefix: 'fas', iconName: 'align-justify', icon: [448, 512, [], "f039", "M0 84V44c0-8.837 7.163-16 16-16h416c8.837 0 16 7.163 16 16v40c0 8.837-7.163 16-16 16H16c-8.837 0-16-7.163-16-16zm16 144h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 256h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0-128h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"] };
-
-/***/ }),
 /* 244 */
 /***/ (function(module, exports) {
 
-module.exports = { prefix: 'fas', iconName: 'pencil-alt', icon: [512, 512, [], "f303", "M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"] };
+module.exports = { prefix: 'fas', iconName: 'comment-alt', icon: [512, 512, [], "f27a", "M448 0H64C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v84c0 9.8 11.2 15.5 19.1 9.7L304 416h144c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64z"] };
 
 /***/ }),
 /* 245 */
 /***/ (function(module, exports) {
 
-module.exports = { prefix: 'fas', iconName: 'times', icon: [384, 512, [], "f00d", "M323.1 441l53.9-53.9c9.4-9.4 9.4-24.5 0-33.9L279.8 256l97.2-97.2c9.4-9.4 9.4-24.5 0-33.9L323.1 71c-9.4-9.4-24.5-9.4-33.9 0L192 168.2 94.8 71c-9.4-9.4-24.5-9.4-33.9 0L7 124.9c-9.4 9.4-9.4 24.5 0 33.9l97.2 97.2L7 353.2c-9.4 9.4-9.4 24.5 0 33.9L60.9 441c9.4 9.4 24.5 9.4 33.9 0l97.2-97.2 97.2 97.2c9.3 9.3 24.5 9.3 33.9 0z"] };
+module.exports = { prefix: 'fas', iconName: 'chevron-circle-down', icon: [512, 512, [], "f13a", "M504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zM273 369.9l135.5-135.5c9.4-9.4 9.4-24.6 0-33.9l-17-17c-9.4-9.4-24.6-9.4-33.9 0L256 285.1 154.4 183.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L239 369.9c9.4 9.4 24.6 9.4 34 0z"] };
 
 /***/ }),
 /* 246 */
 /***/ (function(module, exports) {
 
-module.exports = { prefix: 'fas', iconName: 'link', icon: [512, 512, [], "f0c1", "M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"] };
+module.exports = { prefix: 'fas', iconName: 'cogs', icon: [640, 512, [], "f085", "M512.1 191l-8.2 14.3c-3 5.3-9.4 7.5-15.1 5.4-11.8-4.4-22.6-10.7-32.1-18.6-4.6-3.8-5.8-10.5-2.8-15.7l8.2-14.3c-6.9-8-12.3-17.3-15.9-27.4h-16.5c-6 0-11.2-4.3-12.2-10.3-2-12-2.1-24.6 0-37.1 1-6 6.2-10.4 12.2-10.4h16.5c3.6-10.1 9-19.4 15.9-27.4l-8.2-14.3c-3-5.2-1.9-11.9 2.8-15.7 9.5-7.9 20.4-14.2 32.1-18.6 5.7-2.1 12.1.1 15.1 5.4l8.2 14.3c10.5-1.9 21.2-1.9 31.7 0L552 6.3c3-5.3 9.4-7.5 15.1-5.4 11.8 4.4 22.6 10.7 32.1 18.6 4.6 3.8 5.8 10.5 2.8 15.7l-8.2 14.3c6.9 8 12.3 17.3 15.9 27.4h16.5c6 0 11.2 4.3 12.2 10.3 2 12 2.1 24.6 0 37.1-1 6-6.2 10.4-12.2 10.4h-16.5c-3.6 10.1-9 19.4-15.9 27.4l8.2 14.3c3 5.2 1.9 11.9-2.8 15.7-9.5 7.9-20.4 14.2-32.1 18.6-5.7 2.1-12.1-.1-15.1-5.4l-8.2-14.3c-10.4 1.9-21.2 1.9-31.7 0zm-10.5-58.8c38.5 29.6 82.4-14.3 52.8-52.8-38.5-29.7-82.4 14.3-52.8 52.8zM386.3 286.1l33.7 16.8c10.1 5.8 14.5 18.1 10.5 29.1-8.9 24.2-26.4 46.4-42.6 65.8-7.4 8.9-20.2 11.1-30.3 5.3l-29.1-16.8c-16 13.7-34.6 24.6-54.9 31.7v33.6c0 11.6-8.3 21.6-19.7 23.6-24.6 4.2-50.4 4.4-75.9 0-11.5-2-20-11.9-20-23.6V418c-20.3-7.2-38.9-18-54.9-31.7L74 403c-10 5.8-22.9 3.6-30.3-5.3-16.2-19.4-33.3-41.6-42.2-65.7-4-10.9.4-23.2 10.5-29.1l33.3-16.8c-3.9-20.9-3.9-42.4 0-63.4L12 205.8c-10.1-5.8-14.6-18.1-10.5-29 8.9-24.2 26-46.4 42.2-65.8 7.4-8.9 20.2-11.1 30.3-5.3l29.1 16.8c16-13.7 34.6-24.6 54.9-31.7V57.1c0-11.5 8.2-21.5 19.6-23.5 24.6-4.2 50.5-4.4 76-.1 11.5 2 20 11.9 20 23.6v33.6c20.3 7.2 38.9 18 54.9 31.7l29.1-16.8c10-5.8 22.9-3.6 30.3 5.3 16.2 19.4 33.2 41.6 42.1 65.8 4 10.9.1 23.2-10 29.1l-33.7 16.8c3.9 21 3.9 42.5 0 63.5zm-117.6 21.1c59.2-77-28.7-164.9-105.7-105.7-59.2 77 28.7 164.9 105.7 105.7zm243.4 182.7l-8.2 14.3c-3 5.3-9.4 7.5-15.1 5.4-11.8-4.4-22.6-10.7-32.1-18.6-4.6-3.8-5.8-10.5-2.8-15.7l8.2-14.3c-6.9-8-12.3-17.3-15.9-27.4h-16.5c-6 0-11.2-4.3-12.2-10.3-2-12-2.1-24.6 0-37.1 1-6 6.2-10.4 12.2-10.4h16.5c3.6-10.1 9-19.4 15.9-27.4l-8.2-14.3c-3-5.2-1.9-11.9 2.8-15.7 9.5-7.9 20.4-14.2 32.1-18.6 5.7-2.1 12.1.1 15.1 5.4l8.2 14.3c10.5-1.9 21.2-1.9 31.7 0l8.2-14.3c3-5.3 9.4-7.5 15.1-5.4 11.8 4.4 22.6 10.7 32.1 18.6 4.6 3.8 5.8 10.5 2.8 15.7l-8.2 14.3c6.9 8 12.3 17.3 15.9 27.4h16.5c6 0 11.2 4.3 12.2 10.3 2 12 2.1 24.6 0 37.1-1 6-6.2 10.4-12.2 10.4h-16.5c-3.6 10.1-9 19.4-15.9 27.4l8.2 14.3c3 5.2 1.9 11.9-2.8 15.7-9.5 7.9-20.4 14.2-32.1 18.6-5.7 2.1-12.1-.1-15.1-5.4l-8.2-14.3c-10.4 1.9-21.2 1.9-31.7 0zM501.6 431c38.5 29.6 82.4-14.3 52.8-52.8-38.5-29.6-82.4 14.3-52.8 52.8z"] };
 
 /***/ }),
 /* 247 */
 /***/ (function(module, exports) {
 
-module.exports = { prefix: 'fas', iconName: 'bars', icon: [448, 512, [], "f0c9", "M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"] };
+module.exports = { prefix: 'fas', iconName: 'angle-right', icon: [256, 512, [], "f105", "M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"] };
 
 /***/ }),
 /* 248 */
 /***/ (function(module, exports) {
 
-module.exports = { prefix: 'fas', iconName: 'sort-amount-up', icon: [512, 512, [], "f161", "M4.702 116.686l79.984-80.002c6.248-6.247 16.383-6.245 22.627 0l79.981 80.002c10.07 10.07 2.899 27.314-11.314 27.314H128v320c0 8.837-7.163 16-16 16H80c-8.837 0-16-7.163-16-16V144H16.016c-14.241 0-21.363-17.264-11.314-27.314zM240 96h256c8.837 0 16-7.163 16-16V48c0-8.837-7.163-16-16-16H240c-8.837 0-16 7.163-16 16v32c0 8.837 7.163 16 16 16zm-16 112v-32c0-8.837 7.163-16 16-16h192c8.837 0 16 7.163 16 16v32c0 8.837-7.163 16-16 16H240c-8.837 0-16-7.163-16-16zm0 256v-32c0-8.837 7.163-16 16-16h64c8.837 0 16 7.163 16 16v32c0 8.837-7.163 16-16 16h-64c-8.837 0-16-7.163-16-16zm0-128v-32c0-8.837 7.163-16 16-16h128c8.837 0 16 7.163 16 16v32c0 8.837-7.163 16-16 16H240c-8.837 0-16-7.163-16-16z"] };
+module.exports = { prefix: 'fas', iconName: 'home', icon: [576, 512, [], "f015", "M488 312.7V456c0 13.3-10.7 24-24 24H348c-6.6 0-12-5.4-12-12V356c0-6.6-5.4-12-12-12h-72c-6.6 0-12 5.4-12 12v112c0 6.6-5.4 12-12 12H112c-13.3 0-24-10.7-24-24V312.7c0-3.6 1.6-7 4.4-9.3l188-154.8c4.4-3.6 10.8-3.6 15.3 0l188 154.8c2.7 2.3 4.3 5.7 4.3 9.3zm83.6-60.9L488 182.9V44.4c0-6.6-5.4-12-12-12h-56c-6.6 0-12 5.4-12 12V117l-89.5-73.7c-17.7-14.6-43.3-14.6-61 0L4.4 251.8c-5.1 4.2-5.8 11.8-1.6 16.9l25.5 31c4.2 5.1 11.8 5.8 16.9 1.6l235.2-193.7c4.4-3.6 10.8-3.6 15.3 0l235.2 193.7c5.1 4.2 12.7 3.5 16.9-1.6l25.5-31c4.2-5.2 3.4-12.7-1.7-16.9z"] };
 
 /***/ }),
 /* 249 */
 /***/ (function(module, exports) {
 
-module.exports = { prefix: 'fas', iconName: 'images', icon: [576, 512, [], "f302", "M480 416v16c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V176c0-26.51 21.49-48 48-48h16v208c0 44.112 35.888 80 80 80h336zm96-80V80c0-26.51-21.49-48-48-48H144c-26.51 0-48 21.49-48 48v256c0 26.51 21.49 48 48 48h384c26.51 0 48-21.49 48-48zM256 128c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-96 144l55.515-55.515c4.686-4.686 12.284-4.686 16.971 0L272 256l135.515-135.515c4.686-4.686 12.284-4.686 16.971 0L512 208v112H160v-48z"] };
+module.exports = { prefix: 'fas', iconName: 'users', icon: [640, 512, [], "f0c0", "M320 64c57.99 0 105 47.01 105 105s-47.01 105-105 105-105-47.01-105-105S262.01 64 320 64zm113.463 217.366l-39.982-9.996c-49.168 35.365-108.766 27.473-146.961 0l-39.982 9.996C174.485 289.379 152 318.177 152 351.216V412c0 19.882 16.118 36 36 36h264c19.882 0 36-16.118 36-36v-60.784c0-33.039-22.485-61.837-54.537-69.85zM528 300c38.66 0 70-31.34 70-70s-31.34-70-70-70-70 31.34-70 70 31.34 70 70 70zm-416 0c38.66 0 70-31.34 70-70s-31.34-70-70-70-70 31.34-70 70 31.34 70 70 70zm24 112v-60.784c0-16.551 4.593-32.204 12.703-45.599-29.988 14.72-63.336 8.708-85.69-7.37l-26.655 6.664C14.99 310.252 0 329.452 0 351.477V392c0 13.255 10.745 24 24 24h112.169a52.417 52.417 0 0 1-.169-4zm467.642-107.09l-26.655-6.664c-27.925 20.086-60.89 19.233-85.786 7.218C499.369 318.893 504 334.601 504 351.216V412c0 1.347-.068 2.678-.169 4H616c13.255 0 24-10.745 24-24v-40.523c0-22.025-14.99-41.225-36.358-46.567z"] };
 
 /***/ }),
 /* 250 */
 /***/ (function(module, exports) {
 
-module.exports = { prefix: 'fas', iconName: 'random', icon: [512, 512, [], "f074", "M504.971 359.029c9.373 9.373 9.373 24.569 0 33.941l-80 79.984c-15.01 15.01-40.971 4.49-40.971-16.971V416h-58.785a12.004 12.004 0 0 1-8.773-3.812l-70.556-75.596 53.333-57.143L352 336h32v-39.981c0-21.438 25.943-31.998 40.971-16.971l80 79.981zM12 176h84l52.781 56.551 53.333-57.143-70.556-75.596A11.999 11.999 0 0 0 122.785 96H12c-6.627 0-12 5.373-12 12v56c0 6.627 5.373 12 12 12zm372 0v39.984c0 21.46 25.961 31.98 40.971 16.971l80-79.984c9.373-9.373 9.373-24.569 0-33.941l-80-79.981C409.943 24.021 384 34.582 384 56.019V96h-58.785a12.004 12.004 0 0 0-8.773 3.812L96 336H12c-6.627 0-12 5.373-12 12v56c0 6.627 5.373 12 12 12h110.785c3.326 0 6.503-1.381 8.773-3.812L352 176h32z"] };
+module.exports = { prefix: 'fas', iconName: 'paste', icon: [448, 512, [], "f0ea", "M128 184c0-30.879 25.122-56 56-56h136V56c0-13.255-10.745-24-24-24h-80.61C204.306 12.89 183.637 0 160 0s-44.306 12.89-55.39 32H24C10.745 32 0 42.745 0 56v336c0 13.255 10.745 24 24 24h104V184zm32-144c13.255 0 24 10.745 24 24s-10.745 24-24 24-24-10.745-24-24 10.745-24 24-24zm184 248h104v200c0 13.255-10.745 24-24 24H184c-13.255 0-24-10.745-24-24V184c0-13.255 10.745-24 24-24h136v104c0 13.2 10.8 24 24 24zm104-38.059V256h-96v-96h6.059a24 24 0 0 1 16.97 7.029l65.941 65.941a24.002 24.002 0 0 1 7.03 16.971z"] };
 
 /***/ }),
 /* 251 */
+/***/ (function(module, exports) {
+
+module.exports = { prefix: 'fas', iconName: 'shopping-cart', icon: [576, 512, [], "f07a", "M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z"] };
+
+/***/ }),
+/* 252 */
+/***/ (function(module, exports) {
+
+module.exports = { prefix: 'fas', iconName: 'align-justify', icon: [448, 512, [], "f039", "M0 84V44c0-8.837 7.163-16 16-16h416c8.837 0 16 7.163 16 16v40c0 8.837-7.163 16-16 16H16c-8.837 0-16-7.163-16-16zm16 144h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 256h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0-128h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"] };
+
+/***/ }),
+/* 253 */
+/***/ (function(module, exports) {
+
+module.exports = { prefix: 'fas', iconName: 'pencil-alt', icon: [512, 512, [], "f303", "M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"] };
+
+/***/ }),
+/* 254 */
+/***/ (function(module, exports) {
+
+module.exports = { prefix: 'fas', iconName: 'times', icon: [384, 512, [], "f00d", "M323.1 441l53.9-53.9c9.4-9.4 9.4-24.5 0-33.9L279.8 256l97.2-97.2c9.4-9.4 9.4-24.5 0-33.9L323.1 71c-9.4-9.4-24.5-9.4-33.9 0L192 168.2 94.8 71c-9.4-9.4-24.5-9.4-33.9 0L7 124.9c-9.4 9.4-9.4 24.5 0 33.9l97.2 97.2L7 353.2c-9.4 9.4-9.4 24.5 0 33.9L60.9 441c9.4 9.4 24.5 9.4 33.9 0l97.2-97.2 97.2 97.2c9.3 9.3 24.5 9.3 33.9 0z"] };
+
+/***/ }),
+/* 255 */
+/***/ (function(module, exports) {
+
+module.exports = { prefix: 'fas', iconName: 'link', icon: [512, 512, [], "f0c1", "M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"] };
+
+/***/ }),
+/* 256 */
+/***/ (function(module, exports) {
+
+module.exports = { prefix: 'fas', iconName: 'bars', icon: [448, 512, [], "f0c9", "M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"] };
+
+/***/ }),
+/* 257 */
+/***/ (function(module, exports) {
+
+module.exports = { prefix: 'fas', iconName: 'sort-amount-up', icon: [512, 512, [], "f161", "M4.702 116.686l79.984-80.002c6.248-6.247 16.383-6.245 22.627 0l79.981 80.002c10.07 10.07 2.899 27.314-11.314 27.314H128v320c0 8.837-7.163 16-16 16H80c-8.837 0-16-7.163-16-16V144H16.016c-14.241 0-21.363-17.264-11.314-27.314zM240 96h256c8.837 0 16-7.163 16-16V48c0-8.837-7.163-16-16-16H240c-8.837 0-16 7.163-16 16v32c0 8.837 7.163 16 16 16zm-16 112v-32c0-8.837 7.163-16 16-16h192c8.837 0 16 7.163 16 16v32c0 8.837-7.163 16-16 16H240c-8.837 0-16-7.163-16-16zm0 256v-32c0-8.837 7.163-16 16-16h64c8.837 0 16 7.163 16 16v32c0 8.837-7.163 16-16 16h-64c-8.837 0-16-7.163-16-16zm0-128v-32c0-8.837 7.163-16 16-16h128c8.837 0 16 7.163 16 16v32c0 8.837-7.163 16-16 16H240c-8.837 0-16-7.163-16-16z"] };
+
+/***/ }),
+/* 258 */
+/***/ (function(module, exports) {
+
+module.exports = { prefix: 'fas', iconName: 'images', icon: [576, 512, [], "f302", "M480 416v16c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V176c0-26.51 21.49-48 48-48h16v208c0 44.112 35.888 80 80 80h336zm96-80V80c0-26.51-21.49-48-48-48H144c-26.51 0-48 21.49-48 48v256c0 26.51 21.49 48 48 48h384c26.51 0 48-21.49 48-48zM256 128c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-96 144l55.515-55.515c4.686-4.686 12.284-4.686 16.971 0L272 256l135.515-135.515c4.686-4.686 12.284-4.686 16.971 0L512 208v112H160v-48z"] };
+
+/***/ }),
+/* 259 */
+/***/ (function(module, exports) {
+
+module.exports = { prefix: 'fas', iconName: 'random', icon: [512, 512, [], "f074", "M504.971 359.029c9.373 9.373 9.373 24.569 0 33.941l-80 79.984c-15.01 15.01-40.971 4.49-40.971-16.971V416h-58.785a12.004 12.004 0 0 1-8.773-3.812l-70.556-75.596 53.333-57.143L352 336h32v-39.981c0-21.438 25.943-31.998 40.971-16.971l80 79.981zM12 176h84l52.781 56.551 53.333-57.143-70.556-75.596A11.999 11.999 0 0 0 122.785 96H12c-6.627 0-12 5.373-12 12v56c0 6.627 5.373 12 12 12zm372 0v39.984c0 21.46 25.961 31.98 40.971 16.971l80-79.984c9.373-9.373 9.373-24.569 0-33.941l-80-79.981C409.943 24.021 384 34.582 384 56.019V96h-58.785a12.004 12.004 0 0 0-8.773 3.812L96 336H12c-6.627 0-12 5.373-12 12v56c0 6.627 5.373 12 12 12h110.785c3.326 0 6.503-1.381 8.773-3.812L352 176h32z"] };
+
+/***/ }),
+/* 260 */
+/***/ (function(module, exports) {
+
+module.exports = { prefix: 'fas', iconName: 'tags', icon: [640, 512, [], "f02c", "M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"] };
+
+/***/ }),
+/* 261 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

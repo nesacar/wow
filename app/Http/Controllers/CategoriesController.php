@@ -11,6 +11,7 @@ class CategoriesController extends Controller
 {
     public function index(){
         $categories = Category::select('id', 'title', 'publish', 'created_at')->orderBy('order', 'ASC')->paginate(50);
+
         return response()->json([
             'categories' => $categories,
         ]);

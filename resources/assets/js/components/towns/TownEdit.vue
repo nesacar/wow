@@ -66,7 +66,7 @@
                                     <div class="form-group">
                                         <label for="name">Name</label>
                                         <input type="text" name="name" class="form-control" id="name" placeholder="Title" v-model="town.name">
-                                        <small class="form-text text-muted" v-if="error != null && error.name">{{ error.title[0] }}</small>
+                                        <small class="form-text text-muted" v-if="error != null && error.name">{{ error.name[0] }}</small>
                                     </div>
                                     <div class="form-group">
                                         <label for="slug2">Slug</label>

@@ -23,6 +23,7 @@
                                 <a class="dropdown-item" href="#" @click.prevent="newPost()">Post</a>
                                 <a class="dropdown-item" href="#" @click.prevent="newCategory()">Category</a>
                                 <a class="dropdown-item" href="#" @click.prevent="newTown()">Town</a>
+                                <a class="dropdown-item" href="#" @click.prevent="newTag()">Tag</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" @click.prevent="newUser()">User</a>
                                 <div class="dropdown-divider"></div>
@@ -116,6 +117,9 @@
             },
             newTown(){
                 this.$router.push('/towns/create');
+            },
+            newTag(){
+                this.$router.push('/tags/create');
             },
         }
     }

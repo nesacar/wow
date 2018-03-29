@@ -50,6 +50,10 @@ export const router = new VueRouter({
         { path: "/towns", component: require('./components/towns/TownList.vue'), meta: { forAuth: true } },
         { path: "/towns/create", component: require('./components/towns/TownCreate.vue'), meta: { forAuth: true } },
         { path: "/towns/:id/edit", component: require('./components/towns/TownEdit.vue'), meta: { forAuth: true } },
+
+        { path: "/tags", component: require('./components/tags/TagList.vue'), meta: { forAuth: true } },
+        { path: "/tags/create", component: require('./components/tags/TagCreate.vue'), meta: { forAuth: true } },
+        { path: "/tags/:id/edit", component: require('./components/tags/TagEdit.vue'), meta: { forAuth: true } },
     ],
 
     linkActiveClass: 'active'

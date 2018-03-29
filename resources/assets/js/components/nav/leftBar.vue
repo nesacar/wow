@@ -44,6 +44,7 @@
                     <li><router-link tag="a" :to="'/posts'">Posts review</router-link></li>
                     <li><router-link tag="a" :to="'/categories'">Categories review</router-link></li>
                     <li><router-link tag="a" :to="'/towns'">Towns review</router-link></li>
+                    <li><router-link tag="a" :to="'/tags'">Tags review</router-link></li>
                 </ul>
             </li>
             <li :class="{ 'active': showNewslettersItemActive }" :style="{ 'display': showNewslettersItem ? 'block' : 'none' }">

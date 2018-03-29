@@ -119,4 +119,8 @@ class Post extends Model
     public function newsletter(){
         return $this->belongsToMany(Newsletter::class);
     }
+
+    public function tag(){
+        return $this->belongsToMany(Tag::class);
+    }
 }
