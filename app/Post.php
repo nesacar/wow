@@ -10,7 +10,7 @@ class Post extends Model
 
     protected $table = 'posts';
 
-    protected $fillable = ['id', 'user_id', 'category_id', 'town_id', 'title', 'slug', 'short', 'body', 'image', 'sliderImage', 'publish', 'slider', 'widget', 'publish_at'];
+    protected $fillable = ['id', 'user_id', 'category_id', 'town_id', 'title', 'slug', 'short', 'body', 'image', 'sliderImage', 'views', 'publish', 'slider', 'widget', 'publish_at'];
 
     public static function base64UploadImage($post_id, $image){
         $post = self::find($post_id);
@@ -97,6 +97,17 @@ class Post extends Model
     public static function getWidget($limit){
         return self::select('posts.id', 'posts.title', 'posts.slug', 'posts.image', 'posts.short', 'categories.slug as category')
             ->join('categories', 'posts.category_id', '=', 'categories.id')
+            ->where('posts.publish', 1)->where('posts.widget', 1)->orderBy('posts.publish_at', 'DESC')->take($limit)->get();
+    }
+
+    public static function getTop($cat_id=0, $limit=5){
+        return self::select('posts.id', 'posts.title', 'posts.slug', 'posts.image', 'posts.short', 'categories.slug as category')
+            ->join('categories', 'posts.category_id', '=', 'categories.id')
+            ->where(function($query) use ($cat_id){
+                if($cat_id > 0){
+                    $query->where('categories.id', $cat_id);
+                }
+            })
             ->where('posts.publish', 1)->where('posts.widget', 1)->orderBy('posts.publish_at', 'DESC')->take($limit)->get();
     }
 
