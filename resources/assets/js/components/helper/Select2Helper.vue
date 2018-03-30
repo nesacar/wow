@@ -9,13 +9,6 @@
 
     export default{
         props: ['options', 'value', 'multiple'],
-//        created(){
-//            console.log(this.value);
-//            if(this.value != null){
-//                console.log('value: ' + this.value);
-//                $(this.$el).val(this.value).trigger('change');
-//            }
-//        },
         mounted(){
             var vm = this;
             $(this.$el).select2({theme: 'bootstrap', data: this.options, multiple: this.multiple}).val(this.value).trigger('change')

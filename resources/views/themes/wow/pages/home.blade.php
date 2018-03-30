@@ -38,12 +38,7 @@
         @php $bannerIndex = "D5"; @endphp
         @include('themes.'.$theme.'.partials.revive')
 
-        <?php
-
-//        include "inc/aside-brands.php";
-//        include "inc/aside-fb.php";
-//        include "inc/social-buttons.php";
-
-        ?>
+        @include('themes.'.$theme.'.partials.aside-fb')
+        @include('themes.'.$theme.'.partials.social-buttons')
     </aside>
 @endsection

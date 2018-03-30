@@ -46,7 +46,7 @@ class Post extends Model
     }
 
     public static function getSlider($cat_id=0){
-        return self::select('posts.id', 'posts.title', 'posts.slug', 'posts.sliderImage', 'posts.short', 'categories.slug as category')
+        return self::select('posts.id', 'posts.title', 'posts.slug', 'posts.sliderImage', 'posts.short', 'posts.town_id', 'categories.slug as category')
             ->join('categories', 'posts.category_id', '=', 'categories.id')
             ->where('posts.publish', 1)
             ->where(function($query) use($cat_id){
@@ -66,7 +66,7 @@ class Post extends Model
     }
 
     public static function getLatest($cat_id=0, $limit=5){
-        return self::select('posts.id', 'posts.title', 'posts.slug', 'posts.image', 'posts.short', 'categories.slug as category')
+        return self::select('posts.id', 'posts.title', 'posts.slug', 'posts.image', 'posts.short', 'posts.town_id', 'categories.slug as category')
             ->join('categories', 'posts.category_id', '=', 'categories.id')
             ->where(function($query) use($cat_id){
                 if($cat_id > 0){
@@ -76,7 +76,7 @@ class Post extends Model
     }
 
     public static function getRandom($cat_id=0, $limit=5){
-        return self::select('posts.id', 'posts.title', 'posts.slug', 'posts.image', 'posts.short', 'categories.slug as category')
+        return self::select('posts.id', 'posts.title', 'posts.slug', 'posts.image', 'posts.short', 'posts.town_id', 'categories.slug as category')
             ->join('categories', 'posts.category_id', '=', 'categories.id')
             ->where(function($query) use($cat_id){
                 if($cat_id > 0){
@@ -86,7 +86,12 @@ class Post extends Model
     }
 
     public static function link($post){
-
+        if($post->town_id > 0){
+            $town = Town::find($post->town_id);
+            return url($post->category.'/'.$town->slug.'/'.$post->slug.'/'.$post->id);
+        }else{
+            return url($post->category.'/'.$post->slug.'/'.$post->id);
+        }
     }
 
     public function scopePublish($query)
@@ -95,20 +100,20 @@ class Post extends Model
     }
 
     public static function getWidget($limit){
-        return self::select('posts.id', 'posts.title', 'posts.slug', 'posts.image', 'posts.short', 'categories.slug as category')
+        return self::select('posts.id', 'posts.title', 'posts.slug', 'posts.image', 'posts.short', 'posts.town_id', 'categories.slug as category')
             ->join('categories', 'posts.category_id', '=', 'categories.id')
             ->where('posts.publish', 1)->where('posts.widget', 1)->orderBy('posts.publish_at', 'DESC')->take($limit)->get();
     }
 
-    public static function getTop($cat_id=0, $limit=5){
-        return self::select('posts.id', 'posts.title', 'posts.slug', 'posts.image', 'posts.short', 'categories.slug as category')
+    public static function getTop($cat_id=0, $limit=8){
+        return self::select('posts.id', 'posts.title', 'posts.slug', 'posts.image', 'posts.short', 'posts.town_id', 'categories.slug as category')
             ->join('categories', 'posts.category_id', '=', 'categories.id')
             ->where(function($query) use ($cat_id){
                 if($cat_id > 0){
                     $query->where('categories.id', $cat_id);
                 }
             })
-            ->where('posts.publish', 1)->where('posts.widget', 1)->orderBy('posts.publish_at', 'DESC')->take($limit)->get();
+            ->where('posts.publish', 1)->orderBy('posts.views', 'ASC')->take($limit)->get();
     }
 
     public function user(){

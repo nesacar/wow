@@ -210,8 +210,7 @@
             this.getTags();
             setTimeout(() => {
                 this.seen = true;
-                console.log('seen');
-            }, 2000);
+            }, 1000);
         },
         methods: {
             getPost(){

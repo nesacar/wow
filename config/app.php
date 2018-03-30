@@ -166,6 +166,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Illuminate\Html\HtmlServiceProvider::class,
         Eusonlito\LaravelPacker\PackerServiceProvider::class,
+        App\Providers\ViewServiseProvider::class,
         /*
          * Application Service Providers...
          */
