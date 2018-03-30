@@ -167,6 +167,7 @@ return [
         Illuminate\Html\HtmlServiceProvider::class,
         Eusonlito\LaravelPacker\PackerServiceProvider::class,
         App\Providers\ViewServiseProvider::class,
+        Devfactory\Imagecache\ImagecacheServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -228,6 +229,7 @@ return [
         'Form' => Illuminate\Html\FormFacade::class,
         'HTML' => Illuminate\Html\HtmlFacade::class,
         'Packer' => Eusonlito\LaravelPacker\Facade::class,
+        'Imagecache' => Devfactory\Imagecache\Facades\ImagecacheFacade::class,
     ],
 
 ];

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8c8d09e9ab0dab7e80dddf1ece66cb9e",
+    "content-hash": "6aa6753676bccfb2f62468d1ec6d68a9",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -181,6 +181,44 @@
                 "symmetric key cryptography"
             ],
             "time": "2017-05-18T21:28:48+00:00"
+        },
+        {
+            "name": "devfactory/imagecache",
+            "version": "3.0.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DevFactoryCH/imagecache.git",
+                "reference": "73783d14f40d01d8bdb2385256d244521340b92b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DevFactoryCH/imagecache/zipball/73783d14f40d01d8bdb2385256d244521340b92b",
+                "reference": "73783d14f40d01d8bdb2385256d244521340b92b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "intervention/image": "~2.1",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Devfactory\\Imagecache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "DevFactory Sarl",
+                    "email": "developer@devfactory.ch"
+                }
+            ],
+            "description": "Laravel package for generating thumbnails of images and caching them in your public files folder.",
+            "time": "2018-01-12T08:28:40+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

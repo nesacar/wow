@@ -19,7 +19,11 @@
                         <ul>
                             @if(count($towns)>0)
                                 @foreach($towns as $town)
-                                    <li><a href='{{ url($town->slug) }}'>{{ $town->name }}</a></li>
+                                    @if(empty($category))
+                                        <li><a href='{{ url($town->slug) }}'>{{ $town->name }}</a></li>
+                                    @else
+                                        <li><a href='{{ url($category->slug . '/' . $town->slug) }}'>{{ $town->name }}</a></li>
+                                    @endif
                                 @endforeach
                             @endif
                         </ul>

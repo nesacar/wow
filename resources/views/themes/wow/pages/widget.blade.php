@@ -23,7 +23,9 @@
                 <li><a href="{{ url('/') }}" target='_blank'><img class='abstract' src="{{ url('themes/'.$theme.'/img/widget/home1.jpg') }}" /></a></li>
                 @foreach($posts as $p)
                 <li>
-                    <a href="{{ url($p->category.'/'.$p->slug.'/'.$p->id) }}" target='_blank'><img class='abstract' src="{{ url($p->image) }}" /></a>
+                    <a href="{{ url($p->category.'/'.$p->slug.'/'.$p->id) }}" target='_blank'>
+                        <img class="abstract" src="{{ Imagecache::get($p->image, '300x250')->src }}" alt="{{ $p->title }}">
+                    </a>
                     <a class='title' href='{{ url($p->category.'/'.$p->slug.'/'.$p->id) }}' target='_blank'>
                         {{ $p->title }}
                     </a>

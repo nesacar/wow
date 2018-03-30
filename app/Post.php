@@ -10,7 +10,7 @@ class Post extends Model
 
     protected $table = 'posts';
 
-    protected $fillable = ['id', 'user_id', 'category_id', 'town_id', 'title', 'slug', 'short', 'body', 'image', 'sliderImage', 'views', 'publish', 'slider', 'widget', 'publish_at'];
+    protected $fillable = ['id', 'user_id', 'category_id', 'town_id', 'title', 'slug', 'short', 'body', 'image', 'link', 'views', 'publish', 'slider', 'widget', 'publish_at'];
 
     public static function base64UploadImage($post_id, $image){
         $post = self::find($post_id);
@@ -27,16 +27,11 @@ class Post extends Model
         $post->sliderImage = 'uploads/posts/slider/' . $filename;
         $post->update();
 
-        File::copy(public_path($post->image), public_path($post->sliderImage));
-
-        self::cropImage($post->sliderImage, 480, 250);
+//        File::copy(public_path($post->image), public_path($post->sliderImage));
+//
+//        self::cropImage($post->sliderImage, 480, 250);
 
         return $post->image;
-    }
-
-    public static function getPostLink($post){
-        $category = Category::find($post->category_id);
-        return url($category->slug . '/' . $post->slug . '/' . $post->id);
     }
 
     public static function cropImage($image, $width, $height){
@@ -45,8 +40,8 @@ class Post extends Model
         })->save($image);
     }
 
-    public static function getSlider($cat_id=0){
-        return self::select('posts.id', 'posts.title', 'posts.slug', 'posts.sliderImage', 'posts.short', 'posts.town_id', 'categories.slug as category')
+    public static function getSlider($cat_id=0, $town_id=false){
+        return self::select('posts.id', 'posts.title', 'posts.slug', 'posts.image', 'posts.short', 'posts.link', 'posts.publish_at', 'categories.slug as category')
             ->join('categories', 'posts.category_id', '=', 'categories.id')
             ->where('posts.publish', 1)
             ->where(function($query) use($cat_id){
@@ -54,29 +49,39 @@ class Post extends Model
                     $query->where('categories.id', $cat_id);
                 }
             })
+            ->where(function($query) use($town_id){
+                if($town_id){
+                    $query->where('posts.town_id', $town_id);
+                }
+            })
             ->where('posts.slider', 1)->orderBy('posts.publish_at', 'DESC')->take(6)->get();
     }
 
-    public static function getHighlights($cat_id=0){
+    public static function getHighlights($cat_id=0, $town_id=false){
         $categories = Category::where('featured', '>', 0)->where('id', '<>', $cat_id)->orderBy('featured', 'ASC')->take(3)->get();
         foreach ($categories as $category){
-            $category['posts'] = self::getLatest($category->id, 5);
+            $category['posts'] = self::getLatest($category->id, 5, $town_id);
         }
         return $categories;
     }
 
-    public static function getLatest($cat_id=0, $limit=5){
-        return self::select('posts.id', 'posts.title', 'posts.slug', 'posts.image', 'posts.short', 'posts.town_id', 'categories.slug as category')
+    public static function getLatest($cat_id=0, $limit=5, $town_id=false){
+        return self::select('posts.id', 'posts.title', 'posts.slug', 'posts.image', 'posts.short', 'posts.link', 'posts.publish_at', 'categories.slug as category')
             ->join('categories', 'posts.category_id', '=', 'categories.id')
             ->where(function($query) use($cat_id){
                 if($cat_id > 0){
                     $query->where('categories.id', $cat_id);
                 }
+            })
+            ->where(function($query) use($town_id){
+                if($town_id){
+                    $query->where('posts.town_id', $town_id);
+                }
             })->where('posts.publish', 1)->orderBy('posts.publish_at', 'DESC')->take($limit)->get();
     }
 
     public static function getRandom($cat_id=0, $limit=5){
-        return self::select('posts.id', 'posts.title', 'posts.slug', 'posts.image', 'posts.short', 'posts.town_id', 'categories.slug as category')
+        return self::select('posts.id', 'posts.title', 'posts.slug', 'posts.image', 'posts.short', 'posts.link', 'posts.publish_at', 'categories.slug as category')
             ->join('categories', 'posts.category_id', '=', 'categories.id')
             ->where(function($query) use($cat_id){
                 if($cat_id > 0){
@@ -85,35 +90,42 @@ class Post extends Model
             })->where('posts.publish', 1)->orderByRand()->take($limit)->get();
     }
 
-    public static function link($post){
-        if($post->town_id > 0){
-            $town = Town::find($post->town_id);
-            return url($post->category.'/'.$town->slug.'/'.$post->slug.'/'.$post->id);
-        }else{
-            return url($post->category.'/'.$post->slug.'/'.$post->id);
-        }
-    }
-
     public function scopePublish($query)
     {
         return $query->where('publish', 1);
     }
 
     public static function getWidget($limit){
-        return self::select('posts.id', 'posts.title', 'posts.slug', 'posts.image', 'posts.short', 'posts.town_id', 'categories.slug as category')
+        return self::select('posts.id', 'posts.title', 'posts.slug', 'posts.image', 'posts.short', 'posts.link', 'posts.publish_at', 'categories.slug as category')
             ->join('categories', 'posts.category_id', '=', 'categories.id')
             ->where('posts.publish', 1)->where('posts.widget', 1)->orderBy('posts.publish_at', 'DESC')->take($limit)->get();
     }
 
-    public static function getTop($cat_id=0, $limit=8){
-        return self::select('posts.id', 'posts.title', 'posts.slug', 'posts.image', 'posts.short', 'posts.town_id', 'categories.slug as category')
+    public static function getTop($cat_id=0, $limit=8, $town_id=false){
+        return self::select('posts.id', 'posts.title', 'posts.slug', 'posts.image', 'posts.short', 'posts.link', 'posts.publish_at', 'categories.slug as category')
             ->join('categories', 'posts.category_id', '=', 'categories.id')
             ->where(function($query) use ($cat_id){
                 if($cat_id > 0){
                     $query->where('categories.id', $cat_id);
                 }
             })
+            ->where(function($query) use ($town_id){
+                if($town_id > 0){
+                    $query->where('posts.town_id', $town_id);
+                }
+            })
             ->where('posts.publish', 1)->orderBy('posts.views', 'ASC')->take($limit)->get();
+    }
+
+    public static function fixLinks($post){
+        $category = Category::find($post->category_id);
+        if($post->town_id != null && $post->town_id > 0){
+            $town = Town::find($post->town_id);
+            $post->link = $category->slug . '/' . $town->slug . '/' . $post->slug . '/' . $post->id;
+        }else{
+            $post->link = $category->slug . '/' . $post->slug . '/' . $post->id;
+        }
+        $post->update();
     }
 
     public function user(){

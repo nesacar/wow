@@ -34,6 +34,8 @@ class PostsController extends Controller
 
         if(request('tags')){ $post->tag()->sync(request('tags')); }
 
+        Post::fixLinks($post);
+
         return response()->json([
             'post' => $post
         ]);
@@ -59,6 +61,8 @@ class PostsController extends Controller
         $post->update($request->except('image', 'slug'));
 
         if(request('tags')){ $post->tag()->sync(request('tags')); }
+
+        Post::fixLinks($post);
 
         return response()->json([
             'post' => $post,

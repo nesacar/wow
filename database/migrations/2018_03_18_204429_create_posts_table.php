@@ -23,7 +23,7 @@ class CreatePostsTable extends Migration
             $table->text('short')->nullable();
             $table->text('body')->nullable();
             $table->string('image')->nullable();
-            $table->string('sliderImage')->nullable();
+            $table->string('link')->nullable();
             $table->integer('views')->default(0);
             $table->timestamp('publish_at')->nullable();
             $table->boolean('slider')->default(0);

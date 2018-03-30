@@ -11,8 +11,7 @@
 |
 */
 
-Route::get('/', 'PagesController@index');
-Route::get('widget', 'PagesController@widget');
+
 Route::get('proba', 'PagesController@proba');
 
 Auth::routes();
@@ -23,3 +22,8 @@ Route::get('/admin', function () {
 
 // filemanager
 Route::middleware('auth')->get('filemanager/show', 'FilemanagerController@index');
+
+Route::get('/', 'PagesController@index');
+Route::get('widget', 'PagesController@widget');
+Route::get('{slug1}/{slug2}', 'PagesController@subCategory');
+Route::get('{slug}', 'PagesController@category');
