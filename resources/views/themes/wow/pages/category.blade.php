@@ -29,6 +29,8 @@
     <section class="col-md-13 article">
         @php $pages = $posts->slice(8,20); @endphp
         @include('themes.'.$theme.'.partials.articles')
+
+        {{ $posts->links() }}
     </section>
 
     <aside class="col-md-14">

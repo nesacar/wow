@@ -26,6 +26,15 @@ class Category extends Model
         return $category->image;
     }
 
+    public static function changeLinksByCategory($category_id){
+        $posts = Post::where('category_id', $category_id)->get();
+        if(count($posts)>0){
+            foreach ($posts as $post){
+                Post::fixLinks($post);
+            }
+        }
+    }
+
     public function post(){
         return $this->hasMany(Post::class);
     }

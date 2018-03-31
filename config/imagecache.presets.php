@@ -22,9 +22,9 @@
  */
 return array(
 
-    '480x250' => array(
-        'width' => 480,
-        'height' => 250,
+    '600x400' => array(
+        'width' => 600,
+        'height' => 400,
         'method' => 'crop',
     ),
     '540x360' => array(
@@ -32,9 +32,19 @@ return array(
       'height' => 360,
       'method' => 'crop',
     ),
+    '480x250' => array(
+        'width' => 480,
+        'height' => 250,
+        'method' => 'crop',
+    ),
     '300x250' => array(
         'width' => 300,
         'height' => 250,
+        'method' => 'crop',
+    ),
+    '93x63' => array(
+        'width' => 93,
+        'height' => 63,
         'method' => 'crop',
     ),
 );

@@ -70341,7 +70341,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             tags: {},
             error: null,
             config: {
-                toolbar: [['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', 'Image', 'Link', 'Unlink', 'Source'], { name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'] }, '/', { name: 'styles', items: ['Styles', 'Format', 'Font', 'FontSize'] }],
+                toolbar: [['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', 'Image', 'Link', 'Unlink', 'Source', 'Media Embed'], { name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'] }, '/', { name: 'styles', items: ['Styles', 'Format', 'Font', 'FontSize'] }],
                 height: 300,
                 filebrowserBrowseUrl: 'filemanager/show'
             },

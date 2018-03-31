@@ -2,14 +2,14 @@
     <div class="container">
         <nav class="navbar navbar-default" role="navigation">
             <div class="navbar-header">
-                <a class="menu-toggle" id="menu-toggle"><img src="https://www.wowmalta.com.mt/thm/malta/img/nav-toggle.png"></i></a>
+                <a class="menu-toggle" id="menu-toggle"><img src="{{ url('themes/'.$theme.'/img/nav-toggle.png') }}"></a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class='active'><a href="https://www.wowmalta.com.mt/">home</a></li>
+                    <li @if(!empty($home) && $home) class="active" @endif><a href="{{ url('/') }}">home</a></li>
                     @if(count($cats)>0)
                         @foreach($cats as $cat)
-                            <li><a href='{{ url($cat->slug) }}'>{{ $cat->title }}</a></li>
+                            <li @if(!empty($category) && $category->id == $cat->id) class="active" @endif><a href="{{ url($cat->slug) }}">{{ $cat->title }}</a></li>
                         @endforeach
                     @endif
                 </ul>
@@ -18,11 +18,11 @@
                     <div class="container">
                         <ul>
                             @if(count($towns)>0)
-                                @foreach($towns as $town)
+                                @foreach($towns as $t)
                                     @if(empty($category))
-                                        <li><a href='{{ url($town->slug) }}'>{{ $town->name }}</a></li>
+                                        <li @if(!empty($town) && $town->id == $t->id) class="active" @endif><a href='{{ url($t->slug) }}'>{{ $t->name }}</a></li>
                                     @else
-                                        <li><a href='{{ url($category->slug . '/' . $town->slug) }}'>{{ $town->name }}</a></li>
+                                        <li @if(!empty($town) && $town->id == $t->id) class="active" @endif><a href='{{ url($category->slug . '/' . $t->slug) }}'>{{ $t->name }}</a></li>
                                     @endif
                                 @endforeach
                             @endif

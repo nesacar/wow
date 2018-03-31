@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateTownRequest;
+use App\Post;
 use App\Town;
 use Illuminate\Http\Request;
 
@@ -35,10 +36,13 @@ class TownsController extends Controller
 
     public function update(CreateTownRequest $request, $id){
         $town = Town::find($id);
+        $oldSlug = $town->slug;
         $town->update(request()->all());
         request('slug')? $town->slug = str_slug(request('slug')) : $town->slug = str_slug(request('name'));
         request('publish')? $town->publish = true : $town->publish = false;
         $town->update($request->except('slug'));
+
+        if($oldSlug != request('slug')) Town::changeLinksByTown($town->id);
 
         return response()->json([
             'town' => $town
@@ -47,7 +51,15 @@ class TownsController extends Controller
 
     public function destroy($id){
         $town = Town::find($id);
+        $posts = Post::where('town_id', $town->id)->get();
         Town::destroy($town->id);
+
+        if(count($posts)>0){
+            foreach ($posts as $post){
+                Post::fixLinks($post);
+            }
+        }
+
         return response()->json([
             'message' => 'deleted'
         ]);
