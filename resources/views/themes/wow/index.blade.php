@@ -14,37 +14,8 @@
     <meta charset="utf-8">
     <title>@yield('title')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="description" content="@yield('desc')" />
-    <meta name="keywords" content="@yield('keywords')" />
-    <meta name="author" content="Mini STUDIO Publishing Group">
 
-    <!-- Facebok Open Graph -->
-    <meta property="og:title" content="{{ @$seo['title'] }}"/>
-    @if(!empty($cat) && $cat['image'] != null)
-    <meta property="og:image" content="{{ $cat['image'] }}"/>
-    @else
-    <meta property="og:image" content="{{ @$seo['main_img'] }}"/>
-    @endif
-    <meta property="og:type" content="article"/>
-    <meta property="og:url" content="{{ @$seo['url'] }}"/>
-    <meta property="og:site_name" content="{{ @$seo['title'] }}"/>
-    <meta property="og:description" content="{{ @$seo['descr'] }}" />
-    <!-- Facebok Open Graph Kraj-->
-
-    <!-- ITEM za GOOGLE + -->
-    <meta itemprop="name" content="{{ @$seo['title'] }}" />
-    <meta itemprop="description" content="{{ @$seo['descr'] }}" />
-    <meta itemprop="image" content="{{ @$seo['main_img'] }}" />
-    <!-- ITEM za GOOGLE + END -->
-
-    <!-- ITEM Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@wowmalta">
-    <meta name="twitter:creator" content="@wowmalta">
-    <meta name="twitter:title" content="{{ @$seo['title'] }}">
-    <meta name="twitter:description" content="{{ @$seo['descr'] }}">
-    <meta name="twitter:image" content="{{ @$seo['main_img'] }}">
-    <!-- ITEM Twitter END -->
+    @yield('seo_social_stuff')
 
     <meta name="google-site-verification" content="udApUfIVWbgCI9pjeC4JZYLdD1JQ-Bzgo6vKHwXVzBs" />
 
@@ -87,7 +58,7 @@
     </style>
     @include('themes.'.$theme.'.partials.js')
 
-
+    {!! $settings->analytics !!}
 
     <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
@@ -99,6 +70,11 @@
                   height="0" width="0" style="display:none;visibility:hidden"></iframe>
 </noscript>
 <!-- End Google Tag Manager (noscript) -->
+
+@php $bannerIndex = "BL"; @endphp
+@include('themes.'.$theme.'.partials.revive')
+@php $bannerIndex = "BR"; @endphp
+@include('themes.'.$theme.'.partials.revive')
 
 <div id="wrapper">
     @include('themes.'.$theme.'.partials.nav-sidebar')

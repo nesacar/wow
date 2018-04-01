@@ -18,8 +18,10 @@ class CreateTownsTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->integer('order');
+            $table->string('keywords');
             $table->text('body');
             $table->string('keywords');
+            $table->text('map');
             $table->boolean('publish');
             $table->timestamps();
         });

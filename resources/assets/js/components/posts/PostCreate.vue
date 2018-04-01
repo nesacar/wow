@@ -61,6 +61,14 @@
                                 <small class="form-text text-muted" v-if="error != null && error.body">{{ error.body[0] }}</small>
                             </div>
                             <div class="form-group">
+                                <label>Map</label>
+                                <ckeditor
+                                        v-model="post.map"
+                                        :config="config">
+                                </ckeditor>
+                                <small class="form-text text-muted" v-if="error != null && error.map">{{ error.map[0] }}</small>
+                            </div>
+                            <div class="form-group">
                                 <label>Slider</label><br>
                                 <switches v-model="post.slider" theme="bootstrap" color="primary"></switches>
                             </div>

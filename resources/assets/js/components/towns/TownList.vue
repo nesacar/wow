@@ -102,7 +102,7 @@
                                 });
                                 swal(
                                     'Success!',
-                                    'Category is deleted.',
+                                    'Town is deleted.',
                                     'success'
                                 );
                             })

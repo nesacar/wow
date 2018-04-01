@@ -39,12 +39,25 @@
                                 <small class="form-text text-muted" v-if="error != null && error.order">{{ error.order[0] }}</small>
                             </div>
                             <div class="form-group">
+                                <label for="keywords">Keywords</label>
+                                <input type="text" name="order" class="form-control" id="keywords" placeholder="Keywords" v-model="town.keywords">
+                                <small class="form-text text-muted" v-if="error != null && error.keywords">{{ error.keywords[0] }}</small>
+                            </div>
+                            <div class="form-group">
                                 <label>Description</label>
                                 <ckeditor
                                         v-model="town.body"
                                         :config="config">
                                 </ckeditor>
                                 <small class="form-text text-muted" v-if="error != null && error.short">{{ error.body[0] }}</small>
+                            </div>
+                            <div class="form-group">
+                                <label>Map</label>
+                                <ckeditor
+                                        v-model="town.map"
+                                        :config="config">
+                                </ckeditor>
+                                <small class="form-text text-muted" v-if="error != null && error.map">{{ error.map[0] }}</small>
                             </div>
                             <div class="form-group">
                                 <label>Publish</label><br>

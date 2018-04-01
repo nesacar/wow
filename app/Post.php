@@ -11,7 +11,7 @@ class Post extends Model
 
     protected $table = 'posts';
 
-    protected $fillable = ['id', 'user_id', 'category_id', 'town_id', 'title', 'slug', 'short', 'body', 'image', 'link', 'views', 'publish', 'slider', 'widget', 'publish_at'];
+    protected $fillable = ['id', 'user_id', 'category_id', 'town_id', 'title', 'slug', 'short', 'body', 'image', 'link', 'views', 'publish', 'slider', 'widget', 'map', 'publish_at'];
 
     public static function base64UploadImage($post_id, $image){
         $post = self::find($post_id);

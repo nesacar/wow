@@ -121,6 +121,14 @@
                                         </ckeditor>
                                         <small class="form-text text-muted" v-if="error != null && error.desc">{{ error.body[0] }}</small>
                                     </div>
+                                    <div class="form-group">
+                                        <label>Map</label>
+                                        <ckeditor
+                                                v-model="post.map"
+                                                :config="config">
+                                        </ckeditor>
+                                        <small class="form-text text-muted" v-if="error != null && error.map">{{ error.map[0] }}</small>
+                                    </div>
                                     <div class="form-group" v-if="seen">
                                         <label>Tags</label>
                                         <select2 :options="tags" :value="post.tags" :multiple="true" @input="input($event)">

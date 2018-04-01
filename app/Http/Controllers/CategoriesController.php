@@ -25,6 +25,7 @@ class CategoriesController extends Controller
         $category->short = request('short');
         $category->order = request('order');
         request('publish')? $category->publish = true : $category->publish = false;
+        $category->map = request('map');
         $category->save();
 
         return response()->json([
@@ -45,6 +46,7 @@ class CategoriesController extends Controller
         $category->update(request()->all());
         request('slug')? $category->slug = str_slug(request('slug')) : $category->slug = str_slug(request('title'));
         request('publish')? $category->publish = true : $category->publish = false;
+        $category->map = request('map');
         $category->update($request->except('image', 'slug'));
 
         if($oldSlug != request('slug')) Category::changeLinksByCategory($category->id);

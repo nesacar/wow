@@ -8,7 +8,7 @@ class Town extends Model
 {
     protected $table = 'towns';
 
-    protected $fillable = ['id', 'name', 'slug', 'order', 'body', 'keywords', 'publish'];
+    protected $fillable = ['id', 'name', 'slug', 'order', 'body', 'keywords', 'map', 'publish'];
 
     public static function changeLinksByTown($town_id){
         $posts = Post::where('town_id', $town_id)->get();

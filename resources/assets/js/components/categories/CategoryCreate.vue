@@ -1,4 +1,4 @@
-<template>
+npm<template>
     <div id="place">
         <div class="container-fluid">
             <div class="row">
@@ -44,16 +44,36 @@
                                 <small class="form-text text-muted" v-if="error != null && error.featured">{{ error.featured[0] }}</small>
                             </div>
                             <div class="form-group">
-                                <label>Description</label>
+                                <label>Map</label>
+                                <ckeditor
+                                        v-model="category.map"
+                                        :config="config">
+                                </ckeditor>
+                                <small class="form-text text-muted" v-if="error != null && error.map">{{ error.map[0] }}</small>
+                            </div>
+                            <div class="form-group">
+                                <label>Publish</label><br>
+                                <switches v-model="category.publish" theme="bootstrap" color="primary"></switches>
+                            </div>
+                            <hr>
+                            <h3>SEO</h3>
+                            <div class="form-group">
+                                <label for="title">Seo title</label>
+                                <input type="text" name="seotitle" class="form-control" id="tiseotitletle" placeholder="Title" v-model="category.seotitle">
+                                <small class="form-text text-muted" v-if="error != null && error.seotitle">{{ error.seotitle[0] }}</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="seokeywords">Seo keywords</label>
+                                <input type="text" name="seokeywords" class="form-control" id="seokeywords" placeholder="Title" v-model="category.seokeywords">
+                                <small class="form-text text-muted" v-if="error != null && error.seokeywords">{{ error.seokeywords[0] }}</small>
+                            </div>
+                            <div class="form-group">
+                                <label>Seo description</label>
                                 <ckeditor
                                         v-model="category.short"
                                         :config="config">
                                 </ckeditor>
                                 <small class="form-text text-muted" v-if="error != null && error.short">{{ error.short[0] }}</small>
-                            </div>
-                            <div class="form-group">
-                                <label>Publish</label><br>
-                                <switches v-model="category.publish" theme="bootstrap" color="primary"></switches>
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-primary" type="submit">Create</button>

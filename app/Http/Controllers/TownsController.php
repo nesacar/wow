@@ -20,6 +20,7 @@ class TownsController extends Controller
         $town = Town::create(request()->all());
         request('slug')? $town->slug = str_slug(request('slug')) : $town->slug = str_slug(request('name'));
         request('publish')? $town->publish = true : $town->publish = false;
+        $town->map = request('map');
         $town->save();
 
         return response()->json([
@@ -40,6 +41,7 @@ class TownsController extends Controller
         $town->update(request()->all());
         request('slug')? $town->slug = str_slug(request('slug')) : $town->slug = str_slug(request('name'));
         request('publish')? $town->publish = true : $town->publish = false;
+        $town->map = request('map');
         $town->update($request->except('slug'));
 
         if($oldSlug != request('slug')) Town::changeLinksByTown($town->id);

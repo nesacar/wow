@@ -29,6 +29,7 @@ Route::post('scroll_related', 'PagesController@scroll_related');
 
 Route::get('tagcloud/{slug}', 'PagesController@tag');
 Route::post('search', 'PagesController@search')->name('search');
+Route::post('subscribe', 'PagesController@subscribe');
 
 Route::get('{slug1}/{slug2}/{slug3}', 'PagesController@post');
 Route::get('{slug1}/{slug2}', 'PagesController@subCategory');

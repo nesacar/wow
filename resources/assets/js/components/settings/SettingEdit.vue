@@ -122,6 +122,14 @@
                                     <small class="form-text text-muted" v-if="error != null && error.desc">{{ error.footer[0] }}</small>
                                 </div>
                                 <div class="form-group">
+                                    <label>Map</label>
+                                    <ckeditor
+                                            v-model="setting.map"
+                                            :config="config">
+                                    </ckeditor>
+                                    <small class="form-text text-muted" v-if="error != null && error.map">{{ error.map[0] }}</small>
+                                </div>
+                                <div class="form-group">
                                     <button class="btn btn-primary" type="submit">Edit</button>
                                 </div>
                             </form>

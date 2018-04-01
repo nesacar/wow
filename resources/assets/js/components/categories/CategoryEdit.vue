@@ -79,7 +79,27 @@
                                         <small class="form-text text-muted" v-if="error != null && error.slug">{{ error.slug[0] }}</small>
                                     </div>
                                     <div class="form-group">
-                                        <label>Description</label>
+                                        <label>Map</label>
+                                        <ckeditor
+                                                v-model="category.map"
+                                                :config="config">
+                                        </ckeditor>
+                                        <small class="form-text text-muted" v-if="error != null && error.map">{{ error.map[0] }}</small>
+                                    </div>
+                                    <hr>
+                                    <h3>SEO</h3>
+                                    <div class="form-group">
+                                        <label for="seotitle">Seo title</label>
+                                        <input type="text" name="seotitle" class="form-control" id="seotitle" placeholder="Title" v-model="category.seotitle">
+                                        <small class="form-text text-muted" v-if="error != null && error.seotitle">{{ error.seotitle[0] }}</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="seokeywords">Seo keywords</label>
+                                        <input type="text" name="seokeywords" class="form-control" id="seokeywords" placeholder="Title" v-model="category.seokeywords">
+                                        <small class="form-text text-muted" v-if="error != null && error.seokeywords">{{ error.seokeywords[0] }}</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Seo description</label>
                                         <ckeditor
                                                 v-model="category.short"
                                                 :config="config">

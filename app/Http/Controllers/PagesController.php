@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Banner;
 use App\Category;
+use App\Http\Requests\SubscribeNewsletterRequest;
 use App\Post;
 use App\Setting;
+use App\Subscriber;
 use App\Tag;
 use App\Theme;
 use App\Town;
@@ -49,16 +51,19 @@ class PagesController extends Controller
             $posts = Post::getLatestByTown(20,$town->id);
             $top = Post::getTopByTown(8, $town->id);
             $highlights = Post::getHighlights();
+            $mobile = Banner::isMobile($_SERVER['HTTP_USER_AGENT']);
+
+            return view('themes.'.$theme.'.pages.town', compact('theme', 'posts', 'sliders', 'highlights', 'mobile', 'top', 'settings', 'category', 'town'));
         }else{
             $town = null;
             $sliders = Post::getSlider($category->id);
             $posts = Post::getLatest($category->id,20);
             $top = Post::getTop($category->id);
             $highlights = Post::getHighlights($category->id);
-        }
-        $mobile = Banner::isMobile($_SERVER['HTTP_USER_AGENT']);
+            $mobile = Banner::isMobile($_SERVER['HTTP_USER_AGENT']);
 
-        return view('themes.'.$theme.'.pages.category', compact('theme', 'posts', 'sliders', 'highlights', 'mobile', 'top', 'settings', 'category', 'town'));
+            return view('themes.'.$theme.'.pages.category', compact('theme', 'posts', 'sliders', 'highlights', 'mobile', 'top', 'settings', 'category', 'town'));
+        }
     }
 
     public function subCategory($slug1, $slug2){
@@ -152,6 +157,14 @@ class PagesController extends Controller
         $mobile = Banner::isMobile($_SERVER['HTTP_USER_AGENT']);
 
         return view('themes.'.$theme.'.pages.search', compact('theme', 'posts', 'highlights', 'mobile', 'top', 'settings', 'mobile'));
+    }
+
+    public function subscribe(SubscribeNewsletterRequest $request){
+        $subscriber = new Subscriber();
+        $subscriber->email = request('email');
+        $subscriber->verification = str_random(20);
+        $subscriber->save();
+        return redirect('/');
     }
 
     public function proba(){

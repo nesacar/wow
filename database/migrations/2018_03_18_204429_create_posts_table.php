@@ -28,6 +28,7 @@ class CreatePostsTable extends Migration
             $table->timestamp('publish_at')->nullable();
             $table->boolean('slider')->default(0);
             $table->boolean('widget')->default(0);
+            $table->text('map')->default(0);
             $table->boolean('publish')->nullable();
             $table->timestamps();
         });

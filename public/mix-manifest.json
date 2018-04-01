@@ -1,6 +1,4 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/themes/wow/js/all.js": "/themes/wow/js/all.js",
-    "/themes/wow/css/all.css": "/themes/wow/css/all.css"
+    "/css/app.css": "/css/app.css"
 }

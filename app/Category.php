@@ -9,7 +9,7 @@ class Category extends Model
 {
     protected $table = 'categories';
 
-    protected $fillable = ['id', 'title', 'slug', 'short', 'order', 'featured', 'parent', 'level', 'image', 'publish'];
+    protected $fillable = ['id', 'title', 'slug', 'short', 'seotitle', 'seokeywords', 'order', 'featured', 'parent', 'level', 'image', 'map', 'publish'];
 
     public static function base64UploadImage($category_id, $image){
         $category = self::find($category_id);

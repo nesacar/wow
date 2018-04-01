@@ -17,12 +17,15 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->string('title')->nullable();
             $table->string('slug')->nullable();
+            $table->string('seotitle')->nullable();
+            $table->string('seokeywords')->nullable();
             $table->text('short')->nullable();
             $table->integer('parent')->nullable()->default(0);
             $table->integer('level')->nullable()->default(1);
             $table->integer('order')->default(1);
             $table->integer('featured')->default(0);
             $table->string('image')->nullable();
+            $table->text('map')->nullable();
             $table->boolean('publish')->nullable();
             $table->timestamps();
         });

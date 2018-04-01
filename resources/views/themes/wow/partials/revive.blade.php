@@ -51,7 +51,7 @@ $banner = $openX[$bannerIndex];
 if(empty($banner)) return;
 $class = array($banner['class']);
 
-if(($bannerIndex=="BL" || $bannerIndex=="BR") && $setup->bnr_fix) $class[] = "fix";
+if(($bannerIndex=="BL" || $bannerIndex=="BR") && true) $class[] = "fix";
 
 ?>
 
