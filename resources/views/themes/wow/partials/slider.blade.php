@@ -1,9 +1,5 @@
 @if(empty($sliders)) return; @endif
 
-@section('header')
-    <link href="{{ url('themes/'.$theme.'/css/jquery.bxslider.css') }}" rel="stylesheet" />
-@endsection
-
 <div class="col-md-13 column">
     <div class="image-box">
         <ul class="bxslider">

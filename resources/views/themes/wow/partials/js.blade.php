@@ -8,6 +8,7 @@
 
 <!-- jQuery Popup Overlay -->
 {!! HTML::script('themes/'.$theme.'/js/jquery.popupoverlay.js') !!}
+{{--{!! HTML::script('themes/'.$theme.'/js/all.js') !!}--}}
 
 <script type="text/javascript">
     $(document).ready(function() {

@@ -100,7 +100,7 @@
                                 <form @submit.prevent="submit()">
                                     <div class="form-group">
                                         <label for="title2">Title</label>
-                                        <input type="text" name="title" class="form-control" id="title2" placeholder="Title" v-model="post.title">
+                                        <input type="text" name="title" class="form-control" id="title2" placeholder="Title" v-model="post.title" @keyup="titleChange()">
                                         <small class="form-text text-muted" v-if="error != null && error.title">{{ error.title[0] }}</small>
                                     </div>
                                     <div class="form-group">
@@ -318,7 +318,10 @@
             },
             input(tag){
                 this.post.tags = tag;
+            },
+            titleChange(){
+                this.post.slug = Slug(this.post.title);
             }
-        }
+        },
     }
 </script>

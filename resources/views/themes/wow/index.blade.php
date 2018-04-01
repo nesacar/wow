@@ -48,12 +48,13 @@
 
     <meta name="google-site-verification" content="udApUfIVWbgCI9pjeC4JZYLdD1JQ-Bzgo6vKHwXVzBs" />
 
-    {!! HTML::style('themes/'.$theme.'/css/bootstrap.css') !!}
-    {!! HTML::style('themes/'.$theme.'/css/style.css') !!}
-    {!! HTML::style('themes/'.$theme.'/css/forms.css') !!}
-    {!! HTML::style('themes/'.$theme.'/css/navigation.css') !!}
-    {!! HTML::style('themes/'.$theme.'/css/font-awesome.min.css') !!}
-    {!! HTML::style('themes/'.$theme.'/css/simple-sidebar.css') !!}
+    {{--{!! HTML::style('themes/'.$theme.'/css/bootstrap.css') !!}--}}
+    {{--{!! HTML::style('themes/'.$theme.'/css/style.css') !!}--}}
+    {{--{!! HTML::style('themes/'.$theme.'/css/forms.css') !!}--}}
+    {{--{!! HTML::style('themes/'.$theme.'/css/navigation.css') !!}--}}
+    {{--{!! HTML::style('themes/'.$theme.'/css/font-awesome.min.css') !!}--}}
+    {{--{!! HTML::style('themes/'.$theme.'/css/simple-sidebar.css') !!}--}}
+    {!! HTML::style('themes/'.$theme.'/css/all.css') !!}
 
     @yield('header')
 

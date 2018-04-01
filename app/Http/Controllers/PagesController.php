@@ -64,22 +64,39 @@ class PagesController extends Controller
     public function subCategory($slug1, $slug2){
         $theme = Theme::getTheme();
         $settings = Setting::find(1);
-        $category = Category::where('slug', $slug1)->first();
-        $town = Town::where('slug', $slug2)->first();
-        $sliders = Post::getSlider($category->id, $town->id);
-        $posts = Post::getLatest($category->id,20, $town->id);
-        $highlights = Post::getHighlights($category->id);
-        $top = Post::getTop($category->id, $town->id);
-        $mobile = Banner::isMobile($_SERVER['HTTP_USER_AGENT']);
+        $post = Post::where('slug', $slug2)->first();
+        if(empty($post)){
+            $category = Category::where('slug', $slug1)->first();
+            $town = Town::where('slug', $slug2)->first();
+            $sliders = Post::getSlider($category->id, $town->id);
+            $posts = Post::getLatest($category->id,20, $town->id);
+            $highlights = Post::getHighlights($category->id);
+            $top = Post::getTop($category->id, $town->id);
+            $mobile = Banner::isMobile($_SERVER['HTTP_USER_AGENT']);
 
-        return view('themes.'.$theme.'.pages.category', compact('theme', 'posts', 'sliders', 'highlights', 'mobile', 'top', 'settings', 'category', 'town'));
+            return view('themes.'.$theme.'.pages.category', compact('theme', 'posts', 'sliders', 'highlights', 'mobile', 'top', 'settings', 'category', 'town'));
+        }else{
+            $category = Category::where('slug', $slug1)->first();
+            $post = Post::where('slug', $slug2)->first();
+            if(empty($post)) return 'error 404';
+            $photos = $post->photo;
+            $tags = $post->tag;
+            $highlights = Post::getHighlights($category->id);
+            $top = Post::getTop($category->id);
+            $related = Post::getRelated($category->id, $post->id, 10);
+            $mobile = Banner::isMobile($_SERVER['HTTP_USER_AGENT']);
+
+            return view('themes.'.$theme.'.pages.post', compact('theme', 'photos', 'highlights', 'mobile', 'top', 'settings', 'category', 'post', 'tags', 'related', 'town'));
+        }
     }
 
-    public function post($slug1, $slug2, $id){
+    public function post($slug1, $slug2, $slug3){
         $theme = Theme::getTheme();
         $settings = Setting::find(1);
         $category = Category::where('slug', $slug1)->first();
-        $post = Post::find($id);
+        $town = Town::where('slug', $slug2)->first();
+        $post = Post::where('slug', $slug3)->first();
+        if(empty($post)) return 'error 404';
         $photos = $post->photo;
         $tags = $post->tag;
         $highlights = Post::getHighlights($category->id);
@@ -87,24 +104,24 @@ class PagesController extends Controller
         $related = Post::getRelated($category->id, $post->id, 10);
         $mobile = Banner::isMobile($_SERVER['HTTP_USER_AGENT']);
 
-        return view('themes.'.$theme.'.pages.post', compact('theme', 'photos', 'highlights', 'mobile', 'top', 'settings', 'category', 'post', 'tags', 'related'));
+        return view('themes.'.$theme.'.pages.post', compact('theme', 'photos', 'highlights', 'mobile', 'top', 'settings', 'category', 'post', 'tags', 'related', 'town'));
     }
-
-    public function subPost($slug1, $slug2, $slug3, $id){
-        $theme = Theme::getTheme();
-        $settings = Setting::find(1);
-        $category = Category::where('slug', $slug1)->first();
-        $town = Town::where('slug', $slug2)->first();
-        $post = Post::find($id);
-        $photos = $post->photo;
-        $tags = $post->tag;
-        $highlights = Post::getHighlights($category->id);
-        $top = Post::getTop($category->id);
-        $related = Post::getRelated($category->id, $post->id, 10);
-        $mobile = Banner::isMobile($_SERVER['HTTP_USER_AGENT']);
-
-        return view('themes.'.$theme.'.pages.post', compact('theme', 'photos', 'highlights', 'mobile', 'top', 'settings', 'category', 'post', 'tags', 'town', 'related'));
-    }
+//
+//    public function subPost($slug1, $slug2, $slug3, $id){
+//        $theme = Theme::getTheme();
+//        $settings = Setting::find(1);
+//        $category = Category::where('slug', $slug1)->first();
+//        $town = Town::where('slug', $slug2)->first();
+//        $post = Post::find($id);
+//        $photos = $post->photo;
+//        $tags = $post->tag;
+//        $highlights = Post::getHighlights($category->id);
+//        $top = Post::getTop($category->id);
+//        $related = Post::getRelated($category->id, $post->id, 10);
+//        $mobile = Banner::isMobile($_SERVER['HTTP_USER_AGENT']);
+//
+//        return view('themes.'.$theme.'.pages.post', compact('theme', 'photos', 'highlights', 'mobile', 'top', 'settings', 'category', 'post', 'tags', 'town', 'related'));
+//    }
 
     public function scroll_related(Request $request){
         $theme = Theme::getTheme();

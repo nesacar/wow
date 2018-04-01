@@ -159,13 +159,13 @@ class Post extends Model
             if($post->town_id != null && $post->town_id > 0){
                 $town = Town::find($post->town_id);
                 if(empty($town)){
-                    $post->link = $category->slug . '/' . $post->slug . '/' . $post->id;
+                    $post->link = $category->slug . '/' . $post->slug;
                     $post->town_id = 0;
                 }else{
-                    $post->link = $category->slug . '/' . $town->slug . '/' . $post->slug . '/' . $post->id;
+                    $post->link = $category->slug . '/' . $town->slug . '/' . $post->slug;
                 }
             }else{
-                $post->link = $category->slug . '/' . $post->slug . '/' . $post->id;
+                $post->link = $category->slug . '/' . $post->slug;
             }
         }
 

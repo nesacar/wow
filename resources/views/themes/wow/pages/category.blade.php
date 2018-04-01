@@ -30,7 +30,9 @@
         @php $pages = $posts->slice(8,20); @endphp
         @include('themes.'.$theme.'.partials.articles')
 
-        {{ $posts->links() }}
+        <div class="text-center">
+            {{ $posts->links() }}
+        </div>
     </section>
 
     <aside class="col-md-14">
