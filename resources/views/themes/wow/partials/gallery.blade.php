@@ -7,14 +7,14 @@ $firstImg = $photos->last();
 <div class="gallery-images">
     <div class="relative">
 
-        @php $bannerIndex = "PR1"; @endphp
-        @include('themes.'.$theme.'.partials.revive')
+        {{--@php $bannerIndex = "PR1"; @endphp--}}
+        {{--@include('themes.'.$theme.'.partials.revive')--}}
 
-        @php $bannerIndex = "PR2"; @endphp
-        @include('themes.'.$theme.'.partials.revive')
+        {{--@php $bannerIndex = "PR2"; @endphp--}}
+        {{--@include('themes.'.$theme.'.partials.revive')--}}
 
-        @php $bannerIndex = "MPR1"; @endphp
-        @include('themes.'.$theme.'.partials.revive')
+        {{--@php $bannerIndex = "MPR1"; @endphp--}}
+        {{--@include('themes.'.$theme.'.partials.revive')--}}
 
         <a href="#"><span class="left-arrow" onClick='return lgShift(-1)'></span></a>
         <a href="#"><span class="right-arrow" onClick='return lgShift(1)'></span></a>

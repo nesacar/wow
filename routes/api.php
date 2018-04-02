@@ -70,3 +70,5 @@ Route::middleware('auth:api')->resource('tags', 'TagsController');
 
 Route::middleware('auth:api')->get('settings/{id}/edit', 'SettingsController@edit');
 Route::middleware('auth:api')->patch('settings/{id}', 'SettingsController@update');
+
+Route::middleware('auth:api')->patch('positions', 'PositionsController@update');
