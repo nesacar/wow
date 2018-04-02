@@ -35,7 +35,7 @@
 
                 <div class="col-md-4">
                     <div class="card">
-                        <h5>General info</h5>
+                        <h5>General info <a :href="domain + post.link" target="_blank" class="btn btn-primary pull-right">Preview</a></h5>
                         <hr>
                         <form @submit.prevent="submit()">
                             <div class="form-group">

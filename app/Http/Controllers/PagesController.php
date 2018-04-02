@@ -168,12 +168,12 @@ class PagesController extends Controller
     }
 
     public function proba(){
-        //factory('App\Post', 300)->create();
+//        factory('App\Post', 300)->create();
 //        $posts = Post::all();
 //        foreach ($posts as $post){
 //            Post::fixLinks($post);
 //        }
-//        return 'done';
+        return 'done';
 //        $posts = Post::all();
 //        foreach ($posts as $post){
 //            $post->publish_at = Carbon::now();
