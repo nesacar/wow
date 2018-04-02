@@ -1,7 +1,7 @@
 <?php
-if(empty($bannerIndex) || true) return;
+if(empty($bannerIndex)) return;
 $sInd = "bnr_".$bannerIndex;
-//if(!@$setup->$sInd) return;
+if(!in_array($bannerIndex, $positions)) return;
 
 $openX = array(
 'H1'      => array('zoneid'=>'19','n'=>'ade7a8d6','class'=>''),

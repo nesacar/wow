@@ -13,6 +13,7 @@ use App\Theme;
 use App\Town;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 
 class PagesController extends Controller
 {
@@ -169,18 +170,23 @@ class PagesController extends Controller
 
     public function proba(){
         //factory('App\Post', 300)->create();
-        $posts = Post::where('link', null)->get();
-        foreach ($posts as $post){
-            //Post::fixLinks($post);
-            $post->link = '#';
-            $post->update();
-        }
-        return 'done';
+//        $posts = Post::where('link', null)->get();
+//        foreach ($posts as $post){
+//            //Post::fixLinks($post);
+//            $post->link = '#';
+//            $post->update();
+//        }
+//        return 'done';
 //        $posts = Post::all();
 //        foreach ($posts as $post){
 //            $post->publish_at = Carbon::now();
 //            $post->update();
 //        }
-//        return 'done';
+
+//        Artisan::call('queue:work', [
+//            '--tries' => 3
+//        ]);
+
+        return 'done';
     }
 }

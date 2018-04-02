@@ -52,7 +52,7 @@
                                                         <h2 class="heading" v-if="item.post1 == null">DEFAULT TITLE</h2>
                                                         <h2 class="heading" v-else>{{ item.post1.title }}</h2>
                                                         <p v-if="item.post1 == null">Default body...</p>
-                                                        <p v-else>{{ item.post1.title }}</p>
+                                                        <p v-else>{{ item.post1.title | truncate(80) }}</p>
                                                         <div style="text-align: right;"> <a href="">Read more &gt;</a> </div>
                                                     </div>
                                                 </div>
@@ -114,7 +114,7 @@
                                                         <h2 class="heading" v-if="item.post2 == null">DEFAULT TITLE</h2>
                                                         <h2 class="heading" v-else>{{ item.post2.title }}</h2>
                                                         <p v-if="item.post2 == null">Default body...</p>
-                                                        <p v-else>{{ item.post2.title }}</p>
+                                                        <p v-else>{{ item.post2.title | truncate(80) }}</p>
                                                         <div style="text-align: right;"> <a href="">Read more &gt;</a> </div>
                                                     </div>
                                                 </div>
@@ -199,5 +199,10 @@
         top: 5px;
         left: 5px;
         color: red;
+    }
+
+    table, td {
+        display: inline-block;
+        vertical-align: top;
     }
 </style>

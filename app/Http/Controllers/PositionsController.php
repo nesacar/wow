@@ -11,9 +11,15 @@ class PositionsController extends Controller
 
     public function index(){
         $horizontal = Position::where('group', 1)->get();
+        $right = Position::where('group', 2)->get();
+        $branding = Position::where('group', 3)->get();
+        $active = Position::where('publish', 1)->pluck('id');
 
         return response()->json([
-            'horizontal' => $horizontal
+            'horizontal' => $horizontal,
+            'right' => $right,
+            'branding' => $branding,
+            'active' => $active,
         ]);
     }
 
@@ -52,19 +58,15 @@ class PositionsController extends Controller
     }
 
     public function updateAll(Request $request){
-        if(count(request('positions'))>0){
-            for ($i=0;$i<count(request('positions'));$i++){
-                $old = Position::where('position', request('positions')[$i])->first();
-                if(!empty($old)){
-                    $old->publish = request('publish')[$i]? true : false;
-                    $old->update();
-                }else{
-                    $new = new Position();
-                    $new->position = request('positions')[$i];
-                    $new->publish = request('publish')[$i];
-                    $new->save();
-                }
+        $ids = request('ids');
+        $positions = Position::all();
+        foreach ($positions as $position){
+            if(in_array($position->id, $ids)){
+                $position->publish = 1;
+            }else{
+                $position->publish = 0;
             }
+            $position->update();
         }
 
         return response()->json([

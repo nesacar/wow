@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ProcessNewsletter;
+use App\Jobs\ProcessPodcast;
 use App\Banner;
 use App\Http\Requests\CreateNewsletterRequest;
+use App\Mail\SendNewsletter;
 use App\Newsletter;
 use App\Newsletter_templates;
 use App\Post;
+use App\Subscriber;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 
 class NewslettersController extends Controller
 {
@@ -153,6 +159,32 @@ class NewslettersController extends Controller
 
         return response()->json([
             'banner' => $banner
+        ]);
+    }
+
+    public function send($id){
+        $newsletter = Newsletter::find($id);
+        $templates = Newsletter_templates::where('newsletter_id', $newsletter->id)->orderBy('index', 'ASC')->get();
+        $subscribers = Subscriber::where('block', 0)->get();
+        $count = Subscriber::where('block', 0)->count();
+//        if(count($subscribers)>0){
+//            foreach ($subscribers as $subscriber){
+//                \Mail::to($subscriber->email)->send(new SendNewsletter($newsletter, $templates));
+//            }
+//        }
+        ProcessNewsletter::dispatch($newsletter, $templates, $subscribers);
+
+        $newsletter->last_send = Carbon::now();
+        $newsletter->received = $count;
+        //$newsletter->send = 1;
+        $newsletter->update();
+
+        Artisan::call('queue:work', [
+            '--tries' => 3
+        ]);
+
+        return response()->json([
+            'message' => 'done'
         ]);
     }
 }

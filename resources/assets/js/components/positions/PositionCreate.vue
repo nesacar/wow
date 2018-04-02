@@ -6,7 +6,7 @@
                     <div id="breadcrumbs">
                         <ul class="list-group list-group-flush">
                             <li><router-link tag="a" :to="'/home'">Home</router-link></li>
-                            <li><router-link tag="a" :to="'/poaitions'">Positions</router-link></li>
+                            <li><router-link tag="a" :to="'/positions'">Positions</router-link></li>
                             <li>Create Position</li>
                         </ul>
                     </div>
@@ -27,6 +27,8 @@
                                 <label for="group">Group</label>
                                 <select name="group" id="group" class="form-control" v-model="position.group">
                                     <option value="1">Horizontal banners</option>
+                                    <option value="2">Banners right</option>
+                                    <option value="3">Branding</option>
                                 </select>
                                 <small class="form-text text-muted" v-if="error != null && error.group">{{ error.group[0] }}</small>
                             </div>
@@ -55,7 +57,6 @@
 </template>
 
 <script>
-    import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
     import swal from 'sweetalert2';
 
     export default {
@@ -65,12 +66,9 @@
               error: null
           }
         },
-        components: {
-            'font-awesome-icon': FontAwesomeIcon,
-        },
         methods: {
             submit(){
-                axios.post('api/positions', this.position)
+                axios.post('api/updateAll', this.position)
                     .then(res => {
                         swal({
                             position: 'center',
@@ -84,10 +82,7 @@
                         console.log(e.response);
                         this.error = e.response.data.errors;
                     });
-            },
-            upload(image){
-                this.banner.image = image[0];
-            },
+            }
         }
     }
 </script>

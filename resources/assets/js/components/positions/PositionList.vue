@@ -15,20 +15,29 @@
             <div class="row bela">
                 <div class="col-md-12">
                     <div class="card">
-                        <h5>Banner Positions</h5>
+                        <h5>Banner Positions <router-link tag="a" :to="'positions/create'" class="edit-link pull-right"><font-awesome-icon icon="plus"/></router-link></h5>
                     </div>
                 </div>
 
                 <div class="col-sm-8">
                     <form @submit.prevent="submit()">
                         <div class="card">
-                            <h3>Horizontal banners</h3>
+                            <h3>Horizontal banners:</h3>
                             <hr>
                             <div v-for="position in horizontal">
-                                <position-banner :position="position"></position-banner>
+                                <position-banner :position="position" @add="add($event)" @remove="remove($event)"></position-banner>
                             </div>
-                        </div>
-                        <div class="card">
+                            <h3>Banners right:</h3>
+                            <hr>
+                            <div v-for="position in right">
+                                <position-banner :position="position" @add="add($event)" @remove="remove($event)"></position-banner>
+                            </div>
+                            <h3>Branding:</h3>
+                            <hr>
+                            <div v-for="position in branding">
+                                <position-banner :position="position" @add="add($event)" @remove="remove($event)"></position-banner>
+                            </div>
+                            <hr>
                             <div class="form-group">
                                 <button class="btn btn-primary">Update</button>
                             </div>
@@ -52,7 +61,10 @@
         data(){
           return {
               horizontal: {},
-              error: null
+              right: {},
+              branding: {},
+              error: null,
+              lists: []
           }
         },
         components: {
@@ -67,28 +79,38 @@
                 axios.get('api/positions')
                     .then(res => {
                         this.horizontal = res.data.horizontal;
+                        this.right = res.data.right;
+                        this.branding = res.data.branding;
+                        this.lists = res.data.active;
                     }).catch(e => {
                         console.log(e.response);
                         this.error = e.response.data.errors;
                     });
             },
             submit(){
-//                axios.post('api/banners', this.banner)
-//                    .then(res => {
-//                        swal({
-//                            position: 'center',
-//                            type: 'success',
-//                            title: 'Success',
-//                            showConfirmButton: false,
-//                            timer: 1500
-//                        });
-//                        this.$router.push('/banners');
-//                    }).catch(e => {
-//                        console.log(e.response);
-//                        this.error = e.response.data.errors;
-//                    });
-                console.log('submit');
+                axios.post('api/positions/updateAll', {ids: this.lists})
+                    .then(res => {
+                        swal({
+                            position: 'center',
+                            type: 'success',
+                            title: 'Success',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+
+                    }).catch(e => {
+                        console.log(e.response);
+                        this.error = e.response.data.errors;
+                    });
             },
+            add(data){
+                this.lists.push(data);
+            },
+            remove(data){
+                this.lists = this.lists.filter(function (item) {
+                    return data != item;
+                });
+            }
         }
     }
 </script>

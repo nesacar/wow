@@ -29,6 +29,7 @@
                                 <td>{{ row.title }}</td>
                                 <td v-if="row.last_send">{{ row.last_send }}</td> <td v-else> Never </td>
                                 <td>
+                                    <font-awesome-icon icon="envelope" @click="sendRow(row['id'])" v-if="row.send == 0"/>
                                     <font-awesome-icon icon="pencil-alt" @click="editRow(row['id'])"/>
                                     <font-awesome-icon icon="times" @click="deleteRow(row)" />
                                 </td>
@@ -114,6 +115,20 @@
                     .then(res => {
                         this.newsletters = res.data.newsletters.data;
                         this.paginate = res.data.newsletters;
+                    })
+                    .catch(e => {
+                        console.log(e);
+                    });
+            },
+            sendRow(index){
+                console.log(index);
+                axios.post('api/newsletters/' + index + '/send')
+                    .then(res => {
+                        swal(
+                            'Send!',
+                            'Newsletter was sent.',
+                            'success'
+                        );
                     })
                     .catch(e => {
                         console.log(e);

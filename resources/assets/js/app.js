@@ -35,6 +35,8 @@ Vue.component('select2-helper', require('./components/helper/Select2Helper.vue')
 import { store } from './store/store';
 import { router } from './routes';
 import Auth from './packages/auth/Auth';
+var VueTruncate = require('vue-truncate-filter');
+
 
 import fontawesome from '@fortawesome/fontawesome';
 import faPlus from '@fortawesome/fontawesome-free-solid/faPlus';
@@ -63,6 +65,7 @@ fontawesome.library.add(
     faLink, faBars, faAmountUp, faImages, faRandom, faTags
 );
 
+Vue.use(VueTruncate);
 Vue.use(Auth);
 
 axios.defaults.headers.common['Authorization'] = 'Bearer ' + Vue.auth.getToken();

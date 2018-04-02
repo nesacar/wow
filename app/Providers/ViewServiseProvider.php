@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Category;
+use App\Position;
 use App\Theme;
 use App\Town;
 use Illuminate\Support\ServiceProvider;
@@ -18,6 +19,7 @@ class ViewServiseProvider extends ServiceProvider
     {
         $this->composerDesktopMenu();
         $this->composerMobileMenu();
+        $this->composerBanners();
     }
 
     /**
@@ -44,6 +46,14 @@ class ViewServiseProvider extends ServiceProvider
         $cats = Category::where('publish', 1)->orderBy('order', 'ASC')->get();
         view()->composer('themes.'.$theme.'.partials.nav-sidebar', function($view) use ($cats){
             $view->with('cats', $cats);
+        });
+    }
+
+    private function composerBanners(){
+        $theme = Theme::getTheme();
+        $positions = Position::where('publish', 1)->pluck('title')->toArray();
+        view()->composer('themes.'.$theme.'.partials.revive', function($view) use ($positions){
+            $view->with('positions', $positions);
         });
     }
 }

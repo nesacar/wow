@@ -61,6 +61,7 @@ Route::middleware('auth:api')->post('banners/{id}/image', 'BannersController@upl
 Route::middleware('auth:api')->resource('newsletters', 'NewslettersController');
 Route::middleware('auth:api')->get('newsletters/{id}/post', 'NewslettersController@post');
 Route::middleware('auth:api')->get('newsletters/{id}/banner', 'NewslettersController@banner');
+Route::middleware('auth:api')->post('newsletters/{id}/send', 'NewslettersController@send');
 
 Route::middleware('auth:api')->resource('themes', 'ThemesController');
 Route::middleware('auth:api')->post('themes/{id}/image', 'ThemesController@uploadImage');
@@ -72,4 +73,4 @@ Route::middleware('auth:api')->get('settings/{id}/edit', 'SettingsController@edi
 Route::middleware('auth:api')->patch('settings/{id}', 'SettingsController@update');
 
 Route::middleware('auth:api')->resource('positions', 'PositionsController');
-Route::middleware('auth:api')->patch('positions/updateAll', 'PositionsController@updateAll');
+Route::middleware('auth:api')->post('positions/updateAll', 'PositionsController@updateAll');
