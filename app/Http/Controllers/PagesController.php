@@ -168,11 +168,13 @@ class PagesController extends Controller
     }
 
     public function proba(){
-//        factory('App\Post', 300)->create();
-//        $posts = Post::all();
-//        foreach ($posts as $post){
-//            Post::fixLinks($post);
-//        }
+        //factory('App\Post', 300)->create();
+        $posts = Post::where('link', null)->get();
+        foreach ($posts as $post){
+            //Post::fixLinks($post);
+            $post->link = '#';
+            $post->update();
+        }
         return 'done';
 //        $posts = Post::all();
 //        foreach ($posts as $post){
