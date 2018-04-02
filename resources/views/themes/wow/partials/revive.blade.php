@@ -1,5 +1,5 @@
 <?php
-if(empty($bannerIndex)) return;
+if(empty($bannerIndex) || true) return;
 $sInd = "bnr_".$bannerIndex;
 //if(!@$setup->$sInd) return;
 

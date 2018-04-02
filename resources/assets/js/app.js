@@ -29,6 +29,8 @@ Vue.component('font-awesome-icon', require('@fortawesome/vue-fontawesome'));
 Vue.component('upload-pdf-helper', require('./components/helper/UploadPdfHelper.vue'));
 Vue.component('select2-helper', require('./components/helper/Select2Helper.vue'));
 
+// Vue.component('position', require('./components/positions/Position.vue'));
+
 
 import { store } from './store/store';
 import { router } from './routes';

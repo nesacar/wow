@@ -15,7 +15,9 @@ class CreatePositionsTable extends Migration
     {
         Schema::create('positions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('position');
+            $table->integer('group')->default(0);
+            $table->string('title');
+            $table->string('desc');
             $table->boolean('publish')->default(0);
             $table->timestamps();
         });

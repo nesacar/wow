@@ -54,6 +54,9 @@ export const router = new VueRouter({
         { path: "/tags", component: require('./components/tags/TagList.vue'), meta: { forAuth: true } },
         { path: "/tags/create", component: require('./components/tags/TagCreate.vue'), meta: { forAuth: true } },
         { path: "/tags/:id/edit", component: require('./components/tags/TagEdit.vue'), meta: { forAuth: true } },
+
+        { path: "/positions", component: require('./components/positions/PositionList.vue'), meta: { forAuth: true } },
+        { path: "/positions/create", component: require('./components/positions/PositionCreate.vue'), meta: { forAuth: true } },
     ],
 
     linkActiveClass: 'active'
