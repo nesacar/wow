@@ -195,6 +195,8 @@ class PagesController extends Controller
 //            '--tries' => 3
 //        ]);
 
-        return 'done';
+        //Artisan::call('queue:stop');
+
+        return 'done2';
     }
 }
