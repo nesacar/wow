@@ -38,6 +38,11 @@
                                 <small class="form-text text-muted" v-if="error != null && error.town_id">{{ error.town_id[0] }}</small>
                             </div>
                             <div class="form-group">
+                                <label for="title">Publish at</label>
+                                <datetime format="MM/DD/YYYY" width="300px" @update:date-value="val => dob = val"></datetime>
+                                <small class="form-text text-muted" v-if="error != null && error.title">{{ error.title[0] }}</small>
+                            </div>
+                            <div class="form-group">
                                 <label for="title">Title</label>
                                 <input type="text" name="title" class="form-control" id="title" placeholder="Title" v-model="post.title" @change="titleChange()">
                                 <small class="form-text text-muted" v-if="error != null && error.title">{{ error.title[0] }}</small>
@@ -61,11 +66,8 @@
                                 <small class="form-text text-muted" v-if="error != null && error.body">{{ error.body[0] }}</small>
                             </div>
                             <div class="form-group">
-                                <label>Map</label>
-                                <ckeditor
-                                        v-model="post.map"
-                                        :config="config">
-                                </ckeditor>
+                                <label for="map">Map</label>
+                                <textarea name="map" id="map" cols="3" rows="4" class="form-control" placeholder="Map" v-model="post.map"></textarea>
                                 <small class="form-text text-muted" v-if="error != null && error.map">{{ error.map[0] }}</small>
                             </div>
                             <div class="form-group">
@@ -116,6 +118,7 @@
     import Switches from 'vue-switches';
     import Ckeditor from 'vue-ckeditor2';
     import Select2 from '../helper/Select2Helper.vue';
+    import datetime from 'vuejs-datetimepicker';
 
     export default {
         data(){
@@ -156,6 +159,7 @@
             'switches': Switches,
             'ckeditor': Ckeditor,
             'select2': Select2,
+            'datetime': datetime,
         },
         created(){
             this.getList();
