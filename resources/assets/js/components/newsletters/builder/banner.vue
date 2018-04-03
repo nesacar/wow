@@ -15,7 +15,7 @@
                                         <tbody>
                                         <tr>
                                             <td style="width:550px; position: relative;">
-                                                <font-awesome-icon icon="times" @click="deleteRow(index)" />
+                                                <font-awesome-icon icon="times" @click="deleteRow(index)" v-if="!sent" />
                                                 <a href="#" target="_blank">
                                                     <img alt="#" height="auto" :src="domain + 'img/newsletter-banner.jpg'" style="border:0;display:block;outline:none;text-decoration:none;width:100%;" width="550" v-if="item.banner == null" />
                                                     <img :alt="item.banner.title" height="auto" :src="domain + item.banner.image" style="border:0;display:block;outline:none;text-decoration:none;width:100%;" width="550" v-else />
@@ -33,7 +33,7 @@
                                         <tr>
                                             <td style="width:550px;">
 
-                                                <select2 :options="banners" :value="item.item1" :name="item.component" @input="input($event)">
+                                                <select2 :options="banners" :value="item.item1" :name="item.component" @input="input($event)" v-if="!sent">
                                                     <option value="0">select one</option>
                                                 </select2>
 
@@ -64,7 +64,7 @@
                 domain: apiHost,
             }
         },
-        props: ['banners', 'fullBanners', 'index', 'item', 'edit'],
+        props: ['banners', 'fullBanners', 'index', 'item', 'edit', 'sent'],
         created(){
             if(this.edit){
                 this.$emit('setItem', {type: 'banner', item1: this.item.banner, item2: null,  index: this.index});

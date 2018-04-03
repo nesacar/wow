@@ -39,7 +39,7 @@ class ProcessNewsletter implements ShouldQueue
     {
         if(count($this->subscribers)>0){
             foreach ($this->subscribers as $subscriber){
-                \Mail::to($subscriber->email)->send(new SendNewsletter($this->newsletter, $this->templates));
+                \Mail::to($subscriber->email)->send(new SendNewsletter($this->newsletter, $this->templates, $subscriber));
             }
         }
     }

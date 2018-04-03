@@ -61,6 +61,7 @@ Route::middleware('auth:api')->post('banners/{id}/image', 'BannersController@upl
 Route::middleware('auth:api')->resource('newsletters', 'NewslettersController');
 Route::middleware('auth:api')->get('newsletters/{id}/post', 'NewslettersController@post');
 Route::middleware('auth:api')->get('newsletters/{id}/banner', 'NewslettersController@banner');
+Route::middleware('auth:api')->post('newsletters/{id}/prepare', 'NewslettersController@prepare');
 Route::middleware('auth:api')->post('newsletters/{id}/send', 'NewslettersController@send');
 
 Route::middleware('auth:api')->resource('themes', 'ThemesController');

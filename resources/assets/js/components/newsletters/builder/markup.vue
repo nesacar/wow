@@ -43,6 +43,7 @@
                         :fullBanners="fullBanners"
                         :item="item"
                         :edit="edit"
+                        :sent="sent"
                         @deleteRow="deleteRow($event)"
                         @setItem="setItem($event)"
                 ></component>
@@ -73,7 +74,7 @@
                 </table>
             </div>
             <div>
-                <button class="btn btn-primary" @click="create()" v-if="items.length > 0">Confirm</button>
+                <button class="btn btn-primary" @click="create()" v-if="items.length > 0 && sent == 0">Confirm</button>
             </div>
 
         </div>
@@ -95,7 +96,7 @@
               attrs: [],
           }
         },
-        props: ['items', 'edit'],
+        props: ['items', 'edit', 'sent'],
         components: {
             'leading-post': leadingPost,
             'two-posts': twoPosts,

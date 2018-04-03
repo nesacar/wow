@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="col-sm-4">
-                    <div class="card stack">
+                    <div class="card stack" v-if="newsletter.send == 0">
                         <div class="form-group">
                             <label for="title">Title</label>
                             <input type="text" name="title" class="form-control" id="title" placeholder="Title" v-model="newsletter.title">
@@ -33,10 +33,14 @@
                             <button class="btn btn-primary" @click="createBanner()">Banner</button>
                         </div>
                     </div>
+                    <div class="card" v-else>
+                        <h3>{{ newsletter.title }}</h3>
+                        <p>Newsletter was sent.</p>
+                    </div>
                 </div>
                 <div class="col-sm-8">
 
-                    <markup :items="items" :edit="true" @removeMarkup="removeMarkup($event)" @create="editNewsletter($event)"></markup>
+                    <markup :items="items" :edit="true" :sent="newsletter.send" @removeMarkup="removeMarkup($event)" @create="editNewsletter($event)"></markup>
 
                 </div>
             </div>
@@ -86,9 +90,8 @@
                 axios.get('api/newsletters/' + this.$route.params.id)
                     .then(res => {
                         if(res.data.newsletter != null){
-                            console.log(res.data.newsletter);
-                            this.newsletter.id = res.data.newsletter.id;
-                            this.newsletter.title = res.data.newsletter.title;
+                            this.newsletter = res.data.newsletter;
+//                            this.newsletter.title = res.data.newsletter.title;
                             this.setItems(res.data.newsletter.template);
                         }
                     })

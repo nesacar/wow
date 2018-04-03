@@ -444,7 +444,7 @@
                                 <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                                     <div style="font-family:Roboto;font-size:12px;line-height:1.5;text-align:left;color:#000000;">
                                         <p text-align="center">You have received this message because you subscribed to it on <a href="https://www.wowmalta.com.mt">https://www.wowmalta.com.mt</a>. To stop receiving this and other messages from WowMalta - Travel Info Guide for Malta, Gozo &amp;
-                                            Comino, click <a href="#">HERE</a>.</p>
+                                            Comino, click <a href="{{ url('un-subscribe/'.$subscriber->verification) }}">HERE</a>.</p>
                                     </div>
                                 </td>
                             </tr>

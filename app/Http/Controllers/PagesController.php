@@ -168,6 +168,14 @@ class PagesController extends Controller
         return redirect('/');
     }
 
+    public function unSubscribe($verification){
+        $subscriber = Subscriber::where('verification', $verification)->first();
+        $subscriber->block = 1;
+        $subscriber->update();
+
+        return redirect('/')->with('done', 'You have successfully unsubscribed.');
+    }
+
     public function proba(){
         //factory('App\Post', 300)->create();
 //        $posts = Post::where('link', null)->get();

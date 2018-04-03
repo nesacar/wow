@@ -15,7 +15,7 @@
 
                                             <td style="width:550px; position: relative;">
 
-                                                <font-awesome-icon icon="times" @click="deleteRow(index)" />
+                                                <font-awesome-icon icon="times" @click="deleteRow(index)" v-if="!sent" />
 
                                                 <a href="#" target="_blank">
 
@@ -35,7 +35,7 @@
                                         <tr>
 
                                             <td style="width:550px; position: relative;">
-                                                <select2 :options="posts" :value="item.item1" :name="item.component" @input="input($event)">
+                                                <select2 :options="posts" :value="item.item1" :name="item.component" @input="input($event)" v-if="!sent">
                                                     <option value="0">select one</option>
                                                 </select2>
                                             </td>
@@ -78,7 +78,7 @@
               domain: apiHost
           }
         },
-        props: ['posts', 'fullPosts', 'index', 'item', 'edit'],
+        props: ['posts', 'fullPosts', 'index', 'item', 'edit', 'sent'],
         created(){
             if(this.edit){
                 this.$emit('setItem', {type: 'post', item1: this.item.post, item2: null, index: this.index});

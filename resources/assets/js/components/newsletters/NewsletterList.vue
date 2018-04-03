@@ -29,7 +29,13 @@
                                 <td>{{ row.title }}</td>
                                 <td v-if="row.last_send">{{ row.last_send }}</td> <td v-else> Never </td>
                                 <td>
-                                    <font-awesome-icon icon="envelope" @click="sendRow(row['id'])" v-if="row.send == 0"/>
+                                    <span v-if="row.send == 1">
+                                        <font-awesome-icon icon="check" v-if="row.send == 1 && row.active == 0"/>
+                                    </span>
+                                    <span v-else>
+                                        <button class="btn btn-primary" @click="prepareRow(row.id)" v-if="row.active == 0">Prepare</button>
+                                        <button class="btn btn-primary" @click="sendRow(row.id)" v-if="row.active == 1 && sent">Send</button>
+                                    </span>
                                     <font-awesome-icon icon="pencil-alt" @click="editRow(row['id'])"/>
                                     <font-awesome-icon icon="times" @click="deleteRow(row)" />
                                 </td>
@@ -57,7 +63,8 @@
         data(){
             return {
                 newsletters: {},
-                paginate: {}
+                paginate: {},
+                sent: true
             }
         },
         components: {
@@ -121,14 +128,30 @@
                     });
             },
             sendRow(index){
-                console.log(index);
+                swal(
+                    'Send!',
+                    'Newsletter was sent.',
+                    'success'
+                );
+                this.sent = false;
                 axios.post('api/newsletters/' + index + '/send')
                     .then(res => {
+
+                    })
+                    .catch(e => {
+                        console.log(e);
+                    });
+            },
+            prepareRow(index){
+                console.log('prepare: ' + index);
+                axios.post('api/newsletters/' + index + '/prepare')
+                    .then(res => {
                         swal(
-                            'Send!',
-                            'Newsletter was sent.',
+                            'Prepared!',
+                            'Newsletter was prepared.',
                             'success'
                         );
+                        this.getNewsletters();
                     })
                     .catch(e => {
                         console.log(e);

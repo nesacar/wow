@@ -24,7 +24,7 @@ class NewslettersController extends Controller
      */
     public function index()
     {
-        $newsletters = Newsletter::select('id', 'title', 'send', 'last_send')->orderBy('last_send', 'DESC')->paginate(50);
+        $newsletters = Newsletter::select('id', 'title', 'send', 'last_send', 'active', 'send')->orderBy('last_send', 'DESC')->paginate(50);
 
         return response()->json([
             'newsletters' => $newsletters,
@@ -162,21 +162,28 @@ class NewslettersController extends Controller
         ]);
     }
 
-    public function send($id){
+    public function prepare($id){
         $newsletter = Newsletter::find($id);
         $templates = Newsletter_templates::where('newsletter_id', $newsletter->id)->orderBy('index', 'ASC')->get();
         $subscribers = Subscriber::where('block', 0)->get();
-        $count = Subscriber::where('block', 0)->count();
-//        if(count($subscribers)>0){
-//            foreach ($subscribers as $subscriber){
-//                \Mail::to($subscriber->email)->send(new SendNewsletter($newsletter, $templates));
-//            }
-//        }
         ProcessNewsletter::dispatch($newsletter, $templates, $subscribers);
+
+        $count = \DB::table('jobs')->count();
 
         $newsletter->last_send = Carbon::now();
         $newsletter->received = $count;
-        //$newsletter->send = 1;
+        $newsletter->active = 1;
+        $newsletter->update();
+
+        return response()->json([
+            'message' => 'done'
+        ]);
+    }
+
+    public function send($id){
+        $newsletter = Newsletter::find($id);
+        $newsletter->active = 0;
+        $newsletter->send = 1;
         $newsletter->update();
 
         Artisan::call('queue:work', [

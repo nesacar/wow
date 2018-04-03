@@ -17,12 +17,13 @@
                                             <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
                                                 <tbody>
                                                 <tr>
-                                                    <td style="width:250px;"> <a href="#" target="_blank">
-
+                                                    <td style="width:250px; position: relative;">
+                                                        <font-awesome-icon icon="times" @click="deleteRow(index)"  v-if="!sent" />
+                                                        <a href="#" target="_blank">
                                                         <img alt="#" height="auto" :src="domain + 'img/newsletter-post.jpg'" style="border:0;display:block;outline:none;text-decoration:none;width:250px;" width="250" v-if="item.post1 == null" />
                                                         <img alt="#" height="auto" :src="domain + item.post1.image" style="border:0;display:block;outline:none;text-decoration:none;width:250px;" width="250" v-else />
-
-                                                    </a> </td>
+                                                    </a>
+                                                    </td>
                                                 </tr>
                                                 </tbody>
                                             </table>
@@ -35,7 +36,7 @@
                                                     <tr>
                                                         <td style="width:250px; padding-top: 20px;">
 
-                                                            <select2 :options="posts" :value="item.item1" :name="item.component" @input="input1($event)">
+                                                            <select2 :options="posts" :value="item.item1" :name="item.component" @input="input1($event)" v-if="!sent">
                                                                 <option value="0">select one</option>
                                                             </select2>
 
@@ -97,7 +98,7 @@
                                                     <tr>
                                                         <td style="width:250px; padding-top: 20px;">
 
-                                                            <select2 :options="posts" :value="item.item2" :name="item.component" @input="input2($event)">
+                                                            <select2 :options="posts" :value="item.item2" :name="item.component" @input="input2($event)" v-if="!sent">
                                                                 <option value="0">select one</option>
                                                             </select2>
 
@@ -147,7 +148,7 @@
               domain: apiHost
           }
         },
-        props: ['posts', 'fullPosts', 'index', 'item', 'edit'],
+        props: ['posts', 'fullPosts', 'index', 'item', 'edit', 'sent'],
         components: {
             'select2': Select2,
             'font-awesome-icon': FontAwesomeIcon
