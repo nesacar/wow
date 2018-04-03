@@ -112,7 +112,7 @@ class PostsController extends Controller
             })
             ->where(function ($query) use ($text){
                 if($text != ''){
-                    $query->where('posts.title', 'like', '%'.$text.'%')->orWhere('posts.title', 'like', '%'.$text.'%');
+                    $query->where('posts.title', 'like', '%'.$text.'%')->orWhere('posts.slug', 'like', '%'.$text.'%');
                 }
             })
             ->orderBy('posts.created_at', 'DESC')->groupBy('posts.id')->paginate(50);
