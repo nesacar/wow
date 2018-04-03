@@ -14,7 +14,7 @@
   <?php include "inc/gallery.php"; ?>
 
   <?php if($page['himg'] == 1){ ?>
-    <div style="position: relative; margin-bottom: 20px;">
+    <div style=" position: relative; margin-bottom: 20px;">
       <?php
       $bannerIndex = "PR1";
       include "inc/revive-banner.php";

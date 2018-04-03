@@ -5,6 +5,7 @@ $firstImg = $photos->last();
 ?>
 
 <div class="gallery-images">
+    @if(count($photos)>0)
     <div class="relative">
 
         {{--@php $bannerIndex = "PR1"; @endphp--}}
@@ -23,7 +24,6 @@ $firstImg = $photos->last();
             <img id="bigFrameImg" src="{{ Imagecache::get($post->image, '600x400')->src }}" alt="{{ $post->title }}">
         </div>
     </div><!-- relative -->
-    @if(count($photos))
     <ul class="thumbs">
         @foreach($photos as $photo)
         <li>
