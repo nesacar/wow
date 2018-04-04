@@ -5,11 +5,11 @@
             <tr>
                 <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0;padding-top:0;text-align:center;vertical-align:top;">
 
-                    <div class="mj-column-per-50 outlook-group-fix" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:bottom;width:100%;">
+                    <div class="mj-column-per-50 outlook-group-fix" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                             <tbody>
                             <tr>
-                                <td style="vertical-align:bottom;padding:0 0 15px;">
+                                <td style="vertical-align:top;padding:0 0 15px;">
                                     <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                                         <!-- article -->
                                         <tr>
@@ -68,11 +68,11 @@
 
                     <!-- /article -->
 
-                    <div class="mj-column-per-50 outlook-group-fix" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:bottom;width:100%;">
+                    <div class="mj-column-per-50 outlook-group-fix" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                             <tbody>
                             <tr>
-                                <td style="vertical-align:bottom;padding:0 0 15px;">
+                                <td style="vertical-align:top;padding:0 0 15px;">
                                     <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                                         <!-- article -->
                                         <tr>

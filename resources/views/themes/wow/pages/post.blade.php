@@ -51,8 +51,8 @@
             @include('themes.'.$theme.'.partials.addthis')
             @include('themes.'.$theme.'.partials.keywords')
 
-            @php $bannerIndex = "C1"; @endphp
-            @include('themes.'.$theme.'.partials.revive')
+            {{--@php $bannerIndex = "C1"; @endphp--}}
+            {{--@include('themes.'.$theme.'.partials.revive')--}}
 
         </section><!-- gallery index -->
     </div>

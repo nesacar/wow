@@ -27,6 +27,7 @@ class CreatePostRequest extends FormRequest
             'title' => 'required',
             'short' => 'required',
             'body' => 'required',
+            'publish_at' => 'required|date',
             'category_id' => 'required|integer|min:1',
         ];
     }

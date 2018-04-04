@@ -17,14 +17,14 @@
                     <tr>
 
                         <td
-                                style="vertical-align:bottom;width:300px;"
+                                style="vertical-align:top;width:300px;"
                         >
                 <![endif]-->
-                <div class="mj-column-per-50 outlook-group-fix" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:bottom;width:100%;">
+                <div class="mj-column-per-50 outlook-group-fix" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                     <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                         <tbody>
                         <tr>
-                            <td style="vertical-align:bottom;padding:0 0 15px;">
+                            <td style="vertical-align:top;padding:0 0 15px;">
                                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                                     <!-- article -->
                                     <tr>
@@ -65,14 +65,14 @@
                 <!-- /article -->
                 <!--[if mso | IE]>
                 <td
-                        style="vertical-align:bottom;width:300px;"
+                        style="vertical-align:top;width:300px;"
                 >
                 <![endif]-->
-                <div class="mj-column-per-50 outlook-group-fix" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:bottom;width:100%;">
+                <div class="mj-column-per-50 outlook-group-fix" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                     <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                         <tbody>
                         <tr>
-                            <td style="vertical-align:bottom;padding:0 0 15px;">
+                            <td style="vertical-align:top;padding:0 0 15px;">
                                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
                                     <!-- article -->
                                     <tr>

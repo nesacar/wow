@@ -9,6 +9,7 @@ use App\Http\Requests\UploadGalleryRequest;
 use App\Photo;
 use App\Post;
 use App\Tag;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use File;
 
@@ -43,12 +44,13 @@ class PostsController extends Controller
 
     public function show($id){
         $post = Post::find($id);
-        //$tags = Tag::select('tags.id', 'tags.title')->join('post_tag', 'tags.id', '=', 'post_tag.tag_id')->where('post_tag.post_id', $post->id)->where('tags.publish', 1)->get();
+        $post->date = Carbon::parse($post->publish_at)->format('Y-m-d');
+        $post->time = Carbon::parse($post->publish_at)->format('H:m:s');
         $tags = $post->tag()->pluck('tags.id');
 
         return response()->json([
             'post' => $post,
-            'tags' => $tags
+            'tags' => $tags,
         ]);
     }
 
@@ -63,6 +65,9 @@ class PostsController extends Controller
         if(request('tags')){ $post->tag()->sync(request('tags')); }
 
         Post::fixLinks($post);
+
+        $post->date = Carbon::parse($post->publish_at)->format('Y-m-d');
+        $post->time = Carbon::parse($post->publish_at)->format('H:m:s');
 
         return response()->json([
             'post' => $post,

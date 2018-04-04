@@ -37,7 +37,7 @@
                     <div class="card">
                         <h5>General info <a :href="domain + post.link" target="_blank" class="btn btn-primary pull-right">Preview</a></h5>
                         <hr>
-                        <form @submit.prevent="submit()">
+
                             <div class="form-group">
                                 <label for="category">Category</label>
                                 <select name="category" id="category" class="form-control" v-model="post.category_id">
@@ -51,6 +51,21 @@
                                     <option :value="index" v-for="(town, index) in towns">{{ town }}</option>
                                 </select>
                                 <small class="form-text text-muted" v-if="error != null && error.town_id">{{ error.town_id[0] }}</small>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="date">Published at</label>
+                                        <input type="date" name="title" class="form-control" dataformatas="MM-DD-YYYY" id="date" placeholder="Published at" v-model="post.date">
+                                        <small class="form-text text-muted" v-if="error != null && error.publish_at">{{ error.publish_at[0] }}</small>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="time">&nbsp;</label>
+                                        <input type="time" name="title" class="form-control" id="time" placeholder="Published at" v-model="post.time">
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Slider</label><br>
@@ -74,10 +89,6 @@
                                     @removeRow="remove($event)"
                             ></upload-image-helper>
 
-                            <div class="form-group">
-                                <button class="btn btn-primary" type="submit">Edit</button>
-                            </div>
-                        </form>
                     </div><!-- .card -->
 
                     <div class="card">
@@ -122,8 +133,11 @@
                                         <small class="form-text text-muted" v-if="error != null && error.desc">{{ error.body[0] }}</small>
                                     </div>
                                     <div class="form-group">
-                                        <label for="map">Map</label>
-                                        <textarea name="map" id="map" cols="3" rows="4" class="form-control" placeholder="Map" v-model="post.map"></textarea>
+                                        <label>Map</label>
+                                        <ckeditor
+                                                v-model="post.map"
+                                                :config="config">
+                                        </ckeditor>
                                         <small class="form-text text-muted" v-if="error != null && error.map">{{ error.map[0] }}</small>
                                     </div>
                                     <div class="form-group" v-if="seen">
@@ -196,6 +210,9 @@
             },
             user(){
                 return this.$store.getters.getUser;
+            },
+            publish_at(){
+                return this.post.date + ' ' + this.post.time
             }
         },
         components: {
@@ -232,6 +249,7 @@
                     });
             },
             submit(){
+                this.post.publish_at = this.publish_at;
                 this.post.user_id = this.user.id;
                 axios.put('api/posts/' + this.post.id, this.post)
                     .then(res => {

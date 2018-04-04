@@ -27,6 +27,7 @@ class UpdatePostLangRequest extends FormRequest
             'title' => 'required',
             'short' => 'required',
             'body' => 'required',
+            'publish_at' => 'required|date',
         ];
     }
 }
