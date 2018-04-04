@@ -58,12 +58,6 @@ Route::middleware('auth:api')->get('banners/lists', 'BannersController@lists');
 Route::middleware('auth:api')->resource('banners', 'BannersController');
 Route::middleware('auth:api')->post('banners/{id}/image', 'BannersController@uploadImage');
 
-Route::middleware('auth:api')->resource('newsletters', 'NewslettersController');
-Route::middleware('auth:api')->get('newsletters/{id}/post', 'NewslettersController@post');
-Route::middleware('auth:api')->get('newsletters/{id}/banner', 'NewslettersController@banner');
-Route::middleware('auth:api')->post('newsletters/{id}/prepare', 'NewslettersController@prepare');
-Route::middleware('auth:api')->post('newsletters/{id}/send', 'NewslettersController@send');
-
 Route::middleware('auth:api')->resource('themes', 'ThemesController');
 Route::middleware('auth:api')->post('themes/{id}/image', 'ThemesController@uploadImage');
 
@@ -75,3 +69,11 @@ Route::middleware('auth:api')->patch('settings/{id}', 'SettingsController@update
 
 Route::middleware('auth:api')->resource('positions', 'PositionsController');
 Route::middleware('auth:api')->post('positions/updateAll', 'PositionsController@updateAll');
+
+Route::middleware('auth:api')->resource('newsletters', 'NewslettersController');
+Route::middleware('auth:api')->get('newsletters/{id}/post', 'NewslettersController@post');
+Route::middleware('auth:api')->get('newsletters/{id}/banner', 'NewslettersController@banner');
+Route::middleware('auth:api')->post('newsletters/{id}/prepare', 'NewslettersController@prepare');
+Route::middleware('auth:api')->post('newsletters/{id}/send', 'NewslettersController@send');
+
+Route::middleware('auth:api')->get('statistics/{id}/today', 'StatisticsController@today');

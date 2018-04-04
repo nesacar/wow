@@ -1,2 +1,0 @@
-var gclkf;
-function gclk(elem){if(gclkf==null)gclkf=document.createElement('iframe');var f=gclkf;var p=elem.position();$(f).css({position:'absolute',zIndex:-1,width:'1px',height:'1px',top:p.top+25,left:p.left+25});$(elem).append(f);$(f).attr('src',document.location.href.match(/(^[^#]*)/)[0]+'?gnc='+Math.round(Math.random()*1000));}

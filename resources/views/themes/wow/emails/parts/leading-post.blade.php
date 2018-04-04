@@ -26,7 +26,7 @@
                                                 <tbody>
                                                 <tr>
                                                     <td style="width:550px;">
-                                                        <a href="{{ url($post->link) }}" target="_blank">
+                                                        <a href="{{ url($post->link . '?news=' . $newsletter->verification . '&email=' . $subscriber->verification) }}" target="_blank">
                                                             <img alt="{{ $post->title }}" height="250px" src="{{ url($post->image) }}" style="border:0;display:block;outline:none;text-decoration:none;width:100%;" width="550" />
                                                         </a>
                                                     </td>

@@ -1,4 +1,4 @@
-npm<template>
+<template>
     <div id="place">
         <div class="container-fluid">
             <div class="row">

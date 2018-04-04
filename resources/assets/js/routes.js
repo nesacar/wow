@@ -58,6 +58,8 @@ export const router = new VueRouter({
         { path: "/positions", component: require('./components/positions/PositionList.vue'), meta: { forAuth: true } },
         { path: "/positions/create", component: require('./components/positions/PositionCreate.vue'), meta: { forAuth: true } },
         { path: "/positions/:id/edit", component: require('./components/positions/PositionEdit.vue'), meta: { forAuth: true } },
+
+        { path: "/statistics/:id/today", component: require('./components/newsletters/statistics/TodayNewsletter.vue'), meta: { forAuth: true } },
     ],
 
     linkActiveClass: 'active'

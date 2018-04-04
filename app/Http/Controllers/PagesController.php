@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Banner;
 use App\Category;
+use App\Click;
 use App\Http\Requests\SubscribeNewsletterRequest;
+use App\Newsletter;
 use App\Post;
 use App\Setting;
 use App\Subscriber;
@@ -92,6 +94,14 @@ class PagesController extends Controller
             $related = Post::getRelated($category->id, $post->id, 10);
             $mobile = Banner::isMobile($_SERVER['HTTP_USER_AGENT']);
 
+            if(request('email') && request('news')){
+                $newsletter = Newsletter::where('verification', request('news'))->first();
+                $subscriber = Subscriber::where('verification', request('email'))->first();
+                if(isset($newsletter) && isset($subscriber)){
+                    Click::insertClick($newsletter->id, $post->id, false, $subscriber->id);
+                }
+            }
+
             return view('themes.'.$theme.'.pages.post', compact('theme', 'photos', 'highlights', 'mobile', 'top', 'settings', 'category', 'post', 'tags', 'related', 'town'));
         }
     }
@@ -110,24 +120,16 @@ class PagesController extends Controller
         $related = Post::getRelated($category->id, $post->id, 10);
         $mobile = Banner::isMobile($_SERVER['HTTP_USER_AGENT']);
 
+        if(request('email') && request('news')){
+            $newsletter = Newsletter::where('verification', request('news'))->first();
+            $subscriber = Subscriber::where('verification', request('email'))->first();
+            if(isset($newsletter) && isset($subscriber)){
+                Click::insertClick($newsletter->id, $post->id, false, $subscriber->id);
+            }
+        }
+
         return view('themes.'.$theme.'.pages.post', compact('theme', 'photos', 'highlights', 'mobile', 'top', 'settings', 'category', 'post', 'tags', 'related', 'town'));
     }
-//
-//    public function subPost($slug1, $slug2, $slug3, $id){
-//        $theme = Theme::getTheme();
-//        $settings = Setting::find(1);
-//        $category = Category::where('slug', $slug1)->first();
-//        $town = Town::where('slug', $slug2)->first();
-//        $post = Post::find($id);
-//        $photos = $post->photo;
-//        $tags = $post->tag;
-//        $highlights = Post::getHighlights($category->id);
-//        $top = Post::getTop($category->id);
-//        $related = Post::getRelated($category->id, $post->id, 10);
-//        $mobile = Banner::isMobile($_SERVER['HTTP_USER_AGENT']);
-//
-//        return view('themes.'.$theme.'.pages.post', compact('theme', 'photos', 'highlights', 'mobile', 'top', 'settings', 'category', 'post', 'tags', 'town', 'related'));
-//    }
 
     public function scroll_related(Request $request){
         $theme = Theme::getTheme();

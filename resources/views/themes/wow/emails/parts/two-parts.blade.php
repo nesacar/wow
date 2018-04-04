@@ -33,7 +33,7 @@
                                                 <tbody>
                                                 <tr>
                                                     <td style="width:250px;">
-                                                        <a href="{{ url($post1->link) }}" target="_blank">
+                                                        <a href="{{ url($post1->link . '?news=' . $newsletter->verification . '&email=' . $subscriber->verification) }}" target="_blank">
                                                             <img alt="{{ $post1->title }}" height="auto" src="{{ url($post1->image) }}" style="border:0;display:block;outline:none;text-decoration:none;width:100%;" width="250" />
                                                         </a>
                                                     </td>
@@ -81,7 +81,7 @@
                                                 <tbody>
                                                 <tr>
                                                     <td style="width:250px;">
-                                                        <a href="{{ url($post2->link) }}" target="_blank">
+                                                        <a href="{{ url($post2->link . '?news=' . $newsletter->verification . '&email=' . $subscriber->verification) }}" target="_blank">
                                                             <img alt="{{ $post2->title }}" height="auto" src="{{ url($post2->image) }}" style="border:0;display:block;outline:none;text-decoration:none;width:100%;" width="250" />
                                                         </a>
                                                     </td>

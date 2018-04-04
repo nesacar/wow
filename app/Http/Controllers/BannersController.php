@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Banner;
+use App\Click;
 use App\Http\Requests\CreateBannerRequest;
 use App\Http\Requests\UploadGalleryRequest;
+use App\Newsletter;
+use App\Subscriber;
 use Illuminate\Http\Request;
 use File;
 
@@ -108,5 +111,19 @@ class BannersController extends Controller
         return response()->json([
             'banners' => $banners,
         ]);
+    }
+
+    public function click(Request $request, $id){
+        $banner = Banner::find($id);
+        if(request('email') && request('news')){
+            $newsletter = Newsletter::where('verification', request('news'))->first();
+            $subscriber = Subscriber::where('verification', request('email'))->first();
+            if(isset($newsletter) && isset($subscriber)){
+                Click::insertClick($newsletter->id, false, $banner->id, $subscriber->id);
+            }
+            return redirect($banner->link);
+        }else{
+            return redirect('/');
+        }
     }
 }

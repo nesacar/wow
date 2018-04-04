@@ -32,6 +32,8 @@ Route::post('search', 'PagesController@search')->name('search');
 Route::post('subscribe', 'PagesController@subscribe');
 Route::get('un-subscribe/{slug}', 'PagesController@unSubscribe');
 
+Route::get('banners/click/{id}', 'BannersController@click');
+
 Route::get('{slug1}/{slug2}/{slug3}', 'PagesController@post');
 Route::get('{slug1}/{slug2}', 'PagesController@subCategory');
 Route::get('{slug}', 'PagesController@category');
