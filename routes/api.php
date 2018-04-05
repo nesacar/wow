@@ -76,4 +76,6 @@ Route::middleware('auth:api')->get('newsletters/{id}/banner', 'NewslettersContro
 Route::middleware('auth:api')->post('newsletters/{id}/prepare', 'NewslettersController@prepare');
 Route::middleware('auth:api')->post('newsletters/{id}/send', 'NewslettersController@send');
 
-Route::middleware('auth:api')->get('statistics/{id}/today', 'StatisticsController@today');
+Route::middleware('auth:api')->get('statistics/{id}/day', 'StatisticsController@day');
+Route::middleware('auth:api')->get('statistics/{id}/month', 'StatisticsController@month');
+Route::middleware('auth:api')->get('statistics/{id}/year', 'StatisticsController@year');

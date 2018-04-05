@@ -3,14 +3,14 @@
 
     export default {
         extends: Line,
-        props: ['labels', 'data', 'options'],
+        props: ['labels', 'data', 'title'],
         mounted () {
             console.log(this.labels);
             this.renderChart({
                 labels: this.labels,
                 datasets: [
                     {
-                        label: 'GitHub Commits',
+                        label: this.title,
                         backgroundColor: '#008a88',
                         data: this.data
                     }

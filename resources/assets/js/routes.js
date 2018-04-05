@@ -59,7 +59,9 @@ export const router = new VueRouter({
         { path: "/positions/create", component: require('./components/positions/PositionCreate.vue'), meta: { forAuth: true } },
         { path: "/positions/:id/edit", component: require('./components/positions/PositionEdit.vue'), meta: { forAuth: true } },
 
-        { path: "/statistics/:id/today", component: require('./components/newsletters/statistics/TodayNewsletter.vue'), meta: { forAuth: true } },
+        { path: "/statistics/:id/day", component: require('./components/newsletters/statistics/TodayNewsletter.vue'), meta: { forAuth: true } },
+        { path: "/statistics/:id/month", component: require('./components/newsletters/statistics/MonthNewsletter.vue'), meta: { forAuth: true } },
+        { path: "/statistics/:id/year", component: require('./components/newsletters/statistics/YearNewsletter.vue'), meta: { forAuth: true } },
     ],
 
     linkActiveClass: 'active'

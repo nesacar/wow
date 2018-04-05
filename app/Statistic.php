@@ -48,18 +48,18 @@ class Statistic extends Model
         $array = self::getMonths($month);
         if(count($stat) > 0){
             foreach($stat as $s){
-                if($s->month == 1){ $array['januar'] = $s->number; }
-                if($s->month == 2){ $array['februar'] = $s->number; }
-                if($s->month == 3){ $array['mart'] = $s->number; }
-                if($s->month == 4){ $array['april'] = $s->number; }
-                if($s->month == 5){ $array['maj'] = $s->number; }
-                if($s->month == 6){ $array['jun'] = $s->number; }
-                if($s->month == 7){ $array['jul'] = $s->number; }
-                if($s->month == 8){ $array['avgust'] = $s->number; }
-                if($s->month == 9){ $array['septembar'] = $s->number; }
-                if($s->month == 10){ $array['oktobar'] = $s->number; }
-                if($s->month == 11){ $array['novembar'] = $s->number; }
-                if($s->month == 12){ $array['decembar'] = $s->number; }
+                if($s->month == 1){ $array['January'] = $s->number; }
+                if($s->month == 2){ $array['February'] = $s->number; }
+                if($s->month == 3){ $array['March'] = $s->number; }
+                if($s->month == 4){ $array['April'] = $s->number; }
+                if($s->month == 5){ $array['May'] = $s->number; }
+                if($s->month == 6){ $array['June'] = $s->number; }
+                if($s->month == 7){ $array['July'] = $s->number; }
+                if($s->month == 8){ $array['August'] = $s->number; }
+                if($s->month == 9){ $array['September'] = $s->number; }
+                if($s->month == 10){ $array['October'] = $s->number; }
+                if($s->month == 11){ $array['November'] = $s->number; }
+                if($s->month == 12){ $array['December'] = $s->number; }
             }
         }
         return $array;
@@ -132,7 +132,14 @@ class Statistic extends Model
                 }
             }
         }
-        return $array;
+
+        $labels = $data = [];
+        foreach ($array as $key => $value){
+            $labels[] = $key;
+            $data[] = $value;
+        }
+
+        return ['labels' => $labels, 'data' => $data];
     }
 
     public static function prepareSearchMonthNewsletter($stat, $trigger, $start_date, $end_date, $month){
@@ -179,22 +186,28 @@ class Statistic extends Model
     }
 
     public static function prepareLastDayNewsletter($stat, $hour){
-        $labels = array();
-        $data = array();
+        $array = array();
         for($i=$hour+1;$i<24;$i++){
-            $labels[] = $i.'h';
+            $array[$i.'h'] = 0;
         }
         for($i=0;$i<=$hour;$i++){
-            $labels[] = $i.'h';
+            $array[$i.'h'] = 0;
         }
 
         if(count($stat) > 0){
             foreach($stat as $s){
                 for($i=0;$i<24;$i++){
-                    if($s->hour == $i){ $data[] = $s->number; }else{ $data[] = 0; }
+                    if($s->hour == $i){ $array[$i.'h'] = $s->number; }
                 }
             }
         }
+
+        $labels = $data = [];
+        foreach ($array as $key => $value){
+            $labels[] = $key;
+            $data[] = $value;
+        }
+
         return ['labels' => $labels, 'data' => $data];
     }
 
@@ -229,40 +242,40 @@ class Statistic extends Model
 
         switch ($date) {
             case 1:
-                $array = array('februar' => 0, 'mart' => 0, 'april' => 0, 'maj' => 0, 'jun' => 0, 'jul' => 0, 'avgust' => 0, 'septembar' => 0, 'oktobar' => 0, 'novembar' => 0, 'decembar' => 0, 'januar' => 0);
+                $array = array('February' => 0, 'March' => 0, 'April' => 0, 'May' => 0, 'June' => 0, 'July' => 0, 'August' => 0, 'September' => 0, 'October' => 0, 'November' => 0, 'December' => 0, 'January' => 0);
                 break;
             case 2:
-                $array = array('mart' => 0, 'april' => 0, 'maj' => 0, 'jun' => 0, 'jul' => 0, 'avgust' => 0, 'septembar' => 0, 'oktobar' => 0, 'novembar' => 0, 'decembar' => 0, 'januar' => 0, 'februar' => 0);
+                $array = array('March' => 0, 'April' => 0, 'May' => 0, 'June' => 0, 'July' => 0, 'August' => 0, 'September' => 0, 'October' => 0, 'November' => 0, 'December' => 0, 'January' => 0, 'February' => 0);
                 break;
             case 3:
-                $array = array('april' => 0, 'maj' => 0, 'jun' => 0, 'jul' => 0, 'avgust' => 0, 'septembar' => 0, 'oktobar' => 0, 'novembar' => 0, 'decembar' => 0, 'januar' => 0, 'februar' => 0, 'mart' => 0);
+                $array = array('April' => 0, 'May' => 0, 'June' => 0, 'July' => 0, 'August' => 0, 'September' => 0, 'October' => 0, 'November' => 0, 'December' => 0, 'January' => 0, 'February' => 0, 'March' => 0);
                 break;
             case 4:
-                $array = array('maj' => 0, 'jun' => 0, 'jul' => 0, 'avgust' => 0, 'septembar' => 0, 'oktobar' => 0, 'novembar' => 0, 'decembar' => 0, 'januar' => 0, 'februar' => 0, 'mart' => 0, 'april' => 0);
+                $array = array('May' => 0, 'June' => 0, 'July' => 0, 'August' => 0, 'September' => 0, 'October' => 0, 'November' => 0, 'December' => 0, 'January' => 0, 'February' => 0, 'March' => 0, 'April' => 0);
                 break;
             case 5:
-                $array = array('jun' => 0, 'jul' => 0, 'avgust' => 0, 'septembar' => 0, 'oktobar' => 0, 'novembar' => 0, 'decembar' => 0, 'januar' => 0, 'februar' => 0, 'mart' => 0, 'april' => 0, 'maj' => 0);
+                $array = array('June' => 0, 'July' => 0, 'August' => 0, 'September' => 0, 'October' => 0, 'November' => 0, 'December' => 0, 'January' => 0, 'February' => 0, 'March' => 0, 'April' => 0, 'May' => 0);
                 break;
             case 6:
-                $array = array('jul' => 0, 'avgust' => 0, 'septembar' => 0, 'oktobar' => 0, 'novembar' => 0, 'decembar' => 0, 'januar' => 0, 'februar' => 0, 'mart' => 0, 'april' => 0, 'maj' => 0, 'jun' => 0);
+                $array = array('July' => 0, 'August' => 0, 'September' => 0, 'October' => 0, 'November' => 0, 'December' => 0, 'January' => 0, 'February' => 0, 'March' => 0, 'April' => 0, 'May' => 0, 'June' => 0);
                 break;
             case 7:
-                $array = array('avgust' => 0, 'septembar' => 0, 'oktobar' => 0, 'novembar' => 0, 'decembar' => 0, 'januar' => 0, 'februar' => 0, 'mart' => 0, 'april' => 0, 'maj' => 0, 'jun' => 0, 'jul' => 0);
+                $array = array('August' => 0, 'September' => 0, 'October' => 0, 'November' => 0, 'December' => 0, 'January' => 0, 'February' => 0, 'March' => 0, 'April' => 0, 'May' => 0, 'June' => 0, 'July' => 0);
                 break;
             case 8:
-                $array = array('septembar' => 0, 'oktobar' => 0, 'novembar' => 0, 'decembar' => 0, 'januar' => 0, 'februar' => 0, 'mart' => 0, 'april' => 0, 'maj' => 0, 'jun' => 0, 'jul' => 0, 'avgust' => 0);
+                $array = array('September' => 0, 'October' => 0, 'November' => 0, 'December' => 0, 'January' => 0, 'February' => 0, 'March' => 0, 'April' => 0, 'May' => 0, 'June' => 0, 'July' => 0, 'August' => 0);
                 break;
             case 9:
-                $array = array('oktobar' => 0, 'novembar' => 0, 'decembar' => 0, 'januar' => 0, 'februar' => 0, 'mart' => 0, 'april' => 0, 'maj' => 0, 'jun' => 0, 'jul' => 0, 'avgust' => 0, 'septembar' => 0);
+                $array = array('October' => 0, 'November' => 0, 'December' => 0, 'January' => 0, 'February' => 0, 'March' => 0, 'April' => 0, 'May' => 0, 'June' => 0, 'July' => 0, 'August' => 0, 'September' => 0);
                 break;
             case 10:
-                $array = array('novembar' => 0, 'decembar' => 0, 'januar' => 0, 'februar' => 0, 'mart' => 0, 'april' => 0, 'maj' => 0, 'jun' => 0, 'jul' => 0, 'avgust' => 0, 'septembar' => 0, 'oktobar' => 0);
+                $array = array('November' => 0, 'December' => 0, 'January' => 0, 'February' => 0, 'March' => 0, 'April' => 0, 'May' => 0, 'June' => 0, 'July' => 0, 'August' => 0, 'September' => 0, 'October' => 0);
                 break;
             case 11:
-                $array = array('decembar' => 0, 'januar' => 0, 'februar' => 0, 'mart' => 0, 'april' => 0, 'maj' => 0, 'jun' => 0, 'jul' => 0, 'avgust' => 0, 'septembar' => 0, 'oktobar' => 0, 'novembar' => 0);
+                $array = array('December' => 0, 'January' => 0, 'February' => 0, 'March' => 0, 'April' => 0, 'May' => 0, 'June' => 0, 'July' => 0, 'August' => 0, 'September' => 0, 'October' => 0, 'November' => 0);
                 break;
             default:
-                $array = array('januar' => 0, 'februar' => 0, 'mart' => 0, 'april' => 0, 'maj' => 0, 'jun' => 0, 'jul' => 0, 'avgust' => 0, 'septembar' => 0, 'oktobar' => 0, 'novembar' => 0, 'decembar' => 0);
+                $array = array('January' => 0, 'February' => 0, 'March' => 0, 'April' => 0, 'May' => 0, 'June' => 0, 'July' => 0, 'August' => 0, 'September' => 0, 'October' => 0, 'November' => 0, 'December' => 0);
         }
         return $array;
     }

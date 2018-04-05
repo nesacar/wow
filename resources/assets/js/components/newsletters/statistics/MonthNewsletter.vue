@@ -7,7 +7,7 @@
                         <ul class="list-group list-group-flush">
                             <li><router-link tag="a" :to="'/home'">Home</router-link></li>
                             <li><router-link tag="a" :to="'/newsletters'">Newsletters</router-link></li>
-                            <li>Today</li>
+                            <li>Month</li>
                         </ul>
                     </div>
                 </div>
@@ -17,8 +17,8 @@
                 <div class="col-md-12">
                     <div class="card">
                         <h5>
-                            <router-link tag="a" :to="'/statistics/' + id + '/day'" class="btn btn-primary">Day ({{ sum }})</router-link>
-                            <router-link tag="a" :to="'/statistics/' + id + '/month'" class="btn">Month</router-link>
+                            <router-link tag="a" :to="'/statistics/' + id + '/day'" class="btn">Day</router-link>
+                            <router-link tag="a" :to="'/statistics/' + id + '/month'" class="btn btn-primary">Month ({{ sum }})</router-link>
                             <router-link tag="a" :to="'/statistics/' + id + '/year'" class="btn">Year</router-link>
                         </h5>
                     </div>
@@ -73,7 +73,7 @@
                     });
             },
             getStatistics(){
-                axios.get('api/statistics/' + this.newsletter.id + '/day')
+                axios.get('api/statistics/' + this.newsletter.id + '/month')
                     .then(res => {
                         console.log(res.data);
                         this.values = res.data.clicks.data;
