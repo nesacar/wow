@@ -60,10 +60,11 @@ import faImages from '@fortawesome/fontawesome-free-solid/faImages';
 import faRandom from '@fortawesome/fontawesome-free-solid/faRandom';
 import faTags from '@fortawesome/fontawesome-free-solid/faTags';
 import faCheck from '@fortawesome/fontawesome-free-solid/faCheck';
+import faChartArea from '@fortawesome/fontawesome-free-solid/faChartArea';
 
 fontawesome.library.add(
     faPlus, faEnvelope, faBell, faCommentAlt, faChevronCircleDown, faCogs, faAngleRight, faHome, faUsers, faPaste, faShoppingCart, faAlignJustify, faPencilAlt, faTimes,
-    faLink, faBars, faAmountUp, faImages, faRandom, faTags, faCheck
+    faLink, faBars, faAmountUp, faImages, faRandom, faTags, faCheck, faChartArea
 );
 
 //Vue.use(VueTruncate);

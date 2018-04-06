@@ -18,7 +18,8 @@
                                                 <tbody>
                                                 <tr>
                                                     <td style="width:250px; position: relative;">
-                                                        <font-awesome-icon icon="times" @click="deleteRow(index)"  v-if="!sent" />
+                                                        <font-awesome-icon icon="times" @click="deleteRow(index)"  v-if="!newsletter.send" />
+                                                        <router-link tag="a" class="clicks" :to="'/clicks/' + newsletter.id + '/posts/' + item.post1.id" v-if="newsletter.send">{{ clicks1 }}</router-link>
                                                         <a href="#" target="_blank">
                                                         <img alt="#" height="auto" :src="domain + 'img/newsletter-post.jpg'" style="border:0;display:block;outline:none;text-decoration:none;width:250px;" width="250" v-if="item.post1 == null" />
                                                         <img alt="#" height="auto" :src="domain + item.post1.image" style="border:0;display:block;outline:none;text-decoration:none;width:250px;" width="250" v-else />
@@ -36,7 +37,7 @@
                                                     <tr>
                                                         <td style="width:250px; padding-top: 20px;">
 
-                                                            <select2 :options="posts" :value="item.item1" :name="item.component" @input="input1($event)" v-if="!sent">
+                                                            <select2 :options="posts" :value="item.item1" :name="item.component" @input="input1($event)" v-if="!newsletter.send">
                                                                 <option value="0">select one</option>
                                                             </select2>
 
@@ -53,7 +54,7 @@
                                                         <h2 class="heading" v-if="item.post1 == null">DEFAULT TITLE</h2>
                                                         <h2 class="heading" v-else>{{ item.post1.title }}</h2>
                                                         <p v-if="item.post1 == null">Default body...</p>
-                                                        <p v-else>{{ item.post1.title | truncate(80) }}</p>
+                                                        <p v-else>{{ item.post1.title }}</p>
                                                         <div style="text-align: right;"> <a href="">Read more &gt;</a> </div>
                                                     </div>
                                                 </div>
@@ -80,7 +81,9 @@
                                                 <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
                                                     <tbody>
                                                     <tr>
-                                                        <td style="width:250px;"> <a href="#" target="_blank">
+                                                        <td style="width:250px; position: relative;">
+                                                            <router-link tag="a" class="clicks" :to="'/clicks/' + newsletter.id + '/posts/' + item.post2.id" v-if="newsletter.send">{{ clicks2 }}</router-link>
+                                                            <a href="#" target="_blank">
 
                                                             <img alt="#" height="auto" :src="domain + 'img/newsletter-post.jpg'" style="border:0;display:block;outline:none;text-decoration:none;width:250px;" width="250" v-if="item.post2 == null" />
                                                             <img alt="#" height="auto" :src="domain + item.post2.image" style="border:0;display:block;outline:none;text-decoration:none;width:250px;" width="250" v-else />
@@ -98,7 +101,7 @@
                                                     <tr>
                                                         <td style="width:250px; padding-top: 20px;">
 
-                                                            <select2 :options="posts" :value="item.item2" :name="item.component" @input="input2($event)" v-if="!sent">
+                                                            <select2 :options="posts" :value="item.item2" :name="item.component" @input="input2($event)" v-if="!newsletter.send">
                                                                 <option value="0">select one</option>
                                                             </select2>
 
@@ -115,7 +118,7 @@
                                                         <h2 class="heading" v-if="item.post2 == null">DEFAULT TITLE</h2>
                                                         <h2 class="heading" v-else>{{ item.post2.title }}</h2>
                                                         <p v-if="item.post2 == null">Default body...</p>
-                                                        <p v-else>{{ item.post2.title | truncate(80) }}</p>
+                                                        <p v-else>{{ item.post2.title }}</p>
                                                         <div style="text-align: right;"> <a href="">Read more &gt;</a> </div>
                                                     </div>
                                                 </div>
@@ -145,10 +148,12 @@
     export default {
         data(){
           return {
-              domain: apiHost
+              domain: apiHost,
+              clicks1: 0,
+              clicks2: 0,
           }
         },
-        props: ['posts', 'fullPosts', 'index', 'item', 'edit', 'sent'],
+        props: ['posts', 'fullPosts', 'index', 'item', 'edit', 'newsletter'],
         components: {
             'select2': Select2,
             'font-awesome-icon': FontAwesomeIcon
@@ -156,6 +161,8 @@
         created(){
             if(this.edit){
                 this.$emit('setItem', {type: 'posts', item1: this.item.post1, item2: this.item.post2, index: this.index});
+                this.getClicks1();
+                this.getClicks2();
             }
         },
         methods: {
@@ -179,6 +186,24 @@
                     this.item.post2 = this.fullPosts.find(p => p.id == post_id);
                     this.$emit('setItem', {type: 'posts', item1: this.item.post1, item2: this.item.post2, index: this.index});
                 }
+            },
+            getClicks1(){
+                axios.get('api/clicks/' + this.newsletter.id + '/posts/' + this.item.post1.id)
+                    .then(res => {
+                        this.clicks1 = res.data.clicks;
+                    })
+                    .catch(e => {
+                        console.log(e);
+                    });
+            },
+            getClicks2(){
+                axios.get('api/clicks/' + this.newsletter.id + '/posts/' + this.item.post2.id)
+                    .then(res => {
+                        this.clicks2 = res.data.clicks;
+                    })
+                    .catch(e => {
+                        console.log(e);
+                    });
             }
         }
     }
@@ -205,5 +230,16 @@
     table, td {
         display: inline-block;
         vertical-align: top;
+    }
+
+    .clicks{
+        display: block;
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        border: 1px solid #008a88;
+        font-size: 18px;
+        background-color: white;
+        padding: 0 2px;
     }
 </style>

@@ -18,8 +18,8 @@
                     <div class="card">
                         <h5>
                             <router-link tag="a" :to="'/statistics/' + id + '/day'" class="btn">Day</router-link>
-                            <router-link tag="a" :to="'/statistics/' + id + '/month'" class="btn">Month ({{ sum }})</router-link>
-                            <router-link tag="a" :to="'/statistics/' + id + '/year'" class="btn btn-primary">Year</router-link>
+                            <router-link tag="a" :to="'/statistics/' + id + '/month'" class="btn">Month</router-link>
+                            <router-link tag="a" :to="'/statistics/' + id + '/year'" class="btn btn-primary">Year ({{ sum }})</router-link>
                         </h5>
                     </div>
                 </div>
@@ -75,7 +75,6 @@
             getStatistics(){
                 axios.get('api/statistics/' + this.newsletter.id + '/year')
                     .then(res => {
-                        console.log(res.data);
                         this.values = res.data.clicks.data;
                         this.labels = res.data.clicks.labels;
                         this.sum = res.data.sum;

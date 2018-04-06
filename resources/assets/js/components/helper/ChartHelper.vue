@@ -5,7 +5,6 @@
         extends: Line,
         props: ['labels', 'data', 'title'],
         mounted () {
-            console.log(this.labels);
             this.renderChart({
                 labels: this.labels,
                 datasets: [

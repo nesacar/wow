@@ -62,7 +62,14 @@ class Statistic extends Model
                 if($s->month == 12){ $array['December'] = $s->number; }
             }
         }
-        return $array;
+
+        $labels = $data = [];
+        foreach ($array as $key => $value){
+            $labels[] = $key;
+            $data[] = $value;
+        }
+
+        return ['labels' => $labels, 'data' => $data];
     }
 
     public static function prepareSearchYearNewsletter($stat, $start_date, $end_date){

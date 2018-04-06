@@ -15,7 +15,8 @@
 
                                             <td style="width:550px; position: relative;">
 
-                                                <font-awesome-icon icon="times" @click="deleteRow(index)" v-if="!sent" />
+                                                <font-awesome-icon icon="times" @click="deleteRow(index)" v-if="!newsletter.send" />
+                                                <router-link tag="a" class="clicks" :to="'/clicks/' + newsletter.id + '/posts/' + item.post.id" v-if="newsletter.send">{{ clicks }}</router-link>
 
                                                 <a href="#" target="_blank">
 
@@ -35,7 +36,7 @@
                                         <tr>
 
                                             <td style="width:550px; position: relative;">
-                                                <select2 :options="posts" :value="item.item1" :name="item.component" @input="input($event)" v-if="!sent">
+                                                <select2 :options="posts" :value="item.item1" :name="item.component" @input="input($event)" v-if="!newsletter.send">
                                                     <option value="0">select one</option>
                                                 </select2>
                                             </td>
@@ -75,13 +76,15 @@
     export default {
         data(){
           return {
-              domain: apiHost
+              domain: apiHost,
+              clicks: 0
           }
         },
-        props: ['posts', 'fullPosts', 'index', 'item', 'edit', 'sent'],
+        props: ['posts', 'fullPosts', 'index', 'item', 'edit', 'newsletter'],
         created(){
             if(this.edit){
                 this.$emit('setItem', {type: 'post', item1: this.item.post, item2: null, index: this.index});
+                this.getClicks();
             }
         },
         components: {
@@ -101,6 +104,15 @@
                     this.$emit('setItem', {type: 'post', item1: this.item.post, item2: null, index: this.index});
                 }
             },
+            getClicks(){
+                axios.get('api/clicks/' + this.newsletter.id + '/posts/' + this.item.post.id)
+                    .then(res => {
+                        this.clicks = res.data.clicks;
+                    })
+                    .catch(e => {
+                        console.log(e);
+                    });
+            }
         }
     }
 </script>
@@ -115,5 +127,15 @@
         top: 5px;
         left: 5px;
         color: red;
+    }
+    .clicks{
+        display: block;
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        border: 1px solid #008a88;
+        font-size: 18px;
+        background-color: white;
+        padding: 0 2px;
     }
 </style>

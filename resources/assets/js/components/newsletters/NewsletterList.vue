@@ -30,7 +30,7 @@
                                 <td v-if="row.last_send">{{ row.last_send }}</td> <td v-else> Never </td>
                                 <td>
                                     <span v-if="row.send == 1">
-                                        <font-awesome-icon icon="check" v-if="row.send == 1 && row.active == 0"/>
+                                        <font-awesome-icon icon="chart-area" v-if="row.send == 1 && row.active == 0" @click="statisticsMont(row.id)" />
                                     </span>
                                     <span v-else>
                                         <button class="btn btn-primary" @click="prepareRow(row.id)" v-if="row.active == 0">Prepare</button>
@@ -156,6 +156,9 @@
                     .catch(e => {
                         console.log(e);
                     });
+            },
+            statisticsMont(id){
+                this.$router.push('statistics/' + id + '/month');
             }
         }
     }

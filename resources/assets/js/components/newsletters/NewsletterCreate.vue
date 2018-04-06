@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-sm-8">
 
-                    <markup :items="items" :edit="false" :sent="false" @removeMarkup="removeMarkup($event)" @create="createNewsletter($event)"></markup>
+                    <markup :items="items" :edit="false" :sent="false" :newsletter="newsletter" @removeMarkup="removeMarkup($event)" @create="createNewsletter($event)"></markup>
 
                 </div>
             </div>

@@ -16,7 +16,7 @@
                                                     <td style="width:250px;"> <a href="https://www.wowmalta.com.mt/" target="_blank">
 
                                                         <img
-                                                                alt="https://www.wowmalta.com.mt/" height="auto" src="https://www.wowmalta.com.mt/thm/malta/img/logo.png" style="border:0;display:block;outline:none;text-decoration:none;width:100%;" width="250"
+                                                                alt="https://www.wowmalta.com.mt/" height="auto" :src="domain + '/img/logo.png'" style="border:0;display:block;outline:none;text-decoration:none;width:100%;" width="250"
                                                         />
 
                                                     </a> </td>
@@ -43,7 +43,7 @@
                         :fullBanners="fullBanners"
                         :item="item"
                         :edit="edit"
-                        :sent="sent"
+                        :newsletter="newsletter"
                         @deleteRow="deleteRow($event)"
                         @setItem="setItem($event)"
                 ></component>
@@ -74,7 +74,7 @@
                 </table>
             </div>
             <div>
-                <button class="btn btn-primary" @click="create()" v-if="items.length > 0 && sent == 0">Confirm</button>
+                <button class="btn btn-primary" @click="create()" v-if="items.length > 0 && newsletter.send == 0">Confirm</button>
             </div>
 
         </div>
@@ -85,6 +85,7 @@
     import leadingPost from './leadingPost.vue';
     import twoPosts from './twoPosts.vue';
     import banner from './banner.vue';
+    import { apiHost } from './../../../config';
 
     export default{
         data(){
@@ -94,9 +95,10 @@
               fullPosts: {},
               fullBanners: {},
               attrs: [],
+              domain: apiHost
           }
         },
-        props: ['items', 'edit', 'sent'],
+        props: ['items', 'edit', 'newsletter'],
         components: {
             'leading-post': leadingPost,
             'two-posts': twoPosts,

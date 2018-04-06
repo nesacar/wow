@@ -9,6 +9,7 @@ use App\Http\Requests\SubscribeNewsletterRequest;
 use App\Newsletter;
 use App\Post;
 use App\Setting;
+use App\Statistic;
 use App\Subscriber;
 use App\Tag;
 use App\Theme;
@@ -179,13 +180,12 @@ class PagesController extends Controller
     }
 
     public function proba(){
-        //factory('App\Post', 300)->create();
+//        factory('App\Post', 300)->create();
 //        $posts = Post::where('link', null)->get();
 //        foreach ($posts as $post){
-//            //Post::fixLinks($post);
-//            $post->link = '#';
-//            $post->update();
+//            Post::fixLinks($post);
 //        }
+//        factory('App\Click', 300)->create();
 //        return 'done';
 //        $posts = Post::all();
 //        foreach ($posts as $post){
@@ -198,7 +198,6 @@ class PagesController extends Controller
 //        ]);
 
         //Artisan::call('queue:stop');
-
         return 'done2';
     }
 }

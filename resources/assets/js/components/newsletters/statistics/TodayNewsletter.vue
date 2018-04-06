@@ -75,7 +75,6 @@
             getStatistics(){
                 axios.get('api/statistics/' + this.newsletter.id + '/day')
                     .then(res => {
-                        console.log(res.data);
                         this.values = res.data.clicks.data;
                         this.labels = res.data.clicks.labels;
                         this.sum = res.data.sum;

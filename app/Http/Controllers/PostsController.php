@@ -88,6 +88,7 @@ class PostsController extends Controller
         $post = Post::find($id);
         if(!empty($post->image)) File::delete($post->image);
         $image = Post::base64UploadImage($id, request('file'));
+
         return response()->json([
             'image' => $image
         ]);
@@ -100,6 +101,7 @@ class PostsController extends Controller
 
     public function gallery($id){
         $photos = Post::find($id)->photo;
+
         return response()->json([
             'photos' => $photos
         ]);
@@ -121,6 +123,7 @@ class PostsController extends Controller
                 }
             })
             ->orderBy('posts.created_at', 'DESC')->groupBy('posts.id')->paginate(50);
+
         return response()->json([
             'posts' => $posts,
         ]);

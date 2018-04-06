@@ -35,12 +35,12 @@
                     </div>
                     <div class="card" v-else>
                         <h3>{{ newsletter.title }}</h3>
-                        <p>Newsletter was sent.</p>
+                        <p>Newsletter was sent to {{ newsletter.received }} addresses.</p>
                     </div>
                 </div>
                 <div class="col-sm-8">
 
-                    <markup :items="items" :edit="true" :sent="newsletter.send" @removeMarkup="removeMarkup($event)" @create="editNewsletter($event)"></markup>
+                    <markup :items="items" :edit="true" :sent="newsletter.send" :newsletter="newsletter" @removeMarkup="removeMarkup($event)" @create="editNewsletter($event)"></markup>
 
                 </div>
             </div>

@@ -1,4 +1,5 @@
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+{{--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>--}}
+{!! HTML::script('themes/'.$theme.'/js/jquery-2.2.4.min.js') !!}
 {!! HTML::script('themes/'.$theme.'/js/bootstrap.min.js') !!}
 {!! HTML::script('themes/'.$theme.'/js/scripts.js') !!}
 {!! HTML::script('themes/'.$theme.'/js/modernizr.custom.57696.js') !!}

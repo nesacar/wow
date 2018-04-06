@@ -79,3 +79,9 @@ Route::middleware('auth:api')->post('newsletters/{id}/send', 'NewslettersControl
 Route::middleware('auth:api')->get('statistics/{id}/day', 'StatisticsController@day');
 Route::middleware('auth:api')->get('statistics/{id}/month', 'StatisticsController@month');
 Route::middleware('auth:api')->get('statistics/{id}/year', 'StatisticsController@year');
+
+Route::middleware('auth:api')->get('clicks/{newsletter_id}/posts/{post_id}', 'ClicksController@post');
+Route::middleware('auth:api')->get('clicks/{newsletter_id}/banners/{banner_id}', 'ClicksController@banner');
+
+Route::middleware('auth:api')->get('clicks/{newsletter_id}/posts/{post_id}/clicks', 'ClicksController@postClicks');
+Route::middleware('auth:api')->get('clicks/{newsletter_id}/banners/{banner_id}/clicks', 'ClicksController@bannerClicks');
