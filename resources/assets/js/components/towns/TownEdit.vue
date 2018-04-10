@@ -87,11 +87,8 @@
                                         <small class="form-text text-muted" v-if="error != null && error.desc">{{ error.body[0] }}</small>
                                     </div>
                                     <div class="form-group">
-                                        <label>Map</label>
-                                        <ckeditor
-                                                v-model="town.map"
-                                                :config="config">
-                                        </ckeditor>
+                                        <label for="map">Map</label>
+                                        <textarea name="short" id="map" cols="3" rows="4" class="form-control" placeholder="Map" v-model="town.map"></textarea>
                                         <small class="form-text text-muted" v-if="error != null && error.map">{{ error.map[0] }}</small>
                                     </div>
                                     <div class="form-group">
