@@ -1622,6 +1622,10 @@ color: #25A5A5!important;}
         word-spacing: 1px;
 }
 
+.gallery p a{
+	color: #128A88 !important;
+}
+
 .gallery-index {
 	margin-bottom:20px;
 	padding: 10px 10px 0 23px;
