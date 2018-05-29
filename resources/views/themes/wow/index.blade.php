@@ -35,6 +35,8 @@
     {{--<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/apple-touch-icon.png" />--}}
     {{--<link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon.png" />--}}
     <link rel="shortcut icon" href="{{ url('themes/'.$theme.'/img/favicon.ico') }}" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <style>
         .gallery {
             padding: 10px 10px 0 0;
@@ -85,7 +87,8 @@
             <div class="clearfix">
                 <div class="col-md-12">
                     <div class="poljeMBH3">
-
+                        @php $bannerIndex = "BH3"; @endphp
+                        @include('themes.'.$theme.'.partials.revive')
                     </div>
                 </div>
 
