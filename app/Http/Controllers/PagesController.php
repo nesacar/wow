@@ -17,6 +17,7 @@ use App\Town;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
+use File;
 
 class PagesController extends Controller
 {
@@ -198,6 +199,13 @@ class PagesController extends Controller
 //        ]);
 
         //Artisan::call('queue:stop');
+//        $posts = Post::where('id', '<', 302)->latest()->get();
+//        if(count($posts)>0){
+//            foreach ($posts as $post){
+//                if($post->image) File::delete($post->image);
+//                $post->delete();
+//            }
+//        }
         return 'done2';
     }
 }
