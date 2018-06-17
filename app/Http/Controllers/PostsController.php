@@ -94,6 +94,16 @@ class PostsController extends Controller
         ]);
     }
 
+    public function uploadWidget(UploadGalleryRequest $request, $id){
+        $post = Post::find($id);
+        if(!empty($post->widget)) File::delete($post->widget);
+        $image = Post::base64UploadWidget($id, request('file'));
+
+        return response()->json([
+            'image' => $image
+        ]);
+    }
+
     public function galleryUpdate($id){
         Photo::saveImage($id, request('file'));
         return 'done';

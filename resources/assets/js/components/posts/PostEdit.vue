@@ -89,6 +89,15 @@
                                     @removeRow="remove($event)"
                             ></upload-image-helper>
 
+                        <upload-image-helper
+                                :image="post.widget"
+                                :defaultImage="null"
+                                :titleImage="'Widget'"
+                                :error="error"
+                                @uploadImage="uploadWidget($event)"
+                                @removeRow="remove($event)"
+                        ></upload-image-helper>
+
                     </div><!-- .card -->
 
                     <div class="card">
@@ -281,6 +290,23 @@
                     console.log(e);
                     this.error = e.response.data.errors;
                 });
+            },
+            uploadWidget(image){
+                axios.post('api/posts/' + this.post.id + '/widget', { file: image[0] })
+                    .then(res => {
+                        this.post.widget = res.data.image;
+                        this.error = null;
+                        swal({
+                            position: 'center',
+                            type: 'success',
+                            title: 'Success',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    }).catch(e => {
+                        console.log(e);
+                        this.error = e.response.data.errors;
+                    });
             },
             getList(){
                 axios.get('api/categories/lists')

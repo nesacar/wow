@@ -32,6 +32,25 @@ class Post extends Model
         return $post->image;
     }
 
+    public static function base64UploadWidget($post_id, $image){
+        $post = self::find($post_id);
+        if($post->widget != null) File::delete($post->widget);
+
+        $exploaded = explode(',', $image);
+        $data = base64_decode($exploaded[1]);
+        $filename = $post->slug . '-' . str_random(2) . $post->id . '.jpg';
+        $path = public_path('uploads/posts/');
+        file_put_contents($path . $filename, $data);
+        $post->widget = 'uploads/posts/' . $filename;
+        $post->update();
+
+//        File::copy(public_path($post->image), public_path($post->sliderImage));
+//
+//        self::cropImage($post->sliderImage, 480, 250);
+
+        return $post->widget;
+    }
+
     public static function cropImage($image, $width, $height){
         \Image::make($image)->fit($width, $height, function ($constraint) {
             $constraint->aspectRatio();
@@ -114,9 +133,9 @@ class Post extends Model
     }
 
     public static function getWidget($limit){
-        return self::select('posts.id', 'posts.title', 'posts.slug', 'posts.image', 'posts.short', 'posts.link', 'posts.publish_at', 'categories.slug as category')
+        return self::select('posts.id', 'posts.title', 'posts.slug', 'posts.widget', 'posts.short', 'posts.link', 'posts.publish_at', 'categories.slug as category')
             ->join('categories', 'posts.category_id', '=', 'categories.id')
-            ->where('posts.publish', 1)->where('posts.widget', 1)->orderBy('posts.publish_at', 'DESC')->take($limit)->get();
+            ->where('posts.publish', 1)->where('posts.widget', '<>', null)->orderBy('posts.publish_at', 'DESC')->take($limit)->get();
     }
 
     public static function getTop($cat_id=0, $limit=8, $town_id=false){
