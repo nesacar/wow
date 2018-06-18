@@ -14,7 +14,7 @@ class AddWidgetToPostsTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('widget')->after('image')->nullable();
+            $table->string('widget_image')->after('image')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AddWidgetToPostsTable extends Migration
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->dropColumn('widget');
+            $table->dropColumn('widget_image');
         });
     }
 }

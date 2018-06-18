@@ -84,10 +84,10 @@
                                 <label>Slider</label><br>
                                 <switches v-model="post.slider" theme="bootstrap" color="primary"></switches>
                             </div>
-                            <!--<div class="form-group">-->
-                                <!--<label>Widget</label><br>-->
-                                <!--<switches v-model="post.widget" theme="bootstrap" color="primary"></switches>-->
-                            <!--</div>-->
+                            <div class="form-group">
+                                <label>Widget</label><br>
+                                <switches v-model="post.widget" theme="bootstrap" color="primary"></switches>
+                            </div>
                             <div class="form-group">
                                 <label>Publish</label><br>
                                 <switches v-model="post.publish" theme="bootstrap" color="primary"></switches>

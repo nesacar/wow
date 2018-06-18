@@ -24,7 +24,7 @@
                 @foreach($posts as $p)
                 <li>
                     <a href="{{ url($p->category.'/'.$p->slug.'/'.$p->id) }}" target='_blank'>
-                        <img class="abstract" src="{{ url($p->widget) }}" alt="{{ $p->title }}">
+                        <img class="abstract" src="{{ url($p->widget_image) }}" alt="{{ $p->title }}">
                     </a>
                     <a class='title' href='{{ url($p->category.'/'.$p->slug.'/'.$p->id) }}' target='_blank'>
                         {{ $p->title }}

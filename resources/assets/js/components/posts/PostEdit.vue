@@ -71,10 +71,10 @@
                                 <label>Slider</label><br>
                                 <switches v-model="post.slider" theme="bootstrap" color="primary"></switches>
                             </div>
-                            <!--<div class="form-group">-->
-                                <!--<label>Widget</label><br>-->
-                                <!--<switches v-model="post.widget" theme="bootstrap" color="primary"></switches>-->
-                            <!--</div>-->
+                            <div class="form-group">
+                                <label>Widget</label><br>
+                                <switches v-model="post.widget" theme="bootstrap" color="primary"></switches>
+                            </div>
                             <div class="form-group">
                                 <label>Publish</label><br>
                                 <switches v-model="post.publish" theme="bootstrap" color="primary"></switches>
@@ -90,7 +90,7 @@
                             ></upload-image-helper>
 
                         <upload-image-helper
-                                :image="post.widget"
+                                :image="post.widget_image"
                                 :defaultImage="null"
                                 :titleImage="'Widget'"
                                 :error="error"
@@ -294,7 +294,7 @@
             uploadWidget(image){
                 axios.post('api/posts/' + this.post.id + '/widget', { file: image[0] })
                     .then(res => {
-                        this.post.widget = res.data.image;
+                        this.post.widget_image = res.data.image;
                         this.error = null;
                         swal({
                             position: 'center',
