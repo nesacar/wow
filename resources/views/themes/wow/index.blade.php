@@ -28,6 +28,7 @@
     {!! HTML::style('themes/'.$theme.'/css/all.css') !!}
 
     @yield('header')
+    @yield('style')
 
     <!-- Fav and touch icons -->
     <link rel="icon" type="image/x-icon" href="{{ url('themes/'.$theme.'/img/favicon.png') }}" />

@@ -168,6 +168,7 @@ return [
         Eusonlito\LaravelPacker\PackerServiceProvider::class,
         App\Providers\ViewServiseProvider::class,
         Devfactory\Imagecache\ImagecacheServiceProvider::class,
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -230,6 +231,7 @@ return [
         'HTML' => Illuminate\Html\HtmlFacade::class,
         'Packer' => Eusonlito\LaravelPacker\Facade::class,
         'Imagecache' => Devfactory\Imagecache\Facades\ImagecacheFacade::class,
+        'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
     ],
 
 ];

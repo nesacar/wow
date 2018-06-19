@@ -29,6 +29,7 @@ class CreateContactMessageRequest extends FormRequest
             'country' => 'required',
             'phone' => 'required',
             'message' => 'required',
+            'g-recaptcha-response' => 'required|captcha'
         ];
     }
 }

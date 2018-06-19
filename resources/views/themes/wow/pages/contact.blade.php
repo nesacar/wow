@@ -4,6 +4,23 @@
     {{ $post->title }} WowMalta - {{ $settings->title }}
 @endsection
 
+@section('style')
+    <style>
+        .article-form input[type="text"]{
+            border: 1px solid #18a5a6;
+        }
+
+        .article-form textarea{
+            width: 99%;
+            border: 1px solid #18a5a6;
+        }
+
+        .article-form input::-webkit-input-placeholder, .article-form input::-moz-placeholder, .article-form input:-ms-input-placeholder {
+            color: #18a5a6;
+        }
+    </style>
+@endsection
+
 @section('seo_social_stuff')
     <meta name="description" content="{!! $settings->desc !!}"/>
     <meta name="keywords" content="{{ $settings->keywords }}"/>
@@ -67,6 +84,9 @@
                 <input type="text" name="country" value="" placeholder="Country" required>
                 <input type="text" name="phone" value="" placeholder="Phone" required>
                 <textarea id="message" name="message" placeholder="Message" required style="margin-bottom: 20px"></textarea>
+
+                    {!! NoCaptcha::display() !!}
+
                 <button type="submit" name="button">Submit</button>
             </form>
             </p>
