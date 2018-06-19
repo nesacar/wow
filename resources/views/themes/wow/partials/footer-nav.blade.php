@@ -2,31 +2,28 @@
 <section class="col-md-12 bottom-nav">
     <ul class="footer-navigation">
         <li><a href="{{ url('/') }}" >HOME</a></li>
-        <li><a href='https://www.wowmalta.com.mt/explore'>explore</a></li>
-        <li><a href='https://www.wowmalta.com.mt/eat'>eat</a></li>
-        <li><a href='https://www.wowmalta.com.mt/sleep'>sleep</a></li>
-        <li><a href='https://www.wowmalta.com.mt/party'>party</a></li>
-        <li><a href='https://www.wowmalta.com.mt/swim'>swim</a></li>
-        <li><a href='https://www.wowmalta.com.mt/shopping'>shop</a></li>
-        <li><a href='https://www.wowmalta.com.mt/transport'>transport</a></li>
-        <li><a href='https://www.wowmalta.com.mt/move-to-malta'>move to malta</a></li>
+        <li><a href="{{ url('explore') }}">explore</a></li>
+        <li><a href="{{ url('eat') }}">eat</a></li>
+        <li><a href="{{ url('sleep') }}">sleep</a></li>
+        <li><a href="{{ url('party') }}">party</a></li>
+        <li><a href="{{ url('swim') }}">swim</a></li>
+        <li><a href="{{ url('shop') }}">shop</a></li>
+        <li><a href="{{ url('transport') }}">transport</a></li>
+        <li><a href="{{ url('move-to-malta') }}">move to malta</a></li>
     </ul>
 
     <div class="footer-sub-menu">
-
         <ul>
-            <li><a href='https://www.wowmalta.com.mt/valletta'>Valletta</a></li>
-            <li><a href='https://www.wowmalta.com.mt/st-julians'>St. Julians</a></li>
-            <li><a href='https://www.wowmalta.com.mt/sliema'>Sliema</a></li>
-            <li><a href='https://www.wowmalta.com.mt/mdina-rabat'>Mdina &amp; Rabat</a></li>
-            <li><a href='https://www.wowmalta.com.mt/three-cities'>Three Cities</a></li>
-            <li><a href='https://www.wowmalta.com.mt/gozo-comino'>Gozo &amp; Comino</a></li>
-            <li><a href='https://www.wowmalta.com.mt/marsaxlokk'>Marsaxlokk</a></li>
-            <li><a href='https://www.wowmalta.com.mt/marsaskala'>Marsaskala</a></li>
-            <li><a href='https://www.wowmalta.com.mt/mellieha'>Mellieha</a></li>
-            <li><a href='https://www.wowmalta.com.mt/other-towns'>Other Towns</a></li>
+            <li><a href="{{ url('valletta') }}">Valletta</a></li>
+            <li><a href="{{ url('st-julians') }}">St. Julians</a></li>
+            <li><a href="{{ url('sliema') }}">Sliema</a></li>
+            <li><a href="{{ url('mdina-rabat') }}">Mdina &amp; Rabat</a></li>
+            <li><a href="{{ url('three-cities') }}">Three Cities</a></li>
+            <li><a href="{{ url('gozo-comino') }}">Gozo &amp; Comino</a></li>
+            <li><a href="{{ url('marsaxlokk') }}">Marsaxlokk</a></li>
+            <li><a href="{{ url('mellieha') }}">Mellieha</a></li>
+            <li><a href="{{ url('other-towns') }}">Other Towns</a></li>
         </ul>
-
     </div>
 </section>
 
@@ -42,9 +39,9 @@
     </ul>
     <p style="margin-top: 10px; margin-bottom: 10px;">WowMalta is a part of Blues Limited Media Company</p>
     <ul>
-        <li class="padding-left"><a href="#">about us</a></li>
-        <li class="padding-left"><a href="#" target="_blank">advertising</a></li>
-        <li class="padding-left"><a href="#">contact</a></li>
+        <li class="padding-left"><a href="{{ url('about-us') }}">about us</a></li>
+        <li class="padding-left"><a href="{{ url('pdf/Wow_Malta_Presentation.pdf') }}" target="_blank">advertising</a></li>
+        <li class="padding-left"><a href="{{ url('contact') }}">contact</a></li>
         <li class="padding-left"></li>
     </ul>
 

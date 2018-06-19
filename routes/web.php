@@ -27,6 +27,10 @@ Route::get('/', 'PagesController@index');
 Route::get('widget', 'PagesController@widget');
 Route::post('scroll_related', 'PagesController@scroll_related');
 
+Route::get('about-us', 'PagesController@aboutUs');
+Route::get('contact', 'PagesController@contact');
+Route::post('contact', 'PagesController@contactUpdate')->name('contact');
+
 Route::get('tagcloud/{slug}', 'PagesController@tag');
 Route::post('search', 'PagesController@search')->name('search');
 Route::post('subscribe', 'PagesController@subscribe');

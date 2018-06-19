@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Banner;
 use App\Category;
 use App\Click;
+use App\Http\Requests\CreateContactMessageRequest;
 use App\Http\Requests\SubscribeNewsletterRequest;
+use App\Mail\ContactMail;
+use App\Message;
 use App\Newsletter;
 use App\Post;
 use App\Setting;
@@ -18,6 +21,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use File;
+use Illuminate\Support\Facades\Mail;
 
 class PagesController extends Controller
 {
@@ -150,7 +154,7 @@ class PagesController extends Controller
         $highlights = Post::getHighlights();
         $mobile = Banner::isMobile($_SERVER['HTTP_USER_AGENT']);
 
-        return view('themes.'.$theme.'.pages.tag', compact('theme', 'posts', 'highlights', 'mobile', 'top', 'settings', 'mobile'));
+        return view('themes.'.$theme.'.pages.tag', compact('theme', 'posts', 'highlights', 'mobile', 'top', 'settings'));
     }
 
     public function search(Request $request){
@@ -161,7 +165,7 @@ class PagesController extends Controller
         $highlights = Post::getHighlights();
         $mobile = Banner::isMobile($_SERVER['HTTP_USER_AGENT']);
 
-        return view('themes.'.$theme.'.pages.search', compact('theme', 'posts', 'highlights', 'mobile', 'top', 'settings', 'mobile'));
+        return view('themes.'.$theme.'.pages.search', compact('theme', 'posts', 'highlights', 'mobile', 'top', 'settings'));
     }
 
     public function subscribe(SubscribeNewsletterRequest $request){
@@ -178,6 +182,41 @@ class PagesController extends Controller
         $subscriber->update();
 
         return redirect('/')->with('done', 'You have successfully unsubscribed.');
+    }
+
+    public function aboutUs(){
+        $theme = Theme::getTheme();
+        $settings = Setting::find(1);
+        $post = Post::find(374);
+        $category = Category::find(1);
+        $highlights = Post::getHighlights();
+        $tags = [];
+        $mobile = Banner::isMobile($_SERVER['HTTP_USER_AGENT']);
+        return view('themes.'.$theme.'.pages.about', compact('theme', 'post', 'highlights', 'settings', 'mobile', 'category', 'tags'));
+    }
+
+    public function contact(){
+        $theme = Theme::getTheme();
+        $settings = Setting::find(1);
+        $post = Post::find(373);
+        $category = Category::find(1);
+        $highlights = Post::getHighlights();
+        $tags = [];
+        $mobile = Banner::isMobile($_SERVER['HTTP_USER_AGENT']);
+        return view('themes.'.$theme.'.pages.contact', compact('theme', 'post', 'highlights', 'settings', 'mobile', 'category', 'tags'));
+    }
+
+    public function contactUpdate(CreateContactMessageRequest $request){
+        $message = new Message();
+        $message->name = request('name');
+        $message->email = request('email');
+        $message->country = request('country');
+        $message->phone = request('phone');
+        $message->message = request('message');
+
+        Mail::to('info@wowmalta.com.mt')->send(new ContactMail($message));
+
+        return redirect('/')->with('success', 'Message sent');
     }
 
     public function proba(){
