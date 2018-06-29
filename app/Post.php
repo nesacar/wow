@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use File;
 use Illuminate\Http\Request;
@@ -19,8 +20,8 @@ class Post extends Model
 
         $exploaded = explode(',', $image);
         $data = base64_decode($exploaded[1]);
-        $filename = $post->slug . '-' . str_random(2) . $post->id . '.jpg';
-        $path = public_path('uploads/posts/');
+        $filename = $post->slug . '-' . str_random(2) . '-' . $post->id . '.jpg';
+        $path = public_path('uploads/posts/' . Carbon::now()->format('m-Y') . '/');
         file_put_contents($path . $filename, $data);
         $post->image = 'uploads/posts/' . $filename;
         $post->update();
