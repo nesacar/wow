@@ -17,13 +17,16 @@ class Post extends Model
     public static function base64UploadImage($post_id, $image){
         $post = self::find($post_id);
         if($post->image != null) File::delete($post->image);
-
+        $imagePath = 'uploads/posts/' . Carbon::now()->format('m-Y') . '/';
+        if (!file_exists($imagePath)) {
+            File::makeDirectory($imagePath, $mode = 0777, true, true);
+        }
         $exploaded = explode(',', $image);
         $data = base64_decode($exploaded[1]);
         $filename = $post->slug . '-' . str_random(2) . '-' . $post->id . '.jpg';
-        $path = public_path('uploads/posts/' . Carbon::now()->format('m-Y') . '/');
+        $path = public_path($imagePath);
         file_put_contents($path . $filename, $data);
-        $post->image = 'uploads/posts/' . $filename;
+        $post->image = $imagePath . $filename;
         $post->update();
 
 //        File::copy(public_path($post->image), public_path($post->sliderImage));
