@@ -12,7 +12,7 @@ class Post extends Model
 
     protected $table = 'posts';
 
-    protected $fillable = ['id', 'user_id', 'category_id', 'town_id', 'title', 'slug', 'short', 'body', 'image', 'widget_image', 'link', 'views', 'publish', 'slider', 'widget', 'map', 'publish_at'];
+    protected $fillable = ['id', 'user_id', 'category_id', 'town_id', 'title', 'slug', 'short', 'body', 'image', 'widget_image', 'widget_text', 'link', 'views', 'publish', 'slider', 'widget', 'map', 'publish_at'];
 
     public static function base64UploadImage($post_id, $image){
         $post = self::find($post_id);
@@ -137,7 +137,7 @@ class Post extends Model
     }
 
     public static function getWidget($limit){
-        return self::select('posts.id', 'posts.title', 'posts.slug','posts.widget_image', 'posts.widget', 'posts.short', 'posts.link', 'posts.publish_at', 'categories.slug as category')
+        return self::select('posts.id', 'posts.title', 'posts.slug','posts.widget_image', 'posts.widget_text', 'posts.widget', 'posts.short', 'posts.link', 'posts.publish_at', 'categories.slug as category')
             ->join('categories', 'posts.category_id', '=', 'categories.id')
             ->where('posts.publish', 1)->where('posts.widget_image', '<>', null)->where('posts.widget', 1)->orderBy('posts.publish_at', 'DESC')->take($limit)->get();
     }

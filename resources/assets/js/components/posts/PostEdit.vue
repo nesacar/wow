@@ -75,6 +75,7 @@
                                 <label>Widget</label><br>
                                 <switches v-model="post.widget" theme="bootstrap" color="primary"></switches>
                             </div>
+
                             <div class="form-group">
                                 <label>Publish</label><br>
                                 <switches v-model="post.publish" theme="bootstrap" color="primary"></switches>
@@ -97,6 +98,11 @@
                                 @uploadImage="uploadWidget($event)"
                                 @removeRow="remove($event)"
                         ></upload-image-helper>
+
+                        <div class="form-group">
+                            <label for="widget_text">Widget text</label>
+                            <input type="text" name="widget_text" class="form-control" id="widget_text" placeholder="Text" v-model="post.widget_text">
+                        </div>
 
                     </div><!-- .card -->
 
@@ -130,14 +136,18 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="shortIta">Short</label>
-                                        <textarea name="short" id="shortIta" cols="3" rows="4" class="form-control" placeholder="Short" v-model="post.short"></textarea>
+                                        <!--<textarea name="short" id="shortIta" cols="3" rows="4" class="form-control" placeholder="Short" v-model="post.short"></textarea>-->
+                                        <ckeditor
+                                                v-model="post.short"
+                                                :config="config_short">
+                                        </ckeditor>
                                         <small class="form-text text-muted" v-if="error != null && error.short">{{ error.short[0] }}</small>
                                     </div>
                                     <div class="form-group">
                                         <label>Body</label>
                                         <ckeditor
                                                 v-model="post.body"
-                                                :config="config">
+                                                :config="config_body">
                                         </ckeditor>
                                         <small class="form-text text-muted" v-if="error != null && error.desc">{{ error.body[0] }}</small>
                                     </div>
@@ -191,7 +201,7 @@
               photos: {},
               tags: {},
               seen: false,
-              config: {
+              config_short: {
                   toolbar: [
                       [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', 'Image', 'Link', 'Unlink', 'Source' ],
                       { name: 'paragraph', items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock' ] },
@@ -199,7 +209,20 @@
                       { name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
                   ],
                   height: 300,
-                  filebrowserBrowseUrl: 'filemanager/show'
+                  filebrowserBrowseUrl: 'filemanager/show',
+                  enterMode: CKEDITOR.ENTER_BR,
+                  shiftEnterMode: CKEDITOR.ENTER_P, //pressing the SHIFT + ENTER KEYS input <p>
+                  autoParagraph: false // stops automatic insertion of <p> on focus
+              },
+              config_body: {
+                  toolbar: [
+                      [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', 'Image', 'Link', 'Unlink', 'Source' ],
+                      { name: 'paragraph', items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock' ] },
+                      '/',
+                      { name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
+                  ],
+                  height: 300,
+                  filebrowserBrowseUrl: 'filemanager/show',
               },
               dropzoneOptions: {
                   url: 'api/posts/' + this.$route.params.id + '/gallery',

@@ -23,12 +23,14 @@
                 <li><a href="{{ url('/') }}" target='_blank'><img class='abstract' src="{{ url('themes/'.$theme.'/img/widget/home1.jpg') }}" /></a></li>
                 @foreach($posts as $p)
                 <li>
-                    <a href="{{ url($p->category.'/'.$p->slug.'/'.$p->id) }}" target='_blank'>
+                    <a href="{{ url($p->category.'/'.$p->slug) }}" target='_blank'>
                         <img class="abstract" src="{{ url($p->widget_image) }}" alt="{{ $p->title }}">
                     </a>
-                    <a class='title' href='{{ url($p->category.'/'.$p->slug.'/'.$p->id) }}' target='_blank'>
-                        {{ $p->title }}
-                    </a>
+                    @if(!empty($posts->widget_text))
+                        <a class='title' href='{{ url($p->category.'/'.$p->slug) }}' target='_blank'>
+                            {{ $p->title }}
+                        </a>
+                    @endif
                 </li>
                 @endforeach
             </ul>

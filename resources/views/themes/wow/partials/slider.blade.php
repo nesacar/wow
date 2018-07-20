@@ -9,7 +9,7 @@
                         <img src="{{ Imagecache::get($p->image, '480x250')->src }}" alt="{{ $p->title }}" title="#slider_caption_{{ $p->id }}" />
                     </a>
                     <a href="{{ url($p->link) }}"><h2>{{ $p->title }}</h2></a>
-                    <p>{{ $p->short }}</p>
+                    <p>{!! $p->short !!}</p>
                 </li>
             @endforeach
         </ul>
