@@ -9,7 +9,7 @@
             </a>
             <a href="{{ url($p->link) }}"><h3>{{ $p->title }}</h3></a>
         </div>
-        <p>{{ $p->short }}</p>
+        <p>{!! $p->short !!}</p>
     </article>
     @endforeach
 </section>

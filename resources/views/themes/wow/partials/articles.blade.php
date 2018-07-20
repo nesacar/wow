@@ -11,7 +11,7 @@
                 <a href="{{ url($town->slug) }}">{{ $town->title }}</a>
             @endif
             <h3><a href="{{ url($p->link) }}">{{ $p->title }}</a></h3>
-            <p>{{ $p->short }}</p>
+            <p>{!! $p->short !!}</p>
         </article>
     @endforeach
 @endif

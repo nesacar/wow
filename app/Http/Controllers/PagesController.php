@@ -123,7 +123,7 @@ class PagesController extends Controller
         $tags = $post->tag;
         $highlights = Post::getHighlights($category->id);
         $top = Post::getTop($category->id);
-        $related = Post::getRelated($category->id, $post->id, 10);
+        $related = Post::getRelated($category->id, $post->id, 6);
         $mobile = Banner::isMobile($_SERVER['HTTP_USER_AGENT']);
 
         if(request('email') && request('news')){

@@ -1,5 +1,5 @@
 <div style="clear: both"></div>
-<section class="col-md-12 bottom-nav">
+{{--<section class="col-md-12 bottom-nav">
     <ul class="footer-navigation">
         <li><a href="{{ url('/') }}" >HOME</a></li>
         <li><a href="{{ url('explore') }}">explore</a></li>
@@ -25,7 +25,7 @@
             <li><a href="{{ url('other-towns') }}">Other Towns</a></li>
         </ul>
     </div>
-</section>
+</section>--}}
 
 
 <div class="container footer-main">

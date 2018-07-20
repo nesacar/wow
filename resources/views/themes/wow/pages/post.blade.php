@@ -4,6 +4,10 @@
     {{ $post->title }} WowMalta - {{ $settings->title }}
 @endsection
 
+@section('style')
+    <link media="all" type="text/css" rel="stylesheet" href="{{ asset('themes/'.$theme.'/css/custom.css') }}">
+@endsection
+
 @section('seo_social_stuff')
     <meta name="description" content="{{ $post->short }}" />
     <meta name="keywords" content="@if(count($tags)>0) @foreach($tags as $tag) {{ $tag->title }}, @endforeach @endif" />

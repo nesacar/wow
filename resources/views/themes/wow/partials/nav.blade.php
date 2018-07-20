@@ -6,7 +6,7 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li @if(!empty($home) && $home) class="active" @endif><a href="{{ url('/') }}">home</a></li>
+                    <li @if(!empty($home) && $home) class="active" @endif><a href="{{ url('/') }}">Home</a></li>
                     @if(count($cats)>0)
                         @foreach($cats as $cat)
                             <li @if(!empty($category) && $category->id == $cat->id) class="active" @endif><a href="{{ url($cat->slug) }}">{{ $cat->title }}</a></li>
